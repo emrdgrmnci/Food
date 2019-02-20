@@ -18,26 +18,35 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var rePasswordTextField: UITextField!
     
     
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+    self.view.addGestureRecognizer(tapGesture)
+       
+}
+
+@objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+    nameTextField.resignFirstResponder()
+    lastNameTextField.resignFirstResponder()
+    emailTextField.resignFirstResponder()
+    phoneTextField.resignFirstResponder()
+    passwordTextField.resignFirstResponder()
+    rePasswordTextField.resignFirstResponder()
+}
+    
+    //MARK:- For cancelBarButtonItem of RegisterView
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {return}
+        
+        switch identifier {
+        case "cancel" :
+            print("cancel bar button item tapped")
+        default:
+            print("unexpected segue identifier")
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
 
 }
