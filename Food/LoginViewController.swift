@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
     }
     
   
-    
+    //MARK:- Email and password field control
     func controlFields() -> Bool {
         var flag = false
         if emailTextField.text != "" && passwordTextField.text != "" && (passwordTextField.text?.count)! >= 8 && (passwordTextField.text?.count)! <= 20 {
@@ -54,6 +54,7 @@ class LoginViewController: UIViewController {
         }
         return flag
     }
+    
     @IBAction func emailTextChanged(_ sender: Any) {
         if controlFields() {
             loginButton.isEnabled = true
