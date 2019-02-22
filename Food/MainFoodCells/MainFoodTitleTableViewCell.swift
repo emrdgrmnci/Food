@@ -10,7 +10,14 @@ import UIKit
 
 class MainFoodTitleTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var foodTitle: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var subTitleLabel: UILabel!
+    
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    @IBAction func foodAdd(_ sender: Any) {
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

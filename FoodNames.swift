@@ -9,5 +9,6 @@
 import Foundation
 
 struct FoodNames {
+    let category: String
     let title: String
 }
