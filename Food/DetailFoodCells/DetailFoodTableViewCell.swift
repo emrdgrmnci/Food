@@ -14,6 +14,7 @@ class DetailFoodTableViewCell: UITableViewCell {
     @IBOutlet weak var detailFoodNameSubLabel: UILabel!
     
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

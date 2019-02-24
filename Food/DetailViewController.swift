@@ -11,6 +11,7 @@ import UIKit
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var detailTableView: UITableView!
+    
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
         
@@ -30,12 +31,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -46,15 +43,13 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         return 45
     }
     
+    var detailFoodTitle = MainFoodTitleTableViewCell()
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "foodNameCell", for: indexPath) as! DetailFoodTableViewCell
-            cell.textLabel?.text
-            
-            return cell
-        }
-        
+            cell.detailFoodNameLabel.text = detailFoodTitle.titleLabel?.text
+                return cell
     }
     /*
      // MARK: - Navigation
