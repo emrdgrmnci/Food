@@ -16,9 +16,15 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     var imageNames = [ImageNames]()
     var foodNames = [FoodNames]()
     
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.isHidden = true
         
         imageNames = [
             ImageNames(name: "images"),
@@ -32,13 +38,8 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
             FoodNames(category: "Fastfood", title: "Hamburger hamburger big king big mac big chicken")
         ]
         
-        //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        //        self.view.addGestureRecognizer(tapGesture)
     }
-    //    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-    //        searchBar.resignFirstResponder()
-    //    }
-    
+
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
     }
@@ -65,10 +66,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
         return indexPath.section == 0 ? 100 : 65
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  imageNames.count
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainFoodTableViewCell", for: indexPath) as! MainFoodTableViewCell
@@ -90,14 +87,16 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
         
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        
         self.navigationController?.pushViewController(detailVC, animated: true)
         self.tabBarController?.hidesBottomBarWhenPushed = true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return  imageNames.count
     }
     
     //MARK:- collection view cell size
