@@ -83,11 +83,21 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood", for: indexPath) as! MainFoodTitleTableViewCell
             
             cell.titleLabel?.text = foodNames[indexPath.row].title
-//            cell.textLabel?.text = foodNames[indexPath.row].title
+            //cell.textLabel?.text = foodNames[indexPath.row].title
             cell.detailTextLabel?.text = foodNames[indexPath.row].category
             return cell
         }
         
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        self.tabBarController?.hidesBottomBarWhenPushed = true
     }
     
     //MARK:- collection view cell size
@@ -103,13 +113,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-    
-        self.navigationController?.pushViewController(detailVC, animated: true)
-    }
     //
     //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     //        if collectionView.tag == 0 {

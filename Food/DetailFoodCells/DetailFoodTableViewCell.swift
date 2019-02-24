@@ -1,23 +1,18 @@
 //
-//  MainFoodTitleTableViewCell.swift
+//  DetailFoodTableViewCell.swift
 //  Food
 //
-//  Created by Ali Emre Değirmenci on 21.02.2019.
+//  Created by Ali Emre Değirmenci on 24.02.2019.
 //  Copyright © 2019 Ali Emre Değirmenci. All rights reserved.
 //
 
 import UIKit
 
-class MainFoodTitleTableViewCell: UITableViewCell {
+class DetailFoodTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var detailFoodNameLabel: UILabel!
+    @IBOutlet weak var detailFoodNameSubLabel: UILabel!
     
-//    @IBOutlet weak var subTitleLabel: UILabel!
-    
-    @IBOutlet weak var priceLabel: UILabel!
-    
-    @IBAction func foodAdd(_ sender: Any) {
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

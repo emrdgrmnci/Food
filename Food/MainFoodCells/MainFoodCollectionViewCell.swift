@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class MainFoodCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var mainFoodImage: UIImageView!
    

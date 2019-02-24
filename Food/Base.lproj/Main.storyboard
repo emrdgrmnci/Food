@@ -457,7 +457,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="371"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="5d7-ST-oae" detailTextLabel="LtR-p3-mgI" style="IBUITableViewCellStyleSubtitle" id="gJ3-Rc-90m" userLabel="foodNameCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="5d7-ST-oae" detailTextLabel="LtR-p3-mgI" style="IBUITableViewCellStyleSubtitle" id="gJ3-Rc-90m" userLabel="foodNameCell" customClass="DetailFoodTableViewCell" customModule="Food" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gJ3-Rc-90m" id="j6e-yD-zgR">
@@ -480,8 +480,12 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="detailFoodNameLabel" destination="5d7-ST-oae" id="bsx-rR-Ie5"/>
+                                            <outlet property="detailFoodNameSubLabel" destination="LtR-p3-mgI" id="EL3-oy-9SK"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="lac-8R-BRa" userLabel="piecePriceCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="lac-8R-BRa" userLabel="piecePriceCell" customClass="DetailFoodPieceTableViewCell" customModule="Food" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lac-8R-BRa" id="wgF-V7-TiU">
@@ -508,8 +512,12 @@
                                                 <constraint firstAttribute="bottom" secondItem="ojy-VV-hUT" secondAttribute="bottom" id="rBf-SZ-whF"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="choosePiece" destination="JOg-qZ-6T1" id="HF1-hd-Vry"/>
+                                            <outlet property="priceLabel" destination="ojy-VV-hUT" id="ZNQ-P0-4Nl"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2wv-IQ-HyN" userLabel="chooseDrinkCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2wv-IQ-HyN" userLabel="chooseDrinkCell" customClass="DetailChooseDrinkTableViewCell" customModule="Food" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2wv-IQ-HyN" id="Grz-TX-YAW">
@@ -527,6 +535,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="goV-CS-DlB" secondAttribute="trailing" id="v3m-bA-jR4"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chooseDrink" destination="goV-CS-DlB" id="ITY-8d-d6N"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -537,6 +548,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4S-Ac-0Lf">
                                 <rect key="frame" x="100" y="431" width="227.5" height="45"/>
                                 <state key="normal" title="Button" image="BasketBtn"/>
+                                <connections>
+                                    <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="yez-El-bMd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
