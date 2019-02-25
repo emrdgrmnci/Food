@@ -10,6 +10,11 @@ import UIKit
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
+    var detailFoodName : String!
+    var detailFoodPrice: String!
+    var detailFoodNameCell = DetailFoodTableViewCell()
+    
     @IBOutlet weak var detailTableView: UITableView!
     
     //TODO:- Add to basket
@@ -17,10 +22,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
-        // Do any additional setup after loading the view.
+        
+        detailFoodNameCell.detailFoodNameLabel?.text = detailFoodName
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,14 +52,23 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         return 45
     }
     
-    var detailFoodTitle = MainFoodTitleTableViewCell()
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+//        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "foodNameCell", for: indexPath) as! DetailFoodTableViewCell
-            cell.detailFoodNameLabel.text = detailFoodTitle.titleLabel?.text
-                return cell
+            
+            return cell
+//        }
+//        else {
+//
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "piecePriceCell", for: indexPath) as! DetailFoodPieceTableViewCell
+//            cell.priceLabel.text = detailFoodPrice.priceLabel?.text
+//            return cell
+//        }
+        
     }
+    
+    
     /*
      // MARK: - Navigation
      
@@ -62,3 +80,5 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
      */
     
 }
+
+

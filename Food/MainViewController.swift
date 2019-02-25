@@ -16,7 +16,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     var imageNames = [ImageNames]()
     var foodNames = [FoodNames]()
     
-
+    
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
     }
@@ -39,7 +39,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
         ]
         
     }
-
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
     }
@@ -81,19 +81,33 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
             
             cell.titleLabel?.text = foodNames[indexPath.row].title
             //cell.textLabel?.text = foodNames[indexPath.row].title
-            cell.detailTextLabel?.text = foodNames[indexPath.row].category
+//            cell.detailTextLabel?.text = foodNames[indexPath.row].category
             return cell
         }
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        self.navigationController?.pushViewController(detailVC, animated: true)
-        self.tabBarController?.hidesBottomBarWhenPushed = true
+       
+            if segue.identifier == "cellForFoodSegue" {
+                let cell = sender as? DetailFoodTableViewCell
+                let vc = segue.destination as! DetailViewController
+                vc.detailFoodName = cell!.detailFoodNameLabel?.text
+        }
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+//            
+//            
+//            
+//            self.navigationController?.pushViewController(detailVC, animated: true)
+//            self.tabBarController?.hidesBottomBarWhenPushed = true
+//        }
+//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  imageNames.count

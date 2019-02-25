@@ -81,7 +81,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="906"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyn-bG-mRU" userLabel="ContentView" colorLabel="IBBuiltInLabel-Green">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="922"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="930"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="İsim" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gdK-Rf-gFg">
                                                 <rect key="frame" x="57" y="66" width="260" height="30"/>
@@ -120,7 +120,7 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="926-d0-F2f">
-                                                <rect key="frame" x="87" y="415" width="200" height="22"/>
+                                                <rect key="frame" x="87" y="415" width="200" height="30"/>
                                                 <state key="normal" image="Symbol 25 – 1"/>
                                             </button>
                                         </subviews>
@@ -196,10 +196,10 @@
                                 <rect key="frame" x="0.0" y="84" width="375" height="716"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P5d-Am-Gtn" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="737"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="760"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eb2-8F-7dU">
-                                                <rect key="frame" x="98" y="347" width="179" height="22"/>
+                                                <rect key="frame" x="98" y="347" width="179" height="45"/>
                                                 <state key="normal" title="Button" image="Symbol 25 – 2"/>
                                                 <connections>
                                                     <action selector="loginButton:" destination="uwa-6w-aBq" eventType="touchUpInside" id="bXP-EB-ADC"/>
@@ -297,7 +297,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="21g-72-Ny3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h93-32-WiO">
                                                         <size key="itemSize" width="125" height="125"/>
@@ -402,6 +402,7 @@
                                         <connections>
                                             <outlet property="priceLabel" destination="dq9-ym-VVH" id="y71-2Z-idd"/>
                                             <outlet property="titleLabel" destination="887-h8-hG6" id="YWx-vQ-gg1"/>
+                                            <segue destination="Bfh-ug-TsR" kind="show" identifier="cellForFoodSegue" id="ImP-xs-T0Q"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -443,7 +444,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ADL-Mo-RwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7068" y="722.78860569715152"/>
+            <point key="canvasLocation" x="6898" y="716"/>
         </scene>
         <!--DetailViewController-->
         <scene sceneID="V8u-oD-rAt">
@@ -454,7 +455,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qrd-0W-W3N">
-                                <rect key="frame" x="0.0" y="20" width="320" height="295"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="179"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="foodNameCell" textLabel="5d7-ST-oae" detailTextLabel="LtR-p3-mgI" style="IBUITableViewCellStyleSubtitle" id="gJ3-Rc-90m" userLabel="foodNameCell" customClass="DetailFoodTableViewCell" customModule="Food" customModuleProvider="target">
@@ -546,7 +547,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4S-Ac-0Lf">
-                                <rect key="frame" x="80" y="355" width="160" height="22"/>
+                                <rect key="frame" x="80" y="283" width="160" height="45"/>
                                 <state key="normal" title="Button" image="BasketBtn"/>
                                 <connections>
                                     <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="yez-El-bMd"/>

@@ -12,6 +12,7 @@ class DetailFoodPieceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var choosePiece: UIPickerView!
     @IBOutlet weak var priceLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
