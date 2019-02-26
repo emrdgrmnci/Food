@@ -9,6 +9,6 @@
 import Foundation
 
 struct FoodNames {
-    let category: String
+    let price: Double
     let title: String
 }

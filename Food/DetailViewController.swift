@@ -11,9 +11,8 @@ import UIKit
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
-    var detailFoodName : String!
-    var detailFoodPrice: String!
-    var detailFoodNameCell = DetailFoodTableViewCell()
+    var detailFoodName = String()
+    var detailFoodPrice = Double()
     
     @IBOutlet weak var detailTableView: UITableView!
     
@@ -22,18 +21,16 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = true
         
-        detailFoodNameCell.detailFoodNameLabel?.text = detailFoodName
+        self.tabBarController?.tabBar.isHidden = true
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.titleTextAttributes
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -41,7 +38,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -54,17 +51,23 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        if indexPath.section == 0 {
+        if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "foodNameCell", for: indexPath) as! DetailFoodTableViewCell
+            cell.detailFoodNameLabel?.text = detailFoodName
             
             return cell
-//        }
-//        else {
-//
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "piecePriceCell", for: indexPath) as! DetailFoodPieceTableViewCell
-//            cell.priceLabel.text = detailFoodPrice.priceLabel?.text
-//            return cell
-//        }
+            
+        } else if indexPath.row == 1 {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "piecePriceCell", for: indexPath) as! DetailFoodPieceTableViewCell
+            cell.priceLabel?.text = "₺\(detailFoodPrice)"
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "chooseDrinkCell", for: indexPath) as! DetailChooseDrinkTableViewCell
+            
+            return cell
+        }
         
     }
     

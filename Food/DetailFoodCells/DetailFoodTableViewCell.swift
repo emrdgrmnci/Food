@@ -10,9 +10,10 @@ import UIKit
 
 class DetailFoodTableViewCell: UITableViewCell {
 
+    
     @IBOutlet weak var detailFoodNameLabel: UILabel!
-    @IBOutlet weak var detailFoodNameSubLabel: UILabel!
-        
+//    @IBOutlet weak var detailFoodNameSubLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

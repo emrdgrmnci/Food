@@ -12,10 +12,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var mainTableView: UITableView!
     
     var imageNames = [ImageNames]()
     var foodNames = [FoodNames]()
-    
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
@@ -35,7 +35,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
         ]
         
         foodNames = [
-            FoodNames(category: "Fastfood", title: "Hamburger hamburger big king big mac big chicken")
+            FoodNames(price: 5.00, title: "Hamburger")
         ]
         
     }
@@ -80,34 +80,29 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood", for: indexPath) as! MainFoodTitleTableViewCell
             
             cell.titleLabel?.text = foodNames[indexPath.row].title
-            //cell.textLabel?.text = foodNames[indexPath.row].title
-//            cell.detailTextLabel?.text = foodNames[indexPath.row].category
+            
             return cell
         }
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-       
-            if segue.identifier == "cellForFoodSegue" {
-                let cell = sender as? DetailFoodTableViewCell
-                let vc = segue.destination as! DetailViewController
-                vc.detailFoodName = cell!.detailFoodNameLabel?.text
+        if segue.identifier == "cellForFoodSegue" {
+            if let destinationViewController = segue.destination as? DetailViewController
+            {
+                let indexPath = self.mainTableView.indexPathForSelectedRow!
+                
+                var foodNameArray: FoodNames
+                var foodPriceArray: FoodNames
+                foodNameArray = foodNames[indexPath.row]
+                foodPriceArray = foodNames[indexPath.row]
+                destinationViewController.detailFoodName = foodNameArray.title
+                destinationViewController.detailFoodPrice = foodPriceArray.price
+                
+            }
+            
         }
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-//            
-//            
-//            
-//            self.navigationController?.pushViewController(detailVC, animated: true)
-//            self.tabBarController?.hidesBottomBarWhenPushed = true
-//        }
-//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  imageNames.count
@@ -135,15 +130,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     //            print("images = \(indexPath.row) select")
     //        }
     //    }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
     
 }
 
