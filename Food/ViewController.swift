@@ -14,10 +14,20 @@ class ViewController: UIViewController {
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
     
     

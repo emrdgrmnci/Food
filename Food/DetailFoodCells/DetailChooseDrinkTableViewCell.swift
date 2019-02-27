@@ -9,9 +9,8 @@
 import UIKit
 
 class DetailChooseDrinkTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var chooseDrink: UIPickerView!
     
+    @IBOutlet weak var selectDrinkTextField: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()

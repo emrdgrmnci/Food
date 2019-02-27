@@ -8,29 +8,29 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     var detailFoodName = String()
     var detailFoodPrice = Double()
-    var drinkPricePicker : UIPickerView!
     var menuPieceStepper : UIStepper!
+    var selectedDrink: String?
+    var selectDrink : DetailChooseDrinkTableViewCell!
     
+    @IBOutlet weak var detailTableView: UITableView!    
+
     var prices = [FoodPrices]()
     
-    let pickerDrinks: [(name: String, price: String)] = [
-        ("Ayran" , "2,5₺"),
-        ("2 X Ayran" , "5,0₺"),
-        ("3 X Ayran" , "7,5₺"),
-        ("Kola" , "4,0₺"),
-        ("2 X Kola" , "8,0₺"),
-        ("3 X Kola" , "12,0₺"),
-        ("Su", "2,0₺"),
-        ("2 X Su", "4,0₺"),
-        ("3 X Su", "6,0₺")]
-    
-    
-    @IBOutlet weak var detailTableView: UITableView!
+    var pickerDrinks = [
+        "Ayran (2,5₺)",
+        "2 X Ayran (5,0₺)",
+        "3 X Ayran (7,5₺)",
+        "Kola (4,0₺)",
+        "2 X Kola (8,0₺)",
+        "3 X Kola (12,0₺)",
+        "Su (2,0₺)",
+        "2 X Su (4,0₺)",
+        "3 X Su (6,0₺)"]
     
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
@@ -40,11 +40,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        prices = [FoodPrices(purchaseAmount: 15.0), FoodPrices(purchaseAmount: 25.0)]
+        prices = [FoodPrices(purchaseAmount: 15.0),FoodPrices(purchaseAmount: 25.0)]
         detailTableView.reloadData()
+        createDrinkPicker()
         
         self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.title = "Sipariş Detayı"
+        self.navigationController?.navigationItem.title = "Sipariş Detayı"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +55,10 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,6 +87,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
 //            cell.priceLabel?.text = "₺\(detailFoodPrice)"
             cell.foodPrice = prices[indexPath.row]
             
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "chooseDrinkCell", for: indexPath) as! DetailChooseDrinkTableViewCell
@@ -90,6 +96,18 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
     }
+    
+    func createDrinkPicker() {
+        
+        let drinkPicker = UIPickerView()
+        drinkPicker.delegate = self
+        
+        selectDrink?.selectDrinkTextField?.inputView = drinkPicker
+        
+    }
+}
+
+extension DetailViewController: UIPickerViewDelegate, UIPickerViewDataSource  {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -100,20 +118,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerDrinks[row].name
+        return pickerDrinks[row]
     }
     
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        selectedDrink = pickerDrinks[row]
+        selectDrink.selectDrinkTextField.text = selectedDrink
+    }
     
 }
 

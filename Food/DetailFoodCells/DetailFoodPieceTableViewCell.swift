@@ -16,6 +16,7 @@ class DetailFoodPieceTableViewCell: UITableViewCell {
     
     var foodPrice : FoodPrices! {
         didSet {
+            
             menuPieceStepper.value = foodPrice.purchaseAmount
             priceLabel.text = String(foodPrice.purchaseAmount)
             
@@ -23,10 +24,13 @@ class DetailFoodPieceTableViewCell: UITableViewCell {
     }
     
     @IBAction func stepperAction(_ sender: UIStepper) {
+        
             foodPrice.purchaseAmount = sender.value
         self.priceLabel.text = String(sender.value)
         
     }
+    
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()
