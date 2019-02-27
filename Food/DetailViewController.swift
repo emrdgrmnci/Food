@@ -14,7 +14,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var detailFoodName = String()
     var detailFoodPrice = Double()
     var drinkPricePicker : UIPickerView!
-    var menuPiecePicker: UIPickerView!
+    var menuPieceStepper : UIStepper!
+    
+    var prices = [FoodPrices]()
     
     let pickerDrinks: [(name: String, price: String)] = [
         ("Ayran" , "2,5₺"),
@@ -22,7 +24,10 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         ("3 X Ayran" , "7,5₺"),
         ("Kola" , "4,0₺"),
         ("2 X Kola" , "8,0₺"),
-        ("3 X Kola" , "12,0₺")]
+        ("3 X Kola" , "12,0₺"),
+        ("Su", "2,0₺"),
+        ("2 X Su", "4,0₺"),
+        ("3 X Su", "6,0₺")]
     
     
     @IBOutlet weak var detailTableView: UITableView!
@@ -34,6 +39,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        prices = [FoodPrices(purchaseAmount: 15.0), FoodPrices(purchaseAmount: 25.0)]
+        detailTableView.reloadData()
         
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.title = "Sipariş Detayı"
@@ -71,8 +79,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         } else if indexPath.row == 1 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "piecePriceCell", for: indexPath) as! DetailFoodPieceTableViewCell
-            cell.priceLabel?.text = "₺\(detailFoodPrice)"
-            cell.choosePiece?.
+//            cell.priceLabel?.text = "₺\(detailFoodPrice)"
+            cell.foodPrice = prices[indexPath.row]
             
             return cell
         } else {

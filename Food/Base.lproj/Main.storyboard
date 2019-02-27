@@ -297,7 +297,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="21g-72-Ny3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="109"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h93-32-WiO">
                                                         <size key="itemSize" width="125" height="125"/>
@@ -384,7 +384,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125,00TL" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dq9-ym-VVH">
-                                                    <rect key="frame" x="291" y="29.666666666666671" width="71" height="20.333333333333329"/>
+                                                    <rect key="frame" x="330" y="29.666666666666671" width="71" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -501,7 +501,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Adet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5O8-kj-x9D">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5O8-kj-x9D">
                                                     <rect key="frame" x="22" y="9" width="57" height="27"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="hs9-CS-klI"/>
@@ -511,17 +511,21 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="D8v-mF-maj">
-                                                    <rect key="frame" x="87" y="8" width="94" height="28.999999999999996"/>
+                                                    <rect key="frame" x="87" y="8.3333333333333357" width="94" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="cHa-dc-EKt"/>
                                                         <constraint firstAttribute="height" constant="29" id="q6W-Sz-c2n"/>
                                                     </constraints>
                                                     <color key="tintColor" red="1" green="0.18823529410000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="stepperAction:" destination="lac-8R-BRa" eventType="valueChanged" id="kf7-yw-05H"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="D8v-mF-maj" secondAttribute="bottom" constant="7.5" id="7CY-9t-5HM"/>
                                                 <constraint firstItem="5O8-kj-x9D" firstAttribute="top" secondItem="wgF-V7-TiU" secondAttribute="top" constant="9" id="BOb-fD-UqO"/>
+                                                <constraint firstItem="D8v-mF-maj" firstAttribute="leading" secondItem="5O8-kj-x9D" secondAttribute="trailing" constant="8" id="Hiv-MR-ThQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="5O8-kj-x9D" secondAttribute="bottom" constant="7.5" id="IVi-La-VQC"/>
                                                 <constraint firstItem="ojy-VV-hUT" firstAttribute="top" secondItem="wgF-V7-TiU" secondAttribute="top" id="Vk3-Ir-9UG"/>
                                                 <constraint firstAttribute="trailing" secondItem="ojy-VV-hUT" secondAttribute="trailing" constant="15" id="ZxG-eR-0dw"/>
@@ -532,6 +536,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="constantPieceLabel" destination="5O8-kj-x9D" id="RrE-xW-drY"/>
+                                            <outlet property="menuPieceStepper" destination="D8v-mF-maj" id="pvO-53-Rtg"/>
                                             <outlet property="priceLabel" destination="ojy-VV-hUT" id="ZNQ-P0-4Nl"/>
                                         </connections>
                                     </tableViewCell>
@@ -543,7 +549,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="goV-CS-DlB">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                                     <connections>
                                                         <outlet property="dataSource" destination="Bfh-ug-TsR" id="Ujg-6f-FGa"/>
                                                         <outlet property="delegate" destination="Bfh-ug-TsR" id="Cni-O5-UST"/>
