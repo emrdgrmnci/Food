@@ -8,11 +8,22 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
     var detailFoodName = String()
     var detailFoodPrice = Double()
+    var drinkPricePicker : UIPickerView!
+    var menuPiecePicker: UIPickerView!
+    
+    let pickerDrinks: [(name: String, price: String)] = [
+        ("Ayran" , "2,5₺"),
+        ("2 X Ayran" , "5,0₺"),
+        ("3 X Ayran" , "7,5₺"),
+        ("Kola" , "4,0₺"),
+        ("2 X Kola" , "8,0₺"),
+        ("3 X Kola" , "12,0₺")]
+    
     
     @IBOutlet weak var detailTableView: UITableView!
     
@@ -25,12 +36,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.isHidden = true
-        
+        self.navigationController?.title = "Sipariş Detayı"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.navigationBar.titleTextAttributes
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,6 +72,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "piecePriceCell", for: indexPath) as! DetailFoodPieceTableViewCell
             cell.priceLabel?.text = "₺\(detailFoodPrice)"
+            cell.choosePiece?.
             
             return cell
         } else {
@@ -70,6 +82,19 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
     }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerDrinks.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerDrinks[row].name
+    }
+    
     
     
     /*
