@@ -15,11 +15,18 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var mainTableView: UITableView!
     
     var imageNames = [ImageNames]()
-    var foodNames = [String]()
     var searchFoods: [String]!
     var searching = false
     
+    let foodNames = [
+        "Hamburger big mac",
+        "Cemal",
+        "Emre",
+        "Memo"
+    ]
+    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
     
@@ -27,6 +34,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.isHidden = true
+       
         
         searchBar.delegate = self
 //        mainTableView.dataSource = self
@@ -40,21 +48,17 @@ UICollectionViewDelegate, UICollectionViewDataSource {
             ImageNames(name: "images")
         ]
         
-        foodNames = [
-            "Hamburger big mac"
-        ]
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-            return searchFoods.count
+        return section == 0 ? 1 : searchFoods.count
         //        return section == 0 ? 1 : foodNames.count
-       
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -73,11 +77,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
             cell.mainFoodCollectionView.dataSource = self
             cell.mainFoodCollectionView.reloadData()
             cell.mainFoodCollectionView.tag = indexPath.row
-            
             return cell
+            
         } else {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood", for: indexPath) as! MainFoodTitleTableViewCell
-                cell.titleLabel?.text = searchFoods[indexPath.row]
+            cell.titleLabel?.text = searchFoods[indexPath.row]
             return cell
         }
         
@@ -122,13 +127,15 @@ extension MainViewController : UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
+        mainTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        mainTableView.reloadData()
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        mainTableView.reloadData()
+        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

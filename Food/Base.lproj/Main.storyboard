@@ -281,14 +281,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcW-NP-VQs">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <color key="barTintColor" red="1" green="0.18823529411764706" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="Food" id="mK8-Vm-wMu"/>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zrI-Mu-Jlw">
-                                <rect key="frame" x="0.0" y="164" width="375" height="454"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainFoodTableViewCell" rowHeight="120" id="CWR-mG-RBX" customClass="MainFoodTableViewCell" customModule="Food" customModuleProvider="target">
@@ -369,7 +369,7 @@
                                                         <constraint firstAttribute="width" constant="170" id="1Xb-eP-G5K"/>
                                                         <constraint firstAttribute="height" constant="20.5" id="kZB-oK-XDi"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -380,7 +380,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="Loc-fl-W6y"/>
                                                         <constraint firstAttribute="height" constant="30" id="WNw-mp-BhM"/>
                                                     </constraints>
-                                                    <state key="normal" image="icons8-plus-math-filled-50"/>
+                                                    <state key="normal" image="plus"/>
                                                     <connections>
                                                         <action selector="foodAdd:" destination="qkZ-ah-bc7" eventType="touchUpInside" id="FzD-gf-uQZ"/>
                                                     </connections>
@@ -415,7 +415,7 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Yemek ara" translatesAutoresizingMaskIntoConstraints="NO" id="JqN-HE-L0r">
-                                <rect key="frame" x="0.0" y="108" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -451,6 +451,24 @@
             </objects>
             <point key="canvasLocation" x="6898" y="716"/>
         </scene>
+        <!--Sepetim-->
+        <scene sceneID="gV3-FV-hB4">
+            <objects>
+                <viewController id="BT1-x8-Nl6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R0H-WZ-0eb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="uX2-fN-q6s"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Sepetim" image="shopping_cart_loaded" id="uih-DF-PZ9">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jsl-r6-mm5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6926" y="1489"/>
+        </scene>
         <!--DetailViewController-->
         <scene sceneID="V8u-oD-rAt">
             <objects>
@@ -460,7 +478,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qrd-0W-W3N">
-                                <rect key="frame" x="0.0" y="64" width="375" height="281"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="374"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="foodNameCell" id="gJ3-Rc-90m" userLabel="foodNameCell" customClass="DetailFoodTableViewCell" customModule="Food" customModuleProvider="target">
@@ -558,10 +576,11 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4S-Ac-0Lf">
-                                <rect key="frame" x="120" y="413" width="135" height="45"/>
+                                <rect key="frame" x="120" y="462" width="135" height="45"/>
                                 <state key="normal" title="Button" image="BasketBtn"/>
                                 <connections>
                                     <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="yez-El-bMd"/>
+                                    <segue destination="gXY-8z-RaT" kind="show" id="HEg-Bt-PD0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -603,29 +622,32 @@
             </objects>
             <point key="canvasLocation" x="2240.625" y="-305.28169014084506"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="Bhx-XX-UXH">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5ND-Vg-FLp" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5ND-Vg-FLp" customClass="MainTabBarController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QhY-lh-Jku">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.94886869192123413" green="0.25662720203399658" blue="0.22184249758720398" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="EwZ-it-h8L" kind="relationship" relationship="viewControllers" id="OKY-Gn-2VV"/>
+                        <segue destination="BT1-x8-Nl6" kind="relationship" relationship="viewControllers" id="lYP-90-UQ6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncR-1t-dIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5272.8000000000002" y="722.78860569715152"/>
         </scene>
-        <!--Item-->
+        <!--Sipariş-->
         <scene sceneID="ukU-Tj-m82">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EwZ-it-h8L" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="DKu-B4-LjM"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EwZ-it-h8L" customClass="MainNavigationController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Sipariş" image="restaurant" id="DKu-B4-LjM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AdC-U9-RYc">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -646,6 +668,12 @@
         <image name="Group 3580" width="255" height="45"/>
         <image name="Symbol 25 – 1" width="173.5" height="30"/>
         <image name="Symbol 25 – 2" width="173.5" height="45"/>
-        <image name="icons8-plus-math-filled-50" width="50" height="50"/>
+        <image name="plus" width="30" height="30"/>
+        <image name="restaurant" width="30" height="30"/>
+        <image name="shopping_cart_loaded" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ImP-xs-T0Q"/>
+        <segue reference="HEg-Bt-PD0"/>
+    </inferredMetricsTieBreakers>
 </document>
