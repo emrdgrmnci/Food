@@ -16,6 +16,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     var imageNames = [ImageNames]()
     var searchFoods: [String]!
+    var priceFood: [Double]!
     var searching = false
     
     let foodNames = [
@@ -41,6 +42,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         searchBar.delegate = self
 //        mainTableView.dataSource = self
         searchFoods = foodNames
+        priceFood = foodPrices
         
         imageNames = [
             ImageNames(name: "images"),
@@ -85,6 +87,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood", for: indexPath) as! MainFoodTitleTableViewCell
             cell.titleLabel?.text = searchFoods[indexPath.row]
+            
+            
             return cell
         }
         
