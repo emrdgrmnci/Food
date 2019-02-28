@@ -25,6 +25,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         "Memo"
     ]
     
+    let foodPrices = [15.0, 20.0, 25.0, 22.0]
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
@@ -95,10 +97,13 @@ UICollectionViewDelegate, UICollectionViewDataSource {
                 let indexPath = self.mainTableView.indexPathForSelectedRow!
                 
                 var foodNameArray: String
+                var foodPriceArray: Double
+                
                 foodNameArray = foodNames[indexPath.row]
+                foodPriceArray = foodPrices[indexPath.row]
                 
                 destinationViewController.detailFoodName = foodNameArray
-                
+                destinationViewController.detailFoodPrice = foodPriceArray
                 
             }
             

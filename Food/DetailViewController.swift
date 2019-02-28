@@ -14,10 +14,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var detailFoodName = String()
     var detailFoodPrice = Double()
     var menuPieceStepper : UIStepper!
-    
-    @IBOutlet weak var detailTableView: UITableView!    
-
     var prices = [FoodPrices]()
+    
+    @IBOutlet weak var detailTableView: UITableView!
     
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
@@ -64,14 +63,13 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "foodNameCell", for: indexPath) as! DetailFoodTableViewCell
             cell.detailFoodNameLabel?.text = detailFoodName
-            
             return cell
             
-        } else  {
+        } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "piecePriceCell", for: indexPath) as! DetailFoodPieceTableViewCell
-//            cell.priceLabel?.text = "₺\(detailFoodPrice)"
-            cell.foodPrice = prices[indexPath.row]
+            cell.priceLabel?.text = "₺\(detailFoodPrice)"
+            
             
             
             return cell
