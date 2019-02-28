@@ -14,23 +14,10 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var detailFoodName = String()
     var detailFoodPrice = Double()
     var menuPieceStepper : UIStepper!
-    var selectedDrink: String?
-    var selectDrink : DetailChooseDrinkTableViewCell!
     
     @IBOutlet weak var detailTableView: UITableView!    
 
     var prices = [FoodPrices]()
-    
-    var pickerDrinks = [
-        "Ayran (2,5₺)",
-        "2 X Ayran (5,0₺)",
-        "3 X Ayran (7,5₺)",
-        "Kola (4,0₺)",
-        "2 X Kola (8,0₺)",
-        "3 X Kola (12,0₺)",
-        "Su (2,0₺)",
-        "2 X Su (4,0₺)",
-        "3 X Su (6,0₺)"]
     
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
@@ -42,7 +29,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         prices = [FoodPrices(purchaseAmount: 15.0),FoodPrices(purchaseAmount: 25.0)]
         detailTableView.reloadData()
-        createDrinkPicker()
         
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationItem.title = "Sipariş Detayı"
@@ -62,7 +48,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -81,7 +67,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             
             return cell
             
-        } else if indexPath.row == 1 {
+        } else  {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "piecePriceCell", for: indexPath) as! DetailFoodPieceTableViewCell
 //            cell.priceLabel?.text = "₺\(detailFoodPrice)"
@@ -89,44 +75,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             
             
             return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "chooseDrinkCell", for: indexPath) as! DetailChooseDrinkTableViewCell
-            
-            return cell
         }
         
     }
     
-    func createDrinkPicker() {
-        
-        let drinkPicker = UIPickerView()
-        drinkPicker.delegate = self
-        
-        selectDrink?.selectDrinkTextField?.inputView = drinkPicker
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
-extension DetailViewController: UIPickerViewDelegate, UIPickerViewDataSource  {
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerDrinks.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerDrinks[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        selectedDrink = pickerDrinks[row]
-        selectDrink.selectDrinkTextField.text = selectedDrink
-    }
-    
-}
 
 

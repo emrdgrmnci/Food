@@ -44,7 +44,6 @@ class LoginViewController: UIViewController {
             print("unexpected segue identifier")
         }
     }
-    
   
     //MARK:- Email and password field control
     func controlFields() -> Bool {

@@ -9,13 +9,15 @@
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,
-UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainTableView: UITableView!
     
     var imageNames = [ImageNames]()
-    var foodNames = [FoodNames]()
+    var foodNames = [String]()
+    var searchFoods: [String]!
+    var searching = false
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
@@ -26,6 +28,10 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
         
         self.navigationController?.navigationBar.isHidden = true
         
+        searchBar.delegate = self
+//        mainTableView.dataSource = self
+        searchFoods = foodNames
+        
         imageNames = [
             ImageNames(name: "images"),
             ImageNames(name: "unnamed"),
@@ -35,19 +41,9 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
         ]
         
         foodNames = [
-            FoodNames(price: 5.00, title: "Hamburger")
+            "Hamburger big mac"
         ]
         
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchBar.showsCancelButton = true
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -55,7 +51,10 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : foodNames.count
+        
+            return searchFoods.count
+        //        return section == 0 ? 1 : foodNames.count
+       
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -78,9 +77,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood", for: indexPath) as! MainFoodTitleTableViewCell
-            
-            cell.titleLabel?.text = foodNames[indexPath.row].title
-            
+                cell.titleLabel?.text = searchFoods[indexPath.row]
             return cell
         }
         
@@ -92,12 +89,11 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
             {
                 let indexPath = self.mainTableView.indexPathForSelectedRow!
                 
-                var foodNameArray: FoodNames
-                var foodPriceArray: FoodNames
+                var foodNameArray: String
                 foodNameArray = foodNames[indexPath.row]
-                foodPriceArray = foodNames[indexPath.row]
-                destinationViewController.detailFoodName = foodNameArray.title
-                destinationViewController.detailFoodPrice = foodPriceArray.price
+                
+                destinationViewController.detailFoodName = foodNameArray
+                
                 
             }
             
@@ -120,17 +116,27 @@ UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
         cell.mainFoodImage.image = UIImage(named: img.name)
         return cell
     }
+}
+
+extension MainViewController : UISearchBarDelegate {
     
-    //
-    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //        if collectionView.tag == 0 {
-    //            print("unnamed = \(indexPath.row) select")
-    //        }
-    //        if collectionView.tag == 1 {
-    //            print("images = \(indexPath.row) select")
-    //        }
-    //    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        mainTableView.reloadData()
+    }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchFoods = searchText.isEmpty ? foodNames : foodNames.filter { (item: String) -> Bool in
+            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        
+        mainTableView.reloadData()
+    }
 }
 
