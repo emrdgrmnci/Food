@@ -26,10 +26,10 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        prices = [FoodPrices(purchaseAmount: 15.0),FoodPrices(purchaseAmount: 25.0)]
+//        prices = [FoodPrices(purchaseAmount: 15.0),FoodPrices(purchaseAmount: 25.0)]
         detailTableView.reloadData()
         
-        self.tabBarController?.tabBar.isHidden = true
+//        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationItem.title = "Sipariş Detayı"
     }
     

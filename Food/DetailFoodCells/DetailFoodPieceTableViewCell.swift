@@ -14,6 +14,8 @@ class DetailFoodPieceTableViewCell: UITableViewCell {
     @IBOutlet weak var menuPieceStepper: UIStepper!
     @IBOutlet weak var constantPieceLabel: UILabel!
     
+    var piece = 0
+    
     var foodPrice : FoodPrices! {
         didSet {
             
@@ -26,7 +28,9 @@ class DetailFoodPieceTableViewCell: UITableViewCell {
     @IBAction func stepperAction(_ sender: UIStepper) {
         
         foodPrice?.purchaseAmount = sender.value
-        self.priceLabel.text = String(sender.value)
+        self.priceLabel.text = Double(sender.value).description
+        self.constantPieceLabel.text = Int(piece + 1).description
+        menuPieceStepper.stepValue = 15.0
         
     }
     

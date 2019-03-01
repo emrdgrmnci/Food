@@ -9,7 +9,7 @@
 import Foundation
 
 class FoodPrices {
-    var purchaseAmount = 0.0
+    var purchaseAmount = 15.0
     
     
     init(purchaseAmount: Double) {
