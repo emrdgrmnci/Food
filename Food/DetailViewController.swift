@@ -15,6 +15,15 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var menuPieceStepper : UIStepper!
     var prices = [FoodPrices]()
     
+    let foodNames = [
+        "Hamburger big mac",
+        "Cemal",
+        "Emre",
+        "Memo"
+    ]
+    
+    
+    
     @IBOutlet weak var detailTableView: UITableView!
     
     //TODO:- Add to basket
@@ -25,6 +34,17 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "addToCartSegue") {
             if let addToCartVC = segue.destination as? MyCartViewController {
+                
+                let indexPath = self.detailTableView.indexPathForSelectedRow!
+                
+                var foodNameArray: String
+                var foodPriceArray: Double
+                
+                foodNameArray = foodNames[indexPath.row]
+                foodPriceArray = prices[indexPath.row].purchaseAmount
+                
+                addToCartVC.fromDetailFoodName = foodNameArray
+                addToCartVC.fromDetailFoodPrice = foodPriceArray
                 
             }
         }

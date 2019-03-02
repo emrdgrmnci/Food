@@ -225,7 +225,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hDB-zf-TeT" customClass="MyCartTableViewCell" customModule="Food" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCartCell" id="hDB-zf-TeT" customClass="MyCartTableViewCell" customModule="Food" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hDB-zf-TeT" id="dbr-GP-xm7">
@@ -255,6 +255,10 @@
                                                 <constraint firstItem="u4a-36-nEf" firstAttribute="top" secondItem="dbr-GP-xm7" secondAttribute="top" constant="11" id="yDG-oZ-0hW"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="myCartFoodNameLabel" destination="u4a-36-nEf" id="pvb-qa-TiM"/>
+                                            <outlet property="myCartFoodPriceLabel" destination="xdE-ad-VkH" id="w5q-Lq-mNu"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nfZ-09-ckc">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
@@ -266,6 +270,10 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BT1-x8-Nl6" id="ILl-CI-M6N"/>
+                                    <outlet property="delegate" destination="BT1-x8-Nl6" id="qI3-vd-Jo9"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -289,7 +297,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="myCartFoodNameLabel" destination="u4a-36-nEf" id="Ksp-9V-MYY"/>
+                        <outlet property="myCartTableView" destination="VTm-Vv-mgD" id="dHg-rL-FWi"/>
                         <outlet property="totalPriceLabel" destination="GmT-cL-c9e" id="74G-fP-KHO"/>
                     </connections>
                 </viewController>
@@ -531,7 +539,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ob-K6-9Fo">
-                                <rect key="frame" x="60" y="479" width="255" height="45"/>
+                                <rect key="frame" x="60" y="502" width="255" height="22"/>
                                 <state key="normal" image="Group 3580">
                                     <color key="titleColor" red="0.83257240060000004" green="0.19629079099999999" blue="0.066703736779999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>

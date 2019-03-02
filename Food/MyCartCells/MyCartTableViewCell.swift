@@ -11,7 +11,10 @@ import UIKit
 class MyCartTableViewCell: UITableViewCell {
     
     
-
+    @IBOutlet weak var myCartFoodNameLabel: UILabel!
+    @IBOutlet weak var myCartFoodPriceLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -8,20 +8,21 @@
 
 import UIKit
 
-class MyCartViewController: UIViewController {
+class MyCartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var myCartFoodNameLabel: UILabel!
-    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
+    var fromDetailFoodName = String()
+    var fromDetailFoodPrice = Double()
     
 
+    @IBOutlet weak var myCartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
+    
+    let foodNames = [
+        "Hamburger big mac",
+        "Cemal",
+        "Emre",
+        "Memo"
+    ]
     
     //TODO-: Delete my cart
     @IBAction func deleteMyCart(_ sender: Any) {
@@ -35,18 +36,20 @@ class MyCartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return section == 0 ? 1 : foodNames.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
+        cell.myCartFoodNameLabel?.text = fromDetailFoodName
+        cell.myCartFoodPriceLabel?.text = "\(fromDetailFoodPrice)₺"
+        return cell
+    }
+
 
 }
