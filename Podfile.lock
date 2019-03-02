@@ -1,0 +1,20 @@
+PODS:
+  - KMPlaceholderTextView (1.4.0)
+  - TinyConstraints (3.3.1)
+
+DEPENDENCIES:
+  - KMPlaceholderTextView
+  - TinyConstraints
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - KMPlaceholderTextView
+    - TinyConstraints
+
+SPEC CHECKSUMS:
+  KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
+  TinyConstraints: dbf7519aefc01ea59d62244300c7718aec68e280
+
+PODFILE CHECKSUM: b1282e9746011d122cbc03b4d2b1a389b159b46a
+
+COCOAPODS: 1.5.3

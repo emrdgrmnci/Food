@@ -8,12 +8,7 @@
 
 import Foundation
 
-class FoodPrices {
-    var purchaseAmount = 15.0
-    
-    
-    init(purchaseAmount: Double) {
-        self.purchaseAmount = purchaseAmount
-    }
-    
+struct FoodPrices {
+    var purchaseAmount: Double
+   
 }

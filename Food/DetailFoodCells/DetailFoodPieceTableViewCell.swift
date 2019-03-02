@@ -19,7 +19,7 @@ class DetailFoodPieceTableViewCell: UITableViewCell {
     var foodPrice : FoodPrices! {
         didSet {
             
-            menuPieceStepper.value = foodPrice.purchaseAmount
+//            menuPieceStepper.value = foodPrice.purchaseAmount
             priceLabel.text = String(foodPrice.purchaseAmount)
             
         }

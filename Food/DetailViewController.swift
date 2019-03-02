@@ -10,7 +10,6 @@ import UIKit
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
     var detailFoodName = String()
     var detailFoodPrice = Double()
     var menuPieceStepper : UIStepper!
@@ -21,6 +20,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "addToCartSegue") {
+            if let addToCartVC = segue.destination as? MyCartViewController {
+                
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -68,10 +75,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "piecePriceCell", for: indexPath) as! DetailFoodPieceTableViewCell
-            cell.priceLabel?.text = "₺\(detailFoodPrice)"
-            
-            
-            
+            cell.priceLabel?.text = "\(detailFoodPrice)₺"
             return cell
         }
         

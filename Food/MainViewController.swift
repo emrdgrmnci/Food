@@ -26,7 +26,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         "Memo"
     ]
     
-    let foodPrices = [15.0, 20.0, 25.0, 22.0]
+    var foodPrices = [FoodPrices]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,7 +42,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         searchBar.delegate = self
 //        mainTableView.dataSource = self
         searchFoods = foodNames
-        priceFood = foodPrices
+        foodPrices = [FoodPrices(purchaseAmount: 15.0),FoodPrices(purchaseAmount: 20.0),FoodPrices(purchaseAmount: 25.0), FoodPrices(purchaseAmount: 30.0)]
         
         imageNames = [
             ImageNames(name: "images"),
@@ -86,8 +86,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood", for: indexPath) as! MainFoodTitleTableViewCell
-            cell.titleLabel?.text = searchFoods[indexPath.row]
             
+            cell.titleLabel?.text = searchFoods[indexPath.row]
+            cell.priceLabel?.text = "\(foodPrices[indexPath.row].purchaseAmount)₺"
             
             return cell
         }
@@ -104,7 +105,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
                 var foodPriceArray: Double
                 
                 foodNameArray = foodNames[indexPath.row]
-                foodPriceArray = foodPrices[indexPath.row]
+                foodPriceArray = foodPrices[indexPath.row].purchaseAmount
                 
                 destinationViewController.detailFoodName = foodNameArray
                 destinationViewController.detailFoodPrice = foodPriceArray
@@ -132,6 +133,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 
+
+//MARK:- SearchBar data
 extension MainViewController : UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

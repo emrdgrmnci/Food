@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcW-NP-VQs">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <color key="barTintColor" red="1" green="0.18823529411764706" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="Food" id="mK8-Vm-wMu"/>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zrI-Mu-Jlw">
-                                <rect key="frame" x="0.0" y="164" width="375" height="454"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainFoodTableViewCell" rowHeight="120" id="CWR-mG-RBX" customClass="MainFoodTableViewCell" customModule="Food" customModuleProvider="target">
@@ -123,8 +123,8 @@
                                                         <action selector="foodAdd:" destination="qkZ-ah-bc7" eventType="touchUpInside" id="FzD-gf-uQZ"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125,00TL" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dq9-ym-VVH">
-                                                    <rect key="frame" x="291" y="29.5" width="71" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dq9-ym-VVH">
+                                                    <rect key="frame" x="362" y="40" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -153,7 +153,7 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Yemek ara" translatesAutoresizingMaskIntoConstraints="NO" id="JqN-HE-L0r">
-                                <rect key="frame" x="0.0" y="108" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -192,7 +192,7 @@
         <!--Sepetim-->
         <scene sceneID="gV3-FV-hB4">
             <objects>
-                <viewController id="BT1-x8-Nl6" sceneMemberID="viewController">
+                <viewController id="BT1-x8-Nl6" customClass="MyCartViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R0H-WZ-0eb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -215,6 +215,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="approveCart:" destination="BT1-x8-Nl6" eventType="touchUpInside" id="uBG-mc-w3P"/>
                                             <segue destination="V6h-8s-8Hf" kind="show" id="h7W-vz-Ngj"/>
                                         </connections>
                                     </button>
@@ -224,12 +225,35 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hDB-zf-TeT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hDB-zf-TeT" customClass="MyCartTableViewCell" customModule="Food" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hDB-zf-TeT" id="dbr-GP-xm7">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Huge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4a-36-nEf">
+                                                    <rect key="frame" x="15" y="11" width="48" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15₺" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdE-ad-VkH">
+                                                    <rect key="frame" x="318" y="13" width="34" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="u4a-36-nEf" secondAttribute="bottom" constant="8.5" id="0KX-1i-sib"/>
+                                                <constraint firstAttribute="trailing" secondItem="xdE-ad-VkH" secondAttribute="trailing" constant="23" id="5CL-HS-HVc"/>
+                                                <constraint firstItem="xdE-ad-VkH" firstAttribute="top" secondItem="dbr-GP-xm7" secondAttribute="top" constant="13" id="I2g-BJ-b68"/>
+                                                <constraint firstItem="xdE-ad-VkH" firstAttribute="leading" secondItem="u4a-36-nEf" secondAttribute="trailing" constant="255" id="byi-vL-pCy"/>
+                                                <constraint firstItem="u4a-36-nEf" firstAttribute="leading" secondItem="dbr-GP-xm7" secondAttribute="leading" constant="15" id="hdU-XF-cJM"/>
+                                                <constraint firstAttribute="bottom" secondItem="xdE-ad-VkH" secondAttribute="bottom" constant="6.5" id="wDs-gL-fr5"/>
+                                                <constraint firstItem="u4a-36-nEf" firstAttribute="top" secondItem="dbr-GP-xm7" secondAttribute="top" constant="11" id="yDG-oZ-0hW"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nfZ-09-ckc">
@@ -256,123 +280,72 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uX2-fN-q6s"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sepetim" id="Hi9-wv-ywB"/>
+                    <navigationItem key="navigationItem" title="Sepetim" id="Hi9-wv-ywB">
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="VAs-MT-Wmi">
+                            <color key="tintColor" red="0.67858883879137055" green="0.030769598622543436" blue="0.038586957854015315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="deleteMyCart:" destination="BT1-x8-Nl6" id="gVv-0k-TZV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="myCartFoodNameLabel" destination="u4a-36-nEf" id="Ksp-9V-MYY"/>
+                        <outlet property="totalPriceLabel" destination="GmT-cL-c9e" id="74G-fP-KHO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsl-r6-mm5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7012" y="1459.52023988006"/>
         </scene>
-        <!--View Controller-->
+        <!--Order Confirmation View Controller-->
         <scene sceneID="usa-z0-C1D">
             <objects>
-                <viewController id="V6h-8s-8Hf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApproveOrder" id="V6h-8s-8Hf" customClass="OrderConfirmationViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d0K-Na-Mxc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgr-NC-ghb">
-                                <rect key="frame" x="0.0" y="64" width="375" height="787"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aH8-5J-Fqb" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="787"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cep Telefonu*" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LGF-xR-32V">
-                                                <rect key="frame" x="16" y="92" width="339" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="İZMİR" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m42-rN-nu8">
-                                                <rect key="frame" x="16" y="130" width="339" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="address-level2"/>
-                                            </textField>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Adres*" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ClO-kz-Y4h">
-                                                <rect key="frame" x="0.0" y="211" width="375" height="122"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="122" id="zz0-nd-NdX"/>
-                                                </constraints>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Açıklama" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cbn-nn-jh2">
-                                                <rect key="frame" x="0.0" y="384" width="375" height="122"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="122" id="ZHa-Z3-bPy"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ej0-nI-tng">
-                                                <rect key="frame" x="150" y="747" width="225" height="40"/>
-                                                <color key="backgroundColor" red="0.22351861000000001" green="0.54466593269999997" blue="0.23906764389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <state key="normal" title="SİPARİŞ VER">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toplam: 3₺" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvk-5Q-IgM">
-                                                <rect key="frame" x="0.0" y="747" width="150" height="40"/>
-                                                <color key="backgroundColor" red="0.24591809510000001" green="0.59597498179999997" blue="0.2599321604" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="WjO-W5-hWq"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="ej0-nI-tng" firstAttribute="trailing" secondItem="cbn-nn-jh2" secondAttribute="trailing" id="38Q-3q-wbO"/>
-                                            <constraint firstItem="ClO-kz-Y4h" firstAttribute="top" secondItem="m42-rN-nu8" secondAttribute="bottom" constant="51" id="8ZR-xU-Vg5"/>
-                                            <constraint firstItem="LGF-xR-32V" firstAttribute="top" secondItem="aH8-5J-Fqb" secondAttribute="top" constant="92" id="9DA-Oa-yLQ"/>
-                                            <constraint firstItem="m42-rN-nu8" firstAttribute="leading" secondItem="LGF-xR-32V" secondAttribute="leading" id="9Or-j1-yL5"/>
-                                            <constraint firstAttribute="trailing" secondItem="ClO-kz-Y4h" secondAttribute="trailing" id="Hfw-sz-30Q"/>
-                                            <constraint firstItem="cbn-nn-jh2" firstAttribute="top" secondItem="ClO-kz-Y4h" secondAttribute="bottom" constant="51" id="Hrw-Nj-G5c"/>
-                                            <constraint firstItem="ej0-nI-tng" firstAttribute="leading" secondItem="Vvk-5Q-IgM" secondAttribute="trailing" id="IIQ-dy-9Wb"/>
-                                            <constraint firstItem="Vvk-5Q-IgM" firstAttribute="bottom" secondItem="ej0-nI-tng" secondAttribute="bottom" id="MAj-5R-DJV"/>
-                                            <constraint firstItem="LGF-xR-32V" firstAttribute="leading" secondItem="aH8-5J-Fqb" secondAttribute="leading" constant="16" id="RXb-DH-kUq"/>
-                                            <constraint firstItem="cbn-nn-jh2" firstAttribute="leading" secondItem="aH8-5J-Fqb" secondAttribute="leading" id="ciA-ft-7sS"/>
-                                            <constraint firstItem="Vvk-5Q-IgM" firstAttribute="leading" secondItem="cbn-nn-jh2" secondAttribute="leading" id="dlF-Ut-oky"/>
-                                            <constraint firstItem="m42-rN-nu8" firstAttribute="top" secondItem="LGF-xR-32V" secondAttribute="bottom" constant="8" symbolic="YES" id="i7o-kr-vYV"/>
-                                            <constraint firstItem="m42-rN-nu8" firstAttribute="trailing" secondItem="LGF-xR-32V" secondAttribute="trailing" id="mZD-3y-65J"/>
-                                            <constraint firstAttribute="trailing" secondItem="cbn-nn-jh2" secondAttribute="trailing" id="tju-Re-ehF"/>
-                                            <constraint firstItem="ClO-kz-Y4h" firstAttribute="leading" secondItem="aH8-5J-Fqb" secondAttribute="leading" id="wYi-Yf-apr"/>
-                                            <constraint firstAttribute="trailing" secondItem="LGF-xR-32V" secondAttribute="trailing" constant="20" id="zCt-QL-jED"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toplam: 3₺" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvk-5Q-IgM">
+                                <rect key="frame" x="0.0" y="578" width="187.5" height="40"/>
+                                <color key="backgroundColor" red="0.24591809510000001" green="0.59597498179999997" blue="0.2599321604" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="aH8-5J-Fqb" firstAttribute="height" secondItem="xgr-NC-ghb" secondAttribute="height" priority="250" id="4UI-vA-ZJz"/>
-                                    <constraint firstItem="aH8-5J-Fqb" firstAttribute="width" secondItem="xgr-NC-ghb" secondAttribute="width" id="7ct-qQ-lmb"/>
-                                    <constraint firstItem="aH8-5J-Fqb" firstAttribute="top" secondItem="xgr-NC-ghb" secondAttribute="top" id="GXe-UU-5P4"/>
-                                    <constraint firstItem="aH8-5J-Fqb" firstAttribute="leading" secondItem="xgr-NC-ghb" secondAttribute="leading" id="Qx8-fA-EOq"/>
-                                    <constraint firstAttribute="trailing" secondItem="aH8-5J-Fqb" secondAttribute="trailing" constant="135" id="fdd-hw-CmT"/>
-                                    <constraint firstAttribute="bottom" secondItem="aH8-5J-Fqb" secondAttribute="bottom" constant="659" id="ljV-6T-GJ4"/>
+                                    <constraint firstAttribute="height" constant="40" id="tKi-p2-YAW"/>
                                 </constraints>
-                            </scrollView>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ej0-nI-tng">
+                                <rect key="frame" x="187.5" y="578" width="187.5" height="40"/>
+                                <color key="backgroundColor" red="0.22352941176470587" green="0.54509803921568623" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="yT5-B9-QMq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="SİPARİŞ VER">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="approveButton:" destination="V6h-8s-8Hf" eventType="touchUpInside" id="sxf-qD-e11"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ej0-nI-tng" firstAttribute="top" secondItem="New-Vy-WNT" secondAttribute="bottom" constant="-40" id="9he-G9-Oif"/>
-                            <constraint firstItem="xgr-NC-ghb" firstAttribute="leading" secondItem="New-Vy-WNT" secondAttribute="leading" id="9uP-Ho-kgd"/>
-                            <constraint firstItem="Vvk-5Q-IgM" firstAttribute="top" secondItem="New-Vy-WNT" secondAttribute="bottom" constant="-40" id="FnP-mH-fhd"/>
-                            <constraint firstItem="New-Vy-WNT" firstAttribute="bottom" secondItem="xgr-NC-ghb" secondAttribute="bottom" id="LCQ-L6-vlV"/>
-                            <constraint firstItem="xgr-NC-ghb" firstAttribute="top" secondItem="New-Vy-WNT" secondAttribute="top" id="P6v-qg-Rkr"/>
-                            <constraint firstItem="New-Vy-WNT" firstAttribute="trailing" secondItem="xgr-NC-ghb" secondAttribute="trailing" id="YAt-gu-5jU"/>
+                            <constraint firstItem="ej0-nI-tng" firstAttribute="leading" secondItem="Vvk-5Q-IgM" secondAttribute="trailing" id="6mt-tm-haE"/>
+                            <constraint firstItem="Vvk-5Q-IgM" firstAttribute="bottom" secondItem="New-Vy-WNT" secondAttribute="bottom" id="Cm2-b1-gMg"/>
+                            <constraint firstItem="Vvk-5Q-IgM" firstAttribute="width" secondItem="ej0-nI-tng" secondAttribute="width" id="ED0-IT-1Ec"/>
+                            <constraint firstItem="Vvk-5Q-IgM" firstAttribute="leading" secondItem="New-Vy-WNT" secondAttribute="leading" id="T9A-Wy-0h4"/>
+                            <constraint firstItem="Vvk-5Q-IgM" firstAttribute="top" secondItem="ej0-nI-tng" secondAttribute="top" id="dLC-6b-K16"/>
+                            <constraint firstItem="Vvk-5Q-IgM" firstAttribute="height" secondItem="ej0-nI-tng" secondAttribute="height" id="jEw-Ef-Gwa"/>
+                            <constraint firstItem="New-Vy-WNT" firstAttribute="trailing" secondItem="ej0-nI-tng" secondAttribute="trailing" id="wEb-4k-cXN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="New-Vy-WNT"/>
                     </view>
-                    <size key="freeformSize" width="375" height="900"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qpc-7t-hUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7740" y="1563.4182908545729"/>
+            <point key="canvasLocation" x="7740" y="1460"/>
         </scene>
         <!--DetailViewController-->
         <scene sceneID="V8u-oD-rAt">
@@ -383,7 +356,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qrd-0W-W3N">
-                                <rect key="frame" x="0.0" y="64" width="375" height="281"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="374"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="foodNameCell" id="gJ3-Rc-90m" userLabel="foodNameCell" customClass="DetailFoodTableViewCell" customModule="Food" customModuleProvider="target">
@@ -481,10 +454,11 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4S-Ac-0Lf">
-                                <rect key="frame" x="120" y="413" width="135" height="45"/>
+                                <rect key="frame" x="120" y="462" width="135" height="45"/>
                                 <state key="normal" title="Button" image="BasketBtn"/>
                                 <connections>
                                     <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="yez-El-bMd"/>
+                                    <segue destination="gXY-8z-RaT" kind="show" identifier="addToCartSegue" id="CxS-Hy-IUF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -506,7 +480,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="50c-Aj-z6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7740" y="713.79310344827593"/>
+            <point key="canvasLocation" x="7740" y="615"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="Bhx-XX-UXH">
@@ -859,4 +833,7 @@
         <image name="restaurant" width="30" height="30"/>
         <image name="shopping_cart_loaded" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="CxS-Hy-IUF"/>
+    </inferredMetricsTieBreakers>
 </document>
