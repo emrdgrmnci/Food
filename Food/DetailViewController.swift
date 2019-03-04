@@ -9,51 +9,59 @@
 import UIKit
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+  
     var detailFoodName = String()
     var detailFoodPrice = Double()
     var menuPieceStepper : UIStepper!
     var prices = [FoodPrices]()
     
+    var selectedIndexPath: IndexPath?
+    
     let foodNames = [
         "Hamburger big mac",
-        "Cemal",
-        "Emre",
-        "Memo"
+        "Patates",
+        "Whopper",
+        "Steakhouse"
     ]
-    
     
     
     @IBOutlet weak var detailTableView: UITableView!
     
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
-        
+        if let indexPath = selectedIndexPath {
+            let destinationVC = MyCartViewController()
+            destinationVC.fromDetailFoodNames = [foodNames[indexPath.row]]
+            destinationVC.fromDetailFoodPrices = [prices[indexPath.row].purchaseAmount]
+            
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "addToCartSegue") {
+       if(segue.identifier == "addToCartSegue") {
             if let addToCartVC = segue.destination as? MyCartViewController {
                 
+                addToCartVC.fromDetailFoodNames = foodNames
+                
                 let indexPath = self.detailTableView.indexPathForSelectedRow!
+
+                var foodName: String
+                var foodPrice: Double
                 
-                var foodNameArray: String
-                var foodPriceArray: Double
-                
-                foodNameArray = foodNames[indexPath.row]
-                foodPriceArray = prices[indexPath.row].purchaseAmount
-                
-                addToCartVC.fromDetailFoodName = foodNameArray
-                addToCartVC.fromDetailFoodPrice = foodPriceArray
-                
-            }
+                foodName = foodNames[indexPath.row]
+                foodPrice = prices[indexPath.row].purchaseAmount
+
+                addToCartVC.fromDetailFoodNames = [foodName]
+                addToCartVC.fromDetailFoodPrices = [foodPrice]
+
         }
+       }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        prices = [FoodPrices(purchaseAmount: 15.0),FoodPrices(purchaseAmount: 25.0)]
+         prices = [FoodPrices(purchaseAmount: 15.0),FoodPrices(purchaseAmount: 20.0),FoodPrices(purchaseAmount: 25.0), FoodPrices(purchaseAmount: 30.0)]
         detailTableView.reloadData()
         
 //        self.tabBarController?.tabBar.isHidden = true
@@ -103,6 +111,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        selectedIndexPath = indexPath
     }
 }
 
