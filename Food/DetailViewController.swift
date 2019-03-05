@@ -13,7 +13,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var detailFoodName = String()
     var detailFoodPrice = Double()
     var menuPieceStepper : UIStepper!
-    var prices = [FoodPrices]()
+    
     
 //    var selectedIndexPath: IndexPath?
     
@@ -24,6 +24,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         "Steakhouse"
     ]
     
+    let foodPrices = [
+       15.0, 20.0, 25.0, 30.0
+    ]
     
     @IBOutlet weak var detailTableView: UITableView!
     
@@ -32,7 +35,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
 //        if let indexPath = selectedIndexPath {
             let destinationVC = MyCartViewController()
             destinationVC.fromDetailFoodNames = foodNames
-            destinationVC.fromDetailFoodPrices = [prices]
+            destinationVC.fromDetailFoodPrices = foodPrices
             
 //        }
     }
@@ -42,18 +45,19 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             if let addToCartVC = segue.destination as? MyCartViewController {
                 
                 addToCartVC.fromDetailFoodNames = foodNames
+                addToCartVC.fromDetailFoodPrices = foodPrices
                 
-                let selectedCell = sender as! UITableViewCell
-                let indexPath = self.detailTableView.indexPath(for: selectedCell)
+//                let selectedCell = sender as! UITableViewCell
+//                let indexPath = self.detailTableView.indexPath(for: selectedCell)
 
-                var foodName: String
-                var foodPrice: Double
-                
-                foodName = foodNames[indexPath!.row]
-                foodPrice = prices[indexPath!.row].purchaseAmount
-
-                addToCartVC.fromDetailFoodNames = [foodName]
-                addToCartVC.fromDetailFoodPrices = [foodPrice]
+//                var foodName: [String]
+//                var foodPrice: [Double]
+//
+//                foodName = foodNames
+//                foodPrice = foodPrices
+//
+//                addToCartVC.fromDetailFoodNames = foodName
+//                addToCartVC.fromDetailFoodPrices = foodPrice
 
         }
        }
@@ -62,7 +66,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         prices = [FoodPrices(purchaseAmount: 15.0),FoodPrices(purchaseAmount: 20.0),FoodPrices(purchaseAmount: 25.0), FoodPrices(purchaseAmount: 30.0)]
+     
         detailTableView.reloadData()
         
 //        self.tabBarController?.tabBar.isHidden = true

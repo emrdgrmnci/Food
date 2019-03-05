@@ -8,7 +8,10 @@
 
 import Foundation
 
-struct FoodNames {
-    let title: String
+class FoodNames {
+    let title: [String] = ["Hamburger big mac",
+    "Patates",
+    "Whopper",
+    "Steakhouse"]
 //    let price: Double
 }

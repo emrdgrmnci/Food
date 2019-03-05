@@ -19,13 +19,8 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     var priceFood: [Double]!
     var searching = false
     
-    let foodNames = [
-        "Hamburger big mac",
-        "Cemal",
-        "Emre",
-        "Memo"
-    ]
-    
+   
+    var foodNames = [FoodNames]()
     var foodPrices = [FoodPrices]()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,8 +36,8 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         
         searchBar.delegate = self
 //        mainTableView.dataSource = self
-        searchFoods = foodNames
-        foodPrices = [FoodPrices(purchaseAmount: 15.0),FoodPrices(purchaseAmount: 20.0),FoodPrices(purchaseAmount: 25.0), FoodPrices(purchaseAmount: 30.0)]
+    searchFoods = [foodNames.description]
+//        foodPrices = [FoodPrices(purchaseAmount: 15.0),FoodPrices(purchaseAmount: 20.0),FoodPrices(purchaseAmount: 25.0), FoodPrices(purchaseAmount: 30.0)]
         
         imageNames = [
             ImageNames(name: "images"),
@@ -105,7 +100,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
                 var foodPriceArray: Double
                 
                 foodNameArray = foodNames[indexPath.row]
-                foodPriceArray = foodPrices[indexPath.row].purchaseAmount
+                foodPriceArray = foodPrices[indexPath.row]
                 
                 destinationViewController.detailFoodName = foodNameArray
                 destinationViewController.detailFoodPrice = foodPriceArray

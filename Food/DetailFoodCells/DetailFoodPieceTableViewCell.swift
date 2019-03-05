@@ -20,14 +20,14 @@ class DetailFoodPieceTableViewCell: UITableViewCell {
         didSet {
             
 //            menuPieceStepper.value = foodPrice.purchaseAmount
-            priceLabel.text = String(foodPrice.purchaseAmount)
+//            priceLabel.text = String(foodPrice.purchaseAmount)
             
         }
     }
     
     @IBAction func stepperAction(_ sender: UIStepper) {
         
-        foodPrice?.purchaseAmount = sender.value
+        foodPrice?.purchaseAmount = [sender.value]
         self.priceLabel.text = Double(sender.value).description
         self.constantPieceLabel.text = Int(piece + 1).description
         menuPieceStepper.stepValue = 15.0

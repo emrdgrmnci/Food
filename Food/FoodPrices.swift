@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FoodPrices {
-    var purchaseAmount: Double
+class FoodPrices {
+    var purchaseAmount: [Double] = [15.0, 20.0, 25.0, 30.0]
    
 }
