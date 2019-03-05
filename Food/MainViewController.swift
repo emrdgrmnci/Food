@@ -19,9 +19,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     var priceFood: [Double]!
     var searching = false
     
-   
-    var foodNames = [FoodNames]()
-    var foodPrices = [FoodPrices]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,12 +29,17 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.isHidden = true
-       
+        let foodCell = Food(name: ["Hamburger big mac",
+                                   "Patates",
+                                   "Whopper",
+                                   "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
         
         searchBar.delegate = self
 //        mainTableView.dataSource = self
-    searchFoods = [foodNames.description]
-//        foodPrices = [FoodPrices(purchaseAmount: 15.0),FoodPrices(purchaseAmount: 20.0),FoodPrices(purchaseAmount: 25.0), FoodPrices(purchaseAmount: 30.0)]
+       searchFoods = foodCell.name
+       priceFood = foodCell.price
+        
+
         
         imageNames = [
             ImageNames(name: "images"),
@@ -83,7 +85,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood", for: indexPath) as! MainFoodTitleTableViewCell
             
             cell.titleLabel?.text = searchFoods[indexPath.row]
-            cell.priceLabel?.text = "\(foodPrices[indexPath.row].purchaseAmount)₺"
+            cell.priceLabel?.text = priceFood[indexPath.row].description
             
             return cell
         }
@@ -96,17 +98,17 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             {
                 let indexPath = self.mainTableView.indexPathForSelectedRow!
                 
-                var foodNameArray: String
-                var foodPriceArray: Double
+                var foodNameArray: [String]
+                var foodPriceArray: [Double]
                 
-                foodNameArray = foodNames[indexPath.row]
-                foodPriceArray = foodPrices[indexPath.row]
+                foodNameArray = [searchFoods[indexPath.row]]
+                foodPriceArray = [priceFood[indexPath.row]]
                 
                 destinationViewController.detailFoodName = foodNameArray
                 destinationViewController.detailFoodPrice = foodPriceArray
-                
+
             }
-            
+
         }
     }
     
@@ -147,10 +149,10 @@ extension MainViewController : UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchFoods = searchText.isEmpty ? foodNames : foodNames.filter { (item: String) -> Bool in
+        searchFoods = searchText.isEmpty ? searchFoods : searchFoods.filter { (item: String) -> Bool in
             return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
-        
+
         mainTableView.reloadData()
     }
 }

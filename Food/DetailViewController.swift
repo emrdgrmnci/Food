@@ -8,10 +8,11 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DetailFoodPieceTableViewCellDelegate {
   
-    var detailFoodName = String()
-    var detailFoodPrice = Double()
+    var detailFoodName : [String] = []
+    var detailFoodPrice : [Double] = [0.0]
     var menuPieceStepper : UIStepper!
     
     
@@ -62,15 +63,19 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         }
        }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     
         detailTableView.reloadData()
         
 //        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationItem.title = "Sipariş Detayı"
+        
+        let foodCell = Food(name: ["Hamburger big mac",
+                                   "Patates",
+                                   "Whopper",
+                                   "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,13 +107,15 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "foodNameCell", for: indexPath) as! DetailFoodTableViewCell
-            cell.detailFoodNameLabel?.text = detailFoodName
+            cell.detailFoodNameLabel?.text = detailFoodName.description
+            
             return cell
             
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "piecePriceCell", for: indexPath) as! DetailFoodPieceTableViewCell
             cell.priceLabel?.text = "\(detailFoodPrice)₺"
+            cell.delegate = self
             return cell
         }
         
@@ -117,6 +124,16 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 //        selectedIndexPath = indexPath
+    }
+    func detailFoodPriceTableViewCellDidTapStepper(_ sender: DetailFoodPieceTableViewCell) {
+        guard let tappedIndexPath = detailTableView.indexPath(for: sender) else {return}
+        print("Stepper", sender, tappedIndexPath)
+        
+        detailFoodPrice += [15.0]
+        
+        print(detailFoodPrice)
+        
+        
     }
 }
 

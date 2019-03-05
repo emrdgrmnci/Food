@@ -8,29 +8,40 @@
 
 import UIKit
 
+protocol DetailFoodPieceTableViewCellDelegate: class {
+    func detailFoodPriceTableViewCellDidTapStepper(_ sender: DetailFoodPieceTableViewCell)
+}
+
 class DetailFoodPieceTableViewCell: UITableViewCell {
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var menuPieceStepper: UIStepper!
     @IBOutlet weak var constantPieceLabel: UILabel!
+    var food: Food!
+    weak var delegate: DetailFoodPieceTableViewCellDelegate?
     
     var piece = 0
     
-    var foodPrice : FoodPrices! {
+    var foodPrice : Food! {
         didSet {
             
-//            menuPieceStepper.value = foodPrice.purchaseAmount
-//            priceLabel.text = String(foodPrice.purchaseAmount)
+            menuPieceStepper.value = foodPrice.price.first!
+            
+            //            priceLabel.text = String(foodPrice.purchaseAmount)
             
         }
     }
     
     @IBAction func stepperAction(_ sender: UIStepper) {
+
+        delegate?.detailFoodPriceTableViewCellDidTapStepper(self)
         
-        foodPrice?.purchaseAmount = [sender.value]
-        self.priceLabel.text = Double(sender.value).description
-        self.constantPieceLabel.text = Int(piece + 1).description
-        menuPieceStepper.stepValue = 15.0
+        //TODO:- Set stepper 
+        self.priceLabel.text = food?.price.description
+//        foodPrice?.purchaseAmount = [sender.value]
+//        self.priceLabel.text = Double(sender.value).description
+//        self.constantPieceLabel.text = Int(piece + 1).description
+//        menuPieceStepper.stepValue = 15.0
         
     }
     
