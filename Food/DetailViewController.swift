@@ -15,7 +15,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var menuPieceStepper : UIStepper!
     var prices = [FoodPrices]()
     
-    var selectedIndexPath: IndexPath?
+//    var selectedIndexPath: IndexPath?
     
     let foodNames = [
         "Hamburger big mac",
@@ -29,12 +29,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
-        if let indexPath = selectedIndexPath {
+//        if let indexPath = selectedIndexPath {
             let destinationVC = MyCartViewController()
-            destinationVC.fromDetailFoodNames = [foodNames[indexPath.row]]
-            destinationVC.fromDetailFoodPrices = [prices[indexPath.row].purchaseAmount]
+            destinationVC.fromDetailFoodNames = foodNames
+            destinationVC.fromDetailFoodPrices = [prices]
             
-        }
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,13 +43,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 addToCartVC.fromDetailFoodNames = foodNames
                 
-                let indexPath = self.detailTableView.indexPathForSelectedRow!
+                let selectedCell = sender as! UITableViewCell
+                let indexPath = self.detailTableView.indexPath(for: selectedCell)
 
                 var foodName: String
                 var foodPrice: Double
                 
-                foodName = foodNames[indexPath.row]
-                foodPrice = prices[indexPath.row].purchaseAmount
+                foodName = foodNames[indexPath!.row]
+                foodPrice = prices[indexPath!.row].purchaseAmount
 
                 addToCartVC.fromDetailFoodNames = [foodName]
                 addToCartVC.fromDetailFoodPrices = [foodPrice]
@@ -111,7 +112,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        selectedIndexPath = indexPath
+//        selectedIndexPath = indexPath
     }
 }
 

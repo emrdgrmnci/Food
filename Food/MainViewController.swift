@@ -9,7 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,
-UICollectionViewDelegate, UICollectionViewDataSource {
+UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainTableView: UITableView!
@@ -47,9 +47,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         imageNames = [
             ImageNames(name: "images"),
             ImageNames(name: "unnamed"),
-            ImageNames(name: "unnamed"),
-            ImageNames(name: "images"),
-            ImageNames(name: "images")
+            ImageNames(name: "unnamed")
+//            ImageNames(name: "images"),
+//            ImageNames(name: "images")
         ]
         
     }
@@ -120,8 +120,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     //MARK:- collection view cell size
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        return CGSize(width: ((self.view.frame.size.width / 2) + 16), height: 130)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = UIScreen.main.bounds.width
+        return CGSize(width: width, height: 130)
     }
     
     //MARK:- //collection view cell data

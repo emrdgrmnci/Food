@@ -44,8 +44,11 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
+      
+         let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
+        
         if indexPath.section == 1 && indexPath.last! <= fromDetailFoodPrices.indices.last! {
+       
         let name = fromDetailFoodNames[indexPath.row]?.description ?? ""
         let price = fromDetailFoodPrices[indexPath.row]
         cell.myCartFoodNameLabel?.text = name
@@ -53,5 +56,6 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
         return cell
+        
     }
 }

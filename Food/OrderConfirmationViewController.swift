@@ -11,8 +11,12 @@ import TinyConstraints
 import KMPlaceholderTextView
 
 
-class OrderConfirmationViewController: UIViewController {
+class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    var addressType: [String] = []
+    var paymentMethod: [String] = []
+    
+    var activeTextField = UITextField()
     
     @IBAction func approveButton(_ sender: Any) {
         
@@ -23,7 +27,7 @@ class OrderConfirmationViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentSize.height = 700
         view.backgroundColor = .white
-       return view
+        return view
     }()
     
     
@@ -46,15 +50,27 @@ class OrderConfirmationViewController: UIViewController {
         return cityTf
     }()
     
-    lazy var addressTextView: KMPlaceholderTextView = {
-        let addressTv = KMPlaceholderTextView()
+    lazy var addressText: UITextField = {
+        let addressTv = UITextField()
         addressTv.layer.cornerRadius = 8
         addressTv.layer.borderWidth = 1
         addressTv.layer.borderColor = UIColor.lightGray.cgColor
         addressTv.font = UIFont.systemFont(ofSize: 18)
         addressTv.placeholder = "Mahalle/Cadde/Sokak/Bina/Daire No."
         return addressTv
+        
+    }()
     
+    
+    lazy var paymentText: UITextField = {
+        let paymentTf = UITextField()
+        paymentTf.layer.cornerRadius = 8
+        paymentTf.layer.borderWidth = 1
+        paymentTf.layer.borderColor = UIColor.lightGray.cgColor
+        paymentTf.font = UIFont.systemFont(ofSize: 18)
+        paymentTf.placeholder = "Ödeme Tipi"
+        return paymentTf
+        
     }()
     
     lazy var explanationTextView: KMPlaceholderTextView = {
@@ -75,7 +91,7 @@ class OrderConfirmationViewController: UIViewController {
         setupScrollView()
         
     }
- 
+    
     func setupScrollView() {
         
         scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -85,7 +101,8 @@ class OrderConfirmationViewController: UIViewController {
         
         phoneTextField.translatesAutoresizingMaskIntoConstraints = false
         cityTextField.translatesAutoresizingMaskIntoConstraints = false
-        addressTextView.translatesAutoresizingMaskIntoConstraints = false
+        addressText.translatesAutoresizingMaskIntoConstraints = false
+        paymentText.translatesAutoresizingMaskIntoConstraints = false
         explanationTextView.translatesAutoresizingMaskIntoConstraints = false
         
         scrollView.addSubview(phoneTextField)
@@ -102,12 +119,29 @@ class OrderConfirmationViewController: UIViewController {
         cityTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
         cityTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        scrollView.addSubview(addressTextView)
+        scrollView.addSubview(addressText)
         
-        addressTextView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        addressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 150).isActive = true
-        addressTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        addressTextView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        addressText.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        addressText.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 150).isActive = true
+        addressText.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        addressText.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        let addressPicker = UIPickerView()
+        addressPicker.delegate = self
+        addressText.inputView = addressPicker
+        addressType = ["Ev", "İş"]
+        
+        scrollView.addSubview(paymentText)
+        
+        paymentText.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        paymentText.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 210).isActive = true
+        paymentText.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        paymentText.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        let paymentPicker = UIPickerView()
+        paymentPicker.delegate = self
+        paymentText.inputView = paymentPicker
+        paymentMethod = ["Nakit", "Kredi Kartı"]
         
         scrollView.addSubview(explanationTextView)
         
@@ -145,12 +179,45 @@ class OrderConfirmationViewController: UIViewController {
         approveButton.widthAnchor.constraint(equalToConstant: 215).isActive = true
         approveButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-
+        
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if addressText.isFirstResponder {
+            return addressType.count
+        } else if paymentText.isFirstResponder {
+            return paymentMethod.count
+        }
+        return 0
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if addressText.isFirstResponder {
+            return addressType[row]
+        } else if paymentText.isFirstResponder {
+            return paymentMethod[row]
+        }
+        else {
+            return nil
+        }
+    }
+    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //        addressText.text = addressType[row]
+        if addressText.isFirstResponder {
+            let itemSelected = addressType[row]
+            addressText.text = itemSelected
+        } else if paymentText.isFirstResponder {
+            let itemSelected = paymentMethod[row]
+            paymentText.text = itemSelected
+        }
+        
+    }
     //TODO: Approve Button
     @objc func approveButtonAction(sender: UIButton!) {
         dismiss(animated: true, completion: nil)
     }
-
+    
 }

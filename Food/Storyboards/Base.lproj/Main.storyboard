@@ -466,6 +466,7 @@
                                 <state key="normal" title="Button" image="BasketBtn"/>
                                 <connections>
                                     <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="yez-El-bMd"/>
+                                    <segue destination="BT1-x8-Nl6" kind="show" identifier="addToCartSegue" id="Z3k-bk-8cw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -483,7 +484,6 @@
                     </view>
                     <connections>
                         <outlet property="detailTableView" destination="qrd-0W-W3N" id="2P9-J3-xh7"/>
-                        <segue destination="BT1-x8-Nl6" kind="show" identifier="addToCartSegue" id="Y4x-n0-IGq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="50c-Aj-z6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -842,6 +842,6 @@
         <image name="shopping_cart_loaded" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Y4x-n0-IGq"/>
+        <segue reference="Z3k-bk-8cw"/>
     </inferredMetricsTieBreakers>
 </document>
