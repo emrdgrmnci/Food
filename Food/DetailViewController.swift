@@ -44,7 +44,8 @@ class DetailViewController: UIViewController {
             destinationVC.fromDetailFoodNames = foods.name
             destinationVC.fromDetailFoodPrices = foods.price
 //            delegate?.foodCell(destinationVC)
-            self.navigationController?.popViewController(animated: true)
+//            self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
         
     }
     
@@ -79,6 +80,9 @@ class DetailViewController: UIViewController {
         drinkPickerView.delegate = self
         drinkPicker.inputView = drinkPickerView
         selectDrinkType = ["Ayran", "Kola", "Su", "Fanta", "Şalgam", "Sprite"]
+        
+        foodTitle.text = detailFoodName.description
+        foodPrice.text = detailFoodPrice.description
         
         
 //        self.tabBarController?.tabBar.isHidden = true
