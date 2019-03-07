@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
     }
     
     @objc func foodPieceChangeStepper() {
-        let res = menuPieceStepper.value * foods.price.first!
+        let res = menuPieceStepper.value + foods.price.first!
         foodPrice.text = "\(res)"
     }
     
@@ -58,7 +58,7 @@ class DetailViewController: UIViewController {
             if let addToCartVC = segue.destination as? MyCartViewController {
                 
                 
-                addToCartVC.fromDetailFoodNames = foods.name
+                addToCartVC.fromDetailFoodNames = [foodTitle.text]
                 addToCartVC.fromDetailFoodPrices = foods.price
                 
                 

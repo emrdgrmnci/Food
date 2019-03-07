@@ -58,8 +58,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return section == 0 ? 1 : searchFoods.count
-        //        return section == 0 ? 1 : foodNames.count
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -106,9 +104,9 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
                 
                 destinationViewController.detailFoodName = foodNameArray
                 destinationViewController.detailFoodPrice = foodPriceArray
-
+                
             }
-
+            
         }
     }
     
@@ -131,7 +129,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     }
 }
 
-
 //MARK:- SearchBar data
 extension MainViewController : UISearchBarDelegate {
     
@@ -152,7 +149,7 @@ extension MainViewController : UISearchBarDelegate {
         searchFoods = searchText.isEmpty ? searchFoods : searchFoods.filter { (item: String) -> Bool in
             return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
-
+        
         mainTableView.reloadData()
     }
 }

@@ -55,7 +55,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         cell.myCartFoodNameLabel?.text = name
         cell.myCartFoodPriceLabel?.text = "\(String(describing: price))₺"
         
-    }
+   }
         return cell
         
     }
