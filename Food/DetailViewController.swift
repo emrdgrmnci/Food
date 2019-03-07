@@ -9,44 +9,53 @@
 import UIKit
 
 
-class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DetailFoodPieceTableViewCellDelegate {
-  
+class DetailViewController: UIViewController {
+   
+    @IBOutlet weak var foodTitle: UILabel!
+    @IBOutlet weak var foodSubTitle: UILabel!
+    @IBOutlet weak var foodPiece: UILabel!
+    @IBOutlet weak var foodPrice: UILabel!
+    @IBOutlet weak var drinkPicker: UITextField!
+    
+    var menuPieceStepper : UIStepper!
+    var drinkPickerView = UIPickerView()
+    
+    var selectDrinkType: [String] = []
     var detailFoodName : [String] = []
     var detailFoodPrice : [Double] = [0.0]
-    var menuPieceStepper : UIStepper!
     
     
-//    var selectedIndexPath: IndexPath?
     
-    let foodNames = [
-        "Hamburger big mac",
-        "Patates",
-        "Whopper",
-        "Steakhouse"
-    ]
+    let foods = Food(name: ["Hamburger big mac",
+                               "Patates",
+                               "Whopper",
+                               "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
+
     
-    let foodPrices = [
-       15.0, 20.0, 25.0, 30.0
-    ]
-    
-    @IBOutlet weak var detailTableView: UITableView!
+    @IBAction func foodPieceStepper(_ sender: Any) {
+        
+    }
     
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
-//        if let indexPath = selectedIndexPath {
+
             let destinationVC = MyCartViewController()
-            destinationVC.fromDetailFoodNames = foodNames
-            destinationVC.fromDetailFoodPrices = foodPrices
-            
-//        }
+        
+            destinationVC.fromDetailFoodNames = foods.name
+            destinationVC.fromDetailFoodPrices = foods.price
+//            delegate?.foodCell(destinationVC)
+            self.navigationController?.popViewController(animated: true)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if(segue.identifier == "addToCartSegue") {
             if let addToCartVC = segue.destination as? MyCartViewController {
                 
-                addToCartVC.fromDetailFoodNames = foodNames
-                addToCartVC.fromDetailFoodPrices = foodPrices
+                
+                addToCartVC.fromDetailFoodNames = foods.name
+                addToCartVC.fromDetailFoodPrices = foods.price
+                
                 
 //                let selectedCell = sender as! UITableViewCell
 //                let indexPath = self.detailTableView.indexPath(for: selectedCell)
@@ -67,15 +76,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailTableView.reloadData()
+        drinkPickerView.delegate = self
+        drinkPicker.inputView = drinkPickerView
+        selectDrinkType = ["Ayran", "Kola", "Su", "Fanta", "Şalgam", "Sprite"]
+        
         
 //        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationItem.title = "Sipariş Detayı"
-        
-        let foodCell = Food(name: ["Hamburger big mac",
-                                   "Patates",
-                                   "Whopper",
-                                   "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,55 +94,28 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
+   
+}
+
+extension DetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return selectDrinkType.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return selectDrinkType[row]
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedDrink = selectDrinkType[row]
+        drinkPicker.text = selectedDrink
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "foodNameCell", for: indexPath) as! DetailFoodTableViewCell
-            cell.detailFoodNameLabel?.text = detailFoodName.description
-            
-            return cell
-            
-        } else {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "piecePriceCell", for: indexPath) as! DetailFoodPieceTableViewCell
-            cell.priceLabel?.text = "\(detailFoodPrice)₺"
-            cell.delegate = self
-            return cell
-        }
-        
-    }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-//        selectedIndexPath = indexPath
-    }
-    func detailFoodPriceTableViewCellDidTapStepper(_ sender: DetailFoodPieceTableViewCell) {
-        guard let tappedIndexPath = detailTableView.indexPath(for: sender) else {return}
-        print("Stepper", sender, tappedIndexPath)
-        
-        detailFoodPrice += [15.0]
-        
-        print(detailFoodPrice)
-        
-        
-    }
 }
 
 

@@ -16,6 +16,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var myCartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     
+    
     let foodNames = [
         "Hamburger big mac",
         "Cemal",
