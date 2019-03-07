@@ -16,8 +16,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var foodPiece: UILabel!
     @IBOutlet weak var foodPrice: UILabel!
     @IBOutlet weak var drinkPicker: UITextField!
-    
-    var menuPieceStepper : UIStepper!
+    @IBOutlet weak var menuPieceStepper: UIStepper!
+//    var menuPieceStepper : UIStepper!
     var drinkPickerView = UIPickerView()
     
     var selectDrinkType: [String] = []
@@ -33,7 +33,11 @@ class DetailViewController: UIViewController {
 
     
     @IBAction func foodPieceStepper(_ sender: Any) {
-        
+    }
+    
+    @objc func foodPieceChangeStepper() {
+        let res = menuPieceStepper.value * foods.price.first!
+        foodPrice.text = "\(res)"
     }
     
     //TODO:- Add to basket
@@ -77,6 +81,12 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        menuPieceStepper.value = 0.0
+        menuPieceStepper.minimumValue = 0.0
+        menuPieceStepper.maximumValue = 30.0
+        menuPieceStepper.stepValue = foods.price.first!
+        menuPieceStepper.addTarget(self, action: #selector(foodPieceChangeStepper), for: .valueChanged)
+        
         drinkPickerView.delegate = self
         drinkPicker.inputView = drinkPickerView
         selectDrinkType = ["Ayran", "Kola", "Su", "Fanta", "Şalgam", "Sprite"]
@@ -87,7 +97,11 @@ class DetailViewController: UIViewController {
         
 //        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationItem.title = "Sipariş Detayı"
-       
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+       drinkPicker.resignFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
