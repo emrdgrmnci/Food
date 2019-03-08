@@ -60,19 +60,6 @@ class DetailViewController: UIViewController {
                 
                 addToCartVC.fromDetailFoodNames = [foodTitle.text]
                 addToCartVC.fromDetailFoodPrices = foods.price
-                
-                
-//                let selectedCell = sender as! UITableViewCell
-//                let indexPath = self.detailTableView.indexPath(for: selectedCell)
-
-//                var foodName: [String]
-//                var foodPrice: [Double]
-//
-//                foodName = foodNames
-//                foodPrice = foodPrices
-//
-//                addToCartVC.fromDetailFoodNames = foodName
-//                addToCartVC.fromDetailFoodPrices = foodPrice
 
         }
        }

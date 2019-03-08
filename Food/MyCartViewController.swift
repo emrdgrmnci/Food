@@ -16,6 +16,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var myCartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     
+    var foodInfos: [Food] = []
     
     let foodNames = [
         "Hamburger big mac",
@@ -35,7 +36,6 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
     }
     
@@ -48,15 +48,16 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
       
          let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
         
+        
+        
         if indexPath.section == 1 && indexPath.last! <= fromDetailFoodPrices.indices.last! {
-       
-        let name = fromDetailFoodNames[indexPath.row]?.description ?? ""
-        let price = fromDetailFoodPrices[indexPath.row]
-        cell.myCartFoodNameLabel?.text = name
-        cell.myCartFoodPriceLabel?.text = "\(String(describing: price))₺"
+         let infos = foodInfos[indexPath.row]
+//        let name = fromDetailFoodNames[indexPath.row]?.description ?? ""
+//        let price = fromDetailFoodPrices[indexPath.row]
+        cell.myCartFoodNameLabel?.text = infos.name.description
+        cell.myCartFoodPriceLabel?.text = "\(String(describing: infos.price))₺"
         
-   }
+        }
         return cell
-        
     }
 }
