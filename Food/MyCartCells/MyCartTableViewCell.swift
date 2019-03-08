@@ -15,6 +15,18 @@ class MyCartTableViewCell: UITableViewCell {
     @IBOutlet weak var myCartFoodPriceLabel: UILabel!
     
     
+    var foodItem: Food! {
+        didSet {
+            self.updateUI()
+        }
+    }
+    
+    func updateUI() {
+        myCartFoodNameLabel.text = foodItem.name.description
+        myCartFoodPriceLabel.text = foodItem.price.description
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

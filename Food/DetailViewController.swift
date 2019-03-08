@@ -13,32 +13,44 @@ class DetailViewController: UIViewController {
    
     @IBOutlet weak var foodTitle: UILabel!
     @IBOutlet weak var foodSubTitle: UILabel!
-    @IBOutlet weak var foodPiece: UILabel!
     @IBOutlet weak var foodPrice: UILabel!
     @IBOutlet weak var drinkPicker: UITextField!
-    @IBOutlet weak var menuPieceStepper: UIStepper!
-//    var menuPieceStepper : UIStepper!
+    @IBOutlet weak var foodQuantity: UILabel!
+    
+    
     var drinkPickerView = UIPickerView()
-    
     var selectDrinkType: [String] = []
-    var detailFoodName : [String] = []
-    var detailFoodPrice : [Double] = [0.0]
+    var detailFoodName = [""]
+    var detailFoodPrice = [0.0]
     
-    
+    var quantity = 1
     
     let foods = Food(name: ["Hamburger big mac",
                                "Patates",
                                "Whopper",
                                "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
-
+    let food: Food! = nil
     
-    @IBAction func foodPieceStepper(_ sender: Any) {
+    func updateFoodPriceLabel() {
+        
+        foodPrice.text = "\(foods.price.first! * Double(quantity))TL"
     }
     
-    @objc func foodPieceChangeStepper() {
-        let res = menuPieceStepper.value + foods.price.first!
-        foodPrice.text = "\(res)"
+    @IBAction func addQuantity(_ sender: Any) {
+        if quantity < 30 {
+            quantity += 1
+            foodQuantity.text = String(quantity)
+        }
     }
+    
+    @IBAction func decreasedQuantity(_ sender: Any) {
+        if quantity > 0 {
+            quantity -= 1
+            foodQuantity.text = String(quantity)
+            
+        }
+    }
+    
     
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
@@ -64,16 +76,14 @@ class DetailViewController: UIViewController {
         }
        }
     }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menuPieceStepper.value = 0.0
-        menuPieceStepper.minimumValue = 0.0
-        menuPieceStepper.maximumValue = 30.0
-        menuPieceStepper.stepValue = foods.price.first!
-        menuPieceStepper.addTarget(self, action: #selector(foodPieceChangeStepper), for: .valueChanged)
-        
+        updateFoodPriceLabel()
+        foodQuantity.text = "\(quantity)"
+       
         drinkPickerView.delegate = self
         drinkPicker.inputView = drinkPickerView
         selectDrinkType = ["Ayran", "Kola", "Su", "Fanta", "Şalgam", "Sprite"]

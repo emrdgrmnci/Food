@@ -96,14 +96,14 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             {
                 let indexPath = self.mainTableView.indexPathForSelectedRow!
                 
-                var foodNameArray: [String]
-                var foodPriceArray: [Double]
+                var foodNames: String
+                var foodPrices: Double
                 
-                foodNameArray = [searchFoods[indexPath.row]]
-                foodPriceArray = [priceFood[indexPath.row]]
+                foodNames = searchFoods[indexPath.row]
+                foodPrices = priceFood[indexPath.row]
                 
-                destinationViewController.detailFoodName = foodNameArray
-                destinationViewController.detailFoodPrice = foodPriceArray
+                destinationViewController.detailFoodName = [foodNames]
+                destinationViewController.detailFoodPrice = [foodPrices]
                 
             }
             

@@ -17,16 +17,24 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var totalPriceLabel: UILabel!
     
     var foodInfos: [Food] = []
+//    {
+//        didSet {
+//            myCartTableView.reloadData()
+//        }
+//    }
     
     let foodNames = [
         "Hamburger big mac",
-        "Cemal",
-        "Emre",
-        "Memo"
+        "Patates",
+        "Whopper",
+        "Steakhouse"
     ]
     
     //TODO-: Delete my cart
     @IBAction func deleteMyCart(_ sender: Any) {
+        if !foodInfos.isEmpty {
+            foodInfos.removeLast()
+        }
     }
     
     //TODO: - Approve my  cart
@@ -49,13 +57,13 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
          let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
         
         
-        
-        if indexPath.section == 1 && indexPath.last! <= fromDetailFoodPrices.indices.last! {
-         let infos = foodInfos[indexPath.row]
+        //&& indexPath.last! <= fromDetailFoodPrices.indices.last!
+        if indexPath.section == 1 {
+         cell.foodItem = foodInfos[indexPath.row]
 //        let name = fromDetailFoodNames[indexPath.row]?.description ?? ""
 //        let price = fromDetailFoodPrices[indexPath.row]
-        cell.myCartFoodNameLabel?.text = infos.name.description
-        cell.myCartFoodPriceLabel?.text = "\(String(describing: infos.price))₺"
+//        cell.myCartFoodNameLabel?.text = infos.name.description
+//        cell.myCartFoodPriceLabel?.text = "\(String(describing: infos.price))₺"
         
         }
         return cell
