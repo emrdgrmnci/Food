@@ -20,8 +20,8 @@ class DetailViewController: UIViewController {
     
     var drinkPickerView = UIPickerView()
     var selectDrinkType: [String] = []
-    var detailFoodName = [""]
-    var detailFoodPrice = [0.0]
+    var detailFoodName = ""
+    var detailFoodPrice = 0.0
     
     var quantity = 1
     
@@ -88,8 +88,8 @@ class DetailViewController: UIViewController {
         drinkPicker.inputView = drinkPickerView
         selectDrinkType = ["Ayran", "Kola", "Su", "Fanta", "Şalgam", "Sprite"]
         
-        foodTitle.text = detailFoodName.description
-        foodPrice.text = detailFoodPrice.description
+        foodTitle.text = detailFoodName
+        foodPrice.text = String(detailFoodPrice)
         
         
 //        self.tabBarController?.tabBar.isHidden = true

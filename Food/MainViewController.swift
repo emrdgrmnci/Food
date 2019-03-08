@@ -102,8 +102,8 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
                 foodNames = searchFoods[indexPath.row]
                 foodPrices = priceFood[indexPath.row]
                 
-                destinationViewController.detailFoodName = [foodNames]
-                destinationViewController.detailFoodPrice = [foodPrices]
+                destinationViewController.detailFoodName = foodNames
+                destinationViewController.detailFoodPrice = foodPrices
                 
             }
             
