@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class DetailViewController: UIViewController {
    
     @IBOutlet weak var foodTitle: UILabel!
@@ -23,31 +22,29 @@ class DetailViewController: UIViewController {
     var detailFoodName = ""
     var detailFoodPrice = 0.0
     
-    var quantity = 1
     
     let foods = Food(name: ["Hamburger big mac",
                                "Patates",
                                "Whopper",
                                "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
     let food: Food! = nil
-    
-    func updateFoodPriceLabel() {
-        
-        foodPrice.text = "\(foods.price.first! * Double(quantity))TL"
+
+    var foodPriceCount = FoodPriceCount(quantity: 1, foodPrice: 15.0) {
+        didSet {
+            foodQuantity.text = "\(foodPriceCount.quantity)"
+            foodPrice.text = "\(Double(foodPriceCount.quantity) * foodPriceCount.foodPrice)"
+        }
     }
     
     @IBAction func addQuantity(_ sender: Any) {
-        if quantity < 30 {
-            quantity += 1
-            foodQuantity.text = String(quantity)
+        if foodPriceCount.quantity < 30 {
+            foodPriceCount.quantity += 1
         }
     }
     
     @IBAction func decreasedQuantity(_ sender: Any) {
-        if quantity > 0 {
-            quantity -= 1
-            foodQuantity.text = String(quantity)
-            
+        if foodPriceCount.quantity > 0 {
+            foodPriceCount.quantity -= 1
         }
     }
     
@@ -69,7 +66,6 @@ class DetailViewController: UIViewController {
        if(segue.identifier == "addToCartSegue") {
             if let addToCartVC = segue.destination as? MyCartViewController {
                 
-                
                 addToCartVC.fromDetailFoodNames = [foodTitle.text]
                 addToCartVC.fromDetailFoodPrices = foods.price
 
@@ -81,9 +77,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateFoodPriceLabel()
-        foodQuantity.text = "\(quantity)"
-       
+        foodQuantity.text = "1"
+        
         drinkPickerView.delegate = self
         drinkPicker.inputView = drinkPickerView
         selectDrinkType = ["Ayran", "Kola", "Su", "Fanta", "Şalgam", "Sprite"]

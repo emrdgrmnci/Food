@@ -9,11 +9,21 @@
 import UIKit
 
 class ChangePasswordViewController: UIViewController {
-
+    
+    @IBOutlet weak var currentPassword: UITextField!
+    @IBOutlet weak var newPassword: UITextField!
+    @IBOutlet weak var newPasswordAgain: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        currentPassword.resignFirstResponder()
+        newPassword.resignFirstResponder()
+        newPasswordAgain.resignFirstResponder()
     }
     
 
