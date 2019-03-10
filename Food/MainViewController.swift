@@ -18,7 +18,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     var searchFoods: [String]!
     var priceFood: [Double]!
     var searching = false
-    var filtered: [String] = []
+    var filtered: [String]!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,8 +35,8 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
                                    "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
         
         searchBar.delegate = self
-        mainTableView.delegate = self
-        mainTableView.dataSource = self
+//        mainTableView.delegate = self
+//        mainTableView.dataSource = self
         searchFoods = foodCell.name
         priceFood = foodCell.price
         
@@ -55,9 +55,13 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchBar.text != "" {
+            return self.filtered.count
+        }
         
         return section == 0 ? 1 : searchFoods.count
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? 130 : 65
@@ -71,9 +75,9 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainFoodTableViewCell", for: indexPath) as! MainFoodTableViewCell
             
-            cell.mainFoodCollectionView.delegate = self
-            cell.mainFoodCollectionView.dataSource = self
-            cell.mainFoodCollectionView.reloadData()
+//            cell.mainFoodCollectionView.delegate = self
+//            cell.mainFoodCollectionView.dataSource = self
+//            cell.mainFoodCollectionView.reloadData()
             cell.mainFoodCollectionView.tag = indexPath.row
             return cell
             
@@ -81,7 +85,13 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood", for: indexPath) as! MainFoodTitleTableViewCell
             
-            cell.titleLabel?.text = searchFoods[indexPath.row]
+            var food = self.searchFoods[indexPath.row]
+            
+            if searchBar.text != "" {
+                food = self.filtered[indexPath.row]
+            }
+            
+            cell.titleLabel?.text = food
             cell.priceLabel?.text = priceFood[indexPath.row].description
             
             return cell
@@ -133,22 +143,21 @@ extension MainViewController : UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
-        mainTableView.reloadData()
+//        mainTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        mainTableView.reloadData()
+        
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        
+        mainTableView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchFoods = searchText.isEmpty ? searchFoods : searchFoods.filter { (item: String) -> Bool in
-            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
-        
+        filtered = self.searchFoods.filter ({(item: String) -> Bool in
+            return item.description.lowercased().range(of: searchText.lowercased()) != nil
+        })
         mainTableView.reloadData()
     }
 }
