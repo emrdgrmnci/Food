@@ -90,6 +90,18 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         view.addSubview(scrollView)
         setupScrollView()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+        
+    }
+    
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        
+        phoneTextField.resignFirstResponder()
+        cityTextField.resignFirstResponder()
+        addressText.resignFirstResponder()
+        paymentText.resignFirstResponder()
+        explanationTextView.resignFirstResponder()
     }
     
     func setupScrollView() {

@@ -30,9 +30,11 @@ class DetailViewController: UIViewController {
     let food: Food! = nil
 
     var foodPriceCount = FoodPriceCount(quantity: 1, foodPrice: 15.0) {
+        
         didSet {
             foodQuantity.text = "\(foodPriceCount.quantity)"
-            foodPrice.text = "\(Double(foodPriceCount.quantity) * foodPriceCount.foodPrice)"
+            foodPrice.text = "\(Double(foodPriceCount.quantity) * foodPriceCount.foodPrice)TL"
+            
         }
     }
     

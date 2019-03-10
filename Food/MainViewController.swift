@@ -18,7 +18,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     var searchFoods: [String]!
     var priceFood: [Double]!
     var searching = false
-    
+    var filtered: [String] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,18 +35,17 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
                                    "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
         
         searchBar.delegate = self
-//        mainTableView.dataSource = self
-       searchFoods = foodCell.name
-       priceFood = foodCell.price
-        
-
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        searchFoods = foodCell.name
+        priceFood = foodCell.price
         
         imageNames = [
             ImageNames(name: "images"),
             ImageNames(name: "unnamed"),
             ImageNames(name: "unnamed")
-//            ImageNames(name: "images"),
-//            ImageNames(name: "images")
+            //            ImageNames(name: "images"),
+            //            ImageNames(name: "images")
         ]
         
     }

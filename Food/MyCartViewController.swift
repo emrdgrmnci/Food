@@ -34,6 +34,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func deleteMyCart(_ sender: Any) {
         if !foodInfos.isEmpty {
             foodInfos.removeLast()
+            myCartTableView.reloadData()
         }
     }
     
