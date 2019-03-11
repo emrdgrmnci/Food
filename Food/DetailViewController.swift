@@ -58,6 +58,7 @@ class DetailViewController: UIViewController {
         
             destinationVC.fromDetailFoodNames = foods.name
             destinationVC.fromDetailFoodPrices = foods.price
+        
 //            delegate?.foodCell(destinationVC)
 //            self.navigationController?.popViewController(animated: true)
         dismiss(animated: true)
