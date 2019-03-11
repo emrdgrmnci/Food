@@ -22,6 +22,8 @@ class DetailViewController: UIViewController {
     var detailFoodName = ""
     var detailFoodPrice = 0.0
     
+    var searchFoods: [String]!
+    var priceFood: [Double]!
     
     let foods = Food(name: ["Hamburger big mac",
                                "Patates",
@@ -56,8 +58,8 @@ class DetailViewController: UIViewController {
 
             let destinationVC = MyCartViewController()
         
-            destinationVC.fromDetailFoodNames = foods.name
-            destinationVC.fromDetailFoodPrices = foods.price
+            destinationVC.fromDetailFoodNames = foods.name.first!
+            destinationVC.fromDetailFoodPrices = foods.price.first!.description
         
 //            delegate?.foodCell(destinationVC)
 //            self.navigationController?.popViewController(animated: true)
@@ -69,8 +71,18 @@ class DetailViewController: UIViewController {
        if(segue.identifier == "addToCartSegue") {
             if let addToCartVC = segue.destination as? MyCartViewController {
                 
-                addToCartVC.fromDetailFoodNames = [foodTitle.text]
-                addToCartVC.fromDetailFoodPrices = foods.price
+                let foodLabel = foodTitle.text
+                let priceLabel = foodPrice.text
+                
+                var detailFoodNames: String
+                var detailFoodPrices: String
+                
+                detailFoodNames = foodLabel!
+                detailFoodPrices = priceLabel!
+                
+                
+                addToCartVC.fromDetailFoodNames = detailFoodNames
+                addToCartVC.fromDetailFoodPrices = detailFoodPrices
 
         }
        }
@@ -85,6 +97,9 @@ class DetailViewController: UIViewController {
         drinkPickerView.delegate = self
         drinkPicker.inputView = drinkPickerView
         selectDrinkType = ["Ayran", "Kola", "Su", "Fanta", "Şalgam", "Sprite"]
+        
+        searchFoods = foods.name
+        priceFood = foods.price
         
         foodTitle.text = detailFoodName
         foodPrice.text = String(detailFoodPrice)

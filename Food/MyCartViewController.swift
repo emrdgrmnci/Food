@@ -10,8 +10,8 @@ import UIKit
 
 class MyCartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var fromDetailFoodNames: [String?] = []
-    var fromDetailFoodPrices: [Double?] = []
+    var fromDetailFoodNames = ""
+    var fromDetailFoodPrices = ""
     
     @IBOutlet weak var myCartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -55,7 +55,8 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         
         //&& indexPath.last! <= fromDetailFoodPrices.indices.last!
         if indexPath.section == 1 {
-         cell.foodItem = foodInfos
+         cell.myCartFoodNameLabel.text = fromDetailFoodNames
+         cell.myCartFoodPriceLabel.text = fromDetailFoodPrices
 //        let name = fromDetailFoodNames[indexPath.row]?.description ?? ""
 //        let price = fromDetailFoodPrices[indexPath.row]
 //        cell.myCartFoodNameLabel?.text = infos.name.description
