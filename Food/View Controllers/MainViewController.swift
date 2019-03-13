@@ -24,6 +24,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        
     }
     
     override func viewDidLoad() {
@@ -57,19 +58,19 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching {
-         return filtered.count
-        } else {
-         return searchFoods.count
+         return self.filtered.count
         }
+        return section == 0 ? 1 : self.searchFoods.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainFoodTableViewCell", for: indexPath) as! MainFoodTableViewCell
-            
-            //            cell.mainFoodCollectionView.delegate = self
-            //            cell.mainFoodCollectionView.dataSource = self
-            //            cell.mainFoodCollectionView.reloadData()
+          
+//            cell.mainFoodCollectionView.delegate = self
+//            cell.mainFoodCollectionView.dataSource = self
+//            cell.mainFoodCollectionView.reloadData()
             cell.mainFoodCollectionView.tag = indexPath.row
             return cell
             
@@ -90,6 +91,10 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if searching && indexPath.section == 0 {
+            return 0
+        }
+        
         return indexPath.section == 0 ? 130 : 65
     }
     
@@ -156,10 +161,7 @@ extension MainViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filtered = searchText.isEmpty ? searchFoods : filtered.filter { (item: String) -> Bool in
-            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
-        //        filtered = self.searchFoods.filter ({$0.prefix(searchText.count) == searchText})
+        filtered = self.searchFoods.filter ({$0.prefix(searchText.count) == searchText})
         searching = true
         mainTableView.reloadData()
         
