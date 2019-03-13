@@ -94,7 +94,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         if searching && indexPath.section == 0 {
             return 0
         }
-        
         return indexPath.section == 0 ? 130 : 65
     }
     
