@@ -16,15 +16,11 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var myCartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     
-    var foodInfos = (Food(name: ["Deneme"], price: [10.0]))
-//    {
-//        didSet {
-//            myCartTableView.reloadData()
-//        }
-//    }
-    
+    let foodInfos = Food(name: ["Hamburger big mac",
+                            "Patates",
+                            "Whopper",
+                            "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
 
-    
     //TODO-: Delete my cart
 //    @IBAction func deleteMyCart(_ sender: Any) {
 //        if !foodInfos.isEmpty {
@@ -37,9 +33,12 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func approveCart(_ sender: Any) {
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        fromDetailFoodNames = foodInfos.name.description
+        fromDetailFoodPrices = foodInfos.price.description
         
     }
     
@@ -54,7 +53,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         //&& indexPath.last! <= fromDetailFoodPrices.indices.last!
-        if indexPath.section == 1 {
+        
          cell.myCartFoodNameLabel.text = fromDetailFoodNames
          cell.myCartFoodPriceLabel.text = fromDetailFoodPrices
 //        let name = fromDetailFoodNames[indexPath.row]?.description ?? ""
@@ -62,7 +61,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
 //        cell.myCartFoodNameLabel?.text = infos.name.description
 //        cell.myCartFoodPriceLabel?.text = "\(String(describing: infos.price))₺"
         
-        }
+        
         return cell
     }
 }

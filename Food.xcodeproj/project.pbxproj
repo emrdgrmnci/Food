@@ -8,20 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		4712F42F221D64B4009088DA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712F42E221D64B4009088DA /* RegisterViewController.swift */; };
+		472C31F8223814C400A3E863 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C31F7223814C400A3E863 /* Food.swift */; };
+		472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C31F92238152B00A3E863 /* FoodPrice.swift */; };
 		472F68BB22205953006F0FF7 /* MainFoodTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472F68BA22205953006F0FF7 /* MainFoodTitleTableViewCell.swift */; };
 		474F3AE52222D64E00B3D388 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474F3AE42222D64E00B3D388 /* DetailViewController.swift */; };
 		474F3AE72222D7F600B3D388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 474F3AE62222D7F500B3D388 /* Assets.xcassets */; };
-		4756C165222A7C5200FE75A2 /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4756C164222A7C5200FE75A2 /* OrderConfirmationViewController.swift */; };
-		47625726222F059600EC075B /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47625725222F059600EC075B /* FoodCell.swift */; };
+		4753F87A223821A200DD7DC2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4753F879223821A200DD7DC2 /* SettingsViewController.swift */; };
+		4753F87C2238222A00DD7DC2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4753F87B2238222A00DD7DC2 /* ChangePasswordViewController.swift */; };
 		47700C1A221EC4A2009C7682 /* MainFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47700C19221EC4A2009C7682 /* MainFoodTableViewCell.swift */; };
 		47700C1C221EC4D7009C7682 /* MainFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47700C1B221EC4D7009C7682 /* MainFoodCollectionViewCell.swift */; };
-		47700C1F221EC906009C7682 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47700C1E221EC906009C7682 /* MainViewController.swift */; };
 		47700C23221F115D009C7682 /* ImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47700C22221F115D009C7682 /* ImageNames.swift */; };
-		47700C25221F21E4009C7682 /* FoodNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47700C24221F21E4009C7682 /* FoodNames.swift */; };
-		4770C07D2226C6400012DCA8 /* FoodPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4770C07C2226C6400012DCA8 /* FoodPrices.swift */; };
-		47781A36222ABE5E00ECE28A /* MyCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47781A35222ABE5E00ECE28A /* MyCartViewController.swift */; };
 		47781A38222ABFCE00ECE28A /* MyCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47781A37222ABFCE00ECE28A /* MyCartTableViewCell.swift */; };
 		47B1B35C221DE4DA00B2E051 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1B35B221DE4DA00B2E051 /* LoginViewController.swift */; };
+		47CBD0A3223949960032ADEC /* MyCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A0223949950032ADEC /* MyCartViewController.swift */; };
+		47CBD0A4223949960032ADEC /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A1223949960032ADEC /* OrderConfirmationViewController.swift */; };
+		47CBD0A5223949960032ADEC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A2223949960032ADEC /* MainViewController.swift */; };
 		47EC7EE2222839DC0045783B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EC7EE1222839DC0045783B /* MainTabBarController.swift */; };
 		47EC7EE422283A0B0045783B /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EC7EE322283A0B0045783B /* MainNavigationController.swift */; };
 		47FED483221B19A40050ADD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FED482221B19A40050ADD2 /* AppDelegate.swift */; };
@@ -34,20 +35,21 @@
 
 /* Begin PBXFileReference section */
 		4712F42E221D64B4009088DA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		472C31F7223814C400A3E863 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		472C31F92238152B00A3E863 /* FoodPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPrice.swift; sourceTree = "<group>"; };
 		472F68BA22205953006F0FF7 /* MainFoodTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFoodTitleTableViewCell.swift; sourceTree = "<group>"; };
 		474F3AE42222D64E00B3D388 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		474F3AE62222D7F500B3D388 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4756C164222A7C5200FE75A2 /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderConfirmationViewController.swift; path = Food/OrderConfirmationViewController.swift; sourceTree = SOURCE_ROOT; };
-		47625725222F059600EC075B /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
+		4753F879223821A200DD7DC2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4753F87B2238222A00DD7DC2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		47700C19221EC4A2009C7682 /* MainFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFoodTableViewCell.swift; sourceTree = "<group>"; };
 		47700C1B221EC4D7009C7682 /* MainFoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFoodCollectionViewCell.swift; sourceTree = "<group>"; };
-		47700C1E221EC906009C7682 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Food/MainViewController.swift; sourceTree = SOURCE_ROOT; };
 		47700C22221F115D009C7682 /* ImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageNames.swift; path = MainFoodCells/ImageNames.swift; sourceTree = "<group>"; };
-		47700C24221F21E4009C7682 /* FoodNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNames.swift; sourceTree = SOURCE_ROOT; };
-		4770C07C2226C6400012DCA8 /* FoodPrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPrices.swift; sourceTree = "<group>"; };
-		47781A35222ABE5E00ECE28A /* MyCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyCartViewController.swift; path = Food/MyCartViewController.swift; sourceTree = SOURCE_ROOT; };
 		47781A37222ABFCE00ECE28A /* MyCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyCartTableViewCell.swift; path = Food/MyCartCells/MyCartTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		47B1B35B221DE4DA00B2E051 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		47CBD0A0223949950032ADEC /* MyCartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyCartViewController.swift; path = "View Controllers/MyCartViewController.swift"; sourceTree = "<group>"; };
+		47CBD0A1223949960032ADEC /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderConfirmationViewController.swift; path = "View Controllers/OrderConfirmationViewController.swift"; sourceTree = "<group>"; };
+		47CBD0A2223949960032ADEC /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = "View Controllers/MainViewController.swift"; sourceTree = "<group>"; };
 		47EC7EE1222839DC0045783B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		47EC7EE322283A0B0045783B /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		47FED47F221B19A40050ADD2 /* Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Food.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,26 +124,27 @@
 		47FED481221B19A40050ADD2 /* Food */ = {
 			isa = PBXGroup;
 			children = (
-				47FED491221B19A50050ADD2 /* Info.plist */,
 				47FED482221B19A40050ADD2 /* AppDelegate.swift */,
+				474F3AE62222D7F500B3D388 /* Assets.xcassets */,
+				4753F87B2238222A00DD7DC2 /* ChangePasswordViewController.swift */,
 				474F3AE42222D64E00B3D388 /* DetailViewController.swift */,
-				47700C24221F21E4009C7682 /* FoodNames.swift */,
-				4770C07C2226C6400012DCA8 /* FoodPrices.swift */,
-				47625725222F059600EC075B /* FoodCell.swift */,
+				472C31F7223814C400A3E863 /* Food.swift */,
+				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
+				472C31F92238152B00A3E863 /* FoodPrice.swift */,
 				47700C22221F115D009C7682 /* ImageNames.swift */,
+				47FED491221B19A50050ADD2 /* Info.plist */,
 				47B1B35B221DE4DA00B2E051 /* LoginViewController.swift */,
-				47781A35222ABE5E00ECE28A /* MyCartViewController.swift */,
+				47700C1D221EC4E4009C7682 /* MainFoodCells */,
 				47EC7EE322283A0B0045783B /* MainNavigationController.swift */,
 				47EC7EE1222839DC0045783B /* MainTabBarController.swift */,
-				47700C1E221EC906009C7682 /* MainViewController.swift */,
-				4756C164222A7C5200FE75A2 /* OrderConfirmationViewController.swift */,
-				4712F42E221D64B4009088DA /* RegisterViewController.swift */,
-				47FED484221B19A40050ADD2 /* ViewController.swift */,
+				47CBD0A2223949960032ADEC /* MainViewController.swift */,
 				47781A39222ABFF100ECE28A /* MyCartCells */,
-				474F3AE62222D7F500B3D388 /* Assets.xcassets */,
-				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
-				47700C1D221EC4E4009C7682 /* MainFoodCells */,
+				47CBD0A0223949950032ADEC /* MyCartViewController.swift */,
+				47CBD0A1223949960032ADEC /* OrderConfirmationViewController.swift */,
+				4712F42E221D64B4009088DA /* RegisterViewController.swift */,
+				4753F879223821A200DD7DC2 /* SettingsViewController.swift */,
 				47EC7EE52228587A0045783B /* Storyboards */,
+				47FED484221B19A40050ADD2 /* ViewController.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -278,23 +281,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				47EC7EE422283A0B0045783B /* MainNavigationController.swift in Sources */,
-				47625726222F059600EC075B /* FoodCell.swift in Sources */,
+				47CBD0A5223949960032ADEC /* MainViewController.swift in Sources */,
 				47FED485221B19A40050ADD2 /* ViewController.swift in Sources */,
-				4756C165222A7C5200FE75A2 /* OrderConfirmationViewController.swift in Sources */,
 				47FED483221B19A40050ADD2 /* AppDelegate.swift in Sources */,
 				47FED48B221B19A40050ADD2 /* Food.xcdatamodeld in Sources */,
+				4753F87A223821A200DD7DC2 /* SettingsViewController.swift in Sources */,
 				474F3AE52222D64E00B3D388 /* DetailViewController.swift in Sources */,
 				47B1B35C221DE4DA00B2E051 /* LoginViewController.swift in Sources */,
-				47700C25221F21E4009C7682 /* FoodNames.swift in Sources */,
 				47700C23221F115D009C7682 /* ImageNames.swift in Sources */,
-				4770C07D2226C6400012DCA8 /* FoodPrices.swift in Sources */,
-				47781A36222ABE5E00ECE28A /* MyCartViewController.swift in Sources */,
 				47700C1C221EC4D7009C7682 /* MainFoodCollectionViewCell.swift in Sources */,
 				47700C1A221EC4A2009C7682 /* MainFoodTableViewCell.swift in Sources */,
+				472C31F8223814C400A3E863 /* Food.swift in Sources */,
+				4753F87C2238222A00DD7DC2 /* ChangePasswordViewController.swift in Sources */,
 				4712F42F221D64B4009088DA /* RegisterViewController.swift in Sources */,
 				47781A38222ABFCE00ECE28A /* MyCartTableViewCell.swift in Sources */,
 				472F68BB22205953006F0FF7 /* MainFoodTitleTableViewCell.swift in Sources */,
-				47700C1F221EC906009C7682 /* MainViewController.swift in Sources */,
+				472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */,
+				47CBD0A3223949960032ADEC /* MyCartViewController.swift in Sources */,
+				47CBD0A4223949960032ADEC /* OrderConfirmationViewController.swift in Sources */,
 				47EC7EE2222839DC0045783B /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

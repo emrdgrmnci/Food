@@ -15,10 +15,11 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     @IBOutlet weak var mainTableView: UITableView!
     
     var imageNames = [ImageNames]()
-    var searchFoods: [String]!
     var priceFood: [Double]!
+    var searchFoods = [String]()
+    var filtered = [String]()
     var searching = false
-    var filtered: [String]!
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,10 +34,10 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
                                    "Patates",
                                    "Whopper",
                                    "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
-        
+        //        mainTableView.delegate = self
+        //        mainTableView.dataSource = self
         searchBar.delegate = self
-//        mainTableView.delegate = self
-//        mainTableView.dataSource = self
+        
         searchFoods = foodCell.name
         priceFood = foodCell.price
         
@@ -55,29 +56,20 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchBar.text != "" {
-            return self.filtered.count
+        if searching {
+         return filtered.count
+        } else {
+         return searchFoods.count
         }
-        
-        return section == 0 ? 1 : searchFoods.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 130 : 65
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 100 : 65
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainFoodTableViewCell", for: indexPath) as! MainFoodTableViewCell
             
-//            cell.mainFoodCollectionView.delegate = self
-//            cell.mainFoodCollectionView.dataSource = self
-//            cell.mainFoodCollectionView.reloadData()
+            //            cell.mainFoodCollectionView.delegate = self
+            //            cell.mainFoodCollectionView.dataSource = self
+            //            cell.mainFoodCollectionView.reloadData()
             cell.mainFoodCollectionView.tag = indexPath.row
             return cell
             
@@ -85,18 +77,24 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood", for: indexPath) as! MainFoodTitleTableViewCell
             
-            var food = self.searchFoods[indexPath.row]
-            
-            if searchBar.text != "" {
-                food = self.filtered[indexPath.row]
+            if searching {
+                cell.titleLabel?.text = filtered[indexPath.row]
+                cell.priceLabel?.text = priceFood[indexPath.row].description
+            } else {
+                cell.titleLabel?.text = searchFoods[indexPath.row]
+                cell.priceLabel?.text = priceFood[indexPath.row].description
             }
-            
-            cell.titleLabel?.text = food
-            cell.priceLabel?.text = priceFood[indexPath.row].description
-            
             return cell
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 130 : 65
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 100 : 65
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -142,23 +140,29 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
 extension MainViewController : UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
         self.searchBar.showsCancelButton = true
 //        mainTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
+        searching = false
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
         mainTableView.reloadData()
     }
     
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filtered = self.searchFoods.filter ({(item: String) -> Bool in
-            return item.description.lowercased().range(of: searchText.lowercased()) != nil
-        })
+        
+        filtered = searchText.isEmpty ? searchFoods : filtered.filter { (item: String) -> Bool in
+            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        //        filtered = self.searchFoods.filter ({$0.prefix(searchText.count) == searchText})
+        searching = true
         mainTableView.reloadData()
+        
     }
 }
 
