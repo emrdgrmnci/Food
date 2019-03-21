@@ -20,6 +20,7 @@ class ChangePasswordViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
     }
+    
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         currentPassword.resignFirstResponder()
         newPassword.resignFirstResponder()
