@@ -15,9 +15,9 @@
   <img src="ScreenImages/MyCart.png" width="150" />&nbsp;
   </br>  
 </p>
-`Register Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Other Screen` 
+
 <p float = "left">
  </br>
-  <img src="ScreenImages/Register 1@2x.png" width="150" />&nbsp;
+  <img src="ScreenImages/Register.png" width="150" />&nbsp;
   <img src="ScreenImages/Other.png" width="150" />&nbsp;
   </p>
