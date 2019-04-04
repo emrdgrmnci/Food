@@ -15,7 +15,6 @@
   <img src="ScreenImages/MyCart.png" width="150" />&nbsp;
   </br>  
 </p>
-Other screen
 `Register Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Other Screen` 
 <p float = "left">
  </br>
