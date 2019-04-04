@@ -37,8 +37,8 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         
-        fromDetailFoodNames = foodInfos.name.description
-        fromDetailFoodPrices = foodInfos.price.description
+//        fromDetailFoodNames = foodInfos.name.description
+//        fromDetailFoodPrices = foodInfos.price.description
         
     }
     
@@ -54,8 +54,8 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         
         //&& indexPath.last! <= fromDetailFoodPrices.indices.last!
         
-         cell.myCartFoodNameLabel.text = fromDetailFoodNames
-         cell.myCartFoodPriceLabel.text = fromDetailFoodPrices
+//         cell.myCartFoodNameLabel.text = fromDetailFoodNames
+//         cell.myCartFoodPriceLabel.text = fromDetailFoodPrices
 //        let name = fromDetailFoodNames[indexPath.row]?.description ?? ""
 //        let price = fromDetailFoodPrices[indexPath.row]
 //        cell.myCartFoodNameLabel?.text = infos.name.description

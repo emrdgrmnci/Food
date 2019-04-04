@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pha-Hc-L51">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pha-Hc-L51">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.47"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <color key="barTintColor" red="1" green="0.18823529411764706" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
-                                    <navigationItem title="Food" id="mK8-Vm-wMu"/>
+                                    <navigationItem title="TezFood" id="mK8-Vm-wMu"/>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zrI-Mu-Jlw">
@@ -255,8 +255,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="myCartFoodNameLabel" destination="u4a-36-nEf" id="pvb-qa-TiM"/>
-                                            <outlet property="myCartFoodPriceLabel" destination="xdE-ad-VkH" id="w5q-Lq-mNu"/>
+                                            <outlet property="myCartFoodNameLabel" destination="u4a-36-nEf" id="g2s-9B-iu8"/>
+                                            <outlet property="myCartFoodPriceLabel" destination="xdE-ad-VkH" id="IZ4-jC-6Gi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -522,6 +522,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="mainBG" translatesAutoresizingMaskIntoConstraints="NO" id="bnl-sw-V4M">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ob-K6-9Fo">
                                 <rect key="frame" x="60" y="380" width="200" height="45"/>
                                 <state key="normal" image="Group 3580">
@@ -531,7 +534,7 @@
                                     <segue destination="w7Z-Xh-zTa" kind="show" id="a6Q-Gb-Uhf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FOOD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvH-zs-4dt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TezzFood" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvH-zs-4dt">
                                 <rect key="frame" x="60" y="131" width="200" height="49"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -542,15 +545,17 @@
                                 <rect key="frame" x="60" y="433" width="200" height="39"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Giriş Yap">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.50980392156862742" green="0.67843137254901964" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="wPw-GR-flK" kind="show" id="Sql-Nk-NKp"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="bnl-sw-V4M" firstAttribute="top" secondItem="KhH-l0-i98" secondAttribute="top" id="1gh-Nv-5lS"/>
+                            <constraint firstItem="bnl-sw-V4M" firstAttribute="leading" secondItem="oGV-UC-zhN" secondAttribute="leading" id="3i1-eh-WCE"/>
                             <constraint firstItem="2ob-K6-9Fo" firstAttribute="centerX" secondItem="QvH-zs-4dt" secondAttribute="centerX" id="8aJ-Kc-dYt"/>
                             <constraint firstItem="oGV-UC-zhN" firstAttribute="bottom" secondItem="2ob-K6-9Fo" secondAttribute="bottom" constant="143" id="8dM-Vf-yNc"/>
                             <constraint firstItem="uOB-kh-rRh" firstAttribute="leading" secondItem="oGV-UC-zhN" secondAttribute="leading" constant="60" id="8uf-j2-51F"/>
@@ -562,7 +567,9 @@
                             <constraint firstItem="QvH-zs-4dt" firstAttribute="top" secondItem="oGV-UC-zhN" secondAttribute="top" constant="67" id="Wba-x5-Yo0"/>
                             <constraint firstItem="QvH-zs-4dt" firstAttribute="leading" secondItem="oGV-UC-zhN" secondAttribute="leading" constant="60" id="YFa-em-d1V"/>
                             <constraint firstItem="uOB-kh-rRh" firstAttribute="top" secondItem="2ob-K6-9Fo" secondAttribute="bottom" constant="8" id="dz5-kj-AGn"/>
+                            <constraint firstItem="bnl-sw-V4M" firstAttribute="trailing" secondItem="oGV-UC-zhN" secondAttribute="trailing" id="gmn-ny-33k"/>
                             <constraint firstItem="oGV-UC-zhN" firstAttribute="trailing" secondItem="2ob-K6-9Fo" secondAttribute="trailing" constant="60" id="h7B-a8-Itz"/>
+                            <constraint firstItem="bnl-sw-V4M" firstAttribute="bottom" secondItem="KhH-l0-i98" secondAttribute="bottom" id="jSo-i5-che"/>
                             <constraint firstItem="uOB-kh-rRh" firstAttribute="leading" secondItem="oGV-UC-zhN" secondAttribute="leading" constant="60" id="xbR-ja-Pqa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oGV-UC-zhN"/>
@@ -573,7 +580,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Y4-qT-pZ7" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3777" y="-161"/>
+            <point key="canvasLocation" x="3776.25" y="-161.61971830985917"/>
         </scene>
         <!--Kayıt Ol-->
         <scene sceneID="0Re-oj-Nks">
@@ -824,6 +831,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYY-7J-kvM">
                                                 <rect key="frame" x="16" y="293" width="288" height="41"/>
                                                 <state key="normal" image="Symbol 44 – 7"/>
+                                                <connections>
+                                                    <action selector="showWebPage:" destination="yVx-HL-Tth" eventType="touchUpInside" id="O0e-VY-cnk"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Seh-Xq-t1C">
                                                 <rect key="frame" x="16" y="342" width="288" height="41"/>
@@ -1004,6 +1014,7 @@
         <image name="Symbol 44 – 7" width="280.5" height="41"/>
         <image name="Symbol 44 – 8" width="280.5" height="41"/>
         <image name="TamamButon" width="280.5" height="30"/>
+        <image name="mainBG" width="5184" height="3456"/>
         <image name="plus" width="30" height="30"/>
         <image name="restaurant" width="30" height="30"/>
         <image name="settings" width="30" height="30"/>

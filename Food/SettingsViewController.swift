@@ -7,11 +7,26 @@
 //
 
 import UIKit
+import SafariServices
 
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var settingsName: UITextField!
     @IBOutlet weak var settingsSurname: UITextField!
+    
+    @IBAction func showWebPage(_ sender: Any) {
+        showWebPage()
+    }
+    
+    func showWebPage() {
+        if let url = URL(string: "http://mehmetguner.pryazilim.com") {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
