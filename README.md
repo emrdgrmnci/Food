@@ -10,13 +10,15 @@
 <p float="left">
   <img src="ScreenImages/Slider 1@2x.png" width="150" />&nbsp; 
   <img src="ScreenImages/Login@2x.png" width="150" />&nbsp;
-  <img src="ScreenImages/FeedMe-Main@2x.png" width="150" />&nbsp;
-  <img src="ScreenImages/Basket@2x.png" width="150" />&nbsp;
-  <img src="ScreenImages/My Settings – 1@2x.png" width="150" />&nbsp;
+  <img src="ScreenImages/Register 1@2x.png" width="150" />&nbsp;
+  <img src="ScreenImages/Main.png" width="150" />&nbsp;
+  <img src="ScreenImages/MyCart.png" width="150" />&nbsp;
   </br>  
 </p>
-Register Screen 
+Other screen
 <p float = "left">
  </br>
-  <img src="ScreenImages/Register 1@2x.png" width="150" />
+  <img src="ScreenImages/Other.png" width="150" />&nbsp;
+  <img src="ScreenImages/Payment.png" width="150" />&nbsp;
+  
   </p>
