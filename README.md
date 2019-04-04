@@ -6,7 +6,7 @@
 
 <h3>Here the screens</h3>
 
-`Launch Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Login Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Main Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Payment Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `MyCart Screen`
+`Launch Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Login Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Main Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Payment Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`MyCart Screen`
 <p float="left">
   <img src="ScreenImages/Slider 1@2x.png" width="150" />&nbsp; 
   <img src="ScreenImages/Login@2x.png" width="150" />&nbsp;
