@@ -16,6 +16,18 @@ class MainFoodTitleTableViewCell: UITableViewCell {
     
     @IBAction func foodAdd(_ sender: Any) {
     }
+    
+    var title: String? {
+        didSet {
+            titleLabel.text = title ?? ""
+        }
+    }
+    
+    var price: Double? {
+        didSet {
+            priceLabel.text = "\(price ?? 0.0)"
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -22,14 +22,14 @@ class DetailViewController: UIViewController {
     var detailFoodName = ""
     var detailFoodPrice = 0.0
     
-    var searchFoods: [String]!
-    var priceFood: [Double]!
+    var searchFoods: String!
+    var priceFood: Double!
     
-    let foods = Food(name: ["Hamburger big mac",
-                               "Patates",
-                               "Whopper",
-                               "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
-    let food: Food! = nil
+//    let foods = Food(name: ["Hamburger big mac",
+//                               "Patates",
+//                               "Whopper",
+//                               "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
+    var food: Food?
 
     var foodPriceCount = FoodPriceCount(quantity: 1, foodPrice: 15.0) {
         
@@ -54,14 +54,13 @@ class DetailViewController: UIViewController {
         }
     }
     
-    
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
 
             let destinationVC = MyCartViewController()
         
-            destinationVC.fromDetailFoodNames = foods.name.first!
-            destinationVC.fromDetailFoodPrices = foods.price.first!.description
+//            destinationVC.fromDetailFoodNames = food.name
+//            destinationVC.fromDetailFoodPrices = food.price.description
         
 //            delegate?.foodCell(destinationVC)
 //            self.navigationController?.popViewController(animated: true)
@@ -100,17 +99,20 @@ class DetailViewController: UIViewController {
         drinkPicker.inputView = drinkPickerView
         selectDrinkType = ["Ayran", "Kola", "Su", "Fanta", "Şalgam", "Sprite"]
         
-        searchFoods = foods.name
-        priceFood = foods.price
+//        searchFoods = food.name
+//        priceFood = food.price
         
-        foodTitle.text = detailFoodName
-        foodPrice.text = String(detailFoodPrice)
+        foodTitle.text = food?.name
+        foodPrice.text = "\(food?.price ?? 0.0)TL"
         
         
-//        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationItem.title = "Sipariş Detayı"
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
+    }
+    @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
+ self.navigationController?.popViewController(animated: true)
     }
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
        drinkPicker.resignFirstResponder()
