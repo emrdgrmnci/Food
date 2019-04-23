@@ -171,8 +171,8 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         view.addSubview(totalLabel)
         
         totalLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        totalLabel.bottomAnchor.constraint(equalTo: view.topAnchor , constant: 620).isActive = true
-        totalLabel.widthAnchor.constraint(equalToConstant: 160).isActive = true
+        totalLabel.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        totalLabel.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 2/3).isActive = true
         totalLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         
@@ -187,8 +187,8 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         view.addSubview(approveButton)
         
         approveButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        approveButton.bottomAnchor.constraint(equalTo: view.topAnchor , constant: 620).isActive = true
-        approveButton.widthAnchor.constraint(equalToConstant: 215).isActive = true
+        approveButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        approveButton.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 1/2).isActive = true
         approveButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         
