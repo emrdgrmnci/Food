@@ -57,7 +57,8 @@ class DetailViewController: UIViewController {
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
 
-            let destinationVC = MyCartViewController()
+            let foodInfo = SingletonCart.sharedFood.food
+        print(foodInfo)
         
 //            destinationVC.fromDetailFoodNames = food.name
 //            destinationVC.fromDetailFoodPrices = food.price.description

@@ -16,10 +16,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var myCartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     
-//    let foodInfos = Food(name: ["Hamburger big mac",
-//                            "Patates",
-//                            "Whopper",
-//                            "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
+    
        let foodInfos: Food! = nil
     //TODO-: Delete my cart
 //    @IBAction func deleteMyCart(_ sender: Any) {
@@ -50,7 +47,8 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
          let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
-        
+//        let myCartFoodList = SingletonCart.sharedFood.food[indexPath.row]
+//        cell.myCartFoodNameLabel?.text = myCartFoodList.
         
         //&& indexPath.last! <= fromDetailFoodPrices.indices.last!
         

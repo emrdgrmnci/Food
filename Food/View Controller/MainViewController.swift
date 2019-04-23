@@ -32,9 +32,6 @@ class MainViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
-    var food: Food?
-    //    var imageNames = [ImageNames]()
-    var priceFood: [Double]!
     var searchFoods = [String]()
     var filtered = [String]()
     var searching = false
