@@ -27,7 +27,10 @@ class RegisterViewController: UIViewController {
     self.view.addGestureRecognizer(tapGesture)
        
 }
-
+    @IBAction func registerButtonTapped(_ sender: Any) {
+       
+    }
+    
 @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
     nameTextField.resignFirstResponder()
     lastNameTextField.resignFirstResponder()

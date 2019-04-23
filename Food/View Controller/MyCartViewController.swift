@@ -17,15 +17,8 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var totalPriceLabel: UILabel!
     
     
-       let foodInfos: Food! = nil
-    //TODO-: Delete my cart
-//    @IBAction func deleteMyCart(_ sender: Any) {
-//        if !foodInfos.isEmpty {
-//            foodInfos.removeLast()
-//            myCartTableView.reloadData()
-//        }
-//    }
-    
+       var foodInfos: [String] = ["Whopper", "Steakhouse", "Big mac"]
+
     //TODO: - Approve my  cart
     @IBAction func approveCart(_ sender: Any) {
     }
@@ -41,13 +34,14 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return section == 0 ? 1 : foodInfos.name.count
+        return foodInfos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
+         let foodName = foodInfos[indexPath.row]
          let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
-//        let myCartFoodList = SingletonCart.sharedFood.food[indexPath.row]
+         cell.myCartFoodNameLabel.text = foodName
+        //        let myCartFoodList = SingletonCart.sharedFood.food[indexPath.row]
 //        cell.myCartFoodNameLabel?.text = myCartFoodList.
         
         //&& indexPath.last! <= fromDetailFoodPrices.indices.last!
@@ -61,5 +55,18 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            foodInfos.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
     }
 }

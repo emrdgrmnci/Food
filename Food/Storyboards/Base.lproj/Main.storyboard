@@ -265,14 +265,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uX2-fN-q6s"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sepetim" id="Hi9-wv-ywB">
-                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="VAs-MT-Wmi">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="deleteMyCart:" destination="BT1-x8-Nl6" id="gVv-0k-TZV"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Sepetim" id="Hi9-wv-ywB"/>
                     <connections>
                         <outlet property="myCartTableView" destination="VTm-Vv-mgD" id="dHg-rL-FWi"/>
                         <outlet property="totalPriceLabel" destination="GmT-cL-c9e" id="74G-fP-KHO"/>
@@ -593,6 +586,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pvl-Bh-Ebt">
                                                 <rect key="frame" x="40" y="390" width="295" height="45"/>
                                                 <state key="normal" image="Symbol 25 – 6"/>
+                                                <connections>
+                                                    <action selector="registerButtonTapped:" destination="w7Z-Xh-zTa" eventType="touchUpInside" id="N6d-0m-rRi"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
