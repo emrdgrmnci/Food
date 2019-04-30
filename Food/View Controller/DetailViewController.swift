@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-   
+    
     @IBOutlet weak var foodTitle: UILabel!
     @IBOutlet weak var foodSubTitle: UILabel!
     @IBOutlet weak var foodPrice: UILabel!
@@ -25,12 +25,12 @@ class DetailViewController: UIViewController {
     var searchFoods: String!
     var priceFood: Double!
     
-//    let foods = Food(name: ["Hamburger big mac",
-//                               "Patates",
-//                               "Whopper",
-//                               "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
+    //    let foods = Food(name: ["Hamburger big mac",
+    //                               "Patates",
+    //                               "Whopper",
+    //                               "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
     var food: Food?
-
+    
     var foodPriceCount = FoodPriceCount(quantity: 1, foodPrice: 15.0) {
         
         didSet {
@@ -56,41 +56,21 @@ class DetailViewController: UIViewController {
     
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
-
-            let foodInfo = SingletonCart.sharedFood.food
-        print(foodInfo)
         
-//            destinationVC.fromDetailFoodNames = food.name
-//            destinationVC.fromDetailFoodPrices = food.price.description
         
-//            delegate?.foodCell(destinationVC)
-//            self.navigationController?.popViewController(animated: true)
+        
+        SingletonCart.sharedFood.food.append(food!)
+        
+        
+        //            destinationVC.fromDetailFoodNames = food.name
+        //            destinationVC.fromDetailFoodPrices = food.price.description
+        
+        //            delegate?.foodCell(destinationVC)
+        //            self.navigationController?.popViewController(animated: true)
         dismiss(animated: true)
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       if(segue.identifier == "addToCartSegue") {
-            if let addToCartVC = segue.destination as? MyCartViewController {
-                
-                let foodLabel = foodTitle.text
-                let priceLabel = foodPrice.text
-                
-                var detailFoodNames: String
-                var detailFoodPrices: String
-                
-                detailFoodNames = foodLabel!
-                detailFoodPrices = priceLabel!
-                
-                
-                addToCartVC.fromDetailFoodNames = detailFoodNames
-                addToCartVC.fromDetailFoodPrices = detailFoodPrices
-
-        }
-       }
-    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,10 +80,10 @@ class DetailViewController: UIViewController {
         drinkPicker.inputView = drinkPickerView
         selectDrinkType = ["Ayran", "Kola", "Su", "Fanta", "Şalgam", "Sprite"]
         
-//        searchFoods = food.name
-//        priceFood = food.price
+        //        searchFoods = food.name
+        //        priceFood = food.price
         
-        foodTitle.text = food?.name
+        foodTitle.text = food?.name ?? ""
         foodPrice.text = "\(food?.price ?? 0.0)TL"
         
         
@@ -113,10 +93,10 @@ class DetailViewController: UIViewController {
         self.view.addGestureRecognizer(tapGesture)
     }
     @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
- self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-       drinkPicker.resignFirstResponder()
+        drinkPicker.resignFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -127,7 +107,7 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
-   
+    
 }
 
 extension DetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {

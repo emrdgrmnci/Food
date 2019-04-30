@@ -17,8 +17,10 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var totalPriceLabel: UILabel!
     
     
-       var foodInfos: [String] = ["Whopper", "Steakhouse", "Big mac"]
-
+    var food: Food?
+    
+    var foodInfos: [String] = ["Whopper", "Steakhouse", "Big mac"]
+    var fromSharedFood = SingletonCart.sharedFood.food
     //TODO: - Approve my  cart
     @IBAction func approveCart(_ sender: Any) {
     }
@@ -27,32 +29,20 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         
-//        fromDetailFoodNames = foodInfos.name.description
-//        fromDetailFoodPrices = foodInfos.price.description
-        
+        myCartTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return foodInfos.count
+        return fromSharedFood.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let foodName = foodInfos[indexPath.row]
-         let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
-         cell.myCartFoodNameLabel.text = foodName
-        //        let myCartFoodList = SingletonCart.sharedFood.food[indexPath.row]
-//        cell.myCartFoodNameLabel?.text = myCartFoodList.
-        
-        //&& indexPath.last! <= fromDetailFoodPrices.indices.last!
-        
-//         cell.myCartFoodNameLabel.text = fromDetailFoodNames
-//         cell.myCartFoodPriceLabel.text = fromDetailFoodPrices
-//        let name = fromDetailFoodNames[indexPath.row]?.description ?? ""
-//        let price = fromDetailFoodPrices[indexPath.row]
-//        cell.myCartFoodNameLabel?.text = infos.name.description
-//        cell.myCartFoodPriceLabel?.text = "\(String(describing: infos.price))₺"
-        
+        let foodName = fromSharedFood[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
+        cell.myCartFoodNameLabel.text = foodName.name
+        cell.myCartFoodPriceLabel.text = foodName.price.description
         
         return cell
     }
@@ -63,7 +53,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            foodInfos.remove(at: indexPath.row)
+            fromSharedFood.remove(at: indexPath.row)
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()

@@ -11,7 +11,7 @@ import UIKit
 
 class SingletonCart {
     static let sharedFood = SingletonCart()
-    var food: [FoodsDataSource] = []
+    var food: [Food] = []
     
     private init() {}
 }

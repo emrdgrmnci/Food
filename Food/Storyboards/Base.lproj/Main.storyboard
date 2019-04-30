@@ -59,7 +59,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dq9-ym-VVH">
-                                                    <rect key="frame" x="401" y="40" width="0.0" height="0.0"/>
+                                                    <rect key="frame" x="307" y="40" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -318,7 +318,6 @@
                                         <state key="normal" image="Sepete"/>
                                         <connections>
                                             <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="F5U-LT-jir"/>
-                                            <segue destination="BT1-x8-Nl6" kind="show" id="0Oh-xs-9QA"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="İçecek Seçiniz" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vY1-hO-KZI">
@@ -418,6 +417,7 @@
                         <outlet property="foodQuantity" destination="MfX-Em-wlD" id="WoZ-5s-UrW"/>
                         <outlet property="foodSubTitle" destination="kT4-4U-dbg" id="33j-PW-iFx"/>
                         <outlet property="foodTitle" destination="2vY-73-RBP" id="TD7-KY-1tg"/>
+                        <segue destination="BT1-x8-Nl6" kind="show" id="aa3-Hs-Nxw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="50c-Aj-z6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -976,6 +976,6 @@
         <image name="shopping_cart_loaded" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zvp-T4-byj"/>
+        <segue reference="aa3-Hs-Nxw"/>
     </inferredMetricsTieBreakers>
 </document>
