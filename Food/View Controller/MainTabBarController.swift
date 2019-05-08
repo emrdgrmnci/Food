@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class MainTabBarController: UITabBarController {
-    
+    var window: UIWindow?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,10 +20,12 @@ class MainTabBarController: UITabBarController {
         
         for viewController in viewControllers {
             
-            if let profileNavigationController = viewController as? MainNavigationController {
+            if let mainNavigationController = viewController as? MainNavigationController {
                 
-                if (profileNavigationController.viewControllers.first as? MainViewController) != nil {
-                    
+                if (mainNavigationController.viewControllers.first as? MainViewController) != nil {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Sipariş")
+                    self.window?.rootViewController = viewController
                 }
                 
             }

@@ -15,8 +15,13 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
+    var window: UIWindow?
+    
     //TODO:
     @IBAction func loginButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
+        self.window?.rootViewController = viewController
     }
     override func viewDidLoad() {
         super.viewDidLoad()

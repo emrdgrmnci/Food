@@ -60,6 +60,9 @@ class DetailViewController: UIViewController {
         
         
         SingletonCart.sharedFood.food.append(food!)
+//
+//        let mainView = self.storyboard?.instantiateViewController(withIdentifier: "FoodOrder") as! MainViewController
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         
         //            destinationVC.fromDetailFoodNames = food.name
@@ -68,7 +71,7 @@ class DetailViewController: UIViewController {
         //            delegate?.foodCell(destinationVC)
         //            self.navigationController?.popViewController(animated: true)
         dismiss(animated: true)
-        
+//        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {

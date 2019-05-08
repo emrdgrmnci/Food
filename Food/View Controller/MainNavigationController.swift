@@ -11,7 +11,9 @@ import UIKit
 
 class MainNavigationController: UINavigationController {
     
+//     var window: UIWindow?
+    
     override func viewDidLoad() {
-        
+       
     }
 }
