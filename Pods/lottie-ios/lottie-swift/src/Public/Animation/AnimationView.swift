@@ -47,8 +47,8 @@ final public class AnimationView: LottieView {
   /// Set animation name from Interface Builder
   @IBInspectable var animationName: String? {
     didSet {
-      if let name = animationName {
-        self.animation = Animation.named(name, animationCache: nil)
+      self.animation = animationName.flatMap {
+        Animation.named($0, animationCache: nil)
       }
     }
   }
@@ -529,7 +529,7 @@ final public class AnimationView: LottieView {
     commonInit()
   }
   
-  required init?(coder aDecoder: NSCoder) {
+  required public init?(coder aDecoder: NSCoder) {
     self.imageProvider = BundleImageProvider(bundle: Bundle.main, searchPath: nil)
     super.init(coder: aDecoder)
     commonInit()
@@ -541,7 +541,7 @@ final public class AnimationView: LottieView {
   
   // MARK: - Public (UIView Overrides)
   
-  public override var intrinsicContentSize: CGSize {
+  override public var intrinsicContentSize: CGSize {
     if let animation = animation {
       return animation.bounds.size
     }
@@ -571,8 +571,9 @@ final public class AnimationView: LottieView {
       position = bounds.center
       let compAspect = animation.size.width / animation.size.height
       let viewAspect = bounds.size.width / bounds.size.height
-      let dominantDimension = compAspect > viewAspect ? bounds.size.width : bounds.size.height
-      let compDimension = compAspect < viewAspect ? animation.size.width : animation.size.height
+      let scaleWidth = compAspect < viewAspect
+      let dominantDimension = scaleWidth ? bounds.size.width : bounds.size.height
+      let compDimension = scaleWidth ? animation.size.width : animation.size.height
       let scale = dominantDimension / compDimension
       xform = CATransform3DMakeScale(scale, scale, 1)
     case .redraw:
@@ -693,6 +694,12 @@ final public class AnimationView: LottieView {
     }
   }
   
+  override func animationMovedToWindow() {
+    if let context = self.animationContext {
+      self.addNewAnimationForContext(context)
+    }
+  }
+  
   /// Stops the current in flight animation and freezes the animation in its current state.
   fileprivate func removeCurrentAnimation() {
     guard animationContext != nil else { return }
@@ -729,6 +736,9 @@ final public class AnimationView: LottieView {
     }
     
     self.animationContext = animationContext
+    
+    guard self.window != nil else { return }
+    
     animationID = animationID + 1
     activeAnimationName = AnimationView.animationName + String(animationID)
     

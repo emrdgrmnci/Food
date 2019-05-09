@@ -1,7 +1,7 @@
 PODS:
   - KMPlaceholderTextView (1.4.0)
-  - lottie-ios (3.0.1)
-  - TinyConstraints (3.3.1)
+  - lottie-ios (3.0.4)
+  - TinyConstraints (4.0.0)
 
 DEPENDENCIES:
   - KMPlaceholderTextView
@@ -16,8 +16,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
-  lottie-ios: 8477cb83466c00cb4d29966f78d85e64cd9132df
-  TinyConstraints: dbf7519aefc01ea59d62244300c7718aec68e280
+  lottie-ios: 55a2de40418f8de2b155efaba4d4d1a025a5c570
+  TinyConstraints: 03bc091844b98c18dbaead8b1153242a42721b56
 
 PODFILE CHECKSUM: 7deee18dcefaea9578483482455aa3b0469bf165
 

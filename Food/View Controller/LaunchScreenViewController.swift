@@ -7,13 +7,30 @@
 //
 
 import UIKit
+import Lottie
 
 class LaunchScreenViewController: UIViewController {
-
+    
+    var window: UIWindow!
+    
+    @IBOutlet var animationView: AnimationView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        startAnimation()
         
+        perform(#selector(LaunchScreenViewController.showMainScreen), with: nil, afterDelay: 5.5)
+        }
+    
+    func startAnimation() {
+     animationView.animation = Animation.named("4762-food-carousel")
+        animationView.play()
+    }
+    
+    @objc func showMainScreen() {
+        performSegue(withIdentifier: "showMainScreenSegue", sender: self)
     }
 
 }
