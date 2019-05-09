@@ -93,7 +93,8 @@ class MainViewController: UIViewController {
             
         case 3:
             foodSC.index(before: 16)
-            
+        case 4:
+            foodSC.index(before: 20)
         default:
             fatalError("Not selected any segment!")
         }
