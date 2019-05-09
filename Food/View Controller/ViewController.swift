@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class ViewController: UIViewController {
     
@@ -14,6 +15,21 @@ class ViewController: UIViewController {
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
         
     }
+    @IBAction func showWebPage(_ sender: Any) {
+        
+    showWebPage()
+    }
+    
+    func showWebPage() {
+        if let url = URL(string: "http://mehmetguner.pryazilim.com") {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true

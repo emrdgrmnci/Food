@@ -485,52 +485,56 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="iPhone SE" translatesAutoresizingMaskIntoConstraints="NO" id="bnl-sw-V4M">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvH-zs-4dt">
-                                <rect key="frame" x="187" y="131" width="0.0" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvH-zs-4dt">
+                                <rect key="frame" x="187.5" y="131" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOB-kh-rRh">
-                                <rect key="frame" x="60" y="532" width="255" height="39"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Giriş Yap">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="wPw-GR-flK" kind="show" id="Sql-Nk-NKp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ob-K6-9Fo">
-                                <rect key="frame" x="12" y="479" width="350" height="45"/>
-                                <state key="normal" image="Group 3580">
-                                    <color key="titleColor" red="0.83257240060000004" green="0.19629079099999999" blue="0.066703736779999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="w7Z-Xh-zTa" kind="show" id="a6Q-Gb-Uhf"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ydM-o0-IBq">
+                                <rect key="frame" x="60" y="424" width="255" height="193"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ob-K6-9Fo">
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="99"/>
+                                        <state key="normal" image="Group 3580">
+                                            <color key="titleColor" red="0.83257240060000004" green="0.19629079099999999" blue="0.066703736779999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="w7Z-Xh-zTa" kind="show" id="a6Q-Gb-Uhf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOB-kh-rRh">
+                                        <rect key="frame" x="82" y="104" width="91" height="39"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <state key="normal" title="Giriş Yap">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="wPw-GR-flK" kind="show" id="Sql-Nk-NKp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N34-bV-iEh">
+                                        <rect key="frame" x="0.0" y="148" width="255" height="45"/>
+                                        <state key="normal" image="WebDevamEt"/>
+                                        <connections>
+                                            <action selector="showWebPage:" destination="cJk-Dz-vhG" eventType="touchUpInside" id="PFa-4t-ZoU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ydM-o0-IBq" firstAttribute="top" secondItem="oGV-UC-zhN" secondAttribute="top" constant="360" id="0KA-0L-Iel"/>
                             <constraint firstItem="bnl-sw-V4M" firstAttribute="top" secondItem="KhH-l0-i98" secondAttribute="top" id="1gh-Nv-5lS"/>
                             <constraint firstItem="bnl-sw-V4M" firstAttribute="leading" secondItem="oGV-UC-zhN" secondAttribute="leading" id="3i1-eh-WCE"/>
-                            <constraint firstItem="2ob-K6-9Fo" firstAttribute="centerX" secondItem="QvH-zs-4dt" secondAttribute="centerX" id="8aJ-Kc-dYt"/>
-                            <constraint firstItem="oGV-UC-zhN" firstAttribute="bottom" secondItem="2ob-K6-9Fo" secondAttribute="bottom" constant="143" id="8dM-Vf-yNc"/>
-                            <constraint firstItem="uOB-kh-rRh" firstAttribute="leading" secondItem="oGV-UC-zhN" secondAttribute="leading" constant="60" id="8uf-j2-51F"/>
-                            <constraint firstItem="oGV-UC-zhN" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QvH-zs-4dt" secondAttribute="trailing" id="9za-dP-EJX"/>
-                            <constraint firstItem="oGV-UC-zhN" firstAttribute="trailing" secondItem="uOB-kh-rRh" secondAttribute="trailing" constant="60" id="D0c-XU-i0a"/>
-                            <constraint firstItem="2ob-K6-9Fo" firstAttribute="leading" secondItem="oGV-UC-zhN" secondAttribute="leading" constant="12" id="QY8-32-ejv"/>
-                            <constraint firstItem="oGV-UC-zhN" firstAttribute="trailing" secondItem="uOB-kh-rRh" secondAttribute="trailing" constant="60" id="RdT-bR-C4s"/>
-                            <constraint firstItem="oGV-UC-zhN" firstAttribute="bottom" secondItem="uOB-kh-rRh" secondAttribute="bottom" constant="96" id="T5g-3O-pas"/>
-                            <constraint firstItem="QvH-zs-4dt" firstAttribute="top" secondItem="oGV-UC-zhN" secondAttribute="top" constant="67" id="Wba-x5-Yo0"/>
-                            <constraint firstItem="QvH-zs-4dt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oGV-UC-zhN" secondAttribute="leading" id="YFa-em-d1V"/>
-                            <constraint firstItem="uOB-kh-rRh" firstAttribute="top" secondItem="2ob-K6-9Fo" secondAttribute="bottom" constant="8" id="dz5-kj-AGn"/>
+                            <constraint firstItem="ydM-o0-IBq" firstAttribute="leading" secondItem="oGV-UC-zhN" secondAttribute="leading" constant="60" id="93a-OB-63k"/>
                             <constraint firstItem="bnl-sw-V4M" firstAttribute="trailing" secondItem="oGV-UC-zhN" secondAttribute="trailing" id="gmn-ny-33k"/>
-                            <constraint firstItem="oGV-UC-zhN" firstAttribute="trailing" secondItem="2ob-K6-9Fo" secondAttribute="trailing" constant="13" id="h7B-a8-Itz"/>
                             <constraint firstItem="bnl-sw-V4M" firstAttribute="bottom" secondItem="KhH-l0-i98" secondAttribute="bottom" id="jSo-i5-che"/>
-                            <constraint firstItem="uOB-kh-rRh" firstAttribute="leading" secondItem="oGV-UC-zhN" secondAttribute="leading" constant="60" id="xbR-ja-Pqa"/>
+                            <constraint firstItem="oGV-UC-zhN" firstAttribute="trailing" secondItem="ydM-o0-IBq" secondAttribute="trailing" constant="60" id="lFN-a1-RFl"/>
+                            <constraint firstItem="oGV-UC-zhN" firstAttribute="bottom" secondItem="ydM-o0-IBq" secondAttribute="bottom" constant="50" id="oqt-49-Ql8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oGV-UC-zhN"/>
                     </view>
@@ -1011,6 +1015,7 @@
         <image name="Symbol 25 – 6" width="295" height="45"/>
         <image name="Şifre" width="295" height="45"/>
         <image name="Tamam" width="295" height="45"/>
+        <image name="WebDevamEt" width="255" height="45"/>
         <image name="WebSitesi" width="295" height="45"/>
         <image name="iPhone SE" width="320" height="568"/>
         <image name="plus" width="30" height="30"/>
