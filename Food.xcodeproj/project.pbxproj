@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4712F42F221D64B4009088DA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712F42E221D64B4009088DA /* RegisterViewController.swift */; };
+		4720D08D228468C900C4796E /* iPhone SE.png in Resources */ = {isa = PBXBuildFile; fileRef = 4720D08C228468C900C4796E /* iPhone SE.png */; };
+		4720D08F22846F9E00C4796E /* 4762-food-carousel.json in Resources */ = {isa = PBXBuildFile; fileRef = 4720D08E22846F9E00C4796E /* 4762-food-carousel.json */; };
+		4720D0912284708200C4796E /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4720D0902284708200C4796E /* LaunchScreenViewController.swift */; };
 		472C31F8223814C400A3E863 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C31F7223814C400A3E863 /* Food.swift */; };
 		472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C31F92238152B00A3E863 /* FoodPrice.swift */; };
 		472F68BB22205953006F0FF7 /* MainFoodTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472F68BA22205953006F0FF7 /* MainFoodTitleTableViewCell.swift */; };
@@ -38,6 +41,9 @@
 
 /* Begin PBXFileReference section */
 		4712F42E221D64B4009088DA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		4720D08C228468C900C4796E /* iPhone SE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhone SE.png"; path = "Assets.xcassets/iPhone SE.png"; sourceTree = "<group>"; };
+		4720D08E22846F9E00C4796E /* 4762-food-carousel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "4762-food-carousel.json"; sourceTree = "<group>"; };
+		4720D0902284708200C4796E /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		472C31F7223814C400A3E863 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		472C31F92238152B00A3E863 /* FoodPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPrice.swift; sourceTree = "<group>"; };
 		472F68BA22205953006F0FF7 /* MainFoodTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFoodTitleTableViewCell.swift; sourceTree = "<group>"; };
@@ -103,6 +109,7 @@
 		47A262D3226F9F8C0079C434 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4720D0902284708200C4796E /* LaunchScreenViewController.swift */,
 				4753F87B2238222A00DD7DC2 /* ChangePasswordViewController.swift */,
 				474F3AE42222D64E00B3D388 /* DetailViewController.swift */,
 				47B1B35B221DE4DA00B2E051 /* LoginViewController.swift */,
@@ -161,7 +168,9 @@
 			isa = PBXGroup;
 			children = (
 				47FED482221B19A40050ADD2 /* AppDelegate.swift */,
+				4720D08E22846F9E00C4796E /* 4762-food-carousel.json */,
 				474F3AE62222D7F500B3D388 /* Assets.xcassets */,
+				4720D08C228468C900C4796E /* iPhone SE.png */,
 				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
 				47FED491221B19A50050ADD2 /* Info.plist */,
 				47700C1D221EC4E4009C7682 /* MainFoodCells */,
@@ -254,7 +263,9 @@
 			files = (
 				47EBE4B6226F0F86000E1EB8 /* SF Pro in Resources */,
 				47FED490221B19A50050ADD2 /* LaunchScreen.storyboard in Resources */,
+				4720D08D228468C900C4796E /* iPhone SE.png in Resources */,
 				474F3AE72222D7F600B3D388 /* Assets.xcassets in Resources */,
+				4720D08F22846F9E00C4796E /* 4762-food-carousel.json in Resources */,
 				47FED488221B19A40050ADD2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,11 +300,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Food/Pods-Food-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TinyConstraints.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -308,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47EC7EE422283A0B0045783B /* MainNavigationController.swift in Sources */,
+				4720D0912284708200C4796E /* LaunchScreenViewController.swift in Sources */,
 				47CBD0A5223949960032ADEC /* MainViewController.swift in Sources */,
 				47FED485221B19A40050ADD2 /* ViewController.swift in Sources */,
 				47FED483221B19A40050ADD2 /* AppDelegate.swift in Sources */,

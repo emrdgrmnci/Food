@@ -17,7 +17,6 @@ class FoodsDataSource: NSObject {
         self.imageNames = images
     }
 }
-
 extension FoodsDataSource: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -27,7 +26,6 @@ extension FoodsDataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood") as! MainFoodTitleTableViewCell
         let food = foods[indexPath.row]
@@ -40,7 +38,7 @@ extension FoodsDataSource: UITableViewDataSource {
 
 extension FoodsDataSource: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  imageNames.count
+        return imageNames.count
     }
     
     //MARK:- collection view cell size

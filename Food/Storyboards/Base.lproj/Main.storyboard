@@ -26,8 +26,11 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zrI-Mu-Jlw">
-                                <rect key="frame" x="0.0" y="266" width="375" height="352"/>
+                                <rect key="frame" x="0.0" y="281" width="375" height="337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="337" id="ROb-t2-72p"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellForFood" rowHeight="80" id="qkZ-ah-bc7" customClass="MainFoodTitleTableViewCell" customModule="Food" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
@@ -87,12 +90,8 @@
                                     <outlet property="delegate" destination="gXY-8z-RaT" id="IDY-Kz-k47"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" placeholder="Yemek ara" translatesAutoresizingMaskIntoConstraints="NO" id="JqN-HE-L0r">
-                                <rect key="frame" x="0.0" y="108" width="375" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cf2-kG-FEC">
-                                <rect key="frame" x="0.0" y="164" width="375" height="102"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="145"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jiz-gh-hXb">
                                     <size key="itemSize" width="377" height="100"/>
@@ -102,7 +101,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainFoodCollectionViewCell" id="c5x-2k-SKL" customClass="MainFoodCollectionViewCell" customModule="Food" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="377" height="100"/>
+                                        <rect key="frame" x="0.0" y="22.5" width="377" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="377" height="100"/>
@@ -135,27 +134,37 @@
                                     <outlet property="delegate" destination="gXY-8z-RaT" id="A9M-DZ-MBb"/>
                                 </connections>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Waa-rG-TdG">
+                                <rect key="frame" x="0.0" y="108" width="375" height="29"/>
+                                <segments>
+                                    <segment title="Kahvaltı"/>
+                                    <segment title="Hamburger"/>
+                                    <segment title="İçecek"/>
+                                    <segment title="Tatlı"/>
+                                    <segment title="Salata"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.25490196078431371" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cf2-kG-FEC" firstAttribute="leading" secondItem="WOc-oC-c8h" secondAttribute="leading" id="18P-wz-AE1"/>
-                            <constraint firstItem="JqN-HE-L0r" firstAttribute="leading" secondItem="WOc-oC-c8h" secondAttribute="leading" id="4av-9Z-kLS"/>
+                            <constraint firstItem="cf2-kG-FEC" firstAttribute="top" secondItem="vcW-NP-VQs" secondAttribute="bottom" constant="28" id="1Md-Ld-W9c"/>
                             <constraint firstItem="zrI-Mu-Jlw" firstAttribute="trailing" secondItem="WOc-oC-c8h" secondAttribute="trailing" id="4bQ-BF-csD"/>
                             <constraint firstItem="zrI-Mu-Jlw" firstAttribute="leading" secondItem="WOc-oC-c8h" secondAttribute="leading" id="8pL-Mo-yfS"/>
-                            <constraint firstItem="cf2-kG-FEC" firstAttribute="trailing" secondItem="JqN-HE-L0r" secondAttribute="trailing" id="BCC-Nw-yjz"/>
                             <constraint firstItem="zrI-Mu-Jlw" firstAttribute="trailing" secondItem="WOc-oC-c8h" secondAttribute="trailing" id="CJ7-u1-mLT"/>
                             <constraint firstItem="vcW-NP-VQs" firstAttribute="leading" secondItem="WOc-oC-c8h" secondAttribute="leading" id="Csg-hq-keu"/>
                             <constraint firstItem="zrI-Mu-Jlw" firstAttribute="bottom" secondItem="WOc-oC-c8h" secondAttribute="bottom" id="JOs-4i-sSe"/>
-                            <constraint firstItem="cf2-kG-FEC" firstAttribute="top" secondItem="JqN-HE-L0r" secondAttribute="bottom" id="NoJ-vJ-oOJ"/>
-                            <constraint firstItem="zrI-Mu-Jlw" firstAttribute="top" secondItem="JqN-HE-L0r" secondAttribute="bottom" constant="102" id="QUh-Vh-xM0"/>
                             <constraint firstItem="vcW-NP-VQs" firstAttribute="top" secondItem="WOc-oC-c8h" secondAttribute="top" id="Sga-gk-bLG"/>
+                            <constraint firstItem="Waa-rG-TdG" firstAttribute="top" secondItem="WOc-oC-c8h" secondAttribute="top" constant="44" id="UHK-v0-nir"/>
+                            <constraint firstItem="WOc-oC-c8h" firstAttribute="trailing" secondItem="Waa-rG-TdG" secondAttribute="trailing" id="Ww4-iT-bci"/>
                             <constraint firstAttribute="trailing" secondItem="zrI-Mu-Jlw" secondAttribute="trailing" id="aWC-Sc-zf8"/>
                             <constraint firstItem="zrI-Mu-Jlw" firstAttribute="leading" secondItem="WOc-oC-c8h" secondAttribute="leading" id="c61-0V-GIY"/>
-                            <constraint firstItem="WOc-oC-c8h" firstAttribute="trailing" secondItem="JqN-HE-L0r" secondAttribute="trailing" id="jdM-R9-AOu"/>
-                            <constraint firstItem="zrI-Mu-Jlw" firstAttribute="top" secondItem="cf2-kG-FEC" secondAttribute="bottom" id="keh-lu-Mnz"/>
+                            <constraint firstItem="WOc-oC-c8h" firstAttribute="bottom" secondItem="cf2-kG-FEC" secondAttribute="bottom" constant="337" id="eg0-Mx-4cF"/>
                             <constraint firstItem="WOc-oC-c8h" firstAttribute="trailing" secondItem="vcW-NP-VQs" secondAttribute="trailing" id="pHr-Jf-goL"/>
                             <constraint firstItem="zrI-Mu-Jlw" firstAttribute="bottom" secondItem="WOc-oC-c8h" secondAttribute="bottom" id="pL0-Mf-aVg"/>
-                            <constraint firstItem="JqN-HE-L0r" firstAttribute="top" secondItem="vcW-NP-VQs" secondAttribute="bottom" id="rbv-yF-IhP"/>
+                            <constraint firstItem="Waa-rG-TdG" firstAttribute="leading" secondItem="WOc-oC-c8h" secondAttribute="leading" id="stw-yO-9la"/>
+                            <constraint firstItem="cf2-kG-FEC" firstAttribute="trailing" secondItem="vcW-NP-VQs" secondAttribute="trailing" id="vb8-jU-16o"/>
                             <constraint firstItem="zrI-Mu-Jlw" firstAttribute="leading" secondItem="vIX-mD-vq3" secondAttribute="leading" id="ziL-vV-lYu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WOc-oC-c8h"/>
@@ -166,7 +175,7 @@
                     <connections>
                         <outlet property="mainCollectionView" destination="cf2-kG-FEC" id="Zls-GQ-iHD"/>
                         <outlet property="mainTableView" destination="zrI-Mu-Jlw" id="2Pg-k7-Eed"/>
-                        <outlet property="searchBar" destination="JqN-HE-L0r" id="3g7-5m-INA"/>
+                        <outlet property="segmentedControl" destination="Waa-rG-TdG" id="VKk-Rl-AOc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ADL-Mo-RwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -473,11 +482,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="mainBG" translatesAutoresizingMaskIntoConstraints="NO" id="bnl-sw-V4M">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="iPhone SE" translatesAutoresizingMaskIntoConstraints="NO" id="bnl-sw-V4M">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TezzFood" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvH-zs-4dt">
-                                <rect key="frame" x="105" y="131" width="164" height="49"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvH-zs-4dt">
+                                <rect key="frame" x="187" y="131" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -487,7 +496,7 @@
                                 <rect key="frame" x="60" y="532" width="255" height="39"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Giriş Yap">
-                                    <color key="titleColor" red="0.50980392156862742" green="0.67843137254901964" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="wPw-GR-flK" kind="show" id="Sql-Nk-NKp"/>
@@ -972,7 +981,7 @@
         <image name="Şifre" width="295" height="45"/>
         <image name="Tamam" width="295" height="45"/>
         <image name="WebSitesi" width="295" height="45"/>
-        <image name="mainBG" width="5184" height="3456"/>
+        <image name="iPhone SE" width="320" height="568"/>
         <image name="plus" width="30" height="30"/>
         <image name="restaurant" width="30" height="30"/>
         <image name="settings" width="30" height="30"/>

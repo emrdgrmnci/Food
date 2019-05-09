@@ -8,4 +8,5 @@ target 'Food' do
   # Pods for Food
 	pod 'TinyConstraints'
 	pod 'KMPlaceholderTextView' 
+	pod 'lottie-ios'
 end

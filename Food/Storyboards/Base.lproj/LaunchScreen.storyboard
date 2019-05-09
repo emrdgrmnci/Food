@@ -10,52 +10,32 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Launch Screen View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController id="01J-lp-oVM" customClass="LaunchScreenViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ON1-ZK-CLK">
-                                <rect key="frame" x="134.5" y="423.5" width="145" height="49"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="launchBruger" translatesAutoresizingMaskIntoConstraints="NO" id="dZw-ib-l93">
-                                        <rect key="frame" x="-134.5" y="-384.5" width="414" height="818"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TezFood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOc-CN-zbv">
-                                        <rect key="frame" x="0.0" y="0.0" width="145" height="49"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <color key="textColor" red="0.50980392156862742" green="0.67843137254901964" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" red="0.2117426097" green="0.21177878980000001" blue="0.2117346823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="xOc-CN-zbv" firstAttribute="leading" secondItem="ON1-ZK-CLK" secondAttribute="leading" id="Whc-e2-i5j"/>
-                                    <constraint firstAttribute="bottom" secondItem="xOc-CN-zbv" secondAttribute="bottom" id="Z4R-Ap-vw5"/>
-                                    <constraint firstItem="xOc-CN-zbv" firstAttribute="top" secondItem="ON1-ZK-CLK" secondAttribute="top" id="n8O-Ir-QUl"/>
-                                    <constraint firstAttribute="trailing" secondItem="xOc-CN-zbv" secondAttribute="trailing" id="st3-tx-sFf"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZrP-Rt-7w2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.99861580130000005" green="0.039089243859999998" blue="0.00063127692560000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ON1-ZK-CLK" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KQQ-di-LnD"/>
-                            <constraint firstItem="ON1-ZK-CLK" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ifa-df-Iza"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZrP-Rt-7w2" secondAttribute="bottom" id="9oI-N1-ptd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZrP-Rt-7w2" secondAttribute="trailing" id="NC2-dL-Rn2"/>
+                            <constraint firstItem="ZrP-Rt-7w2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cTG-pv-7Jr"/>
+                            <constraint firstItem="ZrP-Rt-7w2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="u5a-yF-o9N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+            <point key="canvasLocation" x="-425" y="418"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="launchBruger" width="6281" height="4187"/>
-    </resources>
 </document>

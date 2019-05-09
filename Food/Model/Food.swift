@@ -9,6 +9,7 @@
 import Foundation
 
 struct Food {
+    var category: String
     var name: String
     var price: Double
     
