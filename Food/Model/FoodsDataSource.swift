@@ -17,42 +17,35 @@ class FoodsDataSource: NSObject {
         self.imageNames = images
     }
 }
+//MARK: Menu Categories
+let sections = ["Kahvaltı", "Hamburger", "İçecek", "Tatlı", "Salata"]
+
 extension FoodsDataSource: UITableViewDataSource {
     
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-        return "Kahvaltı"
-        } else if section == 1 {
-        return "Hamburger"
-        } else if section == 2 {
-            return "İçecek"
-        } else if section == 3 {
-            return "Tatlı"
-        }
-        return "Salata"
+        return sections[section]
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return foods.count
-    }
-        return 5
+        return sections.count
     }
     
-    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        let sectionName = sections[section]
+        return foods.filter({ $0.category == sectionName}).count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood") as! MainFoodTitleTableViewCell
-        let food = foods[indexPath.row]
+        
+        let food = foods.filter({$0.category == sections[indexPath.section]})[indexPath.row]
         cell.title = food.name
-        cell.price = food.price 
+        cell.price = food.price
+        
         return cell
     }
     
@@ -76,11 +69,6 @@ extension FoodsDataSource: UICollectionViewDataSource, UICollectionViewDelegate 
         cell.mainFoodImage.image = UIImage(named: img.name)
         return cell
     }
-    
-    func indexTitles(for collectionView: UICollectionView) -> [String]? {
-        return ["Promosyonlar"]
-    }
-    
     
 }
 

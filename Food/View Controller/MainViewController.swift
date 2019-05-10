@@ -22,31 +22,32 @@ class MainViewController: UIViewController {
             Food(category: "Kahvaltı", name: "Pazar Kahvaltısı", price: 25.0),
             Food(category: "Kahvaltı", name: "Diyet Kahvaltı", price: 22.0),
             Food(category: "Kahvaltı", name: "Köy Kahvaltısı", price: 15.0),
-            Food(category: "Kahvaltı", name: "Ege Kahvaltısı", price: 30.0)
-        ]
-        let burgers = [ Food(category: "Hamburger", name: "Big TezzBurger", price: 26.0),
-                        Food(category: "Hamburger", name: "TezzRoyal", price: 24.0),
-                        Food(category: "Hamburger", name: "Double TezzBurger", price: 17.0),
-                        Food(category: "Hamburger", name: "TezzChicken", price: 21.0),
-                        Food(category: "Hamburger", name: "Köfteburger", price: 28.0) ]
-        let drinks = [
+            Food(category: "Kahvaltı", name: "Ege Kahvaltısı", price: 30.0),
+            
+            Food(category: "Hamburger", name: "Big TezzBurger", price: 26.0),
+            Food(category: "Hamburger", name: "TezzRoyal", price: 24.0),
+            Food(category: "Hamburger", name: "Double TezzBurger", price: 17.0),
+            Food(category: "Hamburger", name: "TezzChicken", price: 21.0),
+            Food(category: "Hamburger", name: "Köfteburger", price: 28.0),
+            
             Food(category: "İçecek", name: "Kola", price: 4.0),
             Food(category: "İçecek", name: "Fanta", price: 4.0),
             Food(category: "İçecek", name: "Gazoz", price: 4.0),
             Food(category: "İçecek", name: "Soğuk Çay", price: 4.0),
-            Food(category: "İçecek", name: "Ayran", price: 4.0) ]
-        let desserts = [
+            Food(category: "İçecek", name: "Ayran", price: 4.0),
+            
             Food(category: "Tatlı", name: "Tezzdae", price: 6.0),
             Food(category: "Tatlı", name: "Tezz Cake", price: 8.0),
             Food(category: "Tatlı", name: "Tezz Flurry", price: 17.0),
             Food(category: "Tatlı", name: "Dondurma", price: 8.0),
-            Food(category: "Tatlı", name: "Sütlaç", price: 12.0) ]
-        let salads = [
+            Food(category: "Tatlı", name: "Sütlaç", price: 12.0),
+            
             Food(category: "Salata", name: "Akdeniz Salatası", price:22.0),
             Food(category: "Salata", name: "Küçük Salata", price: 8.0),
             Food(category: "Salata", name: "TezzBites Salata ", price: 14.0),
             Food(category: "Salata", name: "Pancarlı Salata", price: 11.0),
-            Food(category: "Salata", name: "Somon Salata", price: 30.0) ]
+            Food(category: "Salata", name: "Somon Salata", price: 30.0)
+        ]
         
         let imageNames = [
             ImageNames(name: "kahvaltı"),
@@ -83,7 +84,7 @@ class MainViewController: UIViewController {
         mainCollectionView.reloadData()
         
     }
-   
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "cellForFood" {
