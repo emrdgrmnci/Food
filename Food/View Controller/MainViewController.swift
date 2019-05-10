@@ -13,7 +13,6 @@ class MainViewController: UIViewController {
     //    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     let foodSource: FoodsDataSource
     
@@ -61,44 +60,22 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
         
         mainTableView.dataSource = foodSource
         mainCollectionView.dataSource = foodSource
         mainTableView.reloadData()
         mainCollectionView.reloadData()
-        segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
+        
     }
-    
-    
-    @objc fileprivate func handleSegmentChange() {
-        print(segmentedControl.selectedSegmentIndex)
-        let foodSC = foodSource.foods
-        switch segmentedControl.selectedSegmentIndex {
-            
-        case 0:
-            foodSC.index(before: 4)
-            
-        case 1:
-            foodSC.index(before: 8)
-            
-        case 2:
-            foodSC.index(before: 12)
-            
-        case 3:
-            foodSC.index(before: 16)
-        case 4:
-            foodSC.index(before: 20)
-        default:
-            fatalError("Not selected any segment!")
-        }
-    }
+   
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "cellForFood" {

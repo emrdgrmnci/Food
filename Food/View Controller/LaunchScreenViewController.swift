@@ -22,11 +22,11 @@ class LaunchScreenViewController: UIViewController {
         startAnimation()
         
         //MARK: Splash screen animation time delay
-        perform(#selector(LaunchScreenViewController.showMainScreen), with: nil, afterDelay: 5.5)
+        perform(#selector(LaunchScreenViewController.showMainScreen), with: nil, afterDelay: 1.5)
     }
     
     func startAnimation() {
-        animationView.animation = Animation.named("4762-food-carousel")
+        animationView.animation = Animation.named("5326-loading-10-cooker")
         animationView.play()
     }
     
