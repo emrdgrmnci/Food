@@ -18,11 +18,33 @@ class FoodsDataSource: NSObject {
     }
 }
 extension FoodsDataSource: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+        return "Kahvaltı"
+        } else if section == 1 {
+        return "Hamburger"
+        } else if section == 2 {
+            return "İçecek"
+        } else if section == 3 {
+            return "Tatlı"
+        }
+        return "Salata"
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 5
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return foods.count
+        if section == 0 {
+            return foods.count
+    }
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -30,7 +52,7 @@ extension FoodsDataSource: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood") as! MainFoodTitleTableViewCell
         let food = foods[indexPath.row]
         cell.title = food.name
-        cell.price = food.price
+        cell.price = food.price 
         return cell
     }
     
@@ -54,6 +76,12 @@ extension FoodsDataSource: UICollectionViewDataSource, UICollectionViewDelegate 
         cell.mainFoodImage.image = UIImage(named: img.name)
         return cell
     }
+    
+    func indexTitles(for collectionView: UICollectionView) -> [String]? {
+        return ["Promosyonlar"]
+    }
+    
+    
 }
 
 

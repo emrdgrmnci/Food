@@ -42,7 +42,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         let foodName = fromSharedFood[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
         cell.myCartFoodNameLabel.text = foodName.name
-        cell.myCartFoodPriceLabel.text = foodName.price.description
+        cell.myCartFoodPriceLabel.text = "\(foodName.price)₺"
         
         return cell
     }

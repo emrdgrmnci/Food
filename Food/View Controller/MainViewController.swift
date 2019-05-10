@@ -41,11 +41,19 @@ class MainViewController: UIViewController {
             Food(category: "Tatlı", name: "Tezz Flurry", price: 17.0),
             Food(category: "Tatlı", name: "Dondurma", price: 8.0),
             Food(category: "Tatlı", name: "Sütlaç", price: 12.0) ]
+        let salads = [
+            Food(category: "Salata", name: "Akdeniz Salatası", price:22.0),
+            Food(category: "Salata", name: "Küçük Salata", price: 8.0),
+            Food(category: "Salata", name: "TezzBites Salata ", price: 14.0),
+            Food(category: "Salata", name: "Pancarlı Salata", price: 11.0),
+            Food(category: "Salata", name: "Somon Salata", price: 30.0) ]
         
         let imageNames = [
-            ImageNames(name: "images"),
+            ImageNames(name: "kahvaltı"),
             ImageNames(name: "unnamed-1"),
-            ImageNames(name: "unnamed")
+            ImageNames(name: "coca cola"),
+            ImageNames(name: "tezzdae"),
+            ImageNames(name: "salata")
             
         ]
         self.foodSource = FoodsDataSource(foods: foods, images: imageNames)

@@ -19,6 +19,8 @@ class ChangePasswordViewController: UIViewController {
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
+        
+        self.title = "Şifre Değiştir"
     }
     
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {

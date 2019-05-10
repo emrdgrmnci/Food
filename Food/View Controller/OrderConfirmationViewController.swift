@@ -92,6 +92,8 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
+        self.navigationController?.navigationBar.tintColor = .white
+        self.title = "Siparişi Onayla"
         
     }
     
@@ -166,14 +168,14 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         totalLabel.translatesAutoresizingMaskIntoConstraints = false
         totalLabel.textColor = .white
         totalLabel.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-        totalLabel.text = "Toplam: 3₺"
+        totalLabel.text = "Toplam: 55.0₺"
         
         view.addSubview(totalLabel)
         
         totalLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         totalLabel.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         totalLabel.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 2/3).isActive = true
-        totalLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        totalLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
         
         let approveButton = UIButton()
@@ -189,7 +191,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         approveButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         approveButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         approveButton.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 1/2).isActive = true
-        approveButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        approveButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
         
     }

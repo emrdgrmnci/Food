@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.backBarButtonItem?.title = ""
+        self.navigationController?.navigationBar.tintColor = .white
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
