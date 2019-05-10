@@ -6,7 +6,8 @@
 
 <h3>Here are the screens</h3>
 
-`Launch Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Splash Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Login/Register Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Register Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`Login Screen`
+`Launch Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Splash Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `First Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Register Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`Login Screen`
+
 <p float="left">
   <img src="ScreenImages/LaunchScreen.png" width="150" />&nbsp; 
   <img src="ScreenImages/SplashScreen.png" width="150" />&nbsp;
@@ -15,9 +16,11 @@
   <img src="ScreenImages/LoginScreen.png" width="150" />&nbsp;
   </br>  
 </p>
+
 `Main Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Detail Screen` 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `MyCart Screen` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Approve Order Screen`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`Other Screen` 
+
 <p float = "left">
  </br>
   <img src="ScreenImages/Simulator Screen Shot - iPhone X - 2019-05-10 at 22.20.48.png" width="150" />&nbsp;
@@ -26,8 +29,9 @@
   <img src="ScreenImages/ApproveOrderScreen.png" width="150" />&nbsp;
   <img src="ScreenImages/OtherScreen.png" width="150" />&nbsp;
   </p>
+  
   </br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Change Password Screen` 
+  `Change Password Screen` 
   <p float = "left">
  </br>
   <img src="ScreenImages/ChangePasswordScreen.png" width="150" />&nbsp;
