@@ -22,7 +22,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`Other Screen` 
 
 <p float = "left">
-  <img src="ScreenImages/Simulator Screen Shot - iPhone X - 2019-05-10 at 22.20.48.png" width="150" />&nbsp;
+  <img src="ScreenImages/MainScreen.png" width="150" />&nbsp;
   <img src="ScreenImages/DetailOrderScreen.png" width="150" />&nbsp;
    <img src="ScreenImages/MyCartScreen.png" width="150" />&nbsp;
   <img src="ScreenImages/ApproveOrderScreen.png" width="150" />&nbsp;
