@@ -595,7 +595,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.9986158013343811" green="0.039089243859052658" blue="0.00063127692556008697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.047058823529411764" blue="0.0078431372549019607" alpha="0.64688570205479456" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="Ipb-bv-glV" firstAttribute="top" secondItem="7lr-fX-GtZ" secondAttribute="bottom" constant="20" id="ITt-yl-6d1"/>
                                             <constraint firstItem="FFy-Mv-jON" firstAttribute="leading" secondItem="E5k-QE-9Lb" secondAttribute="leading" constant="29" id="Juw-N8-ZaG"/>
@@ -701,7 +701,7 @@
                                                 <rect key="frame" x="113" y="75" width="148" height="110"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.9986158013343811" green="0.039089243859052658" blue="0.00063127692556008697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.86837631464004517" green="0.074768714606761932" blue="0.073413185775279999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="s5P-Px-aGr" secondAttribute="trailing" constant="31" id="05N-ct-xdf"/>
                                             <constraint firstItem="0TV-qb-kPF" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="29" id="0Aq-ZB-0hX"/>
@@ -729,7 +729,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.99861580130000005" green="0.039089243859999998" blue="0.00063127692560000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.8666666666666667" green="0.074509803921568626" blue="0.074509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CPM-Gx-5Td" firstAttribute="trailing" secondItem="Dqd-er-ldS" secondAttribute="trailing" id="PsI-XR-8nw"/>
