@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4712F42F221D64B4009088DA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712F42E221D64B4009088DA /* RegisterViewController.swift */; };
+		472B1F53228823EA00CC59A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 472B1F52228823EA00CC59A2 /* LaunchScreen.storyboard */; };
 		472C31F8223814C400A3E863 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C31F7223814C400A3E863 /* Food.swift */; };
 		472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C31F92238152B00A3E863 /* FoodPrice.swift */; };
 		472F68BB22205953006F0FF7 /* MainFoodTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472F68BA22205953006F0FF7 /* MainFoodTitleTableViewCell.swift */; };
@@ -36,12 +37,12 @@
 		47FED485221B19A40050ADD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FED484221B19A40050ADD2 /* ViewController.swift */; };
 		47FED488221B19A40050ADD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47FED486221B19A40050ADD2 /* Main.storyboard */; };
 		47FED48B221B19A40050ADD2 /* Food.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47FED489221B19A40050ADD2 /* Food.xcdatamodeld */; };
-		47FED490221B19A50050ADD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47FED48E221B19A50050ADD2 /* LaunchScreen.storyboard */; };
 		B2FA65776E6C995EF6A18558 /* Pods_Food.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C69201FF5AA6189C00AC09E3 /* Pods_Food.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4712F42E221D64B4009088DA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		472B1F52228823EA00CC59A2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		472C31F7223814C400A3E863 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		472C31F92238152B00A3E863 /* FoodPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPrice.swift; sourceTree = "<group>"; };
 		472F68BA22205953006F0FF7 /* MainFoodTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFoodTitleTableViewCell.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		47FED484221B19A40050ADD2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		47FED487221B19A40050ADD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		47FED48A221B19A40050ADD2 /* Food.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Food.xcdatamodel; sourceTree = "<group>"; };
-		47FED48F221B19A50050ADD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47FED491221B19A50050ADD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60B450DA8D2581442E8912BF /* Pods-Food.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food.release.xcconfig"; path = "Pods/Target Support Files/Pods-Food/Pods-Food.release.xcconfig"; sourceTree = "<group>"; };
 		B87DF0307AA199A4831AC0B7 /* Pods-Food.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Food/Pods-Food.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				47FED486221B19A40050ADD2 /* Main.storyboard */,
-				47FED48E221B19A50050ADD2 /* LaunchScreen.storyboard */,
+				472B1F52228823EA00CC59A2 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -267,8 +267,8 @@
 				474A1B6122847FC700710A3E /* 4675-a-guakka-loader-for-foodvisor.json in Resources */,
 				47EBE4B6226F0F86000E1EB8 /* SF Pro in Resources */,
 				474A1B65228481D400710A3E /* 4762-food-carousel.json in Resources */,
-				47FED490221B19A50050ADD2 /* LaunchScreen.storyboard in Resources */,
 				474F3AE72222D7F600B3D388 /* Assets.xcassets in Resources */,
+				472B1F53228823EA00CC59A2 /* LaunchScreen.storyboard in Resources */,
 				47FED488221B19A40050ADD2 /* Main.storyboard in Resources */,
 				474A1B632284816D00710A3E /* 5326-loading-10-cooker.json in Resources */,
 			);
@@ -359,14 +359,6 @@
 				47FED487221B19A40050ADD2 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		47FED48E221B19A50050ADD2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				47FED48F221B19A50050ADD2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

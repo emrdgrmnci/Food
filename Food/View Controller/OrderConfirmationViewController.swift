@@ -168,7 +168,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         totalLabel.translatesAutoresizingMaskIntoConstraints = false
         totalLabel.textColor = .white
         totalLabel.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-        totalLabel.text = "Toplam: 55.0₺"
+        totalLabel.text = "Toplam: 22.0₺"
         
         view.addSubview(totalLabel)
         
