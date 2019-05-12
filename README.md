@@ -6,8 +6,8 @@
 
 <h3>Here are the screens</h3>
 <p float="left">
-  <img src="ScreenImages/LaunchScreen.png" width="150" />&nbsp; 
-  <img src="ScreenImages/SplashScreen.png" width="150" />&nbsp;
+  <img src="ScreenImages/LaunchScreen.png" width="150" height= "300"/>&nbsp; 
+  <img src="ScreenImages/SplashScreen.png" width="150" height= "300"/>&nbsp;
   <img src="ScreenImages/FirstScreen.png" width="150" />&nbsp;
   <img src="ScreenImages/SignupScreen.png" width="150" />&nbsp;
   <img src="ScreenImages/LoginScreen.png" width="150" />&nbsp;
