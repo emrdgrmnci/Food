@@ -12,6 +12,7 @@
 		472C31F8223814C400A3E863 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C31F7223814C400A3E863 /* Food.swift */; };
 		472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C31F92238152B00A3E863 /* FoodPrice.swift */; };
 		472F68BB22205953006F0FF7 /* MainFoodTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472F68BA22205953006F0FF7 /* MainFoodTitleTableViewCell.swift */; };
+		473E50F622899B9000E7BBC8 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E50F522899B9000E7BBC8 /* Webservice.swift */; };
 		474A1B5D2284765000710A3E /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474A1B5C2284765000710A3E /* LaunchScreenViewController.swift */; };
 		474A1B6122847FC700710A3E /* 4675-a-guakka-loader-for-foodvisor.json in Resources */ = {isa = PBXBuildFile; fileRef = 474A1B6022847FC600710A3E /* 4675-a-guakka-loader-for-foodvisor.json */; };
 		474A1B632284816D00710A3E /* 5326-loading-10-cooker.json in Resources */ = {isa = PBXBuildFile; fileRef = 474A1B622284816C00710A3E /* 5326-loading-10-cooker.json */; };
@@ -46,6 +47,7 @@
 		472C31F7223814C400A3E863 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		472C31F92238152B00A3E863 /* FoodPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPrice.swift; sourceTree = "<group>"; };
 		472F68BA22205953006F0FF7 /* MainFoodTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFoodTitleTableViewCell.swift; sourceTree = "<group>"; };
+		473E50F522899B9000E7BBC8 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		474A1B5C2284765000710A3E /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchScreenViewController.swift; path = "Food/View Controller/LaunchScreenViewController.swift"; sourceTree = SOURCE_ROOT; };
 		474A1B6022847FC600710A3E /* 4675-a-guakka-loader-for-foodvisor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "4675-a-guakka-loader-for-foodvisor.json"; sourceTree = "<group>"; };
 		474A1B622284816C00710A3E /* 5326-loading-10-cooker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "5326-loading-10-cooker.json"; sourceTree = "<group>"; };
@@ -90,6 +92,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		473E50F422899B4000E7BBC8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				473E50F522899B9000E7BBC8 /* Webservice.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		473E50F722899DCA00E7BBC8 /* AnimationsJSON */ = {
+			isa = PBXGroup;
+			children = (
+				474A1B6022847FC600710A3E /* 4675-a-guakka-loader-for-foodvisor.json */,
+				474A1B622284816C00710A3E /* 5326-loading-10-cooker.json */,
+				474A1B64228481D300710A3E /* 4762-food-carousel.json */,
+			);
+			path = AnimationsJSON;
+			sourceTree = "<group>";
+		};
 		47700C1D221EC4E4009C7682 /* MainFoodCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,10 +189,9 @@
 		47FED481221B19A40050ADD2 /* Food */ = {
 			isa = PBXGroup;
 			children = (
+				473E50F422899B4000E7BBC8 /* Services */,
 				47FED482221B19A40050ADD2 /* AppDelegate.swift */,
-				474A1B6022847FC600710A3E /* 4675-a-guakka-loader-for-foodvisor.json */,
-				474A1B622284816C00710A3E /* 5326-loading-10-cooker.json */,
-				474A1B64228481D300710A3E /* 4762-food-carousel.json */,
+				473E50F722899DCA00E7BBC8 /* AnimationsJSON */,
 				474F3AE62222D7F500B3D388 /* Assets.xcassets */,
 				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
 				47FED491221B19A50050ADD2 /* Info.plist */,
@@ -326,6 +345,7 @@
 			files = (
 				47EC7EE422283A0B0045783B /* MainNavigationController.swift in Sources */,
 				474A1B5D2284765000710A3E /* LaunchScreenViewController.swift in Sources */,
+				473E50F622899B9000E7BBC8 /* Webservice.swift in Sources */,
 				47CBD0A5223949960032ADEC /* MainViewController.swift in Sources */,
 				47FED485221B19A40050ADD2 /* ViewController.swift in Sources */,
 				47FED483221B19A40050ADD2 /* AppDelegate.swift in Sources */,
