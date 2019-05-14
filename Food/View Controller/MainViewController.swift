@@ -83,6 +83,15 @@ class MainViewController: UIViewController {
         mainTableView.reloadData()
         mainCollectionView.reloadData()
         
+        webServiceSetup()
+    }
+    
+    private func webServiceSetup() {
+        
+        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=a2626aaa3a26408f99619c7283401b30")!
+        Webservice().getFoods(url: url) { _ in
+            
+        }
     }
     
     
