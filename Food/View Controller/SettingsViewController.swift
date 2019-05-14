@@ -9,10 +9,35 @@
 import UIKit
 import SafariServices
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UITableViewController {
 
-    @IBOutlet weak var settingsName: UITextField!
-    @IBOutlet weak var settingsSurname: UITextField!
+    
+    
+    let settingList = ["Bilgilerim", "Önceki Siparişlerim", "Favorilerim", "Adreslerim"]
+    let identities = ["MyInfos", "MyPastOrders", "MyFavorites", "MyAddresses"]
+    
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return settingList.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OtherList")
+        
+        let list = settingList[indexPath.row]
+        
+        cell?.textLabel?.text = list
+        
+        return cell!
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vcNames = identities[indexPath.row]
+        let viewController = storyboard?.instantiateViewController(withIdentifier: vcNames)
+        self.navigationController?.pushViewController(viewController!, animated: true)
+    }
+    
+    
     
     @IBAction func showWebPage(_ sender: Any) {
         showWebPage()
@@ -31,14 +56,10 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
+      
     }
     
-    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        settingsName.resignFirstResponder()
-        settingsSurname.resignFirstResponder()
-    }
+    
     
 
     /*
