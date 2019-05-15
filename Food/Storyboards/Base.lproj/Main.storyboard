@@ -822,12 +822,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="457"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Seh-Xq-t1C">
-                            <rect key="frame" x="0.0" y="72" width="320" height="45"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                            <state key="normal" image="Çıkış"/>
-                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="OtherList" textLabel="QMP-Ll-CBn" style="IBUITableViewCellStyleDefault" id="nLO-pN-NSr">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -1193,7 +1187,6 @@
     </scenes>
     <resources>
         <image name="AddQuantity" width="22" height="22"/>
-        <image name="Çıkış" width="295" height="45"/>
         <image name="DiscreteQuantity" width="24" height="3"/>
         <image name="GirisYap-1" width="255" height="45"/>
         <image name="GirişYap" width="295" height="45"/>
@@ -1212,7 +1205,7 @@
         <image name="tezzfood" width="119" height="110"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cvc-R5-nyC"/>
+        <segue reference="m88-Rq-hcU"/>
         <segue reference="aa3-Hs-Nxw"/>
     </inferredMetricsTieBreakers>
 </document>

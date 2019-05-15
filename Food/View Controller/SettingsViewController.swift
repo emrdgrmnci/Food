@@ -10,11 +10,12 @@ import UIKit
 import SafariServices
 
 class SettingsViewController: UITableViewController {
-
+    
+    let window: UIWindow? = nil
     
     
-    let settingList = ["Bilgilerim", "Önceki Siparişlerim", "Favorilerim", "Adreslerim"]
-    let identities = ["MyInfos", "MyPastOrders", "MyFavorites", "MyAddresses"]
+    let settingList = ["Bilgilerim", "Önceki Siparişlerim", "Favorilerim", "Adreslerim", "Çıkış Yap"]
+    let identities = ["MyInfos", "MyPastOrders", "MyFavorites", "MyAddresses", "Logout"]
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,9 +33,15 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vcNames = identities[indexPath.row]
-        let viewController = storyboard?.instantiateViewController(withIdentifier: vcNames)
-        self.navigationController?.pushViewController(viewController!, animated: true)
+        
+        if indexPath.row == 4 {
+            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstViewController") 
+            self.present(viewController, animated: true, completion: nil)
+        } else {
+            let vcNames = identities[indexPath.row]
+            let viewController = storyboard?.instantiateViewController(withIdentifier: vcNames)
+            
+        }
     }
     
     
@@ -55,21 +62,21 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      
+        
+        
     }
     
     
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
