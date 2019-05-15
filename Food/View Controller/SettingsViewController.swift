@@ -11,9 +11,6 @@ import SafariServices
 
 class SettingsViewController: UITableViewController {
     
-    let window: UIWindow? = nil
-    
-    
     let settingList = ["Bilgilerim", "Önceki Siparişlerim", "Favorilerim", "Adreslerim", "Çıkış Yap"]
     let identities = ["MyInfos", "MyPastOrders", "MyFavorites", "MyAddresses", "Logout"]
     
@@ -35,14 +32,14 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 4 {
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstViewController") 
+            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstViewController")
             self.present(viewController, animated: true, completion: nil)
         } else {
             let vcNames = identities[indexPath.row]
             let viewController = storyboard?.instantiateViewController(withIdentifier: vcNames)
-            
+            self.navigationController?.pushViewController(viewController!, animated: true)
         }
-    }
+        }
     
     
     

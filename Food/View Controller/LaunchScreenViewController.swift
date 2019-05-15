@@ -31,8 +31,6 @@ class LaunchScreenViewController: UIViewController {
         
         startAnimation()
         
-        view.addSubview(tezzFoodLabel)
-        
         setupLayout()
     
         //MARK: Splash screen animation time delay
@@ -46,10 +44,18 @@ class LaunchScreenViewController: UIViewController {
     
     private func setupLayout() {
         
-        tezzFoodLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
-        tezzFoodLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 105).isActive = true
-        tezzFoodLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 130).isActive = true
-        tezzFoodLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -310).isActive = true
+        self.view.addSubview(tezzFoodLabel)
+        
+//        tezzFoodLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 100).isActive = true
+        tezzFoodLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        tezzFoodLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
+//        tezzFoodLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        tezzFoodLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//
+//        tezzFoodLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
+////        tezzFoodLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 105).isActive = true
+//        tezzFoodLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -90).isActive = true
+//        tezzFoodLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -310).isActive = true
     }
     
     
