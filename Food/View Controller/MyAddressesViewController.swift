@@ -58,7 +58,7 @@ class MyAddressesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.title = "Adreslerim"
         self.view.addSubview(scrollView)
         setupScrollView()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
