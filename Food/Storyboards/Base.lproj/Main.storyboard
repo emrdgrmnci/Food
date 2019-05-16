@@ -922,6 +922,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ejd-wr-fBX"/>
                     </view>
+                    <connections>
+                        <outlet property="myPastOrdersTableView" destination="knQ-mc-FNd" id="oZt-fO-edt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z1U-2v-G7u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -975,6 +978,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hOm-vq-cI9"/>
                     </view>
+                    <connections>
+                        <outlet property="myFavoritesTableView" destination="EL2-Vc-xd9" id="6MX-Cj-Cl9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVC-hc-jde" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

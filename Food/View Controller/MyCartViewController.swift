@@ -31,9 +31,6 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         myCartTableView.reloadData()
     }
     
-  
-    
-   
     
     override func viewWillAppear(_ animated: Bool) {
         if fromSharedFood.count == 0 {
