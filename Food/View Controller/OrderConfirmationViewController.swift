@@ -19,7 +19,6 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
     var activeTextField = UITextField()
     
     @IBAction func approveButton(_ sender: Any) {
-        
     }
     
     lazy var scrollView: UIScrollView = {
@@ -231,7 +230,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         
     }
     //TODO: Approve Button
-    @objc func approveButtonAction(sender: UIButton!) {
+    @objc func approveButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     

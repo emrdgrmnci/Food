@@ -26,6 +26,7 @@
 		47505FD9228B572000876FBF /* MyAddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47505FD8228B572000876FBF /* MyAddressesViewController.swift */; };
 		4753F87A223821A200DD7DC2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4753F879223821A200DD7DC2 /* SettingsViewController.swift */; };
 		4753F87C2238222A00DD7DC2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4753F87B2238222A00DD7DC2 /* ChangePasswordViewController.swift */; };
+		47560023228D6707006DA1ED /* MyPastOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47560022228D6707006DA1ED /* MyPastOrdersTableViewCell.swift */; };
 		47700C1A221EC4A2009C7682 /* MainFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47700C19221EC4A2009C7682 /* MainFoodTableViewCell.swift */; };
 		47700C1C221EC4D7009C7682 /* MainFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47700C1B221EC4D7009C7682 /* MainFoodCollectionViewCell.swift */; };
 		47700C23221F115D009C7682 /* ImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47700C22221F115D009C7682 /* ImageNames.swift */; };
@@ -66,6 +67,7 @@
 		47505FD8228B572000876FBF /* MyAddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressesViewController.swift; sourceTree = "<group>"; };
 		4753F879223821A200DD7DC2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4753F87B2238222A00DD7DC2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		47560022228D6707006DA1ED /* MyPastOrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPastOrdersTableViewCell.swift; sourceTree = "<group>"; };
 		47700C19221EC4A2009C7682 /* MainFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFoodTableViewCell.swift; sourceTree = "<group>"; };
 		47700C1B221EC4D7009C7682 /* MainFoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		47700C22221F115D009C7682 /* ImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNames.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				474F3AE62222D7F500B3D388 /* Assets.xcassets */,
 				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
 				47FED491221B19A50050ADD2 /* Info.plist */,
+				47560022228D6707006DA1ED /* MyPastOrdersTableViewCell.swift */,
 				47700C1D221EC4E4009C7682 /* MainFoodCells */,
 				47A262D4226F9FC20079C434 /* Model */,
 				47781A39222ABFF100ECE28A /* MyCartCells */,
@@ -360,6 +363,7 @@
 			files = (
 				47EC7EE422283A0B0045783B /* MainNavigationController.swift in Sources */,
 				47505FD5228B547F00876FBF /* MyPastOrdersViewController.swift in Sources */,
+				47560023228D6707006DA1ED /* MyPastOrdersTableViewCell.swift in Sources */,
 				474A1B5D2284765000710A3E /* LaunchScreenViewController.swift in Sources */,
 				473E50F622899B9000E7BBC8 /* Webservice.swift in Sources */,
 				47CBD0A5223949960032ADEC /* MainViewController.swift in Sources */,

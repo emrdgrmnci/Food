@@ -20,7 +20,6 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     
     var food: Food?
     
-    var foodInfos: [String] = ["Whopper", "Steakhouse", "Big mac"]
     var fromSharedFood = SingletonCart.sharedFood.food
     //TODO: - Approve my  cart
     @IBAction func approveCart(_ sender: Any) {

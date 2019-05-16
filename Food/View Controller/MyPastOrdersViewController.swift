@@ -10,6 +10,8 @@ import UIKit
 
 class MyPastOrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+   
+    
     @IBOutlet weak var myPastOrdersTableView: UITableView!
     
     var food: Food?
@@ -44,9 +46,9 @@ class MyPastOrdersViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let foodName = fromSharedFood[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
-        cell.myCartFoodNameLabel.text = foodName.name
-        cell.myCartFoodPriceLabel.text = "\(foodName.price)₺"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myPastOrderCell", for: indexPath) as! MyPastOrdersTableViewCell
+        cell.selectedMenu.text = foodName.name
+        cell.selectedMenuPrice.text = "\(foodName.price)₺"
         
         return cell
     }
