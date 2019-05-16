@@ -11,10 +11,14 @@ import KMPlaceholderTextView
 
 class MyAddressesViewController: UIViewController {
     
+    override func viewDidLayoutSubviews() {
+        self.scrollView.contentSize = CGSize(width: 320, height: 700)
+    }
+    
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentSize.height = 700
+//        view.contentSize.height = 700
         view.backgroundColor = .white
         return view
     }()
@@ -55,8 +59,10 @@ class MyAddressesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(scrollView)
+        self.view.addSubview(scrollView)
         setupScrollView()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
         
     }
     
@@ -90,14 +96,15 @@ class MyAddressesViewController: UIViewController {
         addressTextView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         addressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 100).isActive = true
         addressTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        addressTextView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        addressTextView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        
         
         scrollView.addSubview(shortAddressTextView)
         
         shortAddressTextView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        shortAddressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 150).isActive = true
+        shortAddressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 190).isActive = true
         shortAddressTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        shortAddressTextView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        shortAddressTextView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         let image = UIImage(named: "Tamam") as UIImage?  //w:295, h: 45
         let imageSize: CGSize = CGSize(width: 45, height: 45)

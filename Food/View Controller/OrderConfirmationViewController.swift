@@ -92,6 +92,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
+        
         self.navigationController?.navigationBar.tintColor = .white
         self.title = "Siparişi Onayla"
         
