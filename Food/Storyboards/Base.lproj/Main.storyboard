@@ -513,6 +513,12 @@
                                     <segue destination="wPw-GR-flK" kind="show" id="m88-Rq-hcU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Şifreni mi unuttun?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ct-DN-Gew">
+                                <rect key="frame" x="102" y="357" width="115" height="14.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -524,6 +530,8 @@
                             <constraint firstItem="N34-bV-iEh" firstAttribute="top" secondItem="2ob-K6-9Fo" secondAttribute="bottom" constant="25" id="7an-LX-Ybr"/>
                             <constraint firstItem="wk8-qQ-3ul" firstAttribute="leading" secondItem="KhH-l0-i98" secondAttribute="leading" constant="32" id="9RW-UR-2pM"/>
                             <constraint firstAttribute="trailing" secondItem="wk8-qQ-3ul" secondAttribute="trailing" constant="33" id="9mR-0A-Cie"/>
+                            <constraint firstItem="0ct-DN-Gew" firstAttribute="top" secondItem="N34-bV-iEh" secondAttribute="bottom" constant="3" id="HcQ-Ev-sUm"/>
+                            <constraint firstItem="0ct-DN-Gew" firstAttribute="centerX" secondItem="wk8-qQ-3ul" secondAttribute="centerX" id="MDl-KI-y2G"/>
                             <constraint firstAttribute="trailing" secondItem="QvH-zs-4dt" secondAttribute="trailing" constant="132" id="ecs-bK-GT0"/>
                             <constraint firstItem="bnl-sw-V4M" firstAttribute="trailing" secondItem="oGV-UC-zhN" secondAttribute="trailing" id="gmn-ny-33k"/>
                             <constraint firstItem="QvH-zs-4dt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KhH-l0-i98" secondAttribute="leading" constant="20" symbolic="YES" id="hwe-om-JTV"/>
@@ -609,7 +617,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.047058823529411764" blue="0.0078431372549019607" alpha="0.64688570205479456" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.047058823529411764" blue="0.0078431372549019607" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="7yB-8i-GGA" secondAttribute="trailing" constant="30" id="3SC-f0-hZp"/>
                                             <constraint firstItem="Ipb-bv-glV" firstAttribute="leading" secondItem="E5k-QE-9Lb" secondAttribute="leading" constant="30" id="4vt-Aj-ILv"/>

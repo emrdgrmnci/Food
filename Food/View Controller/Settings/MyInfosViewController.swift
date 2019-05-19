@@ -26,6 +26,8 @@ class MyInfosViewController: UIViewController {
             
             let vc = SFSafariViewController(url: url, configuration: config)
             present(vc, animated: true)
+            vc.preferredBarTintColor = .red
+            vc.preferredControlTintColor = .white
         }
     }
     
