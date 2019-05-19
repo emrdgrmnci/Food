@@ -83,7 +83,7 @@ class MainViewController: UIViewController {
         mainTableView.reloadData()
         mainCollectionView.reloadData()
         
-        webServiceSetup()
+//        webServiceSetup()
     }
     //MARK: Web service setup
     

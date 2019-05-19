@@ -477,9 +477,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="MainLogoScreen" translatesAutoresizingMaskIntoConstraints="NO" id="bnl-sw-V4M">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvH-zs-4dt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvH-zs-4dt">
                                 <rect key="frame" x="188" y="131" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -509,7 +508,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="M7k-lH-siX"/>
                                 </constraints>
-                                <state key="normal" image="GirisYap-1"/>
+                                <state key="normal" image="IntroGirisYapButton"/>
                                 <connections>
                                     <segue destination="wPw-GR-flK" kind="show" id="m88-Rq-hcU"/>
                                 </connections>
@@ -525,11 +524,14 @@
                             <constraint firstItem="N34-bV-iEh" firstAttribute="top" secondItem="2ob-K6-9Fo" secondAttribute="bottom" constant="25" id="7an-LX-Ybr"/>
                             <constraint firstItem="wk8-qQ-3ul" firstAttribute="leading" secondItem="KhH-l0-i98" secondAttribute="leading" constant="32" id="9RW-UR-2pM"/>
                             <constraint firstAttribute="trailing" secondItem="wk8-qQ-3ul" secondAttribute="trailing" constant="33" id="9mR-0A-Cie"/>
+                            <constraint firstAttribute="trailing" secondItem="QvH-zs-4dt" secondAttribute="trailing" constant="132" id="ecs-bK-GT0"/>
                             <constraint firstItem="bnl-sw-V4M" firstAttribute="trailing" secondItem="oGV-UC-zhN" secondAttribute="trailing" id="gmn-ny-33k"/>
+                            <constraint firstItem="QvH-zs-4dt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KhH-l0-i98" secondAttribute="leading" constant="20" symbolic="YES" id="hwe-om-JTV"/>
                             <constraint firstItem="oGV-UC-zhN" firstAttribute="bottom" secondItem="wk8-qQ-3ul" secondAttribute="bottom" constant="80" id="iTv-bk-hda"/>
                             <constraint firstItem="bnl-sw-V4M" firstAttribute="bottom" secondItem="KhH-l0-i98" secondAttribute="bottom" id="jSo-i5-che"/>
                             <constraint firstItem="N34-bV-iEh" firstAttribute="leading" secondItem="oGV-UC-zhN" secondAttribute="leading" constant="32" id="nfo-Ph-EiR"/>
                             <constraint firstItem="oGV-UC-zhN" firstAttribute="trailing" secondItem="N34-bV-iEh" secondAttribute="trailing" constant="31" id="vVc-pF-vMk"/>
+                            <constraint firstItem="QvH-zs-4dt" firstAttribute="top" secondItem="KhH-l0-i98" secondAttribute="top" constant="131" id="yHB-YU-WhX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oGV-UC-zhN"/>
                     </view>
@@ -1085,6 +1087,10 @@
                         <barButtonItem key="backBarButtonItem" title="Diğer" id="4SS-4m-PRc"/>
                     </navigationItem>
                     <size key="freeformSize" width="320" height="700"/>
+                    <connections>
+                        <outlet property="myLastNameTextField" destination="DhG-FU-PHl" id="0gh-Mn-nCY"/>
+                        <outlet property="myNameTextField" destination="7Ry-Rn-q3n" id="2Gp-eC-gjf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKv-Xd-qFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1161,7 +1167,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxg-Tb-ABo">
-                                <rect key="frame" x="13" y="228" width="295" height="150"/>
+                                <rect key="frame" x="13" y="228" width="295" height="45"/>
                                 <state key="normal" image="Tamam"/>
                             </button>
                         </subviews>
@@ -1170,16 +1176,16 @@
                             <constraint firstItem="faF-SZ-ceo" firstAttribute="top" secondItem="TNR-dR-2e0" secondAttribute="bottom" constant="20" id="0xC-Xw-OXk"/>
                             <constraint firstItem="TNR-dR-2e0" firstAttribute="top" secondItem="d6v-oh-EJC" secondAttribute="top" constant="53" id="6Tt-y2-sph"/>
                             <constraint firstItem="d6v-oh-EJC" firstAttribute="trailing" secondItem="MtA-YC-0Jj" secondAttribute="trailing" constant="16" id="6fh-se-Df4"/>
+                            <constraint firstItem="d6v-oh-EJC" firstAttribute="bottom" secondItem="Hxg-Tb-ABo" secondAttribute="bottom" constant="295" id="8dS-rR-uSN"/>
                             <constraint firstItem="MtA-YC-0Jj" firstAttribute="leading" secondItem="d6v-oh-EJC" secondAttribute="leading" constant="16" id="Gba-97-zqb"/>
-                            <constraint firstItem="d6v-oh-EJC" firstAttribute="bottom" secondItem="Hxg-Tb-ABo" secondAttribute="bottom" constant="190" id="Lbs-Zw-0ya"/>
+                            <constraint firstItem="d6v-oh-EJC" firstAttribute="trailing" secondItem="Hxg-Tb-ABo" secondAttribute="trailing" constant="12" id="KXC-FQ-y3s"/>
                             <constraint firstItem="MtA-YC-0Jj" firstAttribute="top" secondItem="faF-SZ-ceo" secondAttribute="bottom" constant="20" id="NKh-sJ-EOH"/>
                             <constraint firstItem="TNR-dR-2e0" firstAttribute="leading" secondItem="d6v-oh-EJC" secondAttribute="leading" constant="16" id="Pce-Pf-lFQ"/>
+                            <constraint firstItem="Hxg-Tb-ABo" firstAttribute="top" secondItem="MtA-YC-0Jj" secondAttribute="bottom" constant="25" id="TIM-be-sIy"/>
+                            <constraint firstItem="Hxg-Tb-ABo" firstAttribute="leading" secondItem="d6v-oh-EJC" secondAttribute="leading" constant="13" id="YP8-Od-dOc"/>
                             <constraint firstItem="d6v-oh-EJC" firstAttribute="trailing" secondItem="TNR-dR-2e0" secondAttribute="trailing" constant="16" id="g8w-Bc-kKz"/>
-                            <constraint firstItem="Hxg-Tb-ABo" firstAttribute="top" secondItem="MtA-YC-0Jj" secondAttribute="bottom" constant="25" id="hld-WY-UPm"/>
-                            <constraint firstItem="d6v-oh-EJC" firstAttribute="trailing" secondItem="Hxg-Tb-ABo" secondAttribute="trailing" constant="12" id="iGW-EH-kRP"/>
                             <constraint firstItem="d6v-oh-EJC" firstAttribute="trailing" secondItem="faF-SZ-ceo" secondAttribute="trailing" constant="16" id="kIe-qB-UPk"/>
                             <constraint firstItem="faF-SZ-ceo" firstAttribute="leading" secondItem="d6v-oh-EJC" secondAttribute="leading" constant="16" id="r1U-0Q-ONr"/>
-                            <constraint firstItem="Hxg-Tb-ABo" firstAttribute="leading" secondItem="d6v-oh-EJC" secondAttribute="leading" constant="13" id="sfh-V4-GXv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d6v-oh-EJC"/>
                     </view>
@@ -1197,9 +1203,9 @@
     <resources>
         <image name="AddQuantity" width="22" height="22"/>
         <image name="DiscreteQuantity" width="24" height="3"/>
-        <image name="GirisYap-1" width="255" height="45"/>
         <image name="GirişYap" width="295" height="45"/>
         <image name="Group 3580" width="255" height="45"/>
+        <image name="IntroGirisYapButton" width="255" height="45"/>
         <image name="MainLogoScreen" width="320" height="568"/>
         <image name="Sepete" width="295" height="45"/>
         <image name="Symbol 25 – 6" width="295" height="45"/>
