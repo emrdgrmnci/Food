@@ -85,14 +85,15 @@ class MainViewController: UIViewController {
         
         webServiceSetup()
     }
+    //MARK: Web service setup
     
-    private func webServiceSetup() {
-        
-        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=a2626aaa3a26408f99619c7283401b30")!
-        Webservice().getFoods(url: url) { _ in
-            
-        }
-    }
+//    private func webServiceSetup() {
+//
+//        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=a2626aaa3a26408f99619c7283401b30")!
+//        Webservice().getFoods(url: url) { _ in
+//
+//        }
+//    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -105,6 +106,24 @@ class MainViewController: UIViewController {
         }
         
     }
+    
+    //MARK: From POST request handling
+    
+    /* @IBAction func sendMessage(_ sender: Any) {
+     let food = Food(food: text)
+     
+     let postRequest = APIRequest(endpoint: "messages")
+     postRequest.save(food, completion: { result in
+     switch result {
+     case. success(let food):
+     print("The following food has been sent: \(food.food)")
+     case .failure(let error):
+     print("An error occured \(error)")
+     }
+     })
+     
+     */
+    
 }
 
 

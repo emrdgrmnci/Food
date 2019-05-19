@@ -296,9 +296,9 @@
 			isa = PBXGroup;
 			children = (
 				47FED481221B19A40050ADD2 /* Food */,
-				47FED480221B19A40050ADD2 /* Products */,
-				B09CFD468CF6CC36F3CD702E /* Pods */,
 				8735EBCA1FF703FE427A9CDA /* Frameworks */,
+				B09CFD468CF6CC36F3CD702E /* Pods */,
+				47FED480221B19A40050ADD2 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
