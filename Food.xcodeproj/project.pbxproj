@@ -140,6 +140,40 @@
 			path = MyCartCells;
 			sourceTree = "<group>";
 		};
+		477D4EF4229152DC009DAD90 /* MyPastOrdersCells */ = {
+			isa = PBXGroup;
+			children = (
+				47560022228D6707006DA1ED /* MyPastOrdersTableViewCell.swift */,
+			);
+			path = MyPastOrdersCells;
+			sourceTree = "<group>";
+		};
+		477D4EF522915318009DAD90 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				47FED482221B19A40050ADD2 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		477D4EF622915352009DAD90 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				474F3AE62222D7F500B3D388 /* Assets.xcassets */,
+				477D4EF7229153DF009DAD90 /* Fonts */,
+				473E50F722899DCA00E7BBC8 /* AnimationsJSON */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		477D4EF7229153DF009DAD90 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				47EBE4B5226F0F86000E1EB8 /* SF Pro */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		47A262D3226F9F8C0079C434 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +200,7 @@
 		47A262D4226F9FC20079C434 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
 				47D3D167226DE31500BE5AA9 /* FoodsDataSource.swift */,
 				472C31F7223814C400A3E863 /* Food.swift */,
 				47A262D5226FA0790079C434 /* SingletonCart.swift */,
@@ -207,16 +242,13 @@
 			isa = PBXGroup;
 			children = (
 				473E50F422899B4000E7BBC8 /* Services */,
-				47FED482221B19A40050ADD2 /* AppDelegate.swift */,
-				473E50F722899DCA00E7BBC8 /* AnimationsJSON */,
-				474F3AE62222D7F500B3D388 /* Assets.xcassets */,
-				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
+				477D4EF522915318009DAD90 /* App */,
+				477D4EF622915352009DAD90 /* Support Files */,
 				47FED491221B19A50050ADD2 /* Info.plist */,
-				47560022228D6707006DA1ED /* MyPastOrdersTableViewCell.swift */,
+				477D4EF4229152DC009DAD90 /* MyPastOrdersCells */,
 				47700C1D221EC4E4009C7682 /* MainFoodCells */,
 				47A262D4226F9FC20079C434 /* Model */,
 				47781A39222ABFF100ECE28A /* MyCartCells */,
-				47EBE4B5226F0F86000E1EB8 /* SF Pro */,
 				47EC7EE52228587A0045783B /* Storyboards */,
 				47A262D3226F9F8C0079C434 /* View Controller */,
 			);
