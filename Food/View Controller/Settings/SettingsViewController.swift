@@ -33,7 +33,9 @@ class SettingsViewController: UITableViewController {
         
         if indexPath.row == 4 {
             let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstViewController")
-            self.present(viewController, animated: true, completion: nil)
+            self.show(viewController, sender: nil)
+            
+//            self.present(viewController, animated: true, completion: nil)
         } else {
             let vcNames = identities[indexPath.row]
             let viewController = storyboard?.instantiateViewController(withIdentifier: vcNames)

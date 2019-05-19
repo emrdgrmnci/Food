@@ -535,7 +535,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oGV-UC-zhN"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="S9U-D0-AoD">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="S9U-D0-AoD">
                         <barButtonItem key="backBarButtonItem" title="Geri" id="LxP-w8-hqC"/>
                     </navigationItem>
                 </viewController>
@@ -707,7 +707,7 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEi-DR-gYO">
                                                 <rect key="frame" x="39" y="284" width="295" height="45"/>
-                                                <state key="normal" image="GirişYap"/>
+                                                <state key="normal" image="GirişYap"/>
                                                 <connections>
                                                     <action selector="loginButton:" destination="wPw-GR-flK" eventType="touchUpInside" id="joa-DT-K0J"/>
                                                     <segue destination="5ND-Vg-FLp" kind="presentation" id="kIw-MJ-Nll"/>
@@ -1203,7 +1203,7 @@
     <resources>
         <image name="AddQuantity" width="22" height="22"/>
         <image name="DiscreteQuantity" width="24" height="3"/>
-        <image name="GirişYap" width="295" height="45"/>
+        <image name="GirişYap" width="295" height="45"/>
         <image name="Group 3580" width="255" height="45"/>
         <image name="IntroGirisYapButton" width="255" height="45"/>
         <image name="MainLogoScreen" width="320" height="568"/>
@@ -1218,7 +1218,7 @@
         <image name="tezzfood" width="119" height="110"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m88-Rq-hcU"/>
+        <segue reference="Cvc-R5-nyC"/>
         <segue reference="aa3-Hs-Nxw"/>
     </inferredMetricsTieBreakers>
 </document>
