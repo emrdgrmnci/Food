@@ -85,17 +85,6 @@ class MainViewController: UIViewController {
         
 //        webServiceSetup()
     }
-    //MARK: Web service setup
-    
-//    private func webServiceSetup() {
-//
-//        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=a2626aaa3a26408f99619c7283401b30")!
-//        Webservice().getFoods(url: url) { _ in
-//
-//        }
-//    }
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "cellForFood" {
             if let indexPath = self.mainTableView.indexPathForSelectedRow {
@@ -106,6 +95,17 @@ class MainViewController: UIViewController {
         }
         
     }
+    
+    //MARK: Web service setup
+    
+    //    private func webServiceSetup() {
+    //
+    //        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=a2626aaa3a26408f99619c7283401b30")!
+    //        Webservice().getFoods(url: url) { _ in
+    //
+    //        }
+    //    }
+    
     
     //MARK: From POST request handling
     

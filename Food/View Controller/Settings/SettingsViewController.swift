@@ -32,14 +32,13 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 4 {
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstViewController")
-            self.show(viewController, sender: nil)
+            self.dismiss(animated: true, completion: nil)
         } else {
             let vcNames = identities[indexPath.row]
             let viewController = storyboard?.instantiateViewController(withIdentifier: vcNames)
-            self.navigationController?.pushViewController(viewController!, animated: true)
+            self.show(viewController!, sender: nil)
         }
-        }
+    }
     
     
     
