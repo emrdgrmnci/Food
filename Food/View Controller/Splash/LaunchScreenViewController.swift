@@ -13,7 +13,7 @@ class LaunchScreenViewController: UIViewController {
     
     var window: UIWindow!
     
-    @IBOutlet var animationView: AnimationView!
+//    @IBOutlet var animationView: AnimationView!
     
     let tezzFoodLabel: UILabel = {
         let tezzLabel = UILabel()
@@ -38,7 +38,10 @@ class LaunchScreenViewController: UIViewController {
     }
     
     func startAnimation() {
-        animationView.animation = Animation.named("5326-loading-10-cooker")
+        let animationView = AnimationView(name: "5326-loading-10-cooker", bundle: Bundle(path: Bundle.main.path(forResource: "Animations", ofType: "bundle")!)!)
+        animationView.frame = CGRect(x: self.view.center.x - 50, y: self.view.center.y - 50, width: 250, height: 250)
+        animationView.center = self.view.center
+        self.view.addSubview(animationView)
         animationView.play()
     }
     
@@ -53,7 +56,7 @@ class LaunchScreenViewController: UIViewController {
         tezzFoodLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
 //
 //        tezzFoodLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
-////        tezzFoodLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 105).isActive = true
+//        tezzFoodLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 105).isActive = true
 //        tezzFoodLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -90).isActive = true
 //        tezzFoodLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -310).isActive = true
     }

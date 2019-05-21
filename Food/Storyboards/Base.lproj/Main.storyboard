@@ -712,18 +712,12 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                                <connections>
-                                                    <action selector="passwordTextChanged:" destination="wPw-GR-flK" eventType="editingChanged" id="bkg-87-Bbc"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5P-Px-aGr">
                                                 <rect key="frame" x="29" y="180" width="315" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                                <connections>
-                                                    <action selector="emailTextChanged:" destination="wPw-GR-flK" eventType="editingChanged" id="P6R-Xh-4Yc"/>
-                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEi-DR-gYO">
                                                 <rect key="frame" x="39" y="284" width="295" height="45"/>
@@ -809,7 +803,6 @@
                         <viewLayoutGuide key="safeArea" id="MNl-qa-oNp"/>
                     </view>
                     <connections>
-                        <outlet property="animationView" destination="Z7E-vd-ycb" id="1cx-Pc-Oim"/>
                         <segue destination="Pha-Hc-L51" kind="show" identifier="showMainScreenSegue" id="Woe-Ci-inK"/>
                     </connections>
                 </viewController>
