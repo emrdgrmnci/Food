@@ -10,5 +10,5 @@ target 'Food' do
 	pod 'KMPlaceholderTextView' 
 	pod 'lottie-ios'
 	pod 'SwiftHash'
-
+        pod 'TagListView', '~> 1.0'
 end

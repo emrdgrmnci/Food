@@ -2,12 +2,14 @@ PODS:
   - KMPlaceholderTextView (1.4.0)
   - lottie-ios (3.0.4)
   - SwiftHash (2.0.2)
+  - TagListView (1.4.0)
   - TinyConstraints (4.0.0)
 
 DEPENDENCIES:
   - KMPlaceholderTextView
   - lottie-ios
   - SwiftHash
+  - TagListView (~> 1.0)
   - TinyConstraints
 
 SPEC REPOS:
@@ -15,14 +17,16 @@ SPEC REPOS:
     - KMPlaceholderTextView
     - lottie-ios
     - SwiftHash
+    - TagListView
     - TinyConstraints
 
 SPEC CHECKSUMS:
   KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
   lottie-ios: 55a2de40418f8de2b155efaba4d4d1a025a5c570
   SwiftHash: 6d312abe61c8359bdef8d0093642f3a70b1c17ba
+  TagListView: 987b0bdbb16cd9d9e7c0e2ec32aff37ecba8b173
   TinyConstraints: 03bc091844b98c18dbaead8b1153242a42721b56
 
-PODFILE CHECKSUM: 5d342ca9163ac4c872c7136780727094a92026dd
+PODFILE CHECKSUM: 9a2894844446abd83293de7e68af43360adf5510
 
 COCOAPODS: 1.5.3

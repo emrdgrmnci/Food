@@ -7,28 +7,23 @@
 //
 
 import UIKit
+import TagListView
 
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var foodTitle: UILabel!
     @IBOutlet weak var foodSubTitle: UILabel!
     @IBOutlet weak var foodPrice: UILabel!
-    @IBOutlet weak var drinkPicker: UITextField!
     @IBOutlet weak var foodQuantity: UILabel!
     
+    @IBOutlet weak var tagListView: TagListView!
     
-    var drinkPickerView = UIPickerView()
-    var selectDrinkType: [String] = []
     var detailFoodName = ""
     var detailFoodPrice = 0.0
     
     var searchFoods: String!
     var priceFood: Double!
     
-    //    let foods = Food(name: ["Hamburger big mac",
-    //                               "Patates",
-    //                               "Whopper",
-    //                               "Steakhouse"], price: [15.0, 20.0, 25.0, 30.0])
     var food: Food?
     
     var foodPriceCount = FoodPriceCount(quantity: 1, foodPrice: 15.0) {
@@ -57,21 +52,12 @@ class DetailViewController: UIViewController {
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
         
-        
-        
         SingletonCart.sharedFood.food.append(food!)
-//
-//        let mainView = self.storyboard?.instantiateViewController(withIdentifier: "FoodOrder") as! MainViewController
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        
-        //            destinationVC.fromDetailFoodNames = food.name
-        //            destinationVC.fromDetailFoodPrices = food.price.description
         
         //            delegate?.foodCell(destinationVC)
         //            self.navigationController?.popViewController(animated: true)
         dismiss(animated: true)
-//        self.navigationController?.popViewController(animated: true)
+        //        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -79,27 +65,18 @@ class DetailViewController: UIViewController {
         
         foodQuantity.text = "1"
         
-        drinkPickerView.delegate = self
-        drinkPicker.inputView = drinkPickerView
-        selectDrinkType = ["Ayran", "Kola", "Su", "Fanta", "Şalgam", "Sprite"]
-        
-        //        searchFoods = food.name
-        //        priceFood = food.price
-        
         foodTitle.text = food?.name ?? ""
         foodPrice.text = "\(food?.price ?? 0.0)TL"
         
+        setupIngredientsTag()
         
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationItem.title = "Sipariş Detayı"
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
+        //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        //        self.view.addGestureRecognizer(tapGesture)
     }
     @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
-    }
-    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        drinkPicker.resignFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,28 +88,27 @@ class DetailViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    func setupIngredientsTag() {
+        
+        tagListView.textFont = UIFont.systemFont(ofSize: 14)
+        tagListView.alignment = .center // possible values are .Left, .Center, and .Right
+        
+        tagListView.addTag("TagListView")
+        tagListView.addTags(["Add", "two", "tags"])
+        
+        tagListView.insertTag("This should be the second tag", at: 1)
+        
+//        tagListView.setTitle("New Title", at: 6) // to replace the title a tag
+        
+//        tagListView.removeTag("meow") // all tags with title “meow” will be removed
+//        tagListView.removeAllTags()
+        
+        self.view.addSubview(tagListView)
+        
+    }
+    
 }
 
-extension DetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return selectDrinkType.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return selectDrinkType[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedDrink = selectDrinkType[row]
-        drinkPicker.text = selectedDrink
-    }
-    
-    
-}
 
 
 
