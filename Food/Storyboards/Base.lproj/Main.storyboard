@@ -315,19 +315,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8g-wA-fZr">
-                                        <rect key="frame" x="13" y="181" width="250" height="45"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8g-wA-fZr">
+                                        <rect key="frame" x="0.0" y="181" width="215" height="45"/>
                                         <state key="normal" image="Sepete"/>
                                         <connections>
                                             <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="F5U-LT-jir"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="İçecek Seçiniz" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vY1-hO-KZI">
-                                        <rect key="frame" x="0.0" y="135" width="276" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9L-7o-pae" userLabel="Quantity Buttons Container">
                                         <rect key="frame" x="0.0" y="69" width="98" height="44"/>
                                         <subviews>
@@ -377,26 +371,31 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddQuantity" translatesAutoresizingMaskIntoConstraints="NO" id="X6i-ix-CWo">
                                         <rect key="frame" x="-5" y="1" width="52" height="50"/>
                                     </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dco-fc-Q2B" userLabel="SeparatorView">
+                                        <rect key="frame" x="0.0" y="121" width="276" height="2"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.79992926119999996" green="0.80004531150000002" blue="0.79990386960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cD-I8-P3y">
+                                        <rect key="frame" x="233" y="181" width="38" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="like"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="X6i-ix-CWo" secondAttribute="bottom" constant="175" id="8D2-QC-z06"/>
-                                    <constraint firstItem="c8g-wA-fZr" firstAttribute="top" secondItem="vY1-hO-KZI" secondAttribute="bottom" constant="16" id="D4T-cb-lCt"/>
                                     <constraint firstItem="X6i-ix-CWo" firstAttribute="top" secondItem="5O3-AJ-rvg" secondAttribute="top" constant="1" id="EPY-X0-cdU"/>
                                     <constraint firstItem="12d-K1-4rk" firstAttribute="top" secondItem="5O3-AJ-rvg" secondAttribute="top" constant="79" id="EvB-kz-hau"/>
-                                    <constraint firstItem="vY1-hO-KZI" firstAttribute="top" secondItem="u9L-7o-pae" secondAttribute="bottom" constant="22" id="Frs-f7-wEA"/>
                                     <constraint firstItem="2vY-73-RBP" firstAttribute="leading" secondItem="X6i-ix-CWo" secondAttribute="trailing" constant="3" id="IBx-kM-lVH"/>
                                     <constraint firstAttribute="height" constant="226" id="JVR-hb-ITd"/>
-                                    <constraint firstAttribute="trailing" secondItem="vY1-hO-KZI" secondAttribute="trailing" id="Ofj-NS-zob"/>
+                                    <constraint firstItem="c8g-wA-fZr" firstAttribute="leading" secondItem="5O3-AJ-rvg" secondAttribute="leading" id="L7y-N0-l08"/>
                                     <constraint firstAttribute="trailing" secondItem="12d-K1-4rk" secondAttribute="trailing" constant="0.5" id="P2H-Xw-Pa9"/>
                                     <constraint firstItem="u9L-7o-pae" firstAttribute="leading" secondItem="5O3-AJ-rvg" secondAttribute="leading" id="TES-t2-ZrD"/>
-                                    <constraint firstItem="vY1-hO-KZI" firstAttribute="leading" secondItem="5O3-AJ-rvg" secondAttribute="leading" id="Yl7-D6-dFq"/>
                                     <constraint firstAttribute="bottom" secondItem="c8g-wA-fZr" secondAttribute="bottom" id="eYM-lB-znR"/>
                                     <constraint firstAttribute="width" constant="276" id="eob-yS-Nf1"/>
                                     <constraint firstItem="2vY-73-RBP" firstAttribute="leading" secondItem="5O3-AJ-rvg" secondAttribute="leading" constant="50" id="k1u-T7-9Df"/>
                                     <constraint firstItem="2vY-73-RBP" firstAttribute="top" secondItem="5O3-AJ-rvg" secondAttribute="top" constant="8" id="ku9-D5-71s"/>
-                                    <constraint firstAttribute="trailing" secondItem="c8g-wA-fZr" secondAttribute="trailing" constant="13" id="lra-Vf-ZTg"/>
-                                    <constraint firstItem="c8g-wA-fZr" firstAttribute="leading" secondItem="5O3-AJ-rvg" secondAttribute="leading" constant="13" id="m41-6a-LBU"/>
                                     <constraint firstItem="kT4-4U-dbg" firstAttribute="leading" secondItem="5O3-AJ-rvg" secondAttribute="leading" constant="50" id="ozp-84-1aU"/>
                                     <constraint firstItem="X6i-ix-CWo" firstAttribute="leading" secondItem="5O3-AJ-rvg" secondAttribute="leading" constant="-5" id="t7Z-42-KYh"/>
                                     <constraint firstItem="kT4-4U-dbg" firstAttribute="top" secondItem="2vY-73-RBP" secondAttribute="bottom" constant="1" id="vva-AE-Ovq"/>
@@ -420,7 +419,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="drinkPicker" destination="vY1-hO-KZI" id="VuC-al-yHt"/>
                         <outlet property="foodPrice" destination="12d-K1-4rk" id="phb-wG-Byf"/>
                         <outlet property="foodQuantity" destination="MfX-Em-wlD" id="WoZ-5s-UrW"/>
                         <outlet property="foodSubTitle" destination="kT4-4U-dbg" id="33j-PW-iFx"/>
@@ -1224,6 +1222,7 @@
         <image name="Symbol 25 – 6" width="295" height="45"/>
         <image name="Tamam" width="295" height="45"/>
         <image name="WebDevamEt" width="255" height="45"/>
+        <image name="like" width="21" height="19.5"/>
         <image name="plus" width="30" height="30"/>
         <image name="restaurant" width="30" height="30"/>
         <image name="settings" width="30" height="30"/>
