@@ -9,7 +9,7 @@
 import UIKit
 import TagListView
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, TagListViewDelegate {
     
     @IBOutlet weak var foodTitle: UILabel!
     @IBOutlet weak var foodSubTitle: UILabel!
@@ -68,6 +68,7 @@ class DetailViewController: UIViewController {
         foodTitle.text = food?.name ?? ""
         foodPrice.text = "\(food?.price ?? 0.0)TL"
         
+        tagListView.delegate = self
         setupIngredientsTag()
         
         self.tabBarController?.tabBar.isHidden = true
@@ -91,19 +92,18 @@ class DetailViewController: UIViewController {
     func setupIngredientsTag() {
         
         tagListView.textFont = UIFont.systemFont(ofSize: 14)
-        tagListView.alignment = .center // possible values are .Left, .Center, and .Right
+        tagListView.alignment = .left // possible values are .Left, .Center, and .Right
         
-        tagListView.addTag("TagListView")
-        tagListView.addTags(["Add", "two", "tags"])
+//        tagListView.addTag("TagListView")
+     let tags = tagListView.addTags(["Zeytin", "Peynir", "Reçel"])
         
-        tagListView.insertTag("This should be the second tag", at: 1)
+//        tagListView.insertTag("This should be the second tag", at: 1)
         
 //        tagListView.setTitle("New Title", at: 6) // to replace the title a tag
         
 //        tagListView.removeTag("meow") // all tags with title “meow” will be removed
 //        tagListView.removeAllTags()
         
-        self.view.addSubview(tagListView)
         
     }
     
