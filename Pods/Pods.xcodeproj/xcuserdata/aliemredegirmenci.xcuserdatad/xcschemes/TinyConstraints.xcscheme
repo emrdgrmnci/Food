@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C0B58AA80600BCF7EC886261C33AA04B"
+               BlueprintIdentifier = "D4AE25FF01FA99C5CB9F696032CFBFAA"
                BlueprintName = "TinyConstraints"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "TinyConstraints.framework">

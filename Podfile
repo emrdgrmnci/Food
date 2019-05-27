@@ -11,4 +11,5 @@ target 'Food' do
 	pod 'lottie-ios'
 	pod 'SwiftHash'
         pod 'TagListView', '~> 1.0'
+        pod 'Moya', '~> 13.0'
 end
