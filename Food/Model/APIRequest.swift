@@ -1,52 +1,68 @@
 //
-//  APIRequest.swift
-//  Food
+//  ContentDetailNetwork.swift
+//  Codiagno
 //
-//  Created by Ali Emre Değirmenci on 25.05.2019.
-//  Copyright © 2019 Ali Emre Değirmenci. All rights reserved.
+//  Created by Mahmut Acar on 28.03.2019.
+//  Copyright © 2019 Mahmut Acar. All rights reserved.
 //
 
 import Foundation
+import Moya
 
-enum APIError: Error {
-    case responseProblem
-    case decodingProblem
-    case encodingProblem
+enum GetAddressNetwork {
+    case getAddressList
+    case postLogin(String, String)
 }
 
-struct APIRequest {
-    let resourceURL: URL
+extension GetAddressNetwork: TargetType {
     
-    init (endpoint: String) {
-        let resourceString = "http://mehmetguner.pryazilim.com/api/userservice/createtoken/\(endpoint)"
-        guard let resourceURL = URL(string: resourceString) else {fatalError()}
-        
-        self.resourceURL = resourceURL
+    public var baseURL: URL {
+        return URL(string: "http://tezwebservice.pryazilim.com/api")!
     }
     
-    func isMatched(_ guid: ResultObj, completion: @escaping(Result<ResultObj, APIError>) -> Void) {
-        do {
-        var urlRequest = URLRequest(url: resourceURL)
-        urlRequest.httpMethod = "POST"
-            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            urlRequest.httpBody = try JSONEncoder().encode(guid)
-            
-            let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
-                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let jsonData = data else {
-                    completion(.failure(.responseProblem))
-                    return
-                }
-                
-                do {
-                    let guidData = try JSONDecoder().decode(ResultObj.self, from: jsonData)
-                    completion(.success(guidData))
-                }catch{
-                    completion(.failure(.decodingProblem))
-                }
-            }
-            dataTask.resume()
-        }catch{
-            completion(.failure(.encodingProblem))
+    public var path: String {
+        switch self {
+        case .getAddressList: return "/UserService/GetUserAddressList/1"
+        case .postLogin: return "/UserService/Login"
         }
-}
+    }
+    
+    public var method: Moya.Method {
+        switch self {
+        case .getAddressList: return .get
+        case .postLogin: return .post
+        }
+    }
+    
+    public var sampleData: Data {
+        return Data()
+    }
+    
+    public var task: Task {
+        switch self {
+            
+        case .getAddressList:
+            
+            return .requestPlain
+            
+        case .postLogin(let email , let password):
+            
+            return .requestParameters(
+                parameters: [
+                    "E": email,
+                    "PS": password
+                ], encoding: JSONEncoding.default)
+        }
+    }
+    
+    public var headers: [String : String]? {
+        return [
+            "Content-Type": "application/json",
+            //            "Authorization": "\(UserDefaults.standard.object(forKey: "token")!)"
+        ]
+    }
+    
+    public var validationType: ValidationType {
+        return .successCodes
+    }
 }

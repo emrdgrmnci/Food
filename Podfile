@@ -12,4 +12,6 @@ target 'Food' do
 	pod 'SwiftHash'
         pod 'TagListView', '~> 1.0'
         pod 'Moya', '~> 13.0'
+        pod 'Kingfisher', '~> 5.0'
+	pod 'SwiftyJSON', '~> 4.0'
 end

@@ -25,6 +25,9 @@
 		4753F87A223821A200DD7DC2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4753F879223821A200DD7DC2 /* SettingsViewController.swift */; };
 		4753F87C2238222A00DD7DC2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4753F87B2238222A00DD7DC2 /* ChangePasswordViewController.swift */; };
 		47560023228D6707006DA1ED /* MyPastOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47560022228D6707006DA1ED /* MyPastOrdersTableViewCell.swift */; };
+		476AC91B229D9B25006817D3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AC91A229D9B25006817D3 /* User.swift */; };
+		476AC91D229D9D9D006817D3 /* AddressPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AC91C229D9D9D006817D3 /* AddressPost.swift */; };
+		476AC91F229DB31A006817D3 /* WebAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AC91E229DB31A006817D3 /* WebAPIResponse.swift */; };
 		47700C1A221EC4A2009C7682 /* MainFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47700C19221EC4A2009C7682 /* MainFoodTableViewCell.swift */; };
 		47700C1C221EC4D7009C7682 /* MainFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47700C1B221EC4D7009C7682 /* MainFoodCollectionViewCell.swift */; };
 		47700C23221F115D009C7682 /* ImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47700C22221F115D009C7682 /* ImageNames.swift */; };
@@ -69,6 +72,9 @@
 		4753F879223821A200DD7DC2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4753F87B2238222A00DD7DC2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		47560022228D6707006DA1ED /* MyPastOrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPastOrdersTableViewCell.swift; sourceTree = "<group>"; };
+		476AC91A229D9B25006817D3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		476AC91C229D9D9D006817D3 /* AddressPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPost.swift; sourceTree = "<group>"; };
+		476AC91E229DB31A006817D3 /* WebAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIResponse.swift; sourceTree = "<group>"; };
 		47700C19221EC4A2009C7682 /* MainFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFoodTableViewCell.swift; sourceTree = "<group>"; };
 		47700C1B221EC4D7009C7682 /* MainFoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		47700C22221F115D009C7682 /* ImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNames.swift; sourceTree = "<group>"; };
@@ -288,6 +294,8 @@
 			children = (
 				47FC79CE229993F8005682E7 /* GUID.swift */,
 				47FC79D0229995A7005682E7 /* APIRequest.swift */,
+				476AC91A229D9B25006817D3 /* User.swift */,
+				476AC91C229D9D9D006817D3 /* AddressPost.swift */,
 				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
 				47D3D167226DE31500BE5AA9 /* FoodsDataSource.swift */,
 				472C31F7223814C400A3E863 /* Food.swift */,
@@ -311,6 +319,7 @@
 		47FED476221B19A40050ADD2 = {
 			isa = PBXGroup;
 			children = (
+				476AC91E229DB31A006817D3 /* WebAPIResponse.swift */,
 				47FED481221B19A40050ADD2 /* Food */,
 				8735EBCA1FF703FE427A9CDA /* Frameworks */,
 				B09CFD468CF6CC36F3CD702E /* Pods */,
@@ -460,9 +469,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Food/Pods-Food-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHash/SwiftHash.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
 				"${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
@@ -471,9 +482,11 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TinyConstraints.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
@@ -499,6 +512,7 @@
 				47CBD0A5223949960032ADEC /* MainViewController.swift in Sources */,
 				47FED485221B19A40050ADD2 /* ViewController.swift in Sources */,
 				47FED483221B19A40050ADD2 /* AppDelegate.swift in Sources */,
+				476AC91D229D9D9D006817D3 /* AddressPost.swift in Sources */,
 				47FED48B221B19A40050ADD2 /* Food.xcdatamodeld in Sources */,
 				4753F87A223821A200DD7DC2 /* SettingsViewController.swift in Sources */,
 				474F3AE52222D64E00B3D388 /* DetailViewController.swift in Sources */,
@@ -521,7 +535,9 @@
 				472F68BB22205953006F0FF7 /* MainFoodTitleTableViewCell.swift in Sources */,
 				4784A828229444E9004576EC /* ViewExtensions.swift in Sources */,
 				472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */,
+				476AC91F229DB31A006817D3 /* WebAPIResponse.swift in Sources */,
 				47CBD0A3223949960032ADEC /* MyCartViewController.swift in Sources */,
+				476AC91B229D9B25006817D3 /* User.swift in Sources */,
 				47CBD0A4223949960032ADEC /* OrderConfirmationViewController.swift in Sources */,
 				47EC7EE2222839DC0045783B /* MainTabBarController.swift in Sources */,
 				47505FD9228B572000876FBF /* MyAddressesViewController.swift in Sources */,

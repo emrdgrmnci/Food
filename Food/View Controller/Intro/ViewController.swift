@@ -46,22 +46,22 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            let md5 = MD5("http://tezwebservice.pryazilim.com/api/userservice/gettoken")
-            print(md5)
-        
-        let gUID = ResultObj(guid: md5, functionResult: md5)
-        
-        let postRequest = APIRequest(endpoint: "userservice/createtoken")
-        postRequest.isMatched(gUID, completion: { result in
-            switch result {
-            case .success(let guid):
-                print("The following guid has been sent: \(guid.guid)")
-            case .failure(let error):
-                print("An error occured \(error)")
-            }
-            
-        })
-        
+//            let md5 = MD5("http://tezwebservice.pryazilim.com/api/userservice/gettoken")
+//            print(md5)
+//
+//        let gUID = ResultObj(guid: md5, functionResult: md5)
+//
+//        let postRequest = APIRequest(endpoint: "userservice/createtoken")
+//        postRequest.isMatched(gUID, completion: { result in
+//            switch result {
+//            case .success(let guid):
+//                print("The following guid has been sent: \(guid.guid)")
+//            case .failure(let error):
+//                print("An error occured \(error)")
+//            }
+//
+//        })
+//
         
     }
     

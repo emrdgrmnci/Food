@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Moya
+import SwiftyJSON
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -16,6 +18,54 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     
     var window: UIWindow?
+    
+    let provider = MoyaProvider<GetAddressNetwork>()
+    
+    
+    func loginBtnTapped() {
+        
+        
+            isLoading(true)
+            let email = "EMRE)"
+            let pass = "123123123"
+            provider.request(.postLogin(email, pass)) { [weak self] result in
+                guard self != nil else { return }
+                //debugPrint(result)
+                
+//                let statusCode = result.value?.statusCode
+                switch result {
+                case .success(let response):
+                    do {
+                        print(try response.mapJSON())
+                        
+                        let data = response.data
+                        let json = try JSON(data: data)
+                        print(json)
+                    } catch {
+                        print("error1")
+                        self!.isLoading(false)
+                    }
+                case .failure(let error):
+                    
+                    self!.isLoading(false)
+                    
+                    print(error.response?.statusCode as Any)
+//                    self!.showError(error.response!)
+//                    if let code = error.response?.statusCode {
+//                        if code == 401 {
+//                            self?.toLogin()
+//                        }
+//                    }
+                }
+            }
+        
+            print("not valid info")
+            self.isLoading(false)
+        
+    }
+    
+    
+    
     
     //TODO:
     @IBAction func loginButton(_ sender: Any) {
@@ -30,6 +80,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loginBtnTapped()
         
         emailTextField.delegate = self
         passwordTextField.delegate = self

@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.2)
+  - Kingfisher (5.4.0)
   - KMPlaceholderTextView (1.4.0)
   - lottie-ios (3.0.4)
   - Moya (13.0.1):
@@ -9,38 +10,45 @@ PODS:
     - Result (~> 4.1)
   - Result (4.1.0)
   - SwiftHash (2.0.2)
+  - SwiftyJSON (4.3.0)
   - TagListView (1.4.0)
   - TinyConstraints (4.0.0)
 
 DEPENDENCIES:
+  - Kingfisher (~> 5.0)
   - KMPlaceholderTextView
   - lottie-ios
   - Moya (~> 13.0)
   - SwiftHash
+  - SwiftyJSON (~> 4.0)
   - TagListView (~> 1.0)
   - TinyConstraints
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Kingfisher
     - KMPlaceholderTextView
     - lottie-ios
     - Moya
     - Result
     - SwiftHash
+    - SwiftyJSON
     - TagListView
     - TinyConstraints
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
   KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
   lottie-ios: 55a2de40418f8de2b155efaba4d4d1a025a5c570
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SwiftHash: 6d312abe61c8359bdef8d0093642f3a70b1c17ba
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   TagListView: 987b0bdbb16cd9d9e7c0e2ec32aff37ecba8b173
   TinyConstraints: 03bc091844b98c18dbaead8b1153242a42721b56
 
-PODFILE CHECKSUM: d2d6afa0a8cda044455a377912c47d768ba1678d
+PODFILE CHECKSUM: ff7796546f9ae95bdaf89f63ae0fa6a8d0c12237
 
 COCOAPODS: 1.5.3
