@@ -32,7 +32,7 @@ class MyInfosViewController: UIViewController {
                     do {
                         print(try response.mapJSON())
                         
-                        let userResponse = try JSONDecoder().decode(ServiceResponse.self, from: response.data)
+                        let userResponse = try JSONDecoder().decode(AddressPostResponse.self, from: response.data)
                         //                        detail = userResponse
                        
                         debugPrint(userResponse)

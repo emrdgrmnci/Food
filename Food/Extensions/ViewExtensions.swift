@@ -7,7 +7,10 @@
 //
 
 import Foundation
+import UIKit
 import Lottie
+import SwiftyJSON
+import Moya
 
 extension UIViewController {
     
@@ -30,11 +33,43 @@ extension UIViewController {
         }
         self.view.viewWithTag(1000)?.removeFromSuperview()
     }
+    func showError(_ response: Response) {
+        do {
+            let json = try JSON(data: response.data)
+            let message = json["message"] .string
+            let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func showAlert(withTitle title: String, withMessage message: String, withAction act: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Tamam", style: UIAlertAction.Style.default, handler: { (action: UIAlertAction!) in
+            if act == "pop" {
+                self.navigationController?.popViewController(animated: true)
+            } else if act == "root" {
+                self.navigationController?.popToRootViewController(animated: false)
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func showAlertController(_ message: String) { // TODO: Update for error handling
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func toLogin() {
+        //        UserDefaults.standard.removeObject(forKey: "token")
+        //        UserDefaults.standard.removeObject(forKey: "userID")
+        //        UserDefaults.standard.synchronize()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+        present(vc, animated: true, completion: nil)
     }
     
     func isLoading(_ state: Bool) {

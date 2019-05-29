@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import Moya
+import SwiftyJSON
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var surnameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var rePasswordTextField: UITextField!
     
+    let registerProvider = MoyaProvider<RegisterNetwork>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,21 +31,59 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
-        if isValid() {
+        switch isValid() {
+        case true:
             self.isLoading(true)
+            let name = nameTextField.text
+            let surname = surnameTextField.text
+            let email = emailTextField.text
+            let phone = phoneTextField.text
+            let password = passwordTextField.text
+            let rePassword = rePasswordTextField.text
+            registerProvider.request(.register(name!, surname!, email!, phone!, password!, rePassword!)) {
+                [weak self] result in
+                guard self != nil else { return }
+                let statusCode = result.value?.statusCode
+                switch result {
+                case .success(let response):
+                    switch statusCode {
+                    case 200:
+                        self!.isLoading(false)
+                        do {
+                            let data = response.data
+                            let json = try JSON(data: data)
+                            print(json.debugDescription)
+                            self?.performSegue(withIdentifier: "register", sender: nil)
+                        } catch {
+                            print("register error")
+                        } default :
+                            self!.isLoading(false)
+                            break //Error handler
+                    }
+                case .failure(let error):
+                    self!.isLoading(false)
+                    self!.showError(error.response!)
+                    if let code = error.response?.statusCode {
+                        if code == 401 {
+                            self?.toLogin()
+                        }
+                    }
+                }
+            }
+        default: break
         }
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         nameTextField.resignFirstResponder()
-        lastNameTextField.resignFirstResponder()
+        surnameTextField.resignFirstResponder()
         emailTextField.resignFirstResponder()
         phoneTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         rePasswordTextField.resignFirstResponder()
         
         nameTextField.delegate = self
-        lastNameTextField.delegate = self
+        surnameTextField.delegate = self
         emailTextField.delegate = self
         phoneTextField.delegate = self
         passwordTextField.delegate = self
@@ -60,7 +101,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         
-        guard lastNameTextField.text?.isEmpty == false else {
+        guard surnameTextField.text?.isEmpty == false else {
             self.showAlertController("Soyisim alanı boş geçilemez.")
             return false
         }

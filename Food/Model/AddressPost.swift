@@ -9,10 +9,10 @@
 import Foundation
 
 struct AddressPost: Codable {
-    var I: Int
-    var T: String
-    var A: String
-    var AR: String
-    var UI: Int?
+    var I: Int //id
+    var T: String //Title
+    var A: String //adres
+    var AR: String // adres tarifi
+    var UI: Int? //user id
 }
 

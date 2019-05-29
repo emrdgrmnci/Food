@@ -670,7 +670,7 @@
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                 <state key="normal" title="Giriş Yap!"/>
                                                 <connections>
-                                                    <segue destination="wPw-GR-flK" kind="show" id="Cvc-R5-nyC"/>
+                                                    <segue destination="wPw-GR-flK" kind="show" identifier="" id="Cvc-R5-nyC"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -727,11 +727,12 @@
                     <size key="freeformSize" width="375" height="950"/>
                     <connections>
                         <outlet property="emailTextField" destination="7lr-fX-GtZ" id="rgf-5v-Yq4"/>
-                        <outlet property="lastNameTextField" destination="FFy-Mv-jON" id="Pop-JY-V3I"/>
                         <outlet property="nameTextField" destination="7yB-8i-GGA" id="PiT-SN-hdC"/>
                         <outlet property="passwordTextField" destination="VN1-RP-2Zt" id="Sga-tV-ZS4"/>
                         <outlet property="phoneTextField" destination="Ipb-bv-glV" id="5a0-3o-UvK"/>
                         <outlet property="rePasswordTextField" destination="3B1-mZ-0ag" id="khe-Fy-0xq"/>
+                        <outlet property="surnameTextField" destination="FFy-Mv-jON" id="Pop-JY-V3I"/>
+                        <segue destination="wPw-GR-flK" kind="show" identifier="register" animates="NO" id="PuH-dK-206"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nx1-Kq-byg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1277,7 +1278,7 @@
         <image name="tezzfood" width="119" height="110"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m88-Rq-hcU"/>
+        <segue reference="PuH-dK-206"/>
         <segue reference="aa3-Hs-Nxw"/>
     </inferredMetricsTieBreakers>
 </document>

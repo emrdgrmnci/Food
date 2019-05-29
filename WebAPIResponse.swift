@@ -19,7 +19,7 @@ public struct WebAPIResponse: Codable {
 //    }
 }
 
-public struct ServiceResponse: Codable {//AddressResponse
+public struct AddressPostResponse: Codable {//AddressResponse
     let ResultObj: AddressPost?
     let ResultList: [AddressPost]?
     let Message: String?
@@ -27,4 +27,11 @@ public struct ServiceResponse: Codable {//AddressResponse
     let Statue: Int?
 }
 
+public struct RegisterServiceResponse: Codable {//UserRegisterResponse
+    let ResultObj: User?
+    let ResultList: [User]?
+    let Message: String?
+    let Success: Bool!
+    let Statue: Int?
+}
 
