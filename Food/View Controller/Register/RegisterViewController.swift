@@ -29,7 +29,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
     }
-    
+    //TODO: Loading koy!
     @IBAction func registerButtonTapped(_ sender: Any) {
         switch isValid() {
         case true:
@@ -52,8 +52,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                         do {
                             let data = response.data
                             let json = try JSON(data: data)
+                            let userResponse = try JSONDecoder().decode(RegisterServiceResponse.self, from: response.data)
+                            
+                            if (userResponse.Success) {
+                            
                             print(json.debugDescription)
                             self?.performSegue(withIdentifier: "register", sender: nil)
+                            } else {
+                                self?.showAlert(withTitle: "Hata", withMessage: userResponse.Message!, withAction: "pop")
+                            }
                         } catch {
                             print("register error")
                         } default :
@@ -63,9 +70,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 case .failure(let error):
                     self!.isLoading(false)
                     self!.showError(error.response!)
+                    self?.showAlert(withTitle: "Hata", withMessage: "KAYITLISIN!", withAction: "pop")
                     if let code = error.response?.statusCode {
                         if code == 401 {
-                            self?.toLogin()
+                    self?.showAlert(withTitle: "Hata", withMessage: "KAYITLISIN!", withAction: "pop")
                         }
                     }
                 }

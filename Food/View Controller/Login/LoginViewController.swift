@@ -11,7 +11,7 @@ import Moya
 import SwiftyJSON
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -19,69 +19,69 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var window: UIWindow?
     
-    let provider = MoyaProvider<GetAddressNetwork>()
-    
-    
-    func loginBtnTapped() {
-        
-        
-            isLoading(true)
-            let email = "EMRE)"
-            let pass = "123123123"
-            provider.request(.postLogin(email, pass)) { [weak self] result in
-                guard self != nil else { return }
-                //debugPrint(result)
-                
-//                let statusCode = result.value?.statusCode
-                switch result {
-                case .success(let response):
-                    do {
-                        print(try response.mapJSON())
-                        
-                        let data = response.data
-                        let json = try JSON(data: data)
-                        print(json)
-                    } catch {
-                        print("error1")
-                        self!.isLoading(false)
-                    }
-                case .failure(let error):
-                    
-                    self!.isLoading(false)
-                    
-                    print(error.response?.statusCode as Any)
-//                    self!.showError(error.response!)
-//                    if let code = error.response?.statusCode {
-//                        if code == 401 {
-//                            self?.toLogin()
-//                        }
-//                    }
-                }
-            }
-        
-            print("not valid info")
-            self.isLoading(false)
-        
-    }
-    
-    
-    
+    let loginProvider = MoyaProvider<LoginNetwork>()
+    let loginUserDefaults = UserDefaults.standard
     
     //TODO:
     @IBAction func loginButton(_ sender: Any) {
         
-        if isValidInfo() {
+        switch isValidInfo() {
+        case true:
             self.isLoading(true)
+            let email = emailTextField.text
+            let password = passwordTextField.text
+            loginProvider.request(.login(email!, password!)) {
+                [weak self] result in
+                guard self != nil else { return }
+                let statusCode = result.value?.statusCode
+                switch result {
+                case .success(let response):
+                    switch statusCode {
+                    case 200:
+                        self!.isLoading(false)
+                        do {
+                            let data = response.data
+                            let json = try JSON(data: data)
+                            let userResponse = try JSONDecoder().decode(RegisterServiceResponse.self, from: response.data)
+//                            print(userResponse)
+                            if (userResponse.Success) {
+                                
+                                self?.loginUserDefaults.set(userResponse.ResultObj?.I, forKey: "userID")//UserID her işlem için lazım!
+                                
+                                print(json.debugDescription)
+                                self?.performSegue(withIdentifier: "loginToMain", sender: nil)
+//                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                                let viewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
+//                                self!.window?.rootViewController = viewController
+                            } else {
+                                self?.showAlert(withTitle: "Hata", withMessage: userResponse.Message!, withAction: "pop")
+                            }
+                        } catch {
+                            print("register error")
+                        } default :
+                            self!.isLoading(false)
+                        break //Error handler
+                    }
+                case .failure(let error):
+                    self!.isLoading(false)
+                    self!.showError(error.response!)
+                    self?.showAlert(withTitle: "Hata", withMessage: "Bir hata oluştu!", withAction: "pop")
+                    if let code = error.response?.statusCode {
+                        if code == 401 {
+                            self?.showAlert(withTitle: "Hata", withMessage: "Bir hata oluştu!", withAction: "pop")
+                        }
+                    }
+                }
+            }
+        case false:
+            self.showAlert(withTitle: "Hata", withMessage: "Bir hata oluştu!", withAction: "pop")
+            self.isLoading(false)
         }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
-        self.window?.rootViewController = viewController
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loginBtnTapped()
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -100,19 +100,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     //MARK:- For cancelBarButtonItem of LoginView
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
-        guard let identifier = segue.identifier else {return}
-        
-        switch identifier {
-        case "cancel" :
-            print("cancel bar button item tapped")
-        default:
-            print("unexpected segue identifier")
-        }
-    }
-  
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//
+//        guard let identifier = segue.identifier else {return}
+//
+//        switch identifier {
+//        case "cancel" :
+//            print("cancel bar button item tapped")
+//        default:
+//            print("unexpected segue identifier")
+//        }
+//    }
+    
     //MARK:- Email and password field control
     func isValidInfo() -> Bool {
         
@@ -126,6 +126,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-
+    
     
 }

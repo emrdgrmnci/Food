@@ -35,3 +35,11 @@ public struct RegisterServiceResponse: Codable {//UserRegisterResponse
     let Statue: Int?
 }
 
+public struct AddRemoveResponse: Codable {//Tüm AddRemove işlemleri
+//    let ResultObj: NULL olacak
+//    let ResultList: NULL olacak
+    let Message: String?
+    let Success: Bool!
+    let Statue: Int?
+}
+

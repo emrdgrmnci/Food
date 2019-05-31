@@ -10,6 +10,7 @@ import UIKit
 //import TinyConstraints
 import KMPlaceholderTextView
 
+//TODO: Detaydaki yemek içeriklerini burayada getir
 
 class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     

@@ -13,6 +13,7 @@ class MainTabBarController: UITabBarController {
     var window: UIWindow?
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(UserDefaults.standard.object(forKey: "userID") as? String ?? "")//Buradan user name surname getirilebilirsayfa titleında
         
         guard let viewControllers = viewControllers else {
             return

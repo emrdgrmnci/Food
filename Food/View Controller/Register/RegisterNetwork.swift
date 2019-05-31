@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-let defaults = UserDefaults.standard
+let registerDefaults = UserDefaults.standard
 
 public enum RegisterNetwork {
     case register(String,String,String,String,String,String)
