@@ -26,6 +26,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         self.navigationItem.backBarButtonItem?.title = ""
         
+        self.nameTextField.delegate = self
+        self.surnameTextField.delegate = self
+        self.emailTextField.delegate = self
+        self.phoneTextField.delegate = self
+        self.passwordTextField.delegate = self
+        self.rePasswordTextField.delegate = self
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
     }
@@ -55,9 +62,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                             let userResponse = try JSONDecoder().decode(RegisterServiceResponse.self, from: response.data)
                             
                             if (userResponse.Success) {
-                            
-                            print(json.debugDescription)
-                            self?.performSegue(withIdentifier: "register", sender: nil)
+                                
+                                print(json.debugDescription)
+                                self?.performSegue(withIdentifier: "register", sender: nil)
                             } else {
                                 self?.showAlert(withTitle: "Hata", withMessage: userResponse.Message!, withAction: "pop")
                             }
@@ -65,7 +72,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                             print("register error")
                         } default :
                             self!.isLoading(false)
-                            break //Error handler
+                        break //Error handler
                     }
                 case .failure(let error):
                     self!.isLoading(false)
@@ -73,13 +80,41 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     self?.showAlert(withTitle: "Hata", withMessage: "KAYITLISIN!", withAction: "pop")
                     if let code = error.response?.statusCode {
                         if code == 401 {
-                    self?.showAlert(withTitle: "Hata", withMessage: "KAYITLISIN!", withAction: "pop")
+                            self?.showAlert(withTitle: "Hata", withMessage: "KAYITLISIN!", withAction: "pop")
                         }
                     }
                 }
             }
         default: break
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var result = true
+        
+        if nameTextField == textField || surnameTextField == textField {
+            if string.count < 10 {
+                let disallowedCharacterSet = NSCharacterSet(charactersIn: " ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZXWabcçdefgğhıijklmnoöprsştuüvyzxw").inverted
+                let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
+                result = replacementStringIsLegal
+            }
+        }
+        else if phoneTextField == textField {
+            if string.count < 10 {
+                let disallowedCharacterSet = NSCharacterSet(charactersIn: "1234567890").inverted
+                let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
+                result = replacementStringIsLegal
+            }
+        }
+        
+        else if emailTextField == textField || passwordTextField == textField || rePasswordTextField == textField {
+            if string.count < 10 {
+                let disallowedCharacterSet = NSCharacterSet(charactersIn: "@.*-=;!?[]{}|/&(+%^'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZXWabcçdefgğhıijklmnoöprsştuüvyzxw1234567890").inverted
+                let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
+                result = replacementStringIsLegal
+            }
+        }
+        return result
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -99,6 +134,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
+    
     //MARK: TextField validations
     
     func isValid() -> Bool{
@@ -116,16 +153,18 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         
         guard emailTextField.text?.isValidEmail == true, emailTextField.text?.isEmpty == false else {
+            emailTextField.isEnabled = false
             self.showAlertController("E-mail alanı boş geçilemez.")
             return false
         }
         
         guard phoneTextField.text?.isPhoneNumber == true, phoneTextField.text?.isEmpty == false,(phoneTextField.text?.count)! == 10  else {
+            phoneTextField.shake()
             return false
         }
         
         guard rePasswordTextField.text?.isEmpty == false, passwordTextField.text!.count > 5 else {
-            self.showAlertController("Şifre 6 karakterden az olamaz.")
+            self.showAlertController("Şifrenizin uzunluğu en az 8 karakter olmalı.")
             return true
         }
         guard rePasswordTextField.text == passwordTextField.text else {

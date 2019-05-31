@@ -31,4 +31,12 @@ extension String {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: self)
     }
+    
+    var isValid: Bool {
+        guard self.count > 2, self.count < 18 else { return false }
+        
+        let predicateTest = NSPredicate(format: "SELF MATCHES %@", "")
+        return predicateTest.evaluate(with: self)
+    }
+    
 }
