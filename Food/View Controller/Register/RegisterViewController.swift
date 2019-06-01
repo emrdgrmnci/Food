@@ -10,6 +10,7 @@ import UIKit
 import Moya
 import SwiftyJSON
 
+
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -20,6 +21,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var rePasswordTextField: UITextField!
     
     let registerProvider = MoyaProvider<RegisterNetwork>()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +91,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if phoneTextField == textField && phoneTextField.text?.count == 13 {
+            
+        }
+        
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         var result = true
         
@@ -104,12 +115,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 let disallowedCharacterSet = NSCharacterSet(charactersIn: "1234567890").inverted
                 let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
                 result = replacementStringIsLegal
-            }
+            } 
         }
-        
+            
         else if emailTextField == textField || passwordTextField == textField || rePasswordTextField == textField {
             if string.count < 10 {
-                let disallowedCharacterSet = NSCharacterSet(charactersIn: "@.*-=;!?[]{}|/&(+%^'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZXWabcçdefgğhıijklmnoöprsştuüvyzxw1234567890").inverted
+                let disallowedCharacterSet = NSCharacterSet(charactersIn: "@.*-=;!?[]{}|/&($+%^'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZXWabcçdefgğhıijklmnoöprsştuüvyzxw1234567890").inverted
                 let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
                 result = replacementStringIsLegal
             }
@@ -158,14 +169,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         
-        guard phoneTextField.text?.isPhoneNumber == true, phoneTextField.text?.isEmpty == false,(phoneTextField.text?.count)! == 10  else {
-            phoneTextField.shake()
+        guard phoneTextField.text?.isEmpty == false, phoneTextField.text!.count == 10 else {
+            self.showAlertController("Telefon alanı boş olamaz.")
             return false
         }
         
-        guard rePasswordTextField.text?.isEmpty == false, passwordTextField.text!.count > 5 else {
+        guard rePasswordTextField.text?.isEmpty == false, passwordTextField.text!.count >= 8 else {
             self.showAlertController("Şifrenizin uzunluğu en az 8 karakter olmalı.")
-            return true
+            return false
         }
         guard rePasswordTextField.text == passwordTextField.text else {
             self.showAlertController("Girilen şifreler uyuşmuyor.")

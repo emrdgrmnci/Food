@@ -635,7 +635,7 @@
                                                 <rect key="frame" x="30" y="181" width="315" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="email"/>
                                             </textField>
                                             <textField opaque="NO" tag="1003" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Telefon" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ipb-bv-glV">
                                                 <rect key="frame" x="30" y="231" width="315" height="30"/>
@@ -663,7 +663,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIB-zB-ydc">
-                                                <rect key="frame" x="151" y="443" width="73" height="36"/>
+                                                <rect key="frame" x="154" y="443" width="67" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="QfH-bP-sFY"/>
                                                 </constraints>
@@ -729,7 +729,7 @@
                         <outlet property="emailTextField" destination="7lr-fX-GtZ" id="rgf-5v-Yq4"/>
                         <outlet property="nameTextField" destination="7yB-8i-GGA" id="PiT-SN-hdC"/>
                         <outlet property="passwordTextField" destination="VN1-RP-2Zt" id="Sga-tV-ZS4"/>
-                        <outlet property="phoneTextField" destination="Ipb-bv-glV" id="5a0-3o-UvK"/>
+                        <outlet property="phoneTextField" destination="Ipb-bv-glV" id="FUG-Na-LsS"/>
                         <outlet property="rePasswordTextField" destination="3B1-mZ-0ag" id="khe-Fy-0xq"/>
                         <outlet property="surnameTextField" destination="FFy-Mv-jON" id="Pop-JY-V3I"/>
                         <segue destination="wPw-GR-flK" kind="show" identifier="register" animates="NO" id="PuH-dK-206"/>
