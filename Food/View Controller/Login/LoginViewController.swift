@@ -22,6 +22,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let loginProvider = MoyaProvider<LoginNetwork>()
     let loginUserDefaults = UserDefaults.standard
     
+    override func viewWillAppear(_ animated: Bool) {
+        emailTextField.text = loginUserDefaults.string(forKey: "userEmail")
+    }
+    
     //TODO:
     @IBAction func loginButton(_ sender: Any) {
         
@@ -43,16 +47,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             let data = response.data
                             let json = try JSON(data: data)
                             let userResponse = try JSONDecoder().decode(RegisterServiceResponse.self, from: response.data)
-//                            print(userResponse)
+                            //                            print(userResponse)
                             if (userResponse.Success) {
                                 
                                 self?.loginUserDefaults.set(userResponse.ResultObj?.I, forKey: "userID")//UserID her işlem için lazım!
                                 
                                 print(json.debugDescription)
-                                self?.performSegue(withIdentifier: "loginToMain", sender: nil)
-//                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                                let viewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
-//                                self!.window?.rootViewController = viewController
+//                                let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+//                                guard let mainNavigationController = rootViewController as? MainNavigationController else {return}
+//                                mainNavigationController.viewControllers = [MainViewController(coder: NSCoder())] as! [UIViewController]
+                                UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                                UserDefaults.standard.synchronize()
+                                self!.loginUserDefaults.set(self!.emailTextField.text, forKey: "userEmail")
+                                //                                self!.dismiss(animated: true, completion: nil)
+                                
+                                                                self?.performSegue(withIdentifier: "loginToMain", sender: nil)
+                                                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                                                let viewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
+                                                                self!.window?.rootViewController = viewController
                             } else {
                                 self?.showAlert(withTitle: "Hata", withMessage: userResponse.Message!, withAction: "pop")
                             }
@@ -83,6 +95,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        emailTextField.text = loginUserDefaults.string(forKey: "userEmail")
+        
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
@@ -100,18 +114,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     //MARK:- For cancelBarButtonItem of LoginView
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//
-//        guard let identifier = segue.identifier else {return}
-//
-//        switch identifier {
-//        case "cancel" :
-//            print("cancel bar button item tapped")
-//        default:
-//            print("unexpected segue identifier")
-//        }
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //
+    //
+    //        guard let identifier = segue.identifier else {return}
+    //
+    //        switch identifier {
+    //        case "cancel" :
+    //            print("cancel bar button item tapped")
+    //        default:
+    //            print("unexpected segue identifier")
+    //        }
+    //    }
     
     //MARK:- Email and password field control
     func isValidInfo() -> Bool {

@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import SwiftHash
 
-class ViewController: UIViewController {
+class IntroViewController: UIViewController {
     
     //MARK:- For cancelBarButtonItem
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {

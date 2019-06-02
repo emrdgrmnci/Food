@@ -120,7 +120,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             
         else if emailTextField == textField || passwordTextField == textField || rePasswordTextField == textField {
             if string.count < 10 {
-                let disallowedCharacterSet = NSCharacterSet(charactersIn: "@.*-=;!?[]{}|/&($+%^'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZXWabcçdefgğhıijklmnoöprsştuüvyzxw1234567890").inverted
+                let disallowedCharacterSet = NSCharacterSet(charactersIn: "@.*-=;!?[]{}|/&($+%^'ABCÇDEFGĞHIİJKLMNOÖPRQSŞTUÜVYZXWabcçdefgğhıijklmnoöprsqştuüvyzxw1234567890").inverted
                 let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
                 result = replacementStringIsLegal
             }

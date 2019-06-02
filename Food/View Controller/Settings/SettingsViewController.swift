@@ -32,7 +32,26 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 4 {
-            self.dismiss(animated: true, completion: nil)
+            let alert = UIAlertController.init(title: "Çıkış Yap", message: "Çıkış yapmak istediğinize emin misiniz?", preferredStyle: .alert)
+            
+            let noAct = UIAlertAction(title: "Hayır", style: .default) { alertAction in
+                alert.dismiss(animated: true)
+            }
+            let yesAct = UIAlertAction(title: "Evet", style: .default) { alertAction in
+                UserDefaults.standard.removeObject(forKey: "token")
+                UserDefaults.standard.removeObject(forKey: "userID")
+                UserDefaults.standard.set(false, forKey: "isLoggedIn")
+                UserDefaults.standard.synchronize()
+                let introController = IntroViewController()
+                self.present(introController, animated: true, completion: nil)
+                //                self.dismiss(animated: true, completion: nil)
+//                self.performSegue(withIdentifier: "settingsToIntro", sender: nil)
+            }
+            
+            alert.addAction(noAct)
+            alert.addAction(yesAct)
+            self.present(alert, animated: true, completion: nil)
+
         } else {
             let vcNames = identities[indexPath.row]
             let viewController = storyboard?.instantiateViewController(withIdentifier: vcNames)
