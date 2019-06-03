@@ -40,7 +40,6 @@ class SettingsViewController: UITableViewController {
             let yesAct = UIAlertAction(title: "Evet", style: .default) { alertAction in
                 UserDefaults.standard.removeObject(forKey: "token")
                 UserDefaults.standard.removeObject(forKey: "userID")
-                UserDefaults.standard.set(false, forKey: "isLoggedIn")
                 UserDefaults.standard.synchronize()
                 let introController = IntroViewController()
                 self.present(introController, animated: true, completion: nil)

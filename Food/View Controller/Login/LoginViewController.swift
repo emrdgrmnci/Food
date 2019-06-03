@@ -56,7 +56,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //                                let rootViewController = UIApplication.shared.keyWindow?.rootViewController
 //                                guard let mainNavigationController = rootViewController as? MainNavigationController else {return}
 //                                mainNavigationController.viewControllers = [MainViewController(coder: NSCoder())] as! [UIViewController]
-                                UserDefaults.standard.set(true, forKey: "isLoggedIn")
                                 UserDefaults.standard.synchronize()
                                 self!.loginUserDefaults.set(self!.emailTextField.text, forKey: "userEmail")
                                 //                                self!.dismiss(animated: true, completion: nil)
