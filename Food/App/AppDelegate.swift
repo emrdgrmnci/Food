@@ -96,6 +96,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    
+}
+
+extension UIApplication {
+    public static func setRootView(_ viewController: UIViewController) {
+        UIApplication.shared.keyWindow?.rootViewController = viewController
+    }
 }
 

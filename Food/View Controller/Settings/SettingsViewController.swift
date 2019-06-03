@@ -41,10 +41,8 @@ class SettingsViewController: UITableViewController {
                 UserDefaults.standard.removeObject(forKey: "token")
                 UserDefaults.standard.removeObject(forKey: "userID")
                 UserDefaults.standard.synchronize()
-                let introController = IntroViewController()
-                self.present(introController, animated: true, completion: nil)
                 //                self.dismiss(animated: true, completion: nil)
-//                self.performSegue(withIdentifier: "settingsToIntro", sender: nil)
+                self.performSegue(withIdentifier: "settingsToIntro", sender: nil)
             }
             
             alert.addAction(noAct)

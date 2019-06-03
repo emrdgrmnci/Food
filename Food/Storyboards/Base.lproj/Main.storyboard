@@ -909,7 +909,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Diğer" id="gL2-TE-DAL"/>
                     <connections>
-                        <segue destination="cJk-Dz-vhG" kind="show" identifier="settingsToIntro" id="mPB-hn-53e"/>
+                        <segue destination="cJk-Dz-vhG" kind="showDetail" identifier="settingsToIntro" id="mPB-hn-53e"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8KD-cw-60I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1281,7 +1281,7 @@
         <image name="tezzfood" width="119" height="110"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PuH-dK-206"/>
+        <segue reference="m88-Rq-hcU"/>
         <segue reference="mPB-hn-53e"/>
         <segue reference="aa3-Hs-Nxw"/>
     </inferredMetricsTieBreakers>
