@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		470C1559229C50AC0043ECDA /* RegisterNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470C1558229C50AC0043ECDA /* RegisterNetwork.swift */; };
 		4712F42F221D64B4009088DA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712F42E221D64B4009088DA /* RegisterViewController.swift */; };
+		4725662E22A544C4005F64FC /* SliderNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4725662D22A544C4005F64FC /* SliderNetwork.swift */; };
+		4725663022A54DC4005F64FC /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4725662F22A54DC4005F64FC /* Slider.swift */; };
+		4725663222A55E97005F64FC /* FoodNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4725663122A55E97005F64FC /* FoodNetwork.swift */; };
 		472B1F53228823EA00CC59A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 472B1F52228823EA00CC59A2 /* LaunchScreen.storyboard */; };
 		472C31F8223814C400A3E863 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C31F7223814C400A3E863 /* Food.swift */; };
 		472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C31F92238152B00A3E863 /* FoodPrice.swift */; };
@@ -40,7 +43,6 @@
 		47CBD0A3223949960032ADEC /* MyCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A0223949950032ADEC /* MyCartViewController.swift */; };
 		47CBD0A4223949960032ADEC /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A1223949960032ADEC /* OrderConfirmationViewController.swift */; };
 		47CBD0A5223949960032ADEC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A2223949960032ADEC /* MainViewController.swift */; };
-		47D3D168226DE31500BE5AA9 /* FoodsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D3D167226DE31500BE5AA9 /* FoodsDataSource.swift */; };
 		47EBE4B6226F0F86000E1EB8 /* SF Pro in Resources */ = {isa = PBXBuildFile; fileRef = 47EBE4B5226F0F86000E1EB8 /* SF Pro */; };
 		47EC7EE2222839DC0045783B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EC7EE1222839DC0045783B /* MainTabBarController.swift */; };
 		47EC7EE422283A0B0045783B /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EC7EE322283A0B0045783B /* MainNavigationController.swift */; };
@@ -57,6 +59,9 @@
 /* Begin PBXFileReference section */
 		470C1558229C50AC0043ECDA /* RegisterNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNetwork.swift; sourceTree = "<group>"; };
 		4712F42E221D64B4009088DA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		4725662D22A544C4005F64FC /* SliderNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SliderNetwork.swift; path = "Food/View Controller/Main/SliderNetwork.swift"; sourceTree = SOURCE_ROOT; };
+		4725662F22A54DC4005F64FC /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
+		4725663122A55E97005F64FC /* FoodNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNetwork.swift; sourceTree = "<group>"; };
 		472B1F52228823EA00CC59A2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		472C31F7223814C400A3E863 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		472C31F92238152B00A3E863 /* FoodPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPrice.swift; sourceTree = "<group>"; };
@@ -88,7 +93,6 @@
 		47CBD0A0223949950032ADEC /* MyCartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCartViewController.swift; sourceTree = "<group>"; };
 		47CBD0A1223949960032ADEC /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		47CBD0A2223949960032ADEC /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		47D3D167226DE31500BE5AA9 /* FoodsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsDataSource.swift; sourceTree = "<group>"; };
 		47EBE4B5226F0F86000E1EB8 /* SF Pro */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "SF Pro"; sourceTree = "<group>"; };
 		47EC7EE1222839DC0045783B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		47EC7EE322283A0B0045783B /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 			children = (
 				474F3AE42222D64E00B3D388 /* DetailViewController.swift */,
 				47CBD0A2223949960032ADEC /* MainViewController.swift */,
+				4725662D22A544C4005F64FC /* SliderNetwork.swift */,
+				4725663122A55E97005F64FC /* FoodNetwork.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -300,7 +306,7 @@
 				476AC91A229D9B25006817D3 /* User.swift */,
 				476AC91C229D9D9D006817D3 /* AddressPost.swift */,
 				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
-				47D3D167226DE31500BE5AA9 /* FoodsDataSource.swift */,
+				4725662F22A54DC4005F64FC /* Slider.swift */,
 				472C31F7223814C400A3E863 /* Food.swift */,
 				47A262D5226FA0790079C434 /* SingletonCart.swift */,
 				472C31F92238152B00A3E863 /* FoodPrice.swift */,
@@ -527,7 +533,6 @@
 				47B1B35C221DE4DA00B2E051 /* LoginViewController.swift in Sources */,
 				47700C23221F115D009C7682 /* ImageNames.swift in Sources */,
 				47A262D6226FA07A0079C434 /* SingletonCart.swift in Sources */,
-				47D3D168226DE31500BE5AA9 /* FoodsDataSource.swift in Sources */,
 				47700C1C221EC4D7009C7682 /* MainFoodCollectionViewCell.swift in Sources */,
 				47700C1A221EC4A2009C7682 /* MainFoodTableViewCell.swift in Sources */,
 				472C31F8223814C400A3E863 /* Food.swift in Sources */,
@@ -535,6 +540,7 @@
 				4712F42F221D64B4009088DA /* RegisterViewController.swift in Sources */,
 				470C1559229C50AC0043ECDA /* RegisterNetwork.swift in Sources */,
 				473E50F92289A95B00E7BBC8 /* ArticleList.swift in Sources */,
+				4725662E22A544C4005F64FC /* SliderNetwork.swift in Sources */,
 				47781A38222ABFCE00ECE28A /* MyCartTableViewCell.swift in Sources */,
 				47505FD3228B53ED00876FBF /* MyInfosViewController.swift in Sources */,
 				472F68BB22205953006F0FF7 /* MainFoodTitleTableViewCell.swift in Sources */,
@@ -542,10 +548,12 @@
 				472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */,
 				476AC91F229DB31A006817D3 /* WebAPIResponse.swift in Sources */,
 				47CBD0A3223949960032ADEC /* MyCartViewController.swift in Sources */,
+				4725663222A55E97005F64FC /* FoodNetwork.swift in Sources */,
 				47FEF19D22A0583900593101 /* LoginNetwork.swift in Sources */,
 				476AC91B229D9B25006817D3 /* User.swift in Sources */,
 				47CBD0A4223949960032ADEC /* OrderConfirmationViewController.swift in Sources */,
 				47EC7EE2222839DC0045783B /* MainTabBarController.swift in Sources */,
+				4725663022A54DC4005F64FC /* Slider.swift in Sources */,
 				47505FD9228B572000876FBF /* MyAddressesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

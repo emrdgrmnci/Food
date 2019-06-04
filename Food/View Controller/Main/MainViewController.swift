@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Moya
+import Kingfisher
+import SwiftyJSON
 
 class MainViewController: UIViewController {
     
@@ -14,57 +17,41 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
-    let foodSource: FoodsDataSource
+    //MARK: Menu Categories
+    var sections = [String]()
     
-    required init?(coder aDecoder: NSCoder) {
-        let foods = [
-            Food(category: "Kahvaltı", name: "Hafta İçi Kahvaltısı", price: 18.0),
-            Food(category: "Kahvaltı", name: "Pazar Kahvaltısı", price: 25.0),
-            Food(category: "Kahvaltı", name: "Diyet Kahvaltı", price: 22.0),
-            Food(category: "Kahvaltı", name: "Köy Kahvaltısı", price: 15.0),
-            Food(category: "Kahvaltı", name: "Ege Kahvaltısı", price: 30.0),
-            
-            Food(category: "Hamburger", name: "Big TezzBurger", price: 26.0),
-            Food(category: "Hamburger", name: "TezzRoyal", price: 24.0),
-            Food(category: "Hamburger", name: "Double TezzBurger", price: 17.0),
-            Food(category: "Hamburger", name: "TezzChicken", price: 21.0),
-            Food(category: "Hamburger", name: "Köfteburger", price: 28.0),
-            
-            Food(category: "İçecek", name: "Kola", price: 4.0),
-            Food(category: "İçecek", name: "Fanta", price: 4.0),
-            Food(category: "İçecek", name: "Gazoz", price: 4.0),
-            Food(category: "İçecek", name: "Soğuk Çay", price: 4.0),
-            Food(category: "İçecek", name: "Ayran", price: 4.0),
-            
-            Food(category: "Tatlı", name: "Tezzdae", price: 6.0),
-            Food(category: "Tatlı", name: "Tezz Cake", price: 8.0),
-            Food(category: "Tatlı", name: "Tezz Flurry", price: 17.0),
-            Food(category: "Tatlı", name: "Dondurma", price: 8.0),
-            Food(category: "Tatlı", name: "Sütlaç", price: 12.0),
-            
-            Food(category: "Salata", name: "Akdeniz Salatası", price:22.0),
-            Food(category: "Salata", name: "Küçük Salata", price: 8.0),
-            Food(category: "Salata", name: "TezzBites Salata ", price: 14.0),
-            Food(category: "Salata", name: "Pancarlı Salata", price: 11.0),
-            Food(category: "Salata", name: "Somon Salata", price: 30.0)
-        ]
+    var foodProvider = MoyaProvider<FoodNetwork>()
+    var sliderProvider = MoyaProvider<SliderNetwork>()
+    
+    var sliderData = [String]()
+    var foodData = [Food]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        let imageNames = [
-            ImageNames(name: "kahvaltı"),
-            ImageNames(name: "unnamed-1"),
-            ImageNames(name: "coca cola"),
-            ImageNames(name: "tezzdae"),
-            ImageNames(name: "salata")
-            
-        ]
-        self.foodSource = FoodsDataSource(foods: foods, images: imageNames)
-        super.init(coder: aDecoder)
+        print(UserDefaults.standard.object(forKey: "userID") as? Int ?? 0)
+        self.navigationController?.navigationBar.isHidden = false
+        
+                        getFoodFunc()
+        
+        let isSliderSuccess = getSliderFunc()
+        //
+        if isSliderSuccess {
+            //
+            mainCollectionView.delegate = self
+            mainCollectionView.dataSource = self
+            mainCollectionView.reloadData()
+        }
+        
+        mainTableView.delegate = self
+        
+        mainTableView.dataSource = self
+        
+        mainTableView.reloadData()
+        
+        
+        //        webServiceSetup()
     }
-    
-    //    var searchFoods = [String]()
-    //    var filtered = [String]()
-    //    var searching = false
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -73,62 +60,167 @@ class MainViewController: UIViewController {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        
-        print(UserDefaults.standard.object(forKey: "userID") as? Int ?? 0)
-        self.navigationController?.navigationBar.isHidden = false
-        
-        mainTableView.dataSource = foodSource
-        mainCollectionView.dataSource = foodSource
-        mainTableView.reloadData()
-        mainCollectionView.reloadData()
-        
-//        webServiceSetup()
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "cellForFood" {
-            if let indexPath = self.mainTableView.indexPathForSelectedRow {
-                let controller = segue.destination as! DetailViewController
-                let foods = foodSource.foods
-                controller.food = foods[indexPath.row]
+    func getFoodFunc() {
+        foodProvider.request(.food) { [weak self] result in
+            guard self != nil else {return}
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        
+                        let data = response.data
+                        _ = try JSON(data: data)
+                        
+                        let foodResponse = try! JSONDecoder().decode(FoodServiceResponse.self, from: response.data)
+                        self!.foodData = foodResponse.ResultList!
+                        var count = 0
+                        var isHere = false
+                        for sectionItem in foodResponse.ResultList! {
+                            for i in 0...(count == 0 ? 0 : count-1) {
+                                if self?.sections != nil{
+                                    if sectionItem.SubCategoryTitle == self?.sections[i]{
+                                    isHere = true
+                                    break
+                                }
+                                }
+                            }
+                            if isHere == false{
+                                 self?.sections.append(sectionItem.SubCategoryTitle)
+                                 count+1
+                            }
+                        }
+                        
+                        self!.mainTableView.reloadData()
+                    } catch {
+                        print("Error info: \(error)")
+                    }
+                }
+                        case .failure(let error):
+                        print(error.response!)
+                    }
+                    
+                }
             }
+            
+            func getSliderFunc() -> Bool {
+                var isResult = false
+                sliderProvider.request(.slider) { [weak self] result in
+                    guard self != nil else {return}
+                    switch result {
+                    case .success(let response):
+                        DispatchQueue.main.async {
+                            do {
+                                
+                                let data = response.data
+                                _ = try JSON(data: data)
+                                let sliderResponse = try JSONDecoder().decode(SliderServiceResponse.self, from: response.data)
+                                
+                                for resultList in sliderResponse.ResultList! {
+                                    //                            self!.sliderData.append("http://mehmetguner.pryazilim.com/UploadFile/Slider\(resultList.PhotoPath)")
+                                    self!.sliderData.append(resultList.PhotoPath)//TODO: Mehmete publish yap deyince bunu üst satırla değiştir
+                                    print(resultList.PhotoPath)
+                                }
+                                self!.mainCollectionView.reloadData()
+                                
+                                isResult=sliderResponse.Success
+                            } catch {
+                                print("Error info: \(error)")
+                            }
+                        }
+                    case .failure(let error):
+                        self!.isLoading(false)
+                        print(error.response!)
+                    }
+                    
+                }
+                return isResult
+            }
+            
+            
+            //MARK: Segue from MainVC to DetailVC
+            
+            //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            //        if segue.identifier == "cellForFood" {
+            //            if let indexPath = self.mainTableView.indexPathForSelectedRow {
+            //                let controller = segue.destination as! DetailViewController
+            //                let foods = foodSource.foods
+            //                controller.food = foods[indexPath.row]
+            //            }
+            //        }
+            //
+            //    }
+            
+            
         }
         
-    }
+        extension MainViewController: UITableViewDataSource, UITableViewDelegate {
+            
+            
+            func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+                return sections[section]
+            }
+            
+            func numberOfSections(in tableView: UITableView) -> Int {
+                return sections.count
+            }
+            
+            func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+                
+                return foodData.count
+            }
+            
+            
+            func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood") as! MainFoodTitleTableViewCell
+                let foodList = foodData[indexPath.row]
+                //        let food = foods.filter({$0.category == sections[indexPath.section]})[indexPath.row]
+                cell.titleLabel.text = foodList.ProductTitle
+                cell.priceLabel.text = foodList.PriceString
+                
+                return cell
+            }
+        }
+
     
-    //MARK: Web service setup
-    
-    //    private func webServiceSetup() {
-    //
-    //        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=a2626aaa3a26408f99619c7283401b30")!
-    //        Webservice().getFoods(url: url) { _ in
-    //
-    //        }
-    //    }
-    
-    
-    //MARK: From POST request handling
-    
-    /* @IBAction func sendMessage(_ sender: Any) {
-     let food = Food(food: text)
-     
-     let postRequest = APIRequest(endpoint: "messages")
-     postRequest.save(food, completion: { result in
-     switch result {
-     case. success(let food):
-     print("The following food has been sent: \(food.food)")
-     case .failure(let error):
-     print("An error occured \(error)")
-     }
-     })
-     
-     */
-    
+    extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+        
+        
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            
+            return sliderData.count
+        }
+        
+        //MARK:- collection view cell size
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let width = UIScreen.main.bounds.width
+            return CGSize(width: width, height: 130)
+        }
+        
+        //MARK:- //collection view cell data
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainFoodCollectionViewCell", for: indexPath) as! MainFoodCollectionViewCell
+            
+            let url = URL(string: self.sliderData[indexPath.row])
+            cell.mainFoodImage.kf.setImage(with: url)
+            //        let img = self.sliderData[indexPath.row]
+            //        cell.mainFoodImage.image = UIImage(named: img)
+            return cell
+        }
+        
 }
 
+extension Array where Element: Equatable {
+    mutating func removeDuplicates() {
+        var result = [Element]()
+        for value in self {
+            if !result.contains(value) {
+                result.append(value)
+            }
+        }
+        self = result
+    }
+}
 
 //MARK:- SearchBar data
 //extension MainViewController : UISearchBarDelegate {
@@ -156,4 +248,5 @@ class MainViewController: UIViewController {
 //
 //    }
 //}
+
 

@@ -47,8 +47,8 @@ class MyFavoritesViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let foodName = fromSharedFood[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
-        cell.myCartFoodNameLabel.text = foodName.name
-        cell.myCartFoodPriceLabel.text = "\(foodName.price)₺"
+        cell.myCartFoodNameLabel.text = foodName.ProductTitle
+        cell.myCartFoodPriceLabel.text = foodName.PriceString
         
         return cell
     }

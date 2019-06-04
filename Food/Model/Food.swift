@@ -8,12 +8,20 @@
 
 import Foundation
 
-struct Food: Codable {
-    var category: String
-    var name: String
-    var price: Double
-    
+
+struct Food: Decodable {
+    let id, SubCategoryId: Int
+    let SubCategoryTitle, CategoryTitle: String
+    let Price, OldPrice: Decimal
+    let PriceString, OldPriceString, ProductTitle: String
+    let IsIndexView: Bool
+    let PhotoPath: String
+    let Description: String
+    let Stock: Int
+    let Details: String
+    let DetailsList: [String]
 }
+
 
 
 

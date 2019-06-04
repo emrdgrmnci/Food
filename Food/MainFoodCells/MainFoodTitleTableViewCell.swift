@@ -23,9 +23,9 @@ class MainFoodTitleTableViewCell: UITableViewCell {
         }
     }
     
-    var price: Double? {
+    var price: Int? {
         didSet {
-            priceLabel.text = "\(price ?? 0.0)"
+            priceLabel.text = "\(price ?? 0)"
         }
     }
 

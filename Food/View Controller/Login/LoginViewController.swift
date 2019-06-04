@@ -53,17 +53,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 self?.loginUserDefaults.set(userResponse.ResultObj?.I, forKey: "userID")//UserID her işlem için lazım!
                                 
                                 print(json.debugDescription)
-//                                let rootViewController = UIApplication.shared.keyWindow?.rootViewController
-//                                guard let mainNavigationController = rootViewController as? MainNavigationController else {return}
-//                                mainNavigationController.viewControllers = [MainViewController(coder: NSCoder())] as! [UIViewController]
+                                //                                let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+                                //                                guard let mainNavigationController = rootViewController as? MainNavigationController else {return}
+                                //                                mainNavigationController.viewControllers = [MainViewController(coder: NSCoder())] as! [UIViewController]
                                 UserDefaults.standard.synchronize()
                                 self!.loginUserDefaults.set(self!.emailTextField.text, forKey: "userEmail")
                                 //                                self!.dismiss(animated: true, completion: nil)
                                 
-                                                                self?.performSegue(withIdentifier: "loginToMain", sender: nil)
-                                                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                                                let viewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
-                                                                self!.window?.rootViewController = viewController
+                                self?.performSegue(withIdentifier: "loginToMain", sender: nil)
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                let viewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
+                                self!.window?.rootViewController = viewController
                             } else {
                                 self?.showAlert(withTitle: "Hata", withMessage: userResponse.Message!, withAction: "pop")
                             }

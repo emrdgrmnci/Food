@@ -43,3 +43,20 @@ public struct AddRemoveResponse: Codable {//Tüm AddRemove işlemleri
     let Statue: Int?
 }
 
+public struct SliderServiceResponse: Codable {//SliderServiceResponse
+    let ResultObj: Slider?
+    let ResultList: [Slider]?
+    let Message: String?
+    let Success: Bool!
+    let Statue: Int?
+}
+
+public struct FoodServiceResponse: Decodable {//FoodServiceResponse
+    let ResultObj: Food?
+    let ResultList: [Food]?
+    let Message: String?
+    let Success: Bool!
+    let Statue: Int?
+}
+
+

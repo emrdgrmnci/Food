@@ -65,8 +65,8 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         
         foodQuantity.text = "1"
         
-        foodTitle.text = food?.name ?? ""
-        foodPrice.text = "\(food?.price ?? 0.0)TL"
+        foodTitle.text = food?.ProductTitle ?? ""
+        foodPrice.text = food?.PriceString
         
         tagListView.delegate = self
         setupIngredientsTag()

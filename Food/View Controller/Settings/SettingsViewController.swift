@@ -48,7 +48,7 @@ class SettingsViewController: UITableViewController {
             alert.addAction(noAct)
             alert.addAction(yesAct)
             self.present(alert, animated: true, completion: nil)
-
+            
         } else {
             let vcNames = identities[indexPath.row]
             let viewController = storyboard?.instantiateViewController(withIdentifier: vcNames)
