@@ -20,11 +20,13 @@ class MainViewController: UIViewController {
     //MARK: Menu Categories
     var sections = ["Kahvaltılar", "Hamburgerler"]
     
-    var foodProvider = MoyaProvider<FoodNetwork>()
     var sliderProvider = MoyaProvider<SliderNetwork>()
+    var foodProvider = MoyaProvider<FoodNetwork>()
+    var foodCategoryProvider = MoyaProvider<FoodCategoryNetwork>()
     
     var sliderData = [String]()
     var foodData = [Food]()
+    var foodCategoryData = [FoodCategory]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,7 @@ class MainViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         
         getFoodFunc()
+        getFoodCategoryFunc()
         
         let isSliderSuccess = getSliderFunc()
         //
@@ -85,6 +88,31 @@ class MainViewController: UIViewController {
         }
     }
     
+    func getFoodCategoryFunc() {
+        foodCategoryProvider.request(.foodCategory) { [weak self] result in
+            guard self != nil else {return}
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        
+                        let data = response.data
+                        _ = try JSON(data: data)
+                        
+                        let foodCategoryResponse = try! JSONDecoder().decode(FoodCategoryServiceResponse.self, from: response.data)
+                        self!.foodCategoryData = foodCategoryResponse.ResultList!
+                        self!.mainTableView.reloadData()
+                    } catch {
+                        print("Error info: \(error)")
+                    }
+                }
+            case .failure(let error):
+                print(error.response!)
+            }
+            
+        }
+    }
+    
     func getSliderFunc() -> Bool {
         var isResult = false
         sliderProvider.request(.slider) { [weak self] result in
@@ -99,13 +127,13 @@ class MainViewController: UIViewController {
                         let sliderResponse = try JSONDecoder().decode(SliderServiceResponse.self, from: response.data)
                         
                         for resultList in sliderResponse.ResultList! {
-                            //                            self!.sliderData.append("http://mehmetguner.pryazilim.com/UploadFile/Slider\(resultList.PhotoPath)")
-                            self!.sliderData.append(resultList.PhotoPath)//TODO: Mehmete publish yap deyince bunu üst satırla değiştir
+                            self!.sliderData.append("http://mehmetguner.pryazilim.com/UploadFile/Slider/\(resultList.PhotoPath)")
+                            //                            self!.sliderData.append(resultList.PhotoPath)//TODO: Mehmete publish yap deyince bunu üst satırla değiştir
                             print(resultList.PhotoPath)
                         }
                         self!.mainCollectionView.reloadData()
                         
-                        isResult=sliderResponse.Success
+                        isResult = sliderResponse.Success
                     } catch {
                         print("Error info: \(error)")
                     }
@@ -120,18 +148,18 @@ class MainViewController: UIViewController {
     }
     
     
-//    MARK: Segue from MainVC to DetailVC
+    //    MARK: Segue from MainVC to DetailVC
     
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "cellForFood" {
-                if let indexPath = self.mainTableView.indexPathForSelectedRow {
-                    let controller = segue.destination as! DetailViewController
-                    let foods = foodData
-                    controller.food = foods[indexPath.row]
-                }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cellForFood" {
+            if let indexPath = self.mainTableView.indexPathForSelectedRow {
+                let controller = segue.destination as! DetailViewController
+                let foods = foodData
+                controller.food = foods[indexPath.row]
             }
-    
         }
+        
+    }
     
     
 }
@@ -151,17 +179,17 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
+        return foodCategoryData[section].Title
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return foodCategoryData.count
     }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let selectedFood = foodData[indexPath.row]
-//        performSegue(withIdentifier: "toDetail", sender: self)
-//    }
+    //
+    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        let selectedFood = foodData[indexPath.row]
+    //        performSegue(withIdentifier: "toDetail", sender: self)
+    //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

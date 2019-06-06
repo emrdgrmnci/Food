@@ -17,26 +17,41 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var myCartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     
+    //    let myCartUserDefaults = UserDefaults.standard
     
     var food: Food?
     
     var fromSharedFood = SingletonCart.sharedFood.food
+    
     //TODO: - Approve my  cart
     @IBAction func approveCart(_ sender: Any) {
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //        myCartTableView.dataSource = (myCartUserDefaults.string(forKey: "userCart") as! UITableViewDataSource)
+        
+        self.tabBarController?.tabBar.isHidden = false
         myCartTableView.reloadData()
     }
     
     
+    
     override func viewWillAppear(_ animated: Bool) {
+        
+        //        myCartTableView.dataSource = (myCartUserDefaults.string(forKey: "userCart") as! UITableViewDataSource)
+        
+        myCartTableView.reloadData()
+        
         if fromSharedFood.count == 0 {
+            self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = nil
             myCartTableView.setEmptyView(title: "Sepetinizde ürün bulunmamaktadır", message: "Seçtiğiniz yemekler burada listelenir.")
         }
         else {
             myCartTableView.restore()
+            self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = "\(fromSharedFood.count)"
+            
         }
     }
     
@@ -56,8 +71,8 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         let foodName = fromSharedFood[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
         cell.myCartFoodNameLabel.text = foodName.ProductTitle
+        self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = "\(fromSharedFood.count)"
         cell.myCartFoodPriceLabel.text = foodName.PriceString
-        
         return cell
     }
     
@@ -76,7 +91,14 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
                 myCartTableView.setEmptyView(title: "Sepetinizde ürün bulunmamaktadır", message: "Seçtiğiniz yemekler burada listelenir.")
             }
             else {
+                if fromSharedFood.count == 0 {
+                    myCartTableView.reloadData()
+                    self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = nil }
+                else {
+                    self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = "\(fromSharedFood.count)"
+                }
                 myCartTableView.restore()
+                //                self.myCartUserDefaults.set(myCartTableView.dataSource, forKey: "userCart")
             }
             tableView.endUpdates()
         }

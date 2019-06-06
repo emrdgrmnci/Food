@@ -69,7 +69,7 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zrI-Mu-Jlw">
-                                <rect key="frame" x="0.0" y="155" width="375" height="424"/>
+                                <rect key="frame" x="0.0" y="155" width="375" height="473"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellForFood" rowHeight="80" id="qkZ-ah-bc7" customClass="MainFoodTitleTableViewCell" customModule="Food" customModuleProvider="target">
@@ -172,11 +172,11 @@
             <objects>
                 <viewController id="BT1-x8-Nl6" customClass="MyCartViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R0H-WZ-0eb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Qz7-bh-cnl">
-                                <rect key="frame" x="0.0" y="514" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="462" width="375" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toplam: 0.0₺" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmT-cL-c9e">
                                         <rect key="frame" x="0.0" y="0.0" width="153.5" height="40"/>
@@ -200,7 +200,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VTm-Vv-mgD">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="515"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="463"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCartCell" id="hDB-zf-TeT" customClass="MyCartTableViewCell" customModule="Food" customModuleProvider="target">
@@ -272,7 +272,7 @@
             <objects>
                 <viewController storyboardIdentifier="ApproveOrder" id="V6h-8s-8Hf" customClass="OrderConfirmationViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d0K-Na-Mxc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="New-Vy-WNT"/>
@@ -417,7 +417,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8g-wA-fZr">
-                                <rect key="frame" x="9" y="246" width="350" height="45"/>
+                                <rect key="frame" x="9" y="295" width="350" height="45"/>
                                 <state key="normal" image="Sepete"/>
                                 <connections>
                                     <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="F5U-LT-jir"/>
@@ -460,7 +460,7 @@
                         <outlet property="foodSubTitle" destination="kT4-4U-dbg" id="33j-PW-iFx"/>
                         <outlet property="foodTitle" destination="2vY-73-RBP" id="TD7-KY-1tg"/>
                         <outlet property="tagListView" destination="jiU-eq-fkP" id="PAG-hm-mUe"/>
-                        <segue destination="BT1-x8-Nl6" kind="show" id="aa3-Hs-Nxw"/>
+                        <segue destination="5ND-Vg-FLp" kind="showDetail" identifier="toMyCart" id="zSp-QH-Eod"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="50c-Aj-z6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -824,7 +824,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uTX-qD-agK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7895" y="-456"/>
+            <point key="canvasLocation" x="7935" y="-456"/>
         </scene>
         <!--Launch Screen View Controller-->
         <scene sceneID="FM4-Fg-nTM">
@@ -1221,7 +1221,7 @@
         <scene sceneID="BqF-wX-H3q">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hbp-Tj-fmT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sepetim" image="shopping_cart_loaded" id="uih-DF-PZ9">
+                    <tabBarItem key="tabBarItem" title="Sepetim" image="shopping_cart_loaded" badgeValue="0" id="uih-DF-PZ9">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -1259,7 +1259,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKD-cu-ZqG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5273" y="1463"/>
+            <point key="canvasLocation" x="5084" y="1478"/>
         </scene>
     </scenes>
     <resources>
@@ -1281,9 +1281,10 @@
         <image name="tezzfood" width="119" height="110"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Zhe-D2-2Ov"/>
         <segue reference="Cvc-R5-nyC"/>
         <segue reference="GgA-us-hSQ"/>
         <segue reference="mPB-hn-53e"/>
-        <segue reference="aa3-Hs-Nxw"/>
+        <segue reference="zSp-QH-Eod"/>
     </inferredMetricsTieBreakers>
 </document>

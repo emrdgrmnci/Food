@@ -62,7 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 
                                 self?.performSegue(withIdentifier: "loginToMain", sender: nil)
                                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                let viewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
+                                let viewController = storyboard.instantiateViewController(withIdentifier: "FoodOrder")
                                 self!.window?.rootViewController = viewController
                             } else {
                                 self?.showAlert(withTitle: "Hata", withMessage: userResponse.Message!, withAction: "pop")

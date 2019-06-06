@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4709EEFF22A93686006D5421 /* FoodCategoryNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4709EEFE22A93686006D5421 /* FoodCategoryNetwork.swift */; };
+		4709EF0122A9371A006D5421 /* FoodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4709EF0022A9371A006D5421 /* FoodCategory.swift */; };
 		470C1559229C50AC0043ECDA /* RegisterNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470C1558229C50AC0043ECDA /* RegisterNetwork.swift */; };
 		4712F42F221D64B4009088DA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712F42E221D64B4009088DA /* RegisterViewController.swift */; };
 		4725662E22A544C4005F64FC /* SliderNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4725662D22A544C4005F64FC /* SliderNetwork.swift */; };
@@ -57,6 +59,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4709EEFE22A93686006D5421 /* FoodCategoryNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryNetwork.swift; sourceTree = "<group>"; };
+		4709EF0022A9371A006D5421 /* FoodCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategory.swift; sourceTree = "<group>"; };
 		470C1558229C50AC0043ECDA /* RegisterNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNetwork.swift; sourceTree = "<group>"; };
 		4712F42E221D64B4009088DA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		4725662D22A544C4005F64FC /* SliderNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SliderNetwork.swift; path = "Food/View Controller/Main/SliderNetwork.swift"; sourceTree = SOURCE_ROOT; };
@@ -243,6 +247,7 @@
 				47CBD0A2223949960032ADEC /* MainViewController.swift */,
 				4725662D22A544C4005F64FC /* SliderNetwork.swift */,
 				4725663122A55E97005F64FC /* FoodNetwork.swift */,
+				4709EEFE22A93686006D5421 /* FoodCategoryNetwork.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 				472C31F92238152B00A3E863 /* FoodPrice.swift */,
 				47700C22221F115D009C7682 /* ImageNames.swift */,
 				473E50F82289A95B00E7BBC8 /* ArticleList.swift */,
+				4709EF0022A9371A006D5421 /* FoodCategory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -516,6 +522,7 @@
 			files = (
 				47EC7EE422283A0B0045783B /* MainNavigationController.swift in Sources */,
 				47505FD5228B547F00876FBF /* MyPastOrdersViewController.swift in Sources */,
+				4709EEFF22A93686006D5421 /* FoodCategoryNetwork.swift in Sources */,
 				47560023228D6707006DA1ED /* MyPastOrdersTableViewCell.swift in Sources */,
 				474A1B5D2284765000710A3E /* LaunchScreenViewController.swift in Sources */,
 				473E50F622899B9000E7BBC8 /* Webservice.swift in Sources */,
@@ -540,6 +547,7 @@
 				4712F42F221D64B4009088DA /* RegisterViewController.swift in Sources */,
 				470C1559229C50AC0043ECDA /* RegisterNetwork.swift in Sources */,
 				473E50F92289A95B00E7BBC8 /* ArticleList.swift in Sources */,
+				4709EF0122A9371A006D5421 /* FoodCategory.swift in Sources */,
 				4725662E22A544C4005F64FC /* SliderNetwork.swift in Sources */,
 				47781A38222ABFCE00ECE28A /* MyCartTableViewCell.swift in Sources */,
 				47505FD3228B53ED00876FBF /* MyInfosViewController.swift in Sources */,
