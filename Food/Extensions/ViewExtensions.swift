@@ -77,7 +77,7 @@ extension UIViewController {
         case true:
             addBlurLayer()
             let animationView = AnimationView(name: "5326-loading-10-cooker", bundle: Bundle(path: Bundle.main.path(forResource: "Animations", ofType: "bundle")!)!)
-            animationView.frame = CGRect(x: self.view.center.x - 50, y: self.view.center.y - 50, width: 100, height: 100)
+            animationView.frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 100, height: 100)
             animationView.center = self.view.center
             self.view.addSubview(animationView)
             animationView.loopMode = LottieLoopMode.loop

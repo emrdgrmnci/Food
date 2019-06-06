@@ -25,29 +25,31 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     var priceFood: Double!
     
     var food: Food?
+    var q = 1
+    var fp = 0
     
-    var foodPriceCount = FoodPriceCount(quantity: 1, foodPrice: 15.0) {
-        
-        didSet {
-            let quantity = foodPriceCount.quantity
-            let price = foodPriceCount.foodPrice * Double(quantity)
-            foodQuantity.text = "\(quantity)"
-            foodPrice.text = "\(price)"
-            
-        }
-    }
-    
-    @IBAction func addQuantity(_ sender: Any) {
-        if foodPriceCount.quantity < 30 {
-            foodPriceCount.quantity += 1
-        }
-    }
-    
-    @IBAction func decreasedQuantity(_ sender: Any) {
-        if foodPriceCount.quantity > 0 {
-            foodPriceCount.quantity -= 1
-        }
-    }
+//    var foodPriceCount = FoodPriceCount(foodPriceCount: ) {
+//        
+//        didSet {
+//            let quantity = foodPriceCount.quantity
+//            let price = foodPriceCount.foodPrice * Double(quantity)
+//            foodQuantity.text = "\(quantity)"
+//            foodPrice.text = "\(price)"
+//            
+//        }
+//    }
+//    
+//    @IBAction func addQuantity(_ sender: Any) {
+//        if foodPriceCount.quantity < 30 {
+//            foodPriceCount.quantity += 1
+//        }
+//    }
+//    
+//    @IBAction func decreasedQuantity(_ sender: Any) {
+//        if foodPriceCount.quantity > 0 {
+//            foodPriceCount.quantity -= 1
+//        }
+//    }
     
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {

@@ -120,7 +120,7 @@
                                         <connections>
                                             <outlet property="priceLabel" destination="dq9-ym-VVH" id="y71-2Z-idd"/>
                                             <outlet property="titleLabel" destination="887-h8-hG6" id="YWx-vQ-gg1"/>
-                                            <segue destination="Bfh-ug-TsR" kind="show" identifier="cellForFood" id="j9i-Bm-1ka"/>
+                                            <segue destination="Bfh-ug-TsR" kind="show" identifier="cellForFood" id="FF5-Ck-Rj1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -406,7 +406,7 @@
                                 <constraints>
                                     <constraint firstItem="u9L-7o-pae" firstAttribute="top" secondItem="PMh-KJ-myD" secondAttribute="bottom" constant="10" id="JJQ-55-NmT"/>
                                     <constraint firstItem="X6i-ix-CWo" firstAttribute="bottom" secondItem="PMh-KJ-myD" secondAttribute="bottom" constant="-7" id="LRj-LQ-Sxa"/>
-                                    <constraint firstItem="12d-K1-4rk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="u9L-7o-pae" secondAttribute="trailing" symbolic="YES" id="NGr-Ad-TSp"/>
+                                    <constraint firstItem="12d-K1-4rk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="u9L-7o-pae" secondAttribute="trailing" constant="8" symbolic="YES" id="NGr-Ad-TSp"/>
                                     <constraint firstItem="PMh-KJ-myD" firstAttribute="top" secondItem="5O3-AJ-rvg" secondAttribute="top" constant="7" id="NSu-Au-PEb"/>
                                     <constraint firstItem="X6i-ix-CWo" firstAttribute="leading" secondItem="5O3-AJ-rvg" secondAttribute="leading" constant="20" id="OpT-mL-fbZ"/>
                                     <constraint firstItem="PMh-KJ-myD" firstAttribute="leading" secondItem="X6i-ix-CWo" secondAttribute="trailing" constant="25" id="R2f-Wk-dzr"/>
@@ -741,7 +741,7 @@
                                 <rect key="frame" x="0.0" y="40" width="375" height="760"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hcu-VH-LbE" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="811"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="760"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Şifre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0TV-qb-kPF">
                                                 <rect key="frame" x="29" y="230" width="315" height="30"/>
@@ -765,20 +765,30 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tezzfood" translatesAutoresizingMaskIntoConstraints="NO" id="2Vh-mf-NgW">
                                                 <rect key="frame" x="113" y="75" width="148" height="110"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFV-3C-bdG">
+                                                <rect key="frame" x="130" y="342" width="60" height="33"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                                <state key="normal" title="Kayıt Ol!"/>
+                                                <connections>
+                                                    <segue destination="w7Z-Xh-zTa" kind="show" id="GgA-us-hSQ"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.86837631464004517" green="0.074768714606761932" blue="0.073413185775279999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="s5P-Px-aGr" secondAttribute="trailing" constant="31" id="05N-ct-xdf"/>
                                             <constraint firstItem="0TV-qb-kPF" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="29" id="0Aq-ZB-0hX"/>
+                                            <constraint firstItem="TFV-3C-bdG" firstAttribute="top" secondItem="cEi-DR-gYO" secondAttribute="bottom" constant="13" id="7S7-02-bzE"/>
+                                            <constraint firstAttribute="bottom" secondItem="TFV-3C-bdG" secondAttribute="bottom" constant="385" id="7im-qx-2wq"/>
                                             <constraint firstAttribute="trailing" secondItem="0TV-qb-kPF" secondAttribute="trailing" constant="31" id="92u-PY-z7m"/>
                                             <constraint firstItem="s5P-Px-aGr" firstAttribute="top" secondItem="Hcu-VH-LbE" secondAttribute="top" constant="180" id="C4e-Dc-sDa"/>
                                             <constraint firstItem="s5P-Px-aGr" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="29" id="EjA-2X-oLt"/>
                                             <constraint firstItem="0TV-qb-kPF" firstAttribute="top" secondItem="s5P-Px-aGr" secondAttribute="bottom" constant="20" id="LFe-wN-fFo"/>
+                                            <constraint firstItem="TFV-3C-bdG" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="130" id="UCv-ek-swb"/>
                                             <constraint firstItem="2Vh-mf-NgW" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="113" id="W82-I9-b8I"/>
                                             <constraint firstItem="cEi-DR-gYO" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="39" id="b8Q-SX-ChU"/>
                                             <constraint firstItem="cEi-DR-gYO" firstAttribute="top" secondItem="0TV-qb-kPF" secondAttribute="bottom" constant="24" id="fvu-cZ-PNp"/>
                                             <constraint firstItem="2Vh-mf-NgW" firstAttribute="top" secondItem="Hcu-VH-LbE" secondAttribute="top" constant="75" id="owO-PE-M2g"/>
-                                            <constraint firstAttribute="bottom" secondItem="cEi-DR-gYO" secondAttribute="bottom" constant="482" id="ruX-xL-XEH"/>
                                             <constraint firstAttribute="trailing" secondItem="2Vh-mf-NgW" secondAttribute="trailing" constant="114" id="xRb-nR-DG1"/>
                                             <constraint firstAttribute="trailing" secondItem="cEi-DR-gYO" secondAttribute="trailing" constant="41" id="xmL-wz-9x5"/>
                                         </constraints>
@@ -814,7 +824,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uTX-qD-agK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7904.0625" y="-129.92957746478874"/>
+            <point key="canvasLocation" x="7895" y="-456"/>
         </scene>
         <!--Launch Screen View Controller-->
         <scene sceneID="FM4-Fg-nTM">
@@ -1175,7 +1185,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXe-tf-ueu">
-                                <rect key="frame" x="39" y="190" width="295" height="22"/>
+                                <rect key="frame" x="39" y="190" width="295" height="45"/>
                                 <state key="normal" image="Tamam"/>
                             </button>
                         </subviews>
@@ -1271,7 +1281,8 @@
         <image name="tezzfood" width="119" height="110"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m88-Rq-hcU"/>
+        <segue reference="Cvc-R5-nyC"/>
+        <segue reference="GgA-us-hSQ"/>
         <segue reference="mPB-hn-53e"/>
         <segue reference="aa3-Hs-Nxw"/>
     </inferredMetricsTieBreakers>
