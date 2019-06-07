@@ -8,6 +8,8 @@
 
 import UIKit
 import TagListView
+import Moya
+import Kingfisher
 
 class DetailViewController: UIViewController, TagListViewDelegate {
     
@@ -15,6 +17,7 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     @IBOutlet weak var foodSubTitle: UILabel!
     @IBOutlet weak var foodPrice: UILabel!
     @IBOutlet weak var foodQuantity: UILabel!
+    @IBOutlet weak var detailFoodImage: UIImageView!
     
     @IBOutlet weak var tagListView: TagListView!
     
@@ -22,6 +25,7 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     
     var detailFoodName = ""
     var detailFoodPrice = 0.0
+    var detailPhotoData = String()
     
     var searchFoods: String!
     var priceFood: Double!
@@ -75,6 +79,8 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         
         foodTitle.text = food?.ProductTitle ?? ""
         foodPrice.text = food?.PriceString
+        let url = URL(string: "http://tezwebservice.pryazilim.com/api/ProductService/GetAllProductList/\(self.food!.PhotoPath)")
+        detailFoodImage.kf.setImage(with: url)
         
         tagListView.delegate = self
         setupIngredientsTag()
