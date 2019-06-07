@@ -9,10 +9,10 @@
 import Foundation
 
 struct User: Codable {
-    var N: String //Name
-    var S: String //Surname
-    var E: String //Email
-    var P: String //Phone
+    var N: String! //Name
+    var S: String! //Surname
+    var E: String! //Email
+    var P: String! //Phone
     var PS: String? //Pasword
     var RPS: String? //RePassword
     var I: Int? //id

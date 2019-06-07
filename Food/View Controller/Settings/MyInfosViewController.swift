@@ -21,10 +21,10 @@ class MyInfosViewController: UIViewController {
     @IBOutlet weak var myLastNameTextField: UITextField!
     
     //    static let provider = MoyaProvider<ContentDetailNetwork>()
-    let provider = MoyaProvider<GetAddressNetwork>()
+    let provider = MoyaProvider<GetInfoNetwork>()
     
-    func getAddressFunc() {
-        provider.request(.getAddressList) { [weak self] result in
+    func getInfoFunc() {
+        provider.request(.getInfo) { [weak self] result in
             guard self != nil else {return}
             switch result {
             case .success(let response):
@@ -32,11 +32,14 @@ class MyInfosViewController: UIViewController {
                     do {
                         print(try response.mapJSON())
                         
-                        let userResponse = try JSONDecoder().decode(AddressPostResponse.self, from: response.data)
+                        let userResponse = try JSONDecoder().decode(UserInfoServiceResponse.self, from: response.data)
                         //                        detail = userResponse
-                       
+                        
                         debugPrint(userResponse)
-                        debugPrint("Mehmet \(userResponse.ResultList![0].A )" )
+//                        debugPrint("Mehmet \(userResponse.ResultList![0].N )" )
+//                        debugPrint("Mehmet \(userResponse.ResultList![0].S )" )
+                        self!.myNameTextField.text = userResponse.ResultObj?.N
+                        self!.myLastNameTextField.text = userResponse.ResultObj?.S
                     } catch {
                         print("Error info: \(error)")
                     }
@@ -71,7 +74,7 @@ class MyInfosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAddressFunc()
+        getInfoFunc()
         self.navigationItem.title = "Bilgilerim"
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)

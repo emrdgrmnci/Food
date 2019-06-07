@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(UserDefaults.standard.object(forKey: "userID") as? Int ?? 0)
+        print("User ID: \(UserDefaults.standard.object(forKey: "userID") as? Int ?? 0)")
         self.navigationController?.navigationBar.isHidden = false
         
         getFoodFunc()

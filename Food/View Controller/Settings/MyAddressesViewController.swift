@@ -8,8 +8,11 @@
 
 import UIKit
 import KMPlaceholderTextView
+import Moya
 
-class MyAddressesViewController: UIViewController {
+class MyAddressesViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+    
+    let provider = MoyaProvider<GetAddressNetwork>()
     
     override func viewDidLayoutSubviews() {
         self.scrollView.contentSize = CGSize(width: 320, height: 700)
@@ -18,7 +21,7 @@ class MyAddressesViewController: UIViewController {
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
-//        view.contentSize.height = 700
+        //        view.contentSize.height = 700
         view.backgroundColor = .white
         return view
     }()
@@ -58,12 +61,17 @@ class MyAddressesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addressTitleTextField.isEnabled = false
+        addressTextView.isUserInteractionEnabled = false
+        shortAddressTextView.isUserInteractionEnabled = false
+        
         self.navigationItem.title = "Adreslerim"
         self.view.addSubview(scrollView)
         setupScrollView()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
-        
+        getAddressFunc()
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -134,7 +142,35 @@ class MyAddressesViewController: UIViewController {
     }
     //TODO: Approve Button for MyAddresses
     @objc func approveButtonAction(sender: UIButton!) {
-        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func getAddressFunc() {
+        provider.request(.getAddressList) { [weak self] result in
+            guard self != nil else {return}
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        print(try response.mapJSON())
+                        
+                        let userResponse = try JSONDecoder().decode(AddressPostResponse.self, from: response.data)
+                        //                        detail = userResponse
+                        
+                        debugPrint("Mehmet \(userResponse.ResultList![0].A)" )
+                        self!.addressTitleTextField.text = userResponse.ResultList![0].T
+                        self!.addressTextView.text = userResponse.ResultList![0].A //Açık Adres
+                        self!.shortAddressTextView.text = userResponse.ResultList![0].AR //Adres Tarifi
+                    } catch {
+                        print("Error info: \(error)")
+                    }
+                }
+            case .failure(let error):
+                self!.isLoading(false)
+                print(error.response!)
+            }
+            
+        }
     }
     
 }

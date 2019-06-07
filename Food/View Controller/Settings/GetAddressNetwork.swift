@@ -1,9 +1,8 @@
 //
-//  ContentDetailNetwork.swift
-//  Codiagno
+//  GetAddressNetwork.swift
+//  Alamofire
 //
-//  Created by Mahmut Acar on 28.03.2019.
-//  Copyright © 2019 Mahmut Acar. All rights reserved.
+//  Created by Ali Emre Değirmenci on 7.06.2019.
 //
 
 import Foundation
@@ -11,9 +10,8 @@ import Moya
 
 enum GetAddressNetwork {
     case getAddressList
-    case postLogin(String, String)
 }
-
+let userIDDefault = UserDefaults.standard.object(forKey: "userID") as? Int ?? 0
 extension GetAddressNetwork: TargetType {
     
     public var baseURL: URL {
@@ -22,15 +20,14 @@ extension GetAddressNetwork: TargetType {
     
     public var path: String {
         switch self {
-        case .getAddressList: return "/UserService/GetUserAddressList/1"
-        case .postLogin: return "/UserService/Login"
+            
+        case .getAddressList: return "/UserService/GetUserAddressList/\(userIDDefault)"
         }
     }
     
     public var method: Moya.Method {
         switch self {
         case .getAddressList: return .get
-        case .postLogin: return .post
         }
     }
     
@@ -44,14 +41,6 @@ extension GetAddressNetwork: TargetType {
         case .getAddressList:
             
             return .requestPlain
-            
-        case .postLogin(let email , let password):
-            
-            return .requestParameters(
-                parameters: [
-                    "E": email,
-                    "PS": password
-                ], encoding: JSONEncoding.default)
         }
     }
     
@@ -66,3 +55,4 @@ extension GetAddressNetwork: TargetType {
         return .successCodes
     }
 }
+
