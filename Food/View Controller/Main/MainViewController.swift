@@ -23,6 +23,7 @@ class MainViewController: UIViewController {
     var sliderProvider = MoyaProvider<SliderNetwork>()
     var foodProvider = MoyaProvider<FoodNetwork>()
     var foodCategoryProvider = MoyaProvider<FoodCategoryNetwork>()
+    let userInfoProvider = MoyaProvider<GetInfoNetwork>()
     
     var sliderData = [String]()
     var foodData = [Food]()
@@ -32,8 +33,11 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         print("User ID: \(UserDefaults.standard.object(forKey: "userID") as? Int ?? 0)")
-        self.navigationController?.navigationBar.isHidden = false
         
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        getInfoFunc()
         getFoodFunc()
         getFoodCategoryFunc()
         
@@ -61,6 +65,34 @@ class MainViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = false
         
+    }
+    
+    func getInfoFunc() {
+        userInfoProvider.request(.getInfo) { [weak self] result in
+            guard self != nil else {return}
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        print(try response.mapJSON())
+                        
+                        let userResponse = try JSONDecoder().decode(UserInfoServiceResponse.self, from: response.data)
+                        //                        detail = userResponse
+                        
+                        debugPrint(userResponse)
+                        //                        debugPrint("Mehmet \(userResponse.ResultList![0].N )" )
+                        //                        debugPrint("Mehmet \(userResponse.ResultList![0].S )" )
+                        self!.navigationItem.title = ("Hoşgeldin \(userResponse.ResultObj?.N ?? "TezzFood")")
+                    } catch {
+                        print("Error info: \(error)")
+                    }
+                }
+            case .failure(let error):
+                self!.isLoading(false)
+                print(error.response!)
+            }
+            
+        }
     }
     
     func getFoodFunc() {
