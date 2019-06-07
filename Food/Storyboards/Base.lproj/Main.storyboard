@@ -33,33 +33,32 @@
                                     <constraint firstAttribute="height" constant="136" id="FAb-bN-Te3"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jiz-gh-hXb">
-                                    <size key="itemSize" width="319" height="112"/>
+                                    <size key="itemSize" width="379" height="136"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainFoodCollectionViewCell" id="c5x-2k-SKL" customClass="MainFoodCollectionViewCell" customModule="Food" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="12" width="319" height="112"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="379" height="136"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="319" height="112"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="379" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lju-GR-57L">
-                                                    <rect key="frame" x="0.0" y="0.0" width="319" height="112"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fL5-Q7-AFm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="379" height="133"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="lju-GR-57L" secondAttribute="trailing" id="5u7-a6-yB4"/>
-                                            <constraint firstItem="lju-GR-57L" firstAttribute="leading" secondItem="c5x-2k-SKL" secondAttribute="leading" id="8mP-Zp-iP1"/>
-                                            <constraint firstItem="lju-GR-57L" firstAttribute="top" secondItem="c5x-2k-SKL" secondAttribute="top" id="DwI-GV-cev"/>
-                                            <constraint firstItem="lju-GR-57L" firstAttribute="leading" secondItem="c5x-2k-SKL" secondAttribute="leading" id="aV7-hK-mwG"/>
-                                            <constraint firstAttribute="bottom" secondItem="lju-GR-57L" secondAttribute="bottom" id="esr-4P-BrY"/>
+                                            <constraint firstAttribute="trailing" secondItem="fL5-Q7-AFm" secondAttribute="trailing" id="4BS-KW-8wH"/>
+                                            <constraint firstItem="fL5-Q7-AFm" firstAttribute="top" secondItem="c5x-2k-SKL" secondAttribute="top" id="4Z3-19-Q64"/>
+                                            <constraint firstAttribute="bottom" secondItem="fL5-Q7-AFm" secondAttribute="bottom" constant="3" id="E7U-gF-yZx"/>
+                                            <constraint firstItem="fL5-Q7-AFm" firstAttribute="leading" secondItem="c5x-2k-SKL" secondAttribute="leading" id="RJe-FB-jLf"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="mainFoodImage" destination="lju-GR-57L" id="eiT-ge-tmV"/>
+                                            <outlet property="mainFoodImage" destination="fL5-Q7-AFm" id="0XA-CA-ZbX"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -287,11 +286,11 @@
             <objects>
                 <viewController storyboardIdentifier="DetailViewController" title="DetailViewController" id="Bfh-ug-TsR" customClass="DetailViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CU7-a0-gKg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jiU-eq-fkP" customClass="TagListView" customModule="TagListView">
-                                <rect key="frame" x="31" y="164" width="318" height="77"/>
+                                <rect key="frame" x="31" y="164" width="318" height="141"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="textColor">
@@ -324,7 +323,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5O3-AJ-rvg">
-                                <rect key="frame" x="16" y="22" width="337" height="115"/>
+                                <rect key="frame" x="16" y="42" width="337" height="95"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="PMh-KJ-myD">
                                         <rect key="frame" x="75" y="7" width="235" height="43"/>
@@ -417,7 +416,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8g-wA-fZr">
-                                <rect key="frame" x="9" y="246" width="350" height="45"/>
+                                <rect key="frame" x="9" y="359" width="350" height="45"/>
                                 <state key="normal" image="Sepete"/>
                                 <connections>
                                     <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="F5U-LT-jir"/>
@@ -1282,6 +1281,7 @@
         <image name="tezzfood" width="119" height="110"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="FF5-Ck-Rj1"/>
         <segue reference="Cvc-R5-nyC"/>
         <segue reference="GgA-us-hSQ"/>
         <segue reference="mPB-hn-53e"/>

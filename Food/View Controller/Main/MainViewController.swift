@@ -219,9 +219,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     //MARK:- collection view cell size
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = UIScreen.main.bounds.width
-        return CGSize(width: width, height: 130)
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
+        
+        return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
     }
     
     //MARK:- //collection view cell data
@@ -232,6 +232,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.mainFoodImage.kf.setImage(with: url)
         //        let img = self.sliderData[indexPath.row]
         //        cell.mainFoodImage.image = UIImage(named: img)
+        cell.layoutIfNeeded()
         return cell
     }
     
