@@ -75,6 +75,8 @@ class MyInfosViewController: UIViewController {
         super.viewDidLoad()
         
         getInfoFunc()
+        self.myNameTextField.isEnabled = false
+        self.myLastNameTextField.isEnabled = false
         self.navigationItem.title = "Bilgilerim"
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)

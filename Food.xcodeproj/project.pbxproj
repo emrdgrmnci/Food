@@ -41,6 +41,8 @@
 		4784A828229444E9004576EC /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4784A827229444E9004576EC /* ViewExtensions.swift */; };
 		4784A82A22944630004576EC /* Animations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4784A82922944630004576EC /* Animations.bundle */; };
 		47A262D6226FA07A0079C434 /* SingletonCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A262D5226FA0790079C434 /* SingletonCart.swift */; };
+		47ACDDB922AC170700A08CF9 /* MyCartData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ACDDB722AC170700A08CF9 /* MyCartData+CoreDataClass.swift */; };
+		47ACDDBA22AC170700A08CF9 /* MyCartData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ACDDB822AC170700A08CF9 /* MyCartData+CoreDataProperties.swift */; };
 		47B1B35C221DE4DA00B2E051 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1B35B221DE4DA00B2E051 /* LoginViewController.swift */; };
 		47CBD0A3223949960032ADEC /* MyCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A0223949950032ADEC /* MyCartViewController.swift */; };
 		47CBD0A4223949960032ADEC /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A1223949960032ADEC /* OrderConfirmationViewController.swift */; };
@@ -95,6 +97,8 @@
 		4784A827229444E9004576EC /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		4784A82922944630004576EC /* Animations.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Animations.bundle; sourceTree = "<group>"; };
 		47A262D5226FA0790079C434 /* SingletonCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingletonCart.swift; sourceTree = "<group>"; };
+		47ACDDB722AC170700A08CF9 /* MyCartData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyCartData+CoreDataClass.swift"; path = "Food/Model/MyCartData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		47ACDDB822AC170700A08CF9 /* MyCartData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyCartData+CoreDataProperties.swift"; path = "Food/Model/MyCartData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		47B1B35B221DE4DA00B2E051 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		47CBD0A0223949950032ADEC /* MyCartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCartViewController.swift; sourceTree = "<group>"; };
 		47CBD0A1223949960032ADEC /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -340,6 +344,8 @@
 		47FED476221B19A40050ADD2 = {
 			isa = PBXGroup;
 			children = (
+				47ACDDB722AC170700A08CF9 /* MyCartData+CoreDataClass.swift */,
+				47ACDDB822AC170700A08CF9 /* MyCartData+CoreDataProperties.swift */,
 				476AC91E229DB31A006817D3 /* WebAPIResponse.swift */,
 				47FED481221B19A40050ADD2 /* Food */,
 				8735EBCA1FF703FE427A9CDA /* Frameworks */,
@@ -547,6 +553,7 @@
 				47700C23221F115D009C7682 /* ImageNames.swift in Sources */,
 				47A262D6226FA07A0079C434 /* SingletonCart.swift in Sources */,
 				47700C1C221EC4D7009C7682 /* MainFoodCollectionViewCell.swift in Sources */,
+				47ACDDBA22AC170700A08CF9 /* MyCartData+CoreDataProperties.swift in Sources */,
 				47700C1A221EC4A2009C7682 /* MainFoodTableViewCell.swift in Sources */,
 				472C31F8223814C400A3E863 /* Food.swift in Sources */,
 				4753F87C2238222A00DD7DC2 /* ChangePasswordViewController.swift in Sources */,
@@ -559,6 +566,7 @@
 				47CD51B022AAA7FA00DBA334 /* GetAddressNetwork.swift in Sources */,
 				47505FD3228B53ED00876FBF /* MyInfosViewController.swift in Sources */,
 				472F68BB22205953006F0FF7 /* MainFoodTitleTableViewCell.swift in Sources */,
+				47ACDDB922AC170700A08CF9 /* MyCartData+CoreDataClass.swift in Sources */,
 				4784A828229444E9004576EC /* ViewExtensions.swift in Sources */,
 				472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */,
 				476AC91F229DB31A006817D3 /* WebAPIResponse.swift in Sources */,

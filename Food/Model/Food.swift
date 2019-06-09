@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Food: Decodable {
+struct Food: Codable {
     let id, SubCategoryId: Int
     let SubCategoryTitle, CategoryTitle: String
     let Price, OldPrice: Decimal

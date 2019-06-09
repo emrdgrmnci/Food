@@ -286,11 +286,11 @@
             <objects>
                 <viewController storyboardIdentifier="DetailViewController" title="DetailViewController" id="Bfh-ug-TsR" customClass="DetailViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CU7-a0-gKg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jiU-eq-fkP" customClass="TagListView" customModule="TagListView">
-                                <rect key="frame" x="31" y="164" width="318" height="141"/>
+                                <rect key="frame" x="31" y="164" width="318" height="77"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="textColor">
@@ -323,7 +323,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5O3-AJ-rvg">
-                                <rect key="frame" x="16" y="42" width="337" height="95"/>
+                                <rect key="frame" x="16" y="22" width="337" height="115"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="PMh-KJ-myD">
                                         <rect key="frame" x="75" y="7" width="235" height="43"/>
@@ -416,7 +416,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8g-wA-fZr">
-                                <rect key="frame" x="9" y="359" width="350" height="45"/>
+                                <rect key="frame" x="9" y="246" width="350" height="45"/>
                                 <state key="normal" image="Sepete"/>
                                 <connections>
                                     <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="F5U-LT-jir"/>
@@ -451,6 +451,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="like" id="NoD-oH-2ae">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="favoriteButtonClicked:" destination="Bfh-ug-TsR" id="XkH-xH-5sj"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1281,7 +1284,6 @@
         <image name="tezzfood" width="119" height="110"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FF5-Ck-Rj1"/>
         <segue reference="Cvc-R5-nyC"/>
         <segue reference="GgA-us-hSQ"/>
         <segue reference="mPB-hn-53e"/>

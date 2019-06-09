@@ -15,9 +15,12 @@ class MyFavoritesViewController: UIViewController, UITableViewDataSource, UITabl
     
     var food: Food?
     var fromSharedFood = SingletonCart.sharedFood.food
+    var isFavorited = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        isFavorited = false
         
         self.navigationItem.title = "Favorilerim"
         myFavoritesTableView.reloadData()
@@ -34,7 +37,7 @@ class MyFavoritesViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if fromSharedFood.count == 0 {
+        if isFavorited == false {
             tableView.setEmptyView(title: "Favori ürün bulunmamaktadır", message: "Favori ürünler burada listelenir.")
         }
         else {
@@ -51,6 +54,7 @@ class MyFavoritesViewController: UIViewController, UITableViewDataSource, UITabl
         cell.myCartFoodPriceLabel.text = foodName.PriceString
         
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -64,7 +68,7 @@ class MyFavoritesViewController: UIViewController, UITableViewDataSource, UITabl
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
             
-            if fromSharedFood.count == 0 {
+            if isFavorited == false {
                 myFavoritesTableView.setEmptyView(title: "Favori ürün bulunmamaktadır", message: "Favori ürünler burada listelenir.")
             }
             else {

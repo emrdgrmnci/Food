@@ -10,6 +10,7 @@ import UIKit
 
 class MyCartTableViewCell: UITableViewCell {
     
+     static let reuseIdentifier = "QuoteCell"
     
     @IBOutlet weak var myCartFoodNameLabel: UILabel!
     @IBOutlet weak var myCartFoodPriceLabel: UILabel!

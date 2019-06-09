@@ -63,8 +63,6 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         
         SingletonCart.sharedFood.food.append(food!)
         
-        //            delegate?.foodCell(destinationVC)
-        //                    self.navigationController?.popToRootViewController(animated: true)
         self.performSegue(withIdentifier: "toMyCart", sender: nil)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
@@ -96,6 +94,10 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     }
     @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
+    
+    }
+    @IBAction func favoriteButtonClicked(_ sender: UIBarButtonItem) {
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
