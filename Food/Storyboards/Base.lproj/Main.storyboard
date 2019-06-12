@@ -326,7 +326,7 @@
                                 <rect key="frame" x="16" y="22" width="337" height="115"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="PMh-KJ-myD">
-                                        <rect key="frame" x="75" y="7" width="235" height="43"/>
+                                        <rect key="frame" x="75" y="7" width="235" height="37"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Huge Mac Sandwich" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vY-73-RBP">
                                                 <rect key="frame" x="0.0" y="0.0" width="179.5" height="24"/>
@@ -334,16 +334,16 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zeytin Peynir Reçel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT4-4U-dbg">
-                                                <rect key="frame" x="0.0" y="25" width="131.5" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zeytin Peynir Reçel" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT4-4U-dbg">
+                                                <rect key="frame" x="0.0" y="25" width="93" height="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9L-7o-pae" userLabel="Quantity Buttons Container">
-                                        <rect key="frame" x="15" y="60" width="97" height="50"/>
+                                        <rect key="frame" x="15" y="54" width="97" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76t-PB-MII" userLabel="-">
                                                 <rect key="frame" x="6" y="0.0" width="24" height="44"/>
@@ -385,7 +385,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15,00TL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12d-K1-4rk">
-                                        <rect key="frame" x="248" y="59" width="78.5" height="50"/>
+                                        <rect key="frame" x="248" y="53" width="78.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="RyX-QU-42z"/>
                                         </constraints>
@@ -394,7 +394,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddQuantity" translatesAutoresizingMaskIntoConstraints="NO" id="X6i-ix-CWo">
-                                        <rect key="frame" x="20" y="13" width="30" height="30"/>
+                                        <rect key="frame" x="20" y="7" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="4CP-qy-NgD"/>
                                             <constraint firstAttribute="width" constant="30" id="HRp-wo-ArD"/>
@@ -416,7 +416,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8g-wA-fZr">
-                                <rect key="frame" x="9" y="246" width="350" height="45"/>
+                                <rect key="frame" x="9" y="279" width="350" height="45"/>
                                 <state key="normal" image="Sepete"/>
                                 <connections>
                                     <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="F5U-LT-jir"/>
@@ -431,7 +431,7 @@
                             <constraint firstItem="uiq-ME-5wP" firstAttribute="top" secondItem="CU7-a0-gKg" secondAttribute="top" constant="144" id="M0L-gI-Ide"/>
                             <constraint firstItem="5O3-AJ-rvg" firstAttribute="leading" secondItem="gN2-wf-uYB" secondAttribute="leading" constant="16" id="MIw-75-loU"/>
                             <constraint firstItem="jiU-eq-fkP" firstAttribute="top" secondItem="uiq-ME-5wP" secondAttribute="bottom" constant="8" id="MW6-on-GxG"/>
-                            <constraint firstItem="gN2-wf-uYB" firstAttribute="bottom" secondItem="c8g-wA-fZr" secondAttribute="bottom" constant="263" id="S1d-lR-OC6"/>
+                            <constraint firstItem="gN2-wf-uYB" firstAttribute="bottom" secondItem="c8g-wA-fZr" secondAttribute="bottom" constant="230" id="S1d-lR-OC6"/>
                             <constraint firstItem="uiq-ME-5wP" firstAttribute="top" secondItem="5O3-AJ-rvg" secondAttribute="bottom" constant="7" id="Tva-em-CE6"/>
                             <constraint firstItem="gN2-wf-uYB" firstAttribute="trailing" secondItem="c8g-wA-fZr" secondAttribute="trailing" constant="16" id="UG3-y6-Lfd"/>
                             <constraint firstAttribute="bottom" secondItem="jiU-eq-fkP" secondAttribute="bottom" constant="362" id="YDe-rM-iLW"/>

@@ -79,6 +79,7 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         
         foodTitle.text = food?.ProductTitle ?? ""
         foodPrice.text = food?.PriceString
+        foodSubTitle.text = food?.Description
         
         let url = URL(string: "http://tezwebservice.pryazilim.com/api/ProductService/GetAllProductList/\(self.food!.PhotoPath)")
         detailFoodImage.kf.setImage(with: url)
