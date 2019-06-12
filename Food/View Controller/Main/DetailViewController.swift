@@ -10,6 +10,7 @@ import UIKit
 import TagListView
 import Moya
 import Kingfisher
+import SwiftyJSON
 
 class DetailViewController: UIViewController, TagListViewDelegate {
     
@@ -31,6 +32,7 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     var priceFood: Double!
     
     var food: Food?
+    var foodDetailProvider = MoyaProvider<FoodNetwork>()
     
     //    var q = 1
     //    var fp = 0
@@ -77,6 +79,7 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         
         foodTitle.text = food?.ProductTitle ?? ""
         foodPrice.text = food?.PriceString
+        
         let url = URL(string: "http://tezwebservice.pryazilim.com/api/ProductService/GetAllProductList/\(self.food!.PhotoPath)")
         detailFoodImage.kf.setImage(with: url)
         
@@ -113,9 +116,12 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         
         tagListView.textFont = UIFont.systemFont(ofSize: 14)
         tagListView.alignment = .left // possible values are .Left, .Center, and .Right
-        
+
         //        tagListView.addTag("TagListView")
-        let tags = tagListView.addTags(["Zeytin", "Peynir", "Reçel"])
+        
+        for tags in food!.DetailsList {
+            tagListView.addTags([tags])
+        }
         
         //        tagListView.insertTag("This should be the second tag", at: 1)
         
@@ -123,8 +129,6 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         
         //        tagListView.removeTag("meow") // all tags with title “meow” will be removed
         //        tagListView.removeAllTags()
-        
-        
     }
     
 }

@@ -17,42 +17,32 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var myCartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
-    //    private let persistentContainer = NSPersistentContainer(name: "MyCartData")
-    //    let myCartUserDefaults = UserDefaults.standard
     
     var food: Food?
     
     var fromSharedFood = SingletonCart.sharedFood.food
     
+    let cartCell = MyCartTableViewCell()
     //TODO: - Approve my  cart
     @IBAction func approveCart(_ sender: Any) {
-        save()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //        myCartTableView.dataSource = (myCartUserDefaults.string(forKey: "userCart") as! UITableViewDataSource)
         if fromSharedFood.count == 0 {
             self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = nil
             
-        }
-        else {
-            
+        }  else {
             self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = "\(fromSharedFood.count)"
-            
         }
         self.tabBarController?.tabBar.isHidden = false
-        save()
-        load()
         self.myCartTableView.reloadData()
     }
     
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        //        myCartTableView.dataSource = (myCartUserDefaults.string(forKey: "userCart") as! UITableViewDataSource)
         
         self.myCartTableView.reloadData()
         
@@ -79,34 +69,13 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         return fromSharedFood.count
     }
     
-    func save() {
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(fromSharedFood), forKey: "fromSharedFood")
-        //            archivedData(withRootObject: fromSharedFood), forKey: "fromSharedFood")
-    }
-    
-    func load() {
-        if let loadedData:[Food] = UserDefaults.standard.value(forKey: "fromSharedFood") as? [Food] {
-            fromSharedFood = loadedData
-            myCartTableView.reloadData()
-        }
-        guard let foodData = UserDefaults.standard.object(forKey: "fromSharedFood") as? Data else {
-            return
-        }
-        
-        // Use PropertyListDecoder to convert Data into Player
-        guard (try? PropertyListDecoder().decode(Food.self, from: foodData)) != nil else {
-            return
-        }
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let foodName = fromSharedFood[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
         cell.myCartFoodNameLabel.text = foodName.ProductTitle
         self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = "\(fromSharedFood.count)"
         cell.myCartFoodPriceLabel.text = foodName.PriceString
-        load()
-        save()
+        
         return cell
     }
     
@@ -127,16 +96,10 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
                 self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = nil
             }
             else {
-                //                if fromSharedFood.count == 0 {
-                //                    myCartTableView.reloadData()
-                //                    self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = nil }
-                //                else {
                 self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = "\(fromSharedFood.count)"
                 //                }
                 myCartTableView.restore()
-                //                self.myCartUserDefaults.set(myCartTableView.dataSource, forKey: "userCart")
             }
-            save()
             //            tableView.endUpdates()
             
         }

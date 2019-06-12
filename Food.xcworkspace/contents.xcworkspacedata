@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/aliemredegirmenci/Developer/Food/MyCartData+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/aliemredegirmenci/Developer/Food/MyCartData+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Food.xcodeproj">
    </FileRef>
    <FileRef

@@ -17,9 +17,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
-    //MARK: Menu Categories
-    var sections = ["Kahvaltılar", "Hamburgerler"]
-    
     var sliderProvider = MoyaProvider<SliderNetwork>()
     var foodProvider = MoyaProvider<FoodNetwork>()
     var foodCategoryProvider = MoyaProvider<FoodCategoryNetwork>()
