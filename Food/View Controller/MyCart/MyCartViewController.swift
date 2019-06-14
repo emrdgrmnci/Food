@@ -30,6 +30,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        resetTotalPrice()
         if fromSharedFood.count == 0 {
             self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = nil
             
@@ -55,6 +56,16 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
             self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = "\(fromSharedFood.count)"
             
         }
+    }
+    
+    func resetTotalPrice() {
+        var tempTotalPrice = 0 as Decimal
+        
+        for sharedFoodTotalPrice in fromSharedFood {
+            tempTotalPrice += (sharedFoodTotalPrice.Price * sharedFoodTotalPrice.foodQuantity!)
+        }
+        
+        totalPriceLabel.text = "Toplam: \(tempTotalPrice) ₺"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,9 +96,13 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            fromSharedFood.remove(at: indexPath.row)
+            SingletonCart.sharedFood.food.remove(at: indexPath.row)
+            fromSharedFood = SingletonCart.sharedFood.food
+            resetTotalPrice()
+//            fromSharedFood.removeAll()
             tableView.deleteRows(at: [indexPath], with: .fade)
             //            tableView.beginUpdates()
+            tableView.reloadData()
             
             if fromSharedFood.count == 0 {
                 myCartTableView.setEmptyView(title: "Sepetinizde ürün bulunmamaktadır", message: "Seçtiğiniz yemekler burada listelenir.")

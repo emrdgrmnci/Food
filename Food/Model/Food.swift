@@ -20,6 +20,7 @@ struct Food: Codable {
     let Stock: Int
     let Details: String
     let DetailsList: [String]
+    var foodQuantity: Decimal?
 }
 
 

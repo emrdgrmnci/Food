@@ -33,6 +33,7 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     
     var food: Food?
     var foodDetailProvider = MoyaProvider<FoodNetwork>()
+    var tempQuantity = 1
     
     var foodPriceAccumulate = FoodPriceCount(quantity: 1, foodPrice: 10) {
         willSet {
@@ -51,21 +52,23 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     
     @IBAction func addQuantity(_ sender: Any) {
         if foodPriceAccumulate.quantity < 30 {
+            tempQuantity += 1
             foodPriceAccumulate.quantity += 1
         }
     }
     
     @IBAction func decreasedQuantity(_ sender: Any) {
         if foodPriceAccumulate.quantity > 0 {
+            tempQuantity -= 1
             foodPriceAccumulate.quantity -= 1
         }
     }
     
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
-        
+        food?.foodQuantity = Decimal(tempQuantity)
         SingletonCart.sharedFood.food.append(food!)
-        
+        print(SingletonCart.sharedFood.food)
         self.performSegue(withIdentifier: "toMyCart", sender: nil)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
@@ -77,7 +80,6 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         super.viewDidLoad()
         
         foodQuantity.text = "1"
-        
         
         foodTitle.text = food?.ProductTitle ?? ""
         foodPrice.text = food?.PriceString
