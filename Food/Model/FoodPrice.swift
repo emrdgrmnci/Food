@@ -9,5 +9,8 @@
 import Foundation
 
 struct FoodPriceCount {
-    var foodPriceCount: Food
+//    var foodPriceCount: Food?
+        var quantity: Decimal
+        var foodPrice: Decimal
+    
 }

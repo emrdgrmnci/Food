@@ -34,31 +34,32 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     var food: Food?
     var foodDetailProvider = MoyaProvider<FoodNetwork>()
     
-    //    var q = 1
-    //    var fp = 0
+    var foodPriceAccumulate = FoodPriceCount(quantity: 1, foodPrice: 10) {
+        willSet {
+            self.foodPriceAccumulate.quantity = 1
+            self.foodPriceAccumulate.foodPrice = food!.Price
+        }
+        didSet {
+            
+            let quantity = foodPriceAccumulate.quantity
+            let price = food!.Price * quantity
+            foodQuantity.text = "\(String( describing: quantity))"
+            foodPrice.text = "\(price) ₺"
+            
+        }
+    }
     
-    //    var foodPriceCount = FoodPriceCount(foodPriceCount: ) {
-    //
-    //        didSet {
-    //            let quantity = foodPriceCount.quantity
-    //            let price = foodPriceCount.foodPrice * Double(quantity)
-    //            foodQuantity.text = "\(quantity)"
-    //            foodPrice.text = "\(price)"
-    //
-    //        }
-    //    }
-    //
-    //    @IBAction func addQuantity(_ sender: Any) {
-    //        if foodPriceCount.quantity < 30 {
-    //            foodPriceCount.quantity += 1
-    //        }
-    //    }
-    //
-    //    @IBAction func decreasedQuantity(_ sender: Any) {
-    //        if foodPriceCount.quantity > 0 {
-    //            foodPriceCount.quantity -= 1
-    //        }
-    //    }
+    @IBAction func addQuantity(_ sender: Any) {
+        if foodPriceAccumulate.quantity < 30 {
+            foodPriceAccumulate.quantity += 1
+        }
+    }
+    
+    @IBAction func decreasedQuantity(_ sender: Any) {
+        if foodPriceAccumulate.quantity > 0 {
+            foodPriceAccumulate.quantity -= 1
+        }
+    }
     
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
@@ -77,11 +78,11 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         
         foodQuantity.text = "1"
         
+        
         foodTitle.text = food?.ProductTitle ?? ""
         foodPrice.text = food?.PriceString
         foodSubTitle.text = food?.Description
-        
-        let url = URL(string: "http://tezwebservice.pryazilim.com/api/ProductService/GetAllProductList/\(self.food!.PhotoPath)")
+        let url = URL(string: "http://mehmetguner.pryazilim.com/UploadFile/Product/\(self.food!.PhotoPath)")
         detailFoodImage.kf.setImage(with: url)
         
         tagListView.delegate = self
@@ -98,10 +99,10 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     }
     @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
-    
+        
     }
     @IBAction func favoriteButtonClicked(_ sender: UIBarButtonItem) {
-    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,7 +118,7 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         
         tagListView.textFont = UIFont.systemFont(ofSize: 14)
         tagListView.alignment = .left // possible values are .Left, .Center, and .Right
-
+        
         //        tagListView.addTag("TagListView")
         
         for tags in food!.DetailsList {
