@@ -9,19 +9,56 @@
 import UIKit
 //import TinyConstraints
 import KMPlaceholderTextView
+import Moya
+import SwiftyJSON
 
 //TODO: Detaydaki yemek içeriklerini burayada getir
 
 class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var addressType: [String] = []
+    var addressType: [String] = ["Seçiniz"]
     var paymentMethod: [String] = []
+    var getAddressList: [AddressPost] = []
     
     var activeTextField = UITextField()
     
+    let provider = MoyaProvider<GetAddressNetwork>()
+    
+    let fromSharedFood = SingletonCart.sharedFood.food
+    
     @IBAction func approveButton(_ sender: Any) {
+        
     }
     
+    func getAddressFunc() {
+        provider.request(.getAddressList) { [weak self] result in
+            guard self != nil else {return}
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        print(try response.mapJSON())
+                        
+                        let userResponse = try JSONDecoder().decode(AddressPostResponse.self, from: response.data)
+                        //                        detail = userResponse
+                        
+                        self!.getAddressList = userResponse.ResultList!
+                        
+                        for item in userResponse.ResultList! {
+                            self!.addressType.append(item.T)
+                        }
+                    } catch {
+                        print("Error info: \(error)")
+                    }
+                }
+            case .failure(let error):
+                self!.isLoading(false)
+                print(error.response!)
+            }
+            
+        }
+    }
+
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -30,23 +67,23 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         return view
     }()
     
+    //MARK: Telefon numarasını MyInfosa Taşı
     
-    lazy var phoneTextField: UITextField = {
-        let phoneTf = UITextField()
-        phoneTf.layer.cornerRadius = 8
-        phoneTf.layer.borderWidth = 1
-        phoneTf.layer.borderColor = UIColor.lightGray.cgColor
-        phoneTf.placeholder = "Cep Telefonu"
-        return phoneTf
-    }()
+//    lazy var phoneTextField: UITextField = {
+//        let phoneTf = UITextField()
+//        phoneTf.layer.cornerRadius = 8
+//        phoneTf.layer.borderWidth = 1
+//        phoneTf.layer.borderColor = UIColor.lightGray.cgColor
+//        phoneTf.placeholder = "Cep Telefonu"
+//        return phoneTf
+//    }()
     
-    lazy var cityTextField: UITextField = {
-        let cityTf = UITextField()
+    lazy var selectedAddressTextView: KMPlaceholderTextView = {
+        let cityTf = KMPlaceholderTextView()
         cityTf.layer.cornerRadius = 8
         cityTf.layer.borderWidth = 1
         cityTf.layer.borderColor = UIColor.lightGray.cgColor
-        cityTf.placeholder = "İzmir"
-        cityTf.isEnabled = false
+        cityTf.placeholder = "Adres başlığı seçiniz!"
         return cityTf
     }()
     
@@ -56,7 +93,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         addressTv.layer.borderWidth = 1
         addressTv.layer.borderColor = UIColor.lightGray.cgColor
         addressTv.font = UIFont.systemFont(ofSize: 18)
-        addressTv.placeholder = "Mahalle/Cadde/Sokak/Bina/Daire No."
+        addressTv.placeholder = "Adres Başlığı"
         return addressTv
         
     }()
@@ -89,6 +126,9 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         
         view.addSubview(scrollView)
         setupScrollView()
+//        resetTotalPrice()
+        
+        getAddressFunc()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
@@ -100,8 +140,8 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         
-        phoneTextField.resignFirstResponder()
-        cityTextField.resignFirstResponder()
+//        phoneTextField.resignFirstResponder()
+        selectedAddressTextView.resignFirstResponder()
         addressText.resignFirstResponder()
         paymentText.resignFirstResponder()
         explanationTextView.resignFirstResponder()
@@ -114,37 +154,36 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
-        phoneTextField.translatesAutoresizingMaskIntoConstraints = false
-        cityTextField.translatesAutoresizingMaskIntoConstraints = false
+//        phoneTextField.translatesAutoresizingMaskIntoConstraints = false
+        selectedAddressTextView.translatesAutoresizingMaskIntoConstraints = false
         addressText.translatesAutoresizingMaskIntoConstraints = false
         paymentText.translatesAutoresizingMaskIntoConstraints = false
         explanationTextView.translatesAutoresizingMaskIntoConstraints = false
         
-        scrollView.addSubview(phoneTextField)
+//        scrollView.addSubview(phoneTextField)
         
-        phoneTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        phoneTextField.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 50).isActive = true
-        phoneTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        phoneTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        scrollView.addSubview(cityTextField)
-        
-        cityTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        cityTextField.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 100).isActive = true
-        cityTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        cityTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//        phoneTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+//        phoneTextField.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 50).isActive = true
+//        phoneTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
+//        phoneTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         scrollView.addSubview(addressText)
         
         addressText.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        addressText.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 150).isActive = true
+        addressText.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 100).isActive = true
         addressText.widthAnchor.constraint(equalToConstant: 300).isActive = true
         addressText.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        scrollView.addSubview(selectedAddressTextView)
+        
+        selectedAddressTextView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        selectedAddressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 150).isActive = true
+        selectedAddressTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        selectedAddressTextView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         let addressPicker = UIPickerView()
         addressPicker.delegate = self
         addressText.inputView = addressPicker
-        addressType = ["Ev", "İş"]
         
         scrollView.addSubview(paymentText)
         
@@ -194,8 +233,20 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         approveButton.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 1/2).isActive = true
         approveButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
+        var tempTotalPrice = 0 as Decimal
+        
+        for sharedFoodTotalPrice in fromSharedFood {
+            tempTotalPrice += (sharedFoodTotalPrice.Price * sharedFoodTotalPrice.foodQuantity!)
+        }
+        
+        totalLabel.text = "Toplam: \(tempTotalPrice) ₺"
         
     }
+    
+//    func resetTotalPrice() {
+//
+//    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -219,11 +270,17 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
             return nil
         }
     }
+    
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //        addressText.text = addressType[row]
         if addressText.isFirstResponder {
+            if row != 0 {
+            selectedAddressTextView.text = getAddressList[row - 1].A
+            
             let itemSelected = addressType[row]
+    
             addressText.text = itemSelected
+            }
         } else if paymentText.isFirstResponder {
             let itemSelected = paymentMethod[row]
             paymentText.text = itemSelected
