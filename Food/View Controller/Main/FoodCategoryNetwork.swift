@@ -21,7 +21,7 @@ extension FoodCategoryNetwork: TargetType {
     
     public var path: String {
         switch self {
-        case .foodCategory: return "/categoryservice/getcategorylist"
+        case .foodCategory: return "/ProductService/GetSubCategoryAllProductList"
         }
     }
     

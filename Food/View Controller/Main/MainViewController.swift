@@ -208,7 +208,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return foodCategoryData[section].Title
+        return foodCategoryData[section].SubCategoryTitle
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -222,17 +222,20 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return foodData.count
+       // return foodData.count
+        return foodCategoryData[section].ProductList.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood") as! MainFoodTitleTableViewCell
-        let foodList = foodData[indexPath.row]
-        //        let food = foods.filter({$0.category == sections[indexPath.section]})[indexPath.row]
-        cell.titleLabel.text = foodList.ProductTitle
-        cell.priceLabel.text = foodList.PriceString
+        
+        let category = foodCategoryData[indexPath.section]
+        let food = category.ProductList[indexPath.row]
+        
+        cell.titleLabel.text = food.ProductTitle
+        cell.priceLabel.text = food.PriceString
         
         return cell
     }

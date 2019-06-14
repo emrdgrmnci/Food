@@ -68,7 +68,7 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     @IBAction func addBasket(_ sender: Any) {
         food?.foodQuantity = Decimal(tempQuantity)
         SingletonCart.sharedFood.food.append(food!)
-        print(SingletonCart.sharedFood.food)
+        
         self.performSegue(withIdentifier: "toMyCart", sender: nil)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false

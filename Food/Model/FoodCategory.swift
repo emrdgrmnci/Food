@@ -9,6 +9,7 @@
 import Foundation
 
 struct FoodCategory: Decodable {
-    var id: Int
-    var Title: String
+    var SubCategoryId: Int
+    var SubCategoryTitle: String
+    var ProductList: [Food]
 }
