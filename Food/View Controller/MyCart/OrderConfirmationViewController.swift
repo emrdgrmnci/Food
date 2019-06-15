@@ -170,16 +170,16 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         scrollView.addSubview(addressText)
         
         addressText.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        addressText.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 100).isActive = true
+        addressText.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20).isActive = true
         addressText.widthAnchor.constraint(equalToConstant: 300).isActive = true
         addressText.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         scrollView.addSubview(selectedAddressTextView)
         
         selectedAddressTextView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        selectedAddressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 150).isActive = true
+        selectedAddressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 80).isActive = true
         selectedAddressTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        selectedAddressTextView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        selectedAddressTextView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         let addressPicker = UIPickerView()
         addressPicker.delegate = self
@@ -188,7 +188,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         scrollView.addSubview(paymentText)
         
         paymentText.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        paymentText.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 210).isActive = true
+        paymentText.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 130).isActive = true
         paymentText.widthAnchor.constraint(equalToConstant: 300).isActive = true
         paymentText.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
@@ -200,7 +200,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         scrollView.addSubview(explanationTextView)
         
         explanationTextView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        explanationTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 270).isActive = true
+        explanationTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 230).isActive = true
         explanationTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         explanationTextView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
@@ -243,9 +243,6 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         
     }
     
-//    func resetTotalPrice() {
-//
-//    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

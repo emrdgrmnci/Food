@@ -75,3 +75,11 @@ public struct UserInfoServiceResponse: Codable {//UserRegisterResponse
     let Statue: Int?
 }
 
+public struct PastOrdersServiceResponse: Codable {//UserRegisterResponse
+    let ResultObj: PastOrders?
+    let ResultList: [PastOrders]?
+    let Message: String?
+    let Success: Bool!
+    let Statue: Int?
+}
+

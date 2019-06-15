@@ -176,21 +176,20 @@ class MainViewController: UIViewController {
         return isResult
     }
     
+    var foodSection = 0
+    var foodRow = 0
     
     //    MARK: Segue from MainVC to DetailVC
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "cellForFood" {
-            if let indexPath = self.mainTableView.indexPathForSelectedRow {
+        if segue.identifier == "selectedFoodToDetail" {
+//            if let indexPath = self.mainTableView.indexPathForSelectedRow {
                 let controller = segue.destination as! DetailViewController
-                let foods = foodData
-                controller.food = foods[indexPath.row]
+//                let foods = foodData
+                controller.food = foodCategoryData[foodSection].ProductList[foodRow]
             }
         }
         
-    }
-    
-    
+//    }
 }
 //var seledted : Food
 
@@ -206,6 +205,13 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        foodSection = indexPath.section
+        foodRow = indexPath.row
+        
+        performSegue(withIdentifier: "selectedFoodToDetail", sender: self)
+
+    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return foodCategoryData[section].SubCategoryTitle
@@ -269,33 +275,5 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
 }
-
-
-//MARK:- SearchBar data
-//extension MainViewController : UISearchBarDelegate {
-//
-//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//
-//        self.searchBar.showsCancelButton = true
-//        //        mainTableView.reloadData()
-//    }
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        searching = false
-//        searchBar.showsCancelButton = false
-//        searchBar.text = ""
-//        searchBar.resignFirstResponder()
-//        mainTableView.reloadData()
-//    }
-//
-//
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//
-//        filtered = self.searchFoods.filter ({$0.prefix(searchText.count) == searchText})
-//        searching = true
-//        mainTableView.reloadData()
-//
-//    }
-//}
 
 

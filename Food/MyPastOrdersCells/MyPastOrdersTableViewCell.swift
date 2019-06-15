@@ -10,8 +10,10 @@ import UIKit
 
 class MyPastOrdersTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var selectedMenu: UILabel!
-    @IBOutlet weak var selectedMenuPrice: UILabel!
+
+    @IBOutlet weak var pastOrderNumber: UILabel!
+    @IBOutlet weak var pastOrderDate: UILabel!
+    @IBOutlet weak var pastOrderPrice: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

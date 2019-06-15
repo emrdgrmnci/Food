@@ -100,7 +100,7 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         //        self.view.addGestureRecognizer(tapGesture)
     }
     @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
         
     }
     @IBAction func favoriteButtonClicked(_ sender: UIBarButtonItem) {

@@ -18,6 +18,8 @@
 		472C31F8223814C400A3E863 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C31F7223814C400A3E863 /* Food.swift */; };
 		472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C31F92238152B00A3E863 /* FoodPrice.swift */; };
 		472F68BB22205953006F0FF7 /* MainFoodTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472F68BA22205953006F0FF7 /* MainFoodTitleTableViewCell.swift */; };
+		47349F8422B500DB007EEB73 /* PastOrdersNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47349F8322B500DB007EEB73 /* PastOrdersNetwork.swift */; };
+		47349F8622B50236007EEB73 /* PastOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47349F8522B50236007EEB73 /* PastOrders.swift */; };
 		473E50F622899B9000E7BBC8 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E50F522899B9000E7BBC8 /* Webservice.swift */; };
 		473E50F92289A95B00E7BBC8 /* ArticleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E50F82289A95B00E7BBC8 /* ArticleList.swift */; };
 		474A1B5D2284765000710A3E /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474A1B5C2284765000710A3E /* LaunchScreenViewController.swift */; };
@@ -74,6 +76,8 @@
 		472C31F7223814C400A3E863 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		472C31F92238152B00A3E863 /* FoodPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPrice.swift; sourceTree = "<group>"; };
 		472F68BA22205953006F0FF7 /* MainFoodTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFoodTitleTableViewCell.swift; sourceTree = "<group>"; };
+		47349F8322B500DB007EEB73 /* PastOrdersNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastOrdersNetwork.swift; sourceTree = "<group>"; };
+		47349F8522B50236007EEB73 /* PastOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastOrders.swift; sourceTree = "<group>"; };
 		473E50F522899B9000E7BBC8 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		473E50F82289A95B00E7BBC8 /* ArticleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleList.swift; sourceTree = "<group>"; };
 		474A1B5C2284765000710A3E /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchScreenViewController.swift; path = "Food/View Controller/Splash/LaunchScreenViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -231,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				47CD51AF22AAA7F900DBA334 /* GetAddressNetwork.swift */,
+				47349F8322B500DB007EEB73 /* PastOrdersNetwork.swift */,
 				47EBD71B22AAB7D800858613 /* MyInfoNetwork.swift */,
 				4753F879223821A200DD7DC2 /* SettingsViewController.swift */,
 				47505FD2228B53ED00876FBF /* MyInfosViewController.swift */,
@@ -317,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				47FC79CE229993F8005682E7 /* GUID.swift */,
+				47349F8522B50236007EEB73 /* PastOrders.swift */,
 				476AC91A229D9B25006817D3 /* User.swift */,
 				476AC91C229D9D9D006817D3 /* AddressPost.swift */,
 				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
@@ -535,6 +541,7 @@
 				47EC7EE422283A0B0045783B /* MainNavigationController.swift in Sources */,
 				47505FD5228B547F00876FBF /* MyPastOrdersViewController.swift in Sources */,
 				4709EEFF22A93686006D5421 /* FoodCategoryNetwork.swift in Sources */,
+				47349F8622B50236007EEB73 /* PastOrders.swift in Sources */,
 				47560023228D6707006DA1ED /* MyPastOrdersTableViewCell.swift in Sources */,
 				474A1B5D2284765000710A3E /* LaunchScreenViewController.swift in Sources */,
 				473E50F622899B9000E7BBC8 /* Webservice.swift in Sources */,
@@ -569,6 +576,7 @@
 				474AEBBC22AEA6EC0047B2D3 /* MyCartData+CoreDataClass.swift in Sources */,
 				4784A828229444E9004576EC /* ViewExtensions.swift in Sources */,
 				472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */,
+				47349F8422B500DB007EEB73 /* PastOrdersNetwork.swift in Sources */,
 				476AC91F229DB31A006817D3 /* WebAPIResponse.swift in Sources */,
 				47CBD0A3223949960032ADEC /* MyCartViewController.swift in Sources */,
 				4725663222A55E97005F64FC /* FoodNetwork.swift in Sources */,
