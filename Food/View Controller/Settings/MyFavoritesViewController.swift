@@ -7,51 +7,57 @@
 //
 
 import UIKit
+import Moya
+import SwiftyJSON
 
 class MyFavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     @IBOutlet weak var myFavoritesTableView: UITableView!
     
+    let favoriteProvider = MoyaProvider<GetPostFavoriteListNetwork>()
+    
+    var favoriteList = [FavoriteList]()
+    
     var food: Food?
-    var fromSharedFood = SingletonCart.sharedFood.food
-    var isFavorited = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        isFavorited = false
-        
+        getFavoritesFunc()
+        myFavoritesTableView.dataSource = self
+        myFavoritesTableView.delegate = self
         self.navigationItem.title = "Favorilerim"
         myFavoritesTableView.reloadData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if fromSharedFood.count == 0 {
-            myFavoritesTableView.setEmptyView(title: "Favori ürün bulunmamaktadır", message: "Favori ürünler burada listelenir.")
-        }
-        else {
-            myFavoritesTableView.restore()
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        if favoriteList.count == 0 {
+//            myFavoritesTableView.setEmptyView(title: "Favori ürün bulunmamaktadır", message: "Favori ürünler burada listelenir.")
+//        }
+//        else {
+//            myFavoritesTableView.restore()
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if isFavorited == false {
+        if favoriteList.count == 0 {
             tableView.setEmptyView(title: "Favori ürün bulunmamaktadır", message: "Favori ürünler burada listelenir.")
         }
         else {
             tableView.restore()
         }
         
-        return fromSharedFood.count
+        return favoriteList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let foodName = fromSharedFood[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
-        cell.myCartFoodNameLabel.text = foodName.ProductTitle
-        cell.myCartFoodPriceLabel.text = foodName.PriceString
+        let foodName = favoriteList[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyFavorites", for: indexPath) as! MyFavoritesTableViewCell
+        cell.myFavoritesTitle.text = foodName.ProductTitle
+        cell.myFavoritesPrice.text = foodName.PriceString
         
         return cell
         
@@ -63,12 +69,13 @@ class MyFavoritesViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            fromSharedFood.remove(at: indexPath.row)
+            postFavoritesFunc(favoriteID: favoriteList[indexPath.row].id)
+            favoriteList.remove(at: indexPath.row)
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
             
-            if isFavorited == false {
+            if favoriteList.count == 0 {
                 myFavoritesTableView.setEmptyView(title: "Favori ürün bulunmamaktadır", message: "Favori ürünler burada listelenir.")
             }
             else {
@@ -78,7 +85,61 @@ class MyFavoritesViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
+    func getFavoritesFunc() {
+        favoriteProvider.request(.getFavoriteList) { [weak self] result in
+            guard self != nil else {return}
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        print(try response.mapJSON())
+                        
+                        let favoriteResponse = try JSONDecoder().decode(FavoriteListServiceResponse.self, from: response.data)
+                        //                        detail = userResponse
+                        
+                        self!.favoriteList = favoriteResponse.ResultList!
+                        print(favoriteResponse.ResultList!)
+                        print(self?.favoriteList as Any)
+                        self!.myFavoritesTableView.reloadData()
+                    } catch {
+                        print("Error info: \(error)")
+                    }
+                }
+            case .failure(let error):
+                self!.isLoading(false)
+                print(error.response!)
+            }
+            
+        }
+    }
     
+    
+    func postFavoritesFunc(favoriteID: Int) {
+        favoriteProvider.request(.postDeleteFavorite(favoriteID)) { [weak self] result in
+            guard self != nil else {return}
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        print(try response.mapJSON())
+                        
+                        let favoriteResponse = try JSONDecoder().decode(FavoriteListServiceResponse.self, from: response.data)
+                        //                        detail = userResponse
+                        
+                        self!.favoriteList = favoriteResponse.ResultList!
+                        self!.myFavoritesTableView.reloadData()
+                    } catch {
+                        print("Error info: \(error)")
+                    }
+                }
+            case .failure(let error):
+                self!.isLoading(false)
+                print(error.response!)
+            }
+            
+        }
+    }
+
 }
 
 //MARK: If table view empty!

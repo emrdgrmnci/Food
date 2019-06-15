@@ -90,10 +90,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         default: break
         }
     }
-    
-    
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
+        func textFieldDidEndEditing(_ textField: UITextField) {
         if phoneTextField == textField && phoneTextField.text?.count == 13 {
             
         }

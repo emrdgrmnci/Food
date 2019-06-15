@@ -10,6 +10,9 @@
 		4709EEFF22A93686006D5421 /* FoodCategoryNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4709EEFE22A93686006D5421 /* FoodCategoryNetwork.swift */; };
 		4709EF0122A9371A006D5421 /* FoodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4709EF0022A9371A006D5421 /* FoodCategory.swift */; };
 		470C1559229C50AC0043ECDA /* RegisterNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470C1558229C50AC0043ECDA /* RegisterNetwork.swift */; };
+		470F496922B57AB7008D9B2E /* FavoriteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F496822B57AB7008D9B2E /* FavoriteList.swift */; };
+		470F496B22B57B4D008D9B2E /* GetPostFavoriteListNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F496A22B57B4D008D9B2E /* GetPostFavoriteListNetwork.swift */; };
+		470F496D22B591E7008D9B2E /* MyFavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F496C22B591E7008D9B2E /* MyFavoritesTableViewCell.swift */; };
 		4712F42F221D64B4009088DA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712F42E221D64B4009088DA /* RegisterViewController.swift */; };
 		4725662E22A544C4005F64FC /* SliderNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4725662D22A544C4005F64FC /* SliderNetwork.swift */; };
 		4725663022A54DC4005F64FC /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4725662F22A54DC4005F64FC /* Slider.swift */; };
@@ -68,6 +71,9 @@
 		4709EEFE22A93686006D5421 /* FoodCategoryNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryNetwork.swift; sourceTree = "<group>"; };
 		4709EF0022A9371A006D5421 /* FoodCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategory.swift; sourceTree = "<group>"; };
 		470C1558229C50AC0043ECDA /* RegisterNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNetwork.swift; sourceTree = "<group>"; };
+		470F496822B57AB7008D9B2E /* FavoriteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteList.swift; sourceTree = "<group>"; };
+		470F496A22B57B4D008D9B2E /* GetPostFavoriteListNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostFavoriteListNetwork.swift; sourceTree = "<group>"; };
+		470F496C22B591E7008D9B2E /* MyFavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyFavoritesTableViewCell.swift; path = Food/MyFavoritesCell/MyFavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		4712F42E221D64B4009088DA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		4725662D22A544C4005F64FC /* SliderNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SliderNetwork.swift; path = "Food/View Controller/Main/SliderNetwork.swift"; sourceTree = SOURCE_ROOT; };
 		4725662F22A54DC4005F64FC /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
@@ -235,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				47CD51AF22AAA7F900DBA334 /* GetAddressNetwork.swift */,
+				470F496A22B57B4D008D9B2E /* GetPostFavoriteListNetwork.swift */,
 				47349F8322B500DB007EEB73 /* PastOrdersNetwork.swift */,
 				47EBD71B22AAB7D800858613 /* MyInfoNetwork.swift */,
 				4753F879223821A200DD7DC2 /* SettingsViewController.swift */,
@@ -326,6 +333,7 @@
 				476AC91A229D9B25006817D3 /* User.swift */,
 				476AC91C229D9D9D006817D3 /* AddressPost.swift */,
 				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
+				470F496822B57AB7008D9B2E /* FavoriteList.swift */,
 				4725662F22A54DC4005F64FC /* Slider.swift */,
 				472C31F7223814C400A3E863 /* Food.swift */,
 				47A262D5226FA0790079C434 /* SingletonCart.swift */,
@@ -350,6 +358,7 @@
 		47FED476221B19A40050ADD2 = {
 			isa = PBXGroup;
 			children = (
+				470F496C22B591E7008D9B2E /* MyFavoritesTableViewCell.swift */,
 				474AEBBB22AEA6EC0047B2D3 /* MyCartData+CoreDataClass.swift */,
 				474AEBBA22AEA6EC0047B2D3 /* MyCartData+CoreDataProperties.swift */,
 				476AC91E229DB31A006817D3 /* WebAPIResponse.swift */,
@@ -551,6 +560,7 @@
 				47FED483221B19A40050ADD2 /* AppDelegate.swift in Sources */,
 				47EBD71C22AAB7D800858613 /* MyInfoNetwork.swift in Sources */,
 				476AC91D229D9D9D006817D3 /* AddressPost.swift in Sources */,
+				470F496D22B591E7008D9B2E /* MyFavoritesTableViewCell.swift in Sources */,
 				47FED48B221B19A40050ADD2 /* Food.xcdatamodeld in Sources */,
 				4753F87A223821A200DD7DC2 /* SettingsViewController.swift in Sources */,
 				474F3AE52222D64E00B3D388 /* DetailViewController.swift in Sources */,
@@ -561,8 +571,10 @@
 				47A262D6226FA07A0079C434 /* SingletonCart.swift in Sources */,
 				47700C1C221EC4D7009C7682 /* MainFoodCollectionViewCell.swift in Sources */,
 				474AEBBD22AEA6EC0047B2D3 /* MyCartData+CoreDataProperties.swift in Sources */,
+				470F496B22B57B4D008D9B2E /* GetPostFavoriteListNetwork.swift in Sources */,
 				47700C1A221EC4A2009C7682 /* MainFoodTableViewCell.swift in Sources */,
 				472C31F8223814C400A3E863 /* Food.swift in Sources */,
+				470F496922B57AB7008D9B2E /* FavoriteList.swift in Sources */,
 				4753F87C2238222A00DD7DC2 /* ChangePasswordViewController.swift in Sources */,
 				4712F42F221D64B4009088DA /* RegisterViewController.swift in Sources */,
 				470C1559229C50AC0043ECDA /* RegisterNetwork.swift in Sources */,

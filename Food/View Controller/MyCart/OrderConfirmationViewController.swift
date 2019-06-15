@@ -188,7 +188,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         scrollView.addSubview(paymentText)
         
         paymentText.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        paymentText.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 130).isActive = true
+        paymentText.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 175).isActive = true
         paymentText.widthAnchor.constraint(equalToConstant: 300).isActive = true
         paymentText.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
@@ -200,7 +200,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         scrollView.addSubview(explanationTextView)
         
         explanationTextView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        explanationTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 230).isActive = true
+        explanationTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 240).isActive = true
         explanationTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         explanationTextView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         

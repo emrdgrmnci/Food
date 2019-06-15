@@ -115,14 +115,14 @@ class MyAddressesViewController: UIViewController, UITextFieldDelegate, UITextVi
         scrollView.addSubview(selectedAddressTextView)
         
         selectedAddressTextView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        selectedAddressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 150).isActive = true
+        selectedAddressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 80).isActive = true
         selectedAddressTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         selectedAddressTextView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         scrollView.addSubview(addressTextView)
         
         addressTextView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        addressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 200).isActive = true
+        addressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 160).isActive = true
         addressTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         addressTextView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
@@ -130,7 +130,7 @@ class MyAddressesViewController: UIViewController, UITextFieldDelegate, UITextVi
         scrollView.addSubview(shortAddressTextView)
         
         shortAddressTextView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        shortAddressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 300).isActive = true
+        shortAddressTextView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 240).isActive = true
         shortAddressTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         shortAddressTextView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
@@ -156,8 +156,8 @@ class MyAddressesViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         scrollView.addSubview(approveButton)
         
-        approveButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -80).isActive = true
-        approveButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 80).isActive = true
+        approveButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -120).isActive = true
+        approveButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: -80).isActive = true
         approveButton.topAnchor.constraint(equalTo: shortAddressTextView.bottomAnchor, constant: 20).isActive = true
         approveButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         approveButton.widthAnchor.constraint(equalTo: self.scrollView.safeAreaLayoutGuide.widthAnchor, multiplier: 1/2).isActive = true
@@ -181,7 +181,7 @@ class MyAddressesViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         scrollView.addSubview(deleteButton)
         
-        deleteButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -80).isActive = true
+        deleteButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 60).isActive = true
         deleteButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 80).isActive = true
         deleteButton.topAnchor.constraint(equalTo: approveButton.bottomAnchor, constant: 20).isActive = true
         deleteButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true

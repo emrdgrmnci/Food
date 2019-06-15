@@ -33,6 +33,8 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     
     var food: Food?
     var foodDetailProvider = MoyaProvider<FoodNetwork>()
+    var postFavoriteFood = MoyaProvider<GetPostFavoriteListNetwork>()
+    
     var tempQuantity = 1
     
     var foodPriceAccumulate = FoodPriceCount(quantity: 1, foodPrice: 10) {
@@ -103,7 +105,48 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         self.navigationController?.popToRootViewController(animated: true)
         
     }
+    
     @IBAction func favoriteButtonClicked(_ sender: UIBarButtonItem) {
+    
+                self.isLoading(true)
+                
+        postFavoriteFood.request(.postCreateFavorite(food!.id)) {
+                    [weak self] result in
+                    guard self != nil else { return }
+                    let statusCode = result.value?.statusCode
+                    switch result {
+                    case .success(let response):
+                        switch statusCode {
+                        case 200:
+                            self!.isLoading(false)
+                            do {
+                                let data = response.data
+                                let json = try JSON(data: data)
+                                let favoriteResponse = try JSONDecoder().decode(FavoriteListServiceResponse.self, from: response.data)
+                                
+                                if (favoriteResponse.Success) {
+                                    
+                                    print(json.debugDescription)
+                                } else {
+                                    self?.showAlert(withTitle: "Hata", withMessage: favoriteResponse.Message!, withAction: "pop")
+                                }
+                            } catch {
+                                print("favorite error")
+                            } default :
+                                self!.isLoading(false)
+                            break //Error handler
+                        }
+                    case .failure(let error):
+                        self!.isLoading(false)
+                        self!.showError(error.response!)
+                        self?.showAlert(withTitle: "Hata", withMessage: "Bu ürün favoriye eklenemez!", withAction: "pop")
+                        if let code = error.response?.statusCode {
+                            if code == 401 {
+                                self?.showAlert(withTitle: "Hata", withMessage: "Bu ürün favoriye eklenemez!", withAction: "pop")
+                            }
+                        }
+                    }
+                }
         
     }
     
