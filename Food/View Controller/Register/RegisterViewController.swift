@@ -94,7 +94,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         if phoneTextField == textField && phoneTextField.text?.count == 13 {
             
         }
-        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
