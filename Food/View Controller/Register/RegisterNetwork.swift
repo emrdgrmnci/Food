@@ -38,7 +38,7 @@ extension RegisterNetwork: TargetType {
     
     public var task: Task {
         switch self {
-        case .register(let name, let surname, let email, let phone, let password, let rePassword):
+        case .register(let name, let surname, let email, let phone, let password, let rePassword): 
             return .requestParameters(parameters: ["N" : name,
                                                    "S": surname,
                                                    "E": email,

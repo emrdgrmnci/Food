@@ -519,11 +519,11 @@
             <objects>
                 <viewController storyboardIdentifier="FirstViewController" id="cJk-Dz-vhG" customClass="IntroViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KhH-l0-i98">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="MainLogoScreen" translatesAutoresizingMaskIntoConstraints="NO" id="bnl-sw-V4M">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvH-zs-4dt">
                                 <rect key="frame" x="243" y="131" width="0.0" height="0.0"/>
@@ -533,7 +533,7 @@
                                 <color key="shadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ob-K6-9Fo">
-                                <rect key="frame" x="32" y="402" width="312" height="45"/>
+                                <rect key="frame" x="32" y="289" width="312" height="45"/>
                                 <state key="normal" image="Group 3580">
                                     <color key="titleColor" red="0.83257240060000004" green="0.19629079099999999" blue="0.066703736779999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -542,7 +542,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wk8-qQ-3ul">
-                                <rect key="frame" x="32" y="542" width="310" height="45"/>
+                                <rect key="frame" x="32" y="429" width="310" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Ciz-8j-Nk6"/>
                                 </constraints>
@@ -552,7 +552,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N34-bV-iEh">
-                                <rect key="frame" x="32" y="472" width="312" height="45"/>
+                                <rect key="frame" x="32" y="359" width="312" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="M7k-lH-siX"/>
                                 </constraints>
@@ -562,7 +562,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Şifreni mi unuttun?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ct-DN-Gew">
-                                <rect key="frame" x="143.5" y="520" width="87.5" height="14"/>
+                                <rect key="frame" x="143.5" y="407" width="87.5" height="14"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Thin" family="SF Pro Display" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -771,7 +771,7 @@
                                                 <rect key="frame" x="113" y="75" width="148" height="110"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFV-3C-bdG">
-                                                <rect key="frame" x="155" y="342" width="60" height="33"/>
+                                                <rect key="frame" x="145" y="342" width="60" height="33"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                 <state key="normal" title="Kayıt Ol!"/>
                                                 <connections>
@@ -789,7 +789,7 @@
                                             <constraint firstItem="s5P-Px-aGr" firstAttribute="top" secondItem="Hcu-VH-LbE" secondAttribute="top" constant="180" id="C4e-Dc-sDa"/>
                                             <constraint firstItem="s5P-Px-aGr" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="29" id="EjA-2X-oLt"/>
                                             <constraint firstItem="0TV-qb-kPF" firstAttribute="top" secondItem="s5P-Px-aGr" secondAttribute="bottom" constant="20" id="LFe-wN-fFo"/>
-                                            <constraint firstItem="TFV-3C-bdG" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="155" id="UCv-ek-swb"/>
+                                            <constraint firstItem="TFV-3C-bdG" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="145" id="UCv-ek-swb"/>
                                             <constraint firstItem="2Vh-mf-NgW" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="113" id="W82-I9-b8I"/>
                                             <constraint firstItem="cEi-DR-gYO" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="39" id="b8Q-SX-ChU"/>
                                             <constraint firstItem="cEi-DR-gYO" firstAttribute="top" secondItem="0TV-qb-kPF" secondAttribute="bottom" constant="24" id="fvu-cZ-PNp"/>
@@ -914,7 +914,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Diğer" id="gL2-TE-DAL"/>
                     <connections>
-                        <segue destination="cJk-Dz-vhG" kind="showDetail" identifier="settingsToIntro" id="mPB-hn-53e"/>
+                        <segue destination="Pha-Hc-L51" kind="showDetail" identifier="settingsToIntro" id="Kah-JZ-ZYL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8KD-cw-60I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1199,8 +1199,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXe-tf-ueu">
-                                <rect key="frame" x="39" y="190" width="295" height="45"/>
-                                <state key="normal" image="Tamam"/>
+                                <rect key="frame" x="39" y="190" width="295" height="30"/>
+                                <state key="normal" image="TamamButton"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1285,7 +1285,7 @@
         <image name="MainLogoScreen" width="320" height="568"/>
         <image name="Sepete" width="295" height="45"/>
         <image name="Symbol 25 – 6" width="295" height="45"/>
-        <image name="Tamam" width="295" height="45"/>
+        <image name="TamamButton" width="173" height="30"/>
         <image name="WebDevamEt" width="255" height="45"/>
         <image name="like" width="21" height="19.5"/>
         <image name="plus" width="30" height="30"/>
@@ -1295,9 +1295,9 @@
         <image name="tezzfood" width="119" height="110"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Kah-JZ-ZYL"/>
         <segue reference="Cvc-R5-nyC"/>
         <segue reference="GgA-us-hSQ"/>
-        <segue reference="mPB-hn-53e"/>
-        <segue reference="zSp-QH-Eod"/>
+        <segue reference="aUU-zf-sFV"/>
     </inferredMetricsTieBreakers>
 </document>
