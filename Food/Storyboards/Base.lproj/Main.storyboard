@@ -417,7 +417,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8g-wA-fZr">
-                                <rect key="frame" x="9" y="244" width="350" height="45"/>
+                                <rect key="frame" x="9" y="269" width="350" height="45"/>
                                 <state key="normal" image="Sepete"/>
                                 <connections>
                                     <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="F5U-LT-jir"/>
@@ -432,7 +432,7 @@
                             <constraint firstItem="uiq-ME-5wP" firstAttribute="top" secondItem="CU7-a0-gKg" secondAttribute="top" constant="144" id="M0L-gI-Ide"/>
                             <constraint firstItem="5O3-AJ-rvg" firstAttribute="leading" secondItem="gN2-wf-uYB" secondAttribute="leading" constant="16" id="MIw-75-loU"/>
                             <constraint firstItem="jiU-eq-fkP" firstAttribute="top" secondItem="uiq-ME-5wP" secondAttribute="bottom" constant="8" id="MW6-on-GxG"/>
-                            <constraint firstItem="gN2-wf-uYB" firstAttribute="bottom" secondItem="c8g-wA-fZr" secondAttribute="bottom" constant="265" id="S1d-lR-OC6"/>
+                            <constraint firstItem="gN2-wf-uYB" firstAttribute="bottom" secondItem="c8g-wA-fZr" secondAttribute="bottom" constant="240" id="S1d-lR-OC6"/>
                             <constraint firstItem="uiq-ME-5wP" firstAttribute="top" secondItem="5O3-AJ-rvg" secondAttribute="bottom" constant="7" id="Tva-em-CE6"/>
                             <constraint firstItem="gN2-wf-uYB" firstAttribute="trailing" secondItem="c8g-wA-fZr" secondAttribute="trailing" constant="16" id="UG3-y6-Lfd"/>
                             <constraint firstAttribute="bottom" secondItem="jiU-eq-fkP" secondAttribute="bottom" constant="362" id="YDe-rM-iLW"/>
@@ -788,8 +788,8 @@
                                             <constraint firstAttribute="trailing" secondItem="0TV-qb-kPF" secondAttribute="trailing" constant="31" id="92u-PY-z7m"/>
                                             <constraint firstItem="s5P-Px-aGr" firstAttribute="top" secondItem="Hcu-VH-LbE" secondAttribute="top" constant="180" id="C4e-Dc-sDa"/>
                                             <constraint firstItem="s5P-Px-aGr" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="29" id="EjA-2X-oLt"/>
+                                            <constraint firstItem="TFV-3C-bdG" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="145" id="GW9-3s-grN"/>
                                             <constraint firstItem="0TV-qb-kPF" firstAttribute="top" secondItem="s5P-Px-aGr" secondAttribute="bottom" constant="20" id="LFe-wN-fFo"/>
-                                            <constraint firstItem="TFV-3C-bdG" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="145" id="UCv-ek-swb"/>
                                             <constraint firstItem="2Vh-mf-NgW" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="113" id="W82-I9-b8I"/>
                                             <constraint firstItem="cEi-DR-gYO" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="39" id="b8Q-SX-ChU"/>
                                             <constraint firstItem="cEi-DR-gYO" firstAttribute="top" secondItem="0TV-qb-kPF" secondAttribute="bottom" constant="24" id="fvu-cZ-PNp"/>
@@ -1298,6 +1298,6 @@
         <segue reference="Kah-JZ-ZYL"/>
         <segue reference="Cvc-R5-nyC"/>
         <segue reference="GgA-us-hSQ"/>
-        <segue reference="aUU-zf-sFV"/>
+        <segue reference="zSp-QH-Eod"/>
     </inferredMetricsTieBreakers>
 </document>
