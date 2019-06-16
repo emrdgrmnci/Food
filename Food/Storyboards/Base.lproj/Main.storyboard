@@ -258,6 +258,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sepetim" id="Hi9-wv-ywB"/>
                     <connections>
+                        <outlet property="approveCart" destination="aXX-Xd-CAY" id="El8-zK-v7l"/>
                         <outlet property="myCartTableView" destination="VTm-Vv-mgD" id="dHg-rL-FWi"/>
                         <outlet property="totalPriceLabel" destination="GmT-cL-c9e" id="74G-fP-KHO"/>
                     </connections>
@@ -416,7 +417,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8g-wA-fZr">
-                                <rect key="frame" x="9" y="254" width="350" height="45"/>
+                                <rect key="frame" x="9" y="244" width="350" height="45"/>
                                 <state key="normal" image="Sepete"/>
                                 <connections>
                                     <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="F5U-LT-jir"/>
@@ -431,7 +432,7 @@
                             <constraint firstItem="uiq-ME-5wP" firstAttribute="top" secondItem="CU7-a0-gKg" secondAttribute="top" constant="144" id="M0L-gI-Ide"/>
                             <constraint firstItem="5O3-AJ-rvg" firstAttribute="leading" secondItem="gN2-wf-uYB" secondAttribute="leading" constant="16" id="MIw-75-loU"/>
                             <constraint firstItem="jiU-eq-fkP" firstAttribute="top" secondItem="uiq-ME-5wP" secondAttribute="bottom" constant="8" id="MW6-on-GxG"/>
-                            <constraint firstItem="gN2-wf-uYB" firstAttribute="bottom" secondItem="c8g-wA-fZr" secondAttribute="bottom" constant="255" id="S1d-lR-OC6"/>
+                            <constraint firstItem="gN2-wf-uYB" firstAttribute="bottom" secondItem="c8g-wA-fZr" secondAttribute="bottom" constant="265" id="S1d-lR-OC6"/>
                             <constraint firstItem="uiq-ME-5wP" firstAttribute="top" secondItem="5O3-AJ-rvg" secondAttribute="bottom" constant="7" id="Tva-em-CE6"/>
                             <constraint firstItem="gN2-wf-uYB" firstAttribute="trailing" secondItem="c8g-wA-fZr" secondAttribute="trailing" constant="16" id="UG3-y6-Lfd"/>
                             <constraint firstAttribute="bottom" secondItem="jiU-eq-fkP" secondAttribute="bottom" constant="362" id="YDe-rM-iLW"/>
@@ -458,6 +459,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="detailFoodImage" destination="X6i-ix-CWo" id="b2K-Fh-nu7"/>
+                        <outlet property="favoriteButton" destination="NoD-oH-2ae" id="hjR-lc-GUa"/>
                         <outlet property="foodPrice" destination="12d-K1-4rk" id="phb-wG-Byf"/>
                         <outlet property="foodQuantity" destination="MfX-Em-wlD" id="WoZ-5s-UrW"/>
                         <outlet property="foodSubTitle" destination="kT4-4U-dbg" id="33j-PW-iFx"/>
@@ -769,7 +771,7 @@
                                                 <rect key="frame" x="113" y="75" width="148" height="110"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFV-3C-bdG">
-                                                <rect key="frame" x="130" y="342" width="60" height="33"/>
+                                                <rect key="frame" x="155" y="342" width="60" height="33"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                 <state key="normal" title="Kayıt Ol!"/>
                                                 <connections>
@@ -787,7 +789,7 @@
                                             <constraint firstItem="s5P-Px-aGr" firstAttribute="top" secondItem="Hcu-VH-LbE" secondAttribute="top" constant="180" id="C4e-Dc-sDa"/>
                                             <constraint firstItem="s5P-Px-aGr" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="29" id="EjA-2X-oLt"/>
                                             <constraint firstItem="0TV-qb-kPF" firstAttribute="top" secondItem="s5P-Px-aGr" secondAttribute="bottom" constant="20" id="LFe-wN-fFo"/>
-                                            <constraint firstItem="TFV-3C-bdG" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="130" id="UCv-ek-swb"/>
+                                            <constraint firstItem="TFV-3C-bdG" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="155" id="UCv-ek-swb"/>
                                             <constraint firstItem="2Vh-mf-NgW" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="113" id="W82-I9-b8I"/>
                                             <constraint firstItem="cEi-DR-gYO" firstAttribute="leading" secondItem="Hcu-VH-LbE" secondAttribute="leading" constant="39" id="b8Q-SX-ChU"/>
                                             <constraint firstItem="cEi-DR-gYO" firstAttribute="top" secondItem="0TV-qb-kPF" secondAttribute="bottom" constant="24" id="fvu-cZ-PNp"/>

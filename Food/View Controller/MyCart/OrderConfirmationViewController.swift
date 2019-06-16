@@ -22,7 +22,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
     
     var activeTextField = UITextField()
     
-    let provider = MoyaProvider<GetAddressNetwork>()
+    let provider = MoyaProvider<GetPostAddressNetwork>()
     
     let fromSharedFood = SingletonCart.sharedFood.food
     

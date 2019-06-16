@@ -8,11 +8,13 @@
 import Foundation
 import Moya
 
-enum GetAddressNetwork {
+enum GetPostAddressNetwork {
     case getAddressList
+//    case updateAddressList
+//    case deleteAddressList
 }
 let userIDDefault = UserDefaults.standard.object(forKey: "userID") as? Int ?? 0
-extension GetAddressNetwork: TargetType {
+extension GetPostAddressNetwork: TargetType {
     
     public var baseURL: URL {
         return URL(string: "http://tezwebservice.pryazilim.com/api")!
@@ -22,12 +24,16 @@ extension GetAddressNetwork: TargetType {
         switch self {
             
         case .getAddressList: return "/UserService/GetUserAddressList/\(userIDDefault)"
+//        case .updateAddressList: return "/UserService/UpdateAddress"
+//        case .deleteAddressList: return "/UserService/DeleteAddress"
         }
     }
     
     public var method: Moya.Method {
         switch self {
         case .getAddressList: return .get
+//        case .updateAddressList: return .post
+//        case .deleteAddressList: return .post // ???
         }
     }
     
@@ -41,6 +47,9 @@ extension GetAddressNetwork: TargetType {
         case .getAddressList:
             
             return .requestPlain
+            
+//        case .updateAddressList(let ):
+//            return
         }
     }
     

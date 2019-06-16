@@ -52,7 +52,7 @@
 		47CBD0A3223949960032ADEC /* MyCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A0223949950032ADEC /* MyCartViewController.swift */; };
 		47CBD0A4223949960032ADEC /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A1223949960032ADEC /* OrderConfirmationViewController.swift */; };
 		47CBD0A5223949960032ADEC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A2223949960032ADEC /* MainViewController.swift */; };
-		47CD51B022AAA7FA00DBA334 /* GetAddressNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CD51AF22AAA7F900DBA334 /* GetAddressNetwork.swift */; };
+		47CD51B022AAA7FA00DBA334 /* GetPostAddressNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CD51AF22AAA7F900DBA334 /* GetPostAddressNetwork.swift */; };
 		47EBD71C22AAB7D800858613 /* MyInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EBD71B22AAB7D800858613 /* MyInfoNetwork.swift */; };
 		47EBD71E22AAC2E700858613 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EBD71D22AAC2E700858613 /* UserInfo.swift */; };
 		47EBE4B6226F0F86000E1EB8 /* SF Pro in Resources */ = {isa = PBXBuildFile; fileRef = 47EBE4B5226F0F86000E1EB8 /* SF Pro */; };
@@ -113,7 +113,7 @@
 		47CBD0A0223949950032ADEC /* MyCartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCartViewController.swift; sourceTree = "<group>"; };
 		47CBD0A1223949960032ADEC /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		47CBD0A2223949960032ADEC /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		47CD51AF22AAA7F900DBA334 /* GetAddressNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAddressNetwork.swift; sourceTree = "<group>"; };
+		47CD51AF22AAA7F900DBA334 /* GetPostAddressNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostAddressNetwork.swift; sourceTree = "<group>"; };
 		47EBD71B22AAB7D800858613 /* MyInfoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoNetwork.swift; sourceTree = "<group>"; };
 		47EBD71D22AAC2E700858613 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		47EBE4B5226F0F86000E1EB8 /* SF Pro */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "SF Pro"; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 		477D4EFD22915C42009DAD90 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				47CD51AF22AAA7F900DBA334 /* GetAddressNetwork.swift */,
+				47CD51AF22AAA7F900DBA334 /* GetPostAddressNetwork.swift */,
 				470F496A22B57B4D008D9B2E /* GetPostFavoriteListNetwork.swift */,
 				47349F8322B500DB007EEB73 /* PastOrdersNetwork.swift */,
 				47EBD71B22AAB7D800858613 /* MyInfoNetwork.swift */,
@@ -582,7 +582,7 @@
 				4709EF0122A9371A006D5421 /* FoodCategory.swift in Sources */,
 				4725662E22A544C4005F64FC /* SliderNetwork.swift in Sources */,
 				47781A38222ABFCE00ECE28A /* MyCartTableViewCell.swift in Sources */,
-				47CD51B022AAA7FA00DBA334 /* GetAddressNetwork.swift in Sources */,
+				47CD51B022AAA7FA00DBA334 /* GetPostAddressNetwork.swift in Sources */,
 				47505FD3228B53ED00876FBF /* MyInfosViewController.swift in Sources */,
 				472F68BB22205953006F0FF7 /* MainFoodTitleTableViewCell.swift in Sources */,
 				474AEBBC22AEA6EC0047B2D3 /* MyCartData+CoreDataClass.swift in Sources */,

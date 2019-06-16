@@ -21,6 +21,7 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     @IBOutlet weak var detailFoodImage: UIImageView!
     
     @IBOutlet weak var tagListView: TagListView!
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
     
     var window: UIWindow?
     
@@ -31,9 +32,14 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     var searchFoods: String!
     var priceFood: Double!
     
+    var isFavorited = false
+    
     var food: Food?
+    var favoriteData = [FavoriteList]()
+    
     var foodDetailProvider = MoyaProvider<FoodNetwork>()
     var postFavoriteFood = MoyaProvider<GetPostFavoriteListNetwork>()
+    var getFavoriteFood = MoyaProvider<GetPostFavoriteListNetwork>()
     
     var tempQuantity = 1
     
@@ -83,11 +89,17 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         
         foodQuantity.text = "1"
         
+        getFavoritedFunc()
+        
         foodTitle.text = food?.ProductTitle ?? ""
         foodPrice.text = food?.PriceString
         foodSubTitle.text = food?.Description
         let url = URL(string: "http://mehmetguner.pryazilim.com/UploadFile/Product/\(self.food!.PhotoPath)")
         detailFoodImage.kf.setImage(with: url)
+        
+        if isFavorited == true && favoriteData.count != 0 {
+            self.favoriteButton.image = UIImage(named: "liked")
+        }
         
         tagListView.delegate = self
         setupIngredientsTag()
@@ -125,7 +137,8 @@ class DetailViewController: UIViewController, TagListViewDelegate {
                                 let favoriteResponse = try JSONDecoder().decode(FavoriteListServiceResponse.self, from: response.data)
                                 
                                 if (favoriteResponse.Success) {
-                                    
+                                    self!.isFavorited = true
+                                    self!.favoriteButton.image = UIImage(named: "liked")
                                     print(json.debugDescription)
                                 } else {
                                     self?.showAlert(withTitle: "Hata", withMessage: favoriteResponse.Message!, withAction: "pop")
@@ -148,6 +161,31 @@ class DetailViewController: UIViewController, TagListViewDelegate {
                     }
                 }
         
+    }
+    
+    func getFavoritedFunc() {
+        getFavoriteFood.request(.getFavoriteList) { [weak self] result in
+            guard self != nil else {return}
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        
+                        let data = response.data
+                        _ = try JSON(data: data)
+                        
+                        let favoriteResponse = try! JSONDecoder().decode(FavoriteListServiceResponse.self, from: response.data)
+                      self!.favoriteData = favoriteResponse.ResultList!
+                      self!.isFavorited = true
+                    } catch {
+                        print("Error info: \(error)")
+                    }
+                }
+            case .failure(let error):
+                print(error.response!)
+            }
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

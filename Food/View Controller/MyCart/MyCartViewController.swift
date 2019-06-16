@@ -17,6 +17,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var myCartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var approveCart: UIButton!
     
     var food: Food?
     
@@ -50,6 +51,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         if fromSharedFood.count == 0 {
             
             myCartTableView.setEmptyView(title: "Sepetinizde ürün bulunmamaktadır", message: "Seçtiğiniz yemekler burada listelenir.")
+            approveCart.isEnabled = false
         }
         else {
             myCartTableView.restore()
@@ -72,6 +74,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         
         if fromSharedFood.count == 0 {
             tableView.setEmptyView(title: "Sepetinizde ürün bulunmamaktadır", message: "Seçtiğiniz yemekler burada listelenir.")
+            approveCart.isEnabled = false
         }
         else {
             tableView.restore()
@@ -108,6 +111,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 myCartTableView.reloadData()
                 self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = nil
+                approveCart.isEnabled = false
             }
             else {
                 self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = "\(fromSharedFood.count)"
