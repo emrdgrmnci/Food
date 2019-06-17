@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let loginUserDefaults = UserDefaults.standard
     
     override func viewWillAppear(_ animated: Bool) {
-        emailTextField.text = loginUserDefaults.string(forKey: "userEmail")
+//        emailTextField.text = loginUserDefaults.string(forKey: "userEmail")
     }
     
     //TODO:
@@ -53,11 +53,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 self?.loginUserDefaults.set(userResponse.ResultObj?.I, forKey: "userID")//UserID her işlem için lazım!
                                 
                                 print(json.debugDescription)
-                                //                                let rootViewController = UIApplication.shared.keyWindow?.rootViewController
-                                //                                guard let mainNavigationController = rootViewController as? MainNavigationController else {return}
-                                //                                mainNavigationController.viewControllers = [MainViewController(coder: NSCoder())] as! [UIViewController]
+                                
                                 UserDefaults.standard.synchronize()
-                                self!.loginUserDefaults.set(self!.emailTextField.text, forKey: "userEmail")
+//                                self!.loginUserDefaults.set(self!.emailTextField.text, forKey: "userEmail")
                                 //                                self!.dismiss(animated: true, completion: nil)
                                 
                                 self?.performSegue(withIdentifier: "loginToMain", sender: nil)
@@ -94,7 +92,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.text = loginUserDefaults.string(forKey: "userEmail")
+//        emailTextField.text = loginUserDefaults.string(forKey: "userEmail")
         
         emailTextField.delegate = self
         passwordTextField.delegate = self

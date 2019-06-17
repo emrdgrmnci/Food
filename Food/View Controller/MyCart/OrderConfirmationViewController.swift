@@ -23,11 +23,53 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
     var activeTextField = UITextField()
     
     let provider = MoyaProvider<GetPostAddressNetwork>()
+    let orderProvider = MoyaProvider<FoodNetwork>()
     
     let fromSharedFood = SingletonCart.sharedFood.food
     
+    //TODO: Approve all orders
     @IBAction func approveButton(_ sender: Any) {
         
+    }
+    
+    func postOrder() {
+        
+        self.isLoading(true)
+        
+        let explanationTextViewText = explanationTextView.text
+        orderProvider.request(.createOrder(pickerViewRows, explanationTextViewText!)) {
+            [weak self] result in
+            guard self != nil else { return }
+            let statusCode = result.value?.statusCode
+            switch result {
+            case .success(let response):
+                self!.isLoading(false)
+                do {
+                    let data = response.data
+                    let json = try JSON(data: data)
+                    let postOrderResponse = try JSONDecoder().decode(RegisterServiceResponse.self, from: response.data)
+                    
+                    if (postOrderResponse.Success) {
+                        print(json.debugDescription)
+                        self?.performSegue(withIdentifier: "orderConfirmationToPastOrder", sender: nil)
+                        self?.showAlert(withTitle: "Başarılı", withMessage: postOrderResponse.Message!, withAction: "pop")
+                    } else {
+                        self?.showAlert(withTitle: "Hata", withMessage: postOrderResponse.Message!, withAction: "pop")
+                    }
+                } catch {
+                    print("register error")
+                }
+            case .failure(let error):
+                self!.isLoading(false)
+                self!.showError(error.response!)
+                self?.showAlert(withTitle: "Hata", withMessage: "Sipariş alınamadı!", withAction: "pop")
+                if let code = error.response?.statusCode {
+                    if code == 401 {
+                        self?.showAlert(withTitle: "Hata", withMessage: "Sipariş alınamadı!", withAction: "pop")
+                    }
+                }
+            }
+        }
     }
     
     func getAddressFunc() {
@@ -58,7 +100,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
             
         }
     }
-
+    
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -69,14 +111,14 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
     
     //MARK: Telefon numarasını MyInfosa Taşı
     
-//    lazy var phoneTextField: UITextField = {
-//        let phoneTf = UITextField()
-//        phoneTf.layer.cornerRadius = 8
-//        phoneTf.layer.borderWidth = 1
-//        phoneTf.layer.borderColor = UIColor.lightGray.cgColor
-//        phoneTf.placeholder = "Cep Telefonu"
-//        return phoneTf
-//    }()
+    //    lazy var phoneTextField: UITextField = {
+    //        let phoneTf = UITextField()
+    //        phoneTf.layer.cornerRadius = 8
+    //        phoneTf.layer.borderWidth = 1
+    //        phoneTf.layer.borderColor = UIColor.lightGray.cgColor
+    //        phoneTf.placeholder = "Cep Telefonu"
+    //        return phoneTf
+    //    }()
     
     lazy var selectedAddressTextView: KMPlaceholderTextView = {
         let cityTf = KMPlaceholderTextView()
@@ -126,7 +168,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         
         view.addSubview(scrollView)
         setupScrollView()
-//        resetTotalPrice()
+        //        resetTotalPrice()
         
         getAddressFunc()
         
@@ -140,7 +182,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         
-//        phoneTextField.resignFirstResponder()
+        //        phoneTextField.resignFirstResponder()
         selectedAddressTextView.resignFirstResponder()
         addressText.resignFirstResponder()
         paymentText.resignFirstResponder()
@@ -154,18 +196,18 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
-//        phoneTextField.translatesAutoresizingMaskIntoConstraints = false
+        //        phoneTextField.translatesAutoresizingMaskIntoConstraints = false
         selectedAddressTextView.translatesAutoresizingMaskIntoConstraints = false
         addressText.translatesAutoresizingMaskIntoConstraints = false
         paymentText.translatesAutoresizingMaskIntoConstraints = false
         explanationTextView.translatesAutoresizingMaskIntoConstraints = false
         
-//        scrollView.addSubview(phoneTextField)
+        //        scrollView.addSubview(phoneTextField)
         
-//        phoneTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-//        phoneTextField.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 50).isActive = true
-//        phoneTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
-//        phoneTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        //        phoneTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        //        phoneTextField.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 50).isActive = true
+        //        phoneTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        //        phoneTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         scrollView.addSubview(addressText)
         
@@ -195,7 +237,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         let paymentPicker = UIPickerView()
         paymentPicker.delegate = self
         paymentText.inputView = paymentPicker
-        paymentMethod = ["Nakit", "Kredi Kartı"]
+        paymentMethod = ["Kapıda Ödeme"]
         
         scrollView.addSubview(explanationTextView)
         
@@ -268,15 +310,17 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         }
     }
     
+    var pickerViewRows = 0
+    
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //        addressText.text = addressType[row]
         if addressText.isFirstResponder {
             if row != 0 {
-            selectedAddressTextView.text = getAddressList[row - 1].A
-            
-            let itemSelected = addressType[row]
-    
-            addressText.text = itemSelected
+                selectedAddressTextView.text = getAddressList[row - 1].A
+                pickerViewRows = getAddressList[row - 1].I
+                let itemSelected = addressType[row]
+                
+                addressText.text = itemSelected
             }
         } else if paymentText.isFirstResponder {
             let itemSelected = paymentMethod[row]
@@ -286,7 +330,8 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
     }
     //TODO: Approve Button
     @objc func approveButtonAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        postOrder()
     }
     
 }
+

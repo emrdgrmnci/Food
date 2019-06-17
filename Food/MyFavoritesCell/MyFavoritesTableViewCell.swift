@@ -11,7 +11,6 @@ import UIKit
 class MyFavoritesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var myFavoritesTitle: UILabel!
-    
     @IBOutlet weak var myFavoritesPrice: UILabel!
     
     override func awakeFromNib() {

@@ -9,9 +9,13 @@
 import Foundation
 import Moya
 
+var fromSharedFood = SingletonCart.sharedFood.food
+
+var userDefaultID = UserDefaults.standard.object(forKey: "userID") as? Int ?? 0
+
 public enum FoodNetwork {
-//    case food(Int, Int, String, String, Int, Int, String, String, String, Bool, String, String, Int, String, [String])
     case food
+    case createOrder(Int, String)
 }
 
 extension FoodNetwork: TargetType {
@@ -22,12 +26,14 @@ extension FoodNetwork: TargetType {
     public var path: String {
         switch self {
         case .food: return "/ProductService/GetAllProductList"
+        case .createOrder: return "/OrderService/CreateOrder"
         }
     }
     
     public var method: Moya.Method {
         switch self {
         case .food: return .get
+        case .createOrder: return .post
         }
     }
     public var sampleData: Data {
@@ -38,55 +44,32 @@ extension FoodNetwork: TargetType {
         switch self {
         case .food:
             return .requestPlain
-//        case .food(let id, let subCategoryID, let subCategoryTitle, let categoryTitle, let price, let oldPrice, let priceString, let oldPriceString, let productTitle, let isIndexView, let photoPath, let foodDescription, let stock, let details, let detailsList):
-//            return .requestParameters(parameters: ["id" : id,
-//                                                   "SubCategoryId": subCategoryID,
-//                                                   "SubCategoryTitle": subCategoryTitle,
-//                                                   "CategoryTitle": categoryTitle,
-//                                                   "Price": price,
-//                                                   "OldPrice": oldPrice,
-//                                                   "PriceString": priceString,
-//                                                   "OldPriceString": oldPriceString,
-//                                                   "ProductTitle": productTitle,
-//                                                   "IsIndexView": isIndexView,
-//                                                   "PhotoPath": photoPath,
-//                                                   "Description": foodDescription,
-//                                                   "Stock": stock,
-//                                                   "Details": details,
-//                                                   "DetailsList": [detailsList]],
-//                                      encoding: JSONEncoding.default)
+        case .createOrder(let addressID,let productExplanation):
+            var productList = [OrderProductList]()
+            
+            for cartObjects in fromSharedFood {
+                var temp = OrderProductList()
+                temp.productID = cartObjects.id
+                temp.quantity = cartObjects.foodQuantity
+                productList.append(temp)
+            }
+            
+            return .requestParameters(parameters: ["addressID" : addressID,
+                                                   "userID": userDefaultID,
+                                                   "productList": productList,
+                                                   "productExplanation": productExplanation],
+                                      encoding: JSONEncoding.default)
         }
-        
     }
     
     public var headers: [String : String]? {
         switch self {
         case .food:
             return ["Content-Type": "application/json"]
+        case .createOrder:
+            return ["Content-Type": "application/json"]
         }
     }
 }
 
-
-/*
- Ayrıca sana photopath bilgisi gelen yerlerde domaini eklemeyi unutma.Aşağıdaki linklerin devamına photopath prop’u eklersin.
- Slider -> http://mehmetguner.pryazilim.com/UploadFile/Slider
- Ürün ->  http://mehmetguner.pryazilim.com/UploadFile/Product
- 
- Slider Listesi
- [Route("api/SiteService/GetSliderList"), HttpGet]
- Result<DTO.Slider.SliderDTO> GetSliderList()
- 
- 
- public class SliderDTO
- {
- public int id { get; set; }
- public string PhotoPath { get; set; }
- public string Metin1 { get; set; }
- public string Metin2 { get; set; }
- public string Metin3 { get; set; }
- public string Url { get; set; }
- public DateTime CreatedDate { get; set; }
- }
- */
 

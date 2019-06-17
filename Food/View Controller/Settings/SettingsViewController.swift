@@ -38,8 +38,14 @@ class SettingsViewController: UITableViewController {
                 alert.dismiss(animated: true)
             }
             let yesAct = UIAlertAction(title: "Evet", style: .default) { alertAction in
-                UserDefaults.standard.removeObject(forKey: "token")
-                UserDefaults.standard.removeObject(forKey: "userID")
+                //MARK: Userdefaults delete all
+                let defaults = UserDefaults.standard
+                let dictionary = defaults.dictionaryRepresentation()
+                dictionary.keys.forEach { key in
+                    defaults.removeObject(forKey: key)
+                }
+                
+               
                 UserDefaults.standard.synchronize()
                 //                self.dismiss(animated: true, completion: nil)
                 self.performSegue(withIdentifier: "settingsToIntro", sender: nil)

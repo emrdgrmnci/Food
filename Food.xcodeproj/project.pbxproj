@@ -55,6 +55,7 @@
 		47CD51B022AAA7FA00DBA334 /* GetPostAddressNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CD51AF22AAA7F900DBA334 /* GetPostAddressNetwork.swift */; };
 		47DE44F422B788A2001679AF /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DE44F322B788A2001679AF /* ChangePassword.swift */; };
 		47DE44F622B788F1001679AF /* ChangePasswordNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DE44F522B788F1001679AF /* ChangePasswordNetwork.swift */; };
+		47DE44F822B7C506001679AF /* OrderProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DE44F722B7C506001679AF /* OrderProductList.swift */; };
 		47EBD71C22AAB7D800858613 /* MyInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EBD71B22AAB7D800858613 /* MyInfoNetwork.swift */; };
 		47EBD71E22AAC2E700858613 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EBD71D22AAC2E700858613 /* UserInfo.swift */; };
 		47EBE4B6226F0F86000E1EB8 /* SF Pro in Resources */ = {isa = PBXBuildFile; fileRef = 47EBE4B5226F0F86000E1EB8 /* SF Pro */; };
@@ -118,6 +119,7 @@
 		47CD51AF22AAA7F900DBA334 /* GetPostAddressNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostAddressNetwork.swift; sourceTree = "<group>"; };
 		47DE44F322B788A2001679AF /* ChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
 		47DE44F522B788F1001679AF /* ChangePasswordNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordNetwork.swift; sourceTree = "<group>"; };
+		47DE44F722B7C506001679AF /* OrderProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProductList.swift; sourceTree = "<group>"; };
 		47EBD71B22AAB7D800858613 /* MyInfoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoNetwork.swift; sourceTree = "<group>"; };
 		47EBD71D22AAC2E700858613 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		47EBE4B5226F0F86000E1EB8 /* SF Pro */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "SF Pro"; sourceTree = "<group>"; };
@@ -162,6 +164,14 @@
 				4784A82922944630004576EC /* Animations.bundle */,
 			);
 			path = AnimationsJSON;
+			sourceTree = "<group>";
+		};
+		475CB75522B7E64D000B9137 /* MyFavoritesCell */ = {
+			isa = PBXGroup;
+			children = (
+				470F496C22B591E7008D9B2E /* MyFavoritesTableViewCell.swift */,
+			);
+			name = MyFavoritesCell;
 			sourceTree = "<group>";
 		};
 		47700C1D221EC4E4009C7682 /* MainFoodCells */ = {
@@ -348,6 +358,7 @@
 				473E50F82289A95B00E7BBC8 /* ArticleList.swift */,
 				4709EF0022A9371A006D5421 /* FoodCategory.swift */,
 				47EBD71D22AAC2E700858613 /* UserInfo.swift */,
+				47DE44F722B7C506001679AF /* OrderProductList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -364,14 +375,14 @@
 		47FED476221B19A40050ADD2 = {
 			isa = PBXGroup;
 			children = (
-				470F496C22B591E7008D9B2E /* MyFavoritesTableViewCell.swift */,
-				474AEBBB22AEA6EC0047B2D3 /* MyCartData+CoreDataClass.swift */,
-				474AEBBA22AEA6EC0047B2D3 /* MyCartData+CoreDataProperties.swift */,
-				476AC91E229DB31A006817D3 /* WebAPIResponse.swift */,
 				47FED481221B19A40050ADD2 /* Food */,
 				8735EBCA1FF703FE427A9CDA /* Frameworks */,
+				474AEBBB22AEA6EC0047B2D3 /* MyCartData+CoreDataClass.swift */,
+				474AEBBA22AEA6EC0047B2D3 /* MyCartData+CoreDataProperties.swift */,
+				475CB75522B7E64D000B9137 /* MyFavoritesCell */,
 				B09CFD468CF6CC36F3CD702E /* Pods */,
 				47FED480221B19A40050ADD2 /* Products */,
+				476AC91E229DB31A006817D3 /* WebAPIResponse.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -595,6 +606,7 @@
 				472F68BB22205953006F0FF7 /* MainFoodTitleTableViewCell.swift in Sources */,
 				474AEBBC22AEA6EC0047B2D3 /* MyCartData+CoreDataClass.swift in Sources */,
 				4784A828229444E9004576EC /* ViewExtensions.swift in Sources */,
+				47DE44F822B7C506001679AF /* OrderProductList.swift in Sources */,
 				472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */,
 				47349F8422B500DB007EEB73 /* PastOrdersNetwork.swift in Sources */,
 				476AC91F229DB31A006817D3 /* WebAPIResponse.swift in Sources */,

@@ -69,7 +69,7 @@ class MainViewController: UIViewController {
             guard self != nil else {return}
             switch result {
             case .success(let response):
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     do {
                         print(try response.mapJSON())
                         
@@ -83,7 +83,7 @@ class MainViewController: UIViewController {
                     } catch {
                         print("Error info: \(error)")
                     }
-                }
+//                }
             case .failure(let error):
                 self!.isLoading(false)
                 print(error.response!)

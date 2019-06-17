@@ -126,7 +126,6 @@ class MyFavoritesViewController: UIViewController, UITableViewDataSource, UITabl
                         let favoriteResponse = try JSONDecoder().decode(FavoriteListServiceResponse.self, from: response.data)
                         //                        detail = userResponse
                         
-                        self!.favoriteList = favoriteResponse.ResultList!
                         self!.myFavoritesTableView.reloadData()
                     } catch {
                         print("Error info: \(error)")

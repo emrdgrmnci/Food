@@ -161,38 +161,12 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         scrollView.addSubview(approveButton)
         
-        approveButton.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        approveButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 150).isActive = true
         approveButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         approveButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 370).isActive = true
-//        approveButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         approveButton.widthAnchor.constraint(equalTo: self.scrollView.safeAreaLayoutGuide.widthAnchor, multiplier: 1/2).isActive = true
         approveButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
-//        //MARK: Edit button
-//        let editButtonImage = UIImage(named: "EditButton") as UIImage?  //w:295, h: 45
-//        let editButtonImageSize: CGSize = CGSize(width: 295, height: 45)
-//        let editButton = UIButton(type: UIButton.ButtonType.custom)
-//        editButton.translatesAutoresizingMaskIntoConstraints = false
-//        editButton.tintColor = .white
-//        editButton.frame = CGRect(x: 0, y: 0, width: 250, height: 135)
-//        editButton.setImage(editButtonImage, for: .normal)
-//        editButton.addTarget(self, action: #selector(deleteButtonAction), for: .touchUpInside)
-//
-//        editButton.imageEdgeInsets = UIEdgeInsets(
-//            top: (editButton.frame.size.height - editButtonImageSize.height) / 2,
-//            left: (editButton.frame.size.width - editButtonImageSize.width) / 2.5,
-//            bottom: (editButton.frame.size.height - editButtonImageSize.height) / 2,
-//            right: (editButton.frame.size.width - editButtonImageSize.width) / 2.5)
-//
-//
-//        scrollView.addSubview(editButton)
-//
-//        editButton.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-//        editButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-//        editButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 430).isActive = true
-////        editButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-//        editButton.widthAnchor.constraint(equalTo: self.scrollView.safeAreaLayoutGuide.widthAnchor).isActive = true
-//        editButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
         //MARK: Delete button
         let deleteButtonImage = UIImage(named: "DeleteButton") as UIImage?  //w:295, h: 45
@@ -214,9 +188,8 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
         scrollView.addSubview(deleteButton)
         
         deleteButton.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        deleteButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        deleteButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 430).isActive = true
-//        deleteButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        deleteButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: -150).isActive = true
+        deleteButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 370).isActive = true
         deleteButton.widthAnchor.constraint(equalTo: self.scrollView.safeAreaLayoutGuide.widthAnchor).isActive = true
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
