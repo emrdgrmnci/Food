@@ -17,6 +17,7 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     var addressType: [String] = ["Seçiniz"]
     var getAddressList: [AddressPost] = []
+    let addressPicker = UIPickerView()
     
     override func viewDidLayoutSubviews() {
         self.scrollView.contentSize = CGSize(width: 320, height: 700)
@@ -138,11 +139,11 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
         shortAddressTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         shortAddressTextView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
-        let addressPicker = UIPickerView()
+//        let addressPicker = UIPickerView()
         addressPicker.delegate = self
         addressTitleTextField.inputView = addressPicker
         
-        let image = UIImage(named: "TamamButton") as UIImage?  //w:295, h: 45
+        let image = UIImage(named: "KaydetButton") as UIImage?  //w:295, h: 45
         let imageSize: CGSize = CGSize(width: 295, height: 45)
         let approveButton = UIButton(type: UIButton.ButtonType.custom)
         approveButton.translatesAutoresizingMaskIntoConstraints = false
@@ -224,17 +225,21 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     //TODO: Approve Button for MyAddresses
     @objc func approveButtonAction(sender: UIButton!) {
-        
+        if pickerViewRows == 0 {
+            postAddAddressFunc()
+        }else{
+            postUpdateAddressFunc()
+        }
     }
     
-//    //TODO: Delete Button for MyAddresses
+
 //    @objc func editButtonAction(sender: UIButton!) {
 //
 //    }
     
     //TODO: Delete Button for MyAddresses
     @objc func deleteButtonAction(sender: UIButton!) {
-        
+        postDeleteAddressFunc()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -257,15 +262,26 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
     }
     
+    var pickerViewRows = 0
+    
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //        addressText.text = addressType[row]
         if addressTitleTextField.isFirstResponder {
             if row != 0 {
-                selectedAddressTextView.text = getAddressList[row - 1].A
-                
+                selectedAddressTextView.text = getAddressList[row - 1].T
+                addressTextView.text = getAddressList[row - 1].A
+                shortAddressTextView.text = getAddressList[row - 1].AR
+                pickerViewRows = getAddressList[row-1].I
                 let itemSelected = addressType[row]
                 
                 addressTitleTextField.text = itemSelected
+                selectedAddressTextView.text = itemSelected
+            } else {
+                addressTitleTextField.text = "Seçiniz"
+                selectedAddressTextView.text = ""
+                addressTextView.text = ""
+                shortAddressTextView.text = ""
+                pickerViewRows = 0
             }
         }
     }
@@ -284,6 +300,8 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
                         
                         self!.getAddressList = userResponse.ResultList!
                         
+                        self!.addressType =  ["Seçiniz"]
+                        
                         for item in userResponse.ResultList! {
                             self!.addressType.append(item.T)
                         }
@@ -298,36 +316,125 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
             
         }
     }
-//    func getAddressFunc() {
-//        provider.request(.getAddressList) { [weak self] result in
-//            guard self != nil else {return}
-//            switch result {
-//            case .success(let response):
-//                DispatchQueue.main.async {
-//                    do {
-//                        print(try response.mapJSON())
-//
-//                        let userResponse = try JSONDecoder().decode(AddressPostResponse.self, from: response.data)
-//                        //                        detail = userResponse
-//
-//                        debugPrint("Mehmet \(userResponse.ResultList![0].A)" )
-//                        self!.addressTitleTextField.text = userResponse.ResultList![0].T
-//                        self!.addressTextView.text = userResponse.ResultList![0].A //Açık Adres
-//                        self!.shortAddressTextView.text = userResponse.ResultList![0].AR //Adres Tarifi
-//                        for item in userResponse.ResultList! {
-//                            self!.addressType.append(item.T)
-//                        }
-//                    } catch {
-//                        print("Error info: \(error)")
-//                    }
-//                }
-//            case .failure(let error):
-//                self!.isLoading(false)
-//                print(error.response!)
-//            }
-//
-//        }
-//    }
+    
+    func postAddAddressFunc() {
+        self.isLoading(true)
+        let addressTitle = selectedAddressTextView.text
+        let address = addressTextView.text
+        let addressExplanation = shortAddressTextView.text
+
+        provider.request(.createAddressList(addressTitle!, address!, addressExplanation!)) { [weak self] result in
+            guard self != nil else {return}
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        print(try response.mapJSON())
+                        
+                        let addAddressResponse = try JSONDecoder().decode(AddressPostResponse.self, from: response.data)
+                        //                        detail = userResponse
+                        
+                        if addAddressResponse.Success {
+                         self!.showAlert(withTitle: "Başarılı", withMessage: "Adres eklendi!", withAction: "pop")
+                            self!.addressTitleTextField.text = "Seçiniz"
+                            self!.selectedAddressTextView.text = ""
+                            self!.addressTextView.text = ""
+                            self!.shortAddressTextView.text = ""
+                        self!.getAddressFunc()
+                        }else{
+                        self!.showAlert(withTitle: "Hata", withMessage: addAddressResponse.Message!, withAction: "pop")
+                        }
+                        
+                    } catch {
+                        print("Error info: \(error)")
+                    }
+                }
+            case .failure(let error):
+                self!.isLoading(false)
+                print(error.response!)
+            }
+            
+        }
+    }
+    
+    func postUpdateAddressFunc() {
+        self.isLoading(true)
+        let addressTitle = selectedAddressTextView.text
+        let address = addressTextView.text
+        let addressExplanation = shortAddressTextView.text
+        
+        provider.request(.updateAddressList((self.pickerViewRows),addressTitle!, address!, addressExplanation!)) { [weak self] result in
+            guard self != nil else {return}
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        print(try response.mapJSON())
+                        
+                        let updateAddressResponse = try JSONDecoder().decode(AddressPostResponse.self, from: response.data)
+                        //                        detail = userResponse
+                        
+                        if updateAddressResponse.Success {
+                            self!.showAlert(withTitle: "Başarılı", withMessage: "Adres düzenlendi!", withAction: "pop")
+                            self!.addressTitleTextField.text = "Seçiniz"
+                            self!.selectedAddressTextView.text = ""
+                            self!.addressTextView.text = ""
+                            self!.shortAddressTextView.text = ""
+                            self!.pickerViewRows = 0
+                            self!.getAddressFunc()
+                        }else{
+                            self!.showAlert(withTitle: "Hata", withMessage: updateAddressResponse.Message!, withAction: "pop")
+                        }
+                        
+                    } catch {
+                        print("Error info: \(error)")
+                    }
+                }
+            case .failure(let error):
+                self!.isLoading(false)
+                print(error.response!)
+            }
+            
+        }
+    }
+    
+    func postDeleteAddressFunc() {
+        self.isLoading(true)
+        
+        provider.request(.deleteAddressList(self.pickerViewRows)) { [weak self] result in
+            guard self != nil else {return}
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        print(try response.mapJSON())
+                        
+                        let deleteAddressResponse = try JSONDecoder().decode(AddressPostResponse.self, from: response.data)
+                        //                        detail = userResponse
+                        
+                        if deleteAddressResponse.Success {
+                            self!.showAlert(withTitle: "Başarılı", withMessage: "Adres silindi!", withAction: "pop")
+                            self!.addressTitleTextField.text = "Seçiniz"
+                            self!.selectedAddressTextView.text = ""
+                            self!.addressTextView.text = ""
+                            self!.shortAddressTextView.text = ""
+                            self!.pickerViewRows = 0
+                            self!.getAddressFunc()
+                        }else{
+                            self!.showAlert(withTitle: "Hata", withMessage: deleteAddressResponse.Message!, withAction: "pop")
+                        }
+                        
+                    } catch {
+                        print("Error info: \(error)")
+                    }
+                }
+            case .failure(let error):
+                self!.isLoading(false)
+                print(error.response!)
+            }
+            
+        }
+    }
     
 }
 
