@@ -35,11 +35,12 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     var food: Food?
     var favoriteData = [FavoriteList]()
     
-    var isFirstClick = true
+    var isFirstClick = false
     
     var foodDetailProvider = MoyaProvider<FoodNetwork>()
     var postFavoriteFood = MoyaProvider<GetPostFavoriteListNetwork>()
     var getFavoriteFood = MoyaProvider<GetPostFavoriteListNetwork>()
+    var isFavoriteProvider = MoyaProvider<GetPostFavoriteListNetwork>()
     
     var tempQuantity = 1
     
@@ -90,6 +91,7 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         foodQuantity.text = "1"
         
         getFavoritedFunc()
+        isFavoritedFunc()
         
         foodTitle.text = food?.ProductTitle ?? ""
         foodPrice.text = food?.PriceString
@@ -97,12 +99,6 @@ class DetailViewController: UIViewController, TagListViewDelegate {
         let url = URL(string: "http://mehmetguner.pryazilim.com/UploadFile/Product/\(self.food!.PhotoPath)")
         detailFoodImage.kf.setImage(with: url)
         
-        if UserDefaults.standard.bool(forKey: "favorited") == true {
-            self.favoriteButton.image = UIImage(named: "liked")
-            
-        }else{
-            self.favoriteButton.image = UIImage(named: "like")
-        }
         
         
         
@@ -143,19 +139,16 @@ class DetailViewController: UIViewController, TagListViewDelegate {
                                 
                                 if (favoriteResponse.Success) {
                                     //MARK: Favorite button state
-                                        self!.favoriteButton.image = UIImage(named: "liked")
-                                        UserDefaults.standard.set(true, forKey: "favorited")
-                                        self!.isFirstClick = true
-                                    
+                                    self!.favoriteButton.image = UIImage(named: "liked")
                                     print(json.debugDescription)
                                 } else {
                                     
                                     self?.showAlert(withTitle: "Hata", withMessage: favoriteResponse.Message!, withAction: "pop")
                                     
                                     //MARK: Favorite button state
-                                        self!.favoriteButton.image = UIImage(named: "like")
-                                        UserDefaults.standard.set(false, forKey: "favorited")
-                                        self!.isFirstClick = false
+//                                        self!.favoriteButton.image = UIImage(named: "like")
+//                                        UserDefaults.standard.set(false, forKey: "favorited")
+//                                        self!.isFirstClick = false
                                 }
                             } catch {
                                 print("favorite error")
@@ -200,6 +193,40 @@ class DetailViewController: UIViewController, TagListViewDelegate {
             
         }
     }
+    
+    //IsFavoriteServiceResponse
+    
+    func isFavoritedFunc() {
+        isFavoriteProvider.request(.isFavorite(food!.id)) { [weak self] result in
+            guard self != nil else {return}
+            switch result {
+            case .success(let response):
+                    do {
+                        
+                        let data = response.data
+                        _ = try JSON(data: data)
+                        
+                        let isFavoriteResponse = try! JSONDecoder().decode(IsFavoriteServiceResponse.self, from: response.data)
+                        self!.isFirstClick = isFavoriteResponse.ResultObj!
+                        print(self!.isFirstClick)
+                        
+                        if self!.isFirstClick == true {
+                            self!.favoriteButton.image = UIImage(named: "liked")
+                        }else{
+                            self!.favoriteButton.image = UIImage(named: "like")
+                        }
+                        
+                    } catch {
+                        print("Error info: \(error)")
+                    }
+            case .failure(let error):
+                print(error.response!)
+            }
+            
+        }
+    }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false

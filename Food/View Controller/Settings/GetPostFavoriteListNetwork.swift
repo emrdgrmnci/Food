@@ -12,6 +12,7 @@ enum GetPostFavoriteListNetwork {
     case getFavoriteList
     case postCreateFavorite(Int)
     case postDeleteFavorite(Int)
+    case isFavorite(Int)
 }
 
 let getFavoriteUserIDDefault = UserDefaults.standard.object(forKey: "userID") as? Int ?? 0
@@ -28,6 +29,7 @@ extension GetPostFavoriteListNetwork: TargetType {
         case .getFavoriteList: return "/ProductService/GetFavoriteProductList/\(getFavoriteUserIDDefault)"
         case .postCreateFavorite: return "/ProductService/AddFavorite"
         case .postDeleteFavorite: return "/ProductService/DeleteFavorite"
+        case .isFavorite: return "/ProductService/IsFavorite"
         }
     }
     
@@ -36,6 +38,7 @@ extension GetPostFavoriteListNetwork: TargetType {
         case .getFavoriteList: return .get
         case .postCreateFavorite: return .post
         case .postDeleteFavorite: return .post
+        case .isFavorite: return .post
         }
     }
     
@@ -58,6 +61,10 @@ extension GetPostFavoriteListNetwork: TargetType {
         case .postDeleteFavorite(let id):
             return .requestParameters(parameters: ["I" : id,
                                                    "UI" : getFavoriteUserIDDefault], encoding: JSONEncoding.default)
+        case .isFavorite(let id):
+            return .requestParameters(parameters: ["I" : id,
+                                                   "UI": getFavoriteUserIDDefault],
+                                      encoding: JSONEncoding.default)
         }
         }
     

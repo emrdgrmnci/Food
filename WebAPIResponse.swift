@@ -91,3 +91,18 @@ public struct FavoriteListServiceResponse: Codable {//FavoriteListResponse
     let Statue: Int?
 }
 
+public struct IsFavoriteServiceResponse: Codable {//FavoriteListResponse
+    let ResultObj: Bool!
+    let ResultList: [FavoriteList]?
+    let Message: String?
+    let Success: Bool!
+    let Statue: Int?
+}
+
+public struct ChangePasswordServiceResponse: Codable {//FavoriteListResponse
+    let ResultObj: Bool?
+    let ResultList: [FavoriteList]?
+    let Message: String?
+    let Success: Bool?
+    let Statue: Int?
+}

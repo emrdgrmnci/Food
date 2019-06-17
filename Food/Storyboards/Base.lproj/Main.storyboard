@@ -417,7 +417,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8g-wA-fZr">
-                                <rect key="frame" x="9" y="269" width="350" height="45"/>
+                                <rect key="frame" x="9" y="264" width="350" height="45"/>
                                 <state key="normal" image="Sepete"/>
                                 <connections>
                                     <action selector="addBasket:" destination="Bfh-ug-TsR" eventType="touchUpInside" id="F5U-LT-jir"/>
@@ -432,7 +432,7 @@
                             <constraint firstItem="uiq-ME-5wP" firstAttribute="top" secondItem="CU7-a0-gKg" secondAttribute="top" constant="144" id="M0L-gI-Ide"/>
                             <constraint firstItem="5O3-AJ-rvg" firstAttribute="leading" secondItem="gN2-wf-uYB" secondAttribute="leading" constant="16" id="MIw-75-loU"/>
                             <constraint firstItem="jiU-eq-fkP" firstAttribute="top" secondItem="uiq-ME-5wP" secondAttribute="bottom" constant="8" id="MW6-on-GxG"/>
-                            <constraint firstItem="gN2-wf-uYB" firstAttribute="bottom" secondItem="c8g-wA-fZr" secondAttribute="bottom" constant="240" id="S1d-lR-OC6"/>
+                            <constraint firstItem="gN2-wf-uYB" firstAttribute="bottom" secondItem="c8g-wA-fZr" secondAttribute="bottom" constant="245" id="S1d-lR-OC6"/>
                             <constraint firstItem="uiq-ME-5wP" firstAttribute="top" secondItem="5O3-AJ-rvg" secondAttribute="bottom" constant="7" id="Tva-em-CE6"/>
                             <constraint firstItem="gN2-wf-uYB" firstAttribute="trailing" secondItem="c8g-wA-fZr" secondAttribute="trailing" constant="16" id="UG3-y6-Lfd"/>
                             <constraint firstAttribute="bottom" secondItem="jiU-eq-fkP" secondAttribute="bottom" constant="362" id="YDe-rM-iLW"/>
@@ -1056,7 +1056,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVC-hc-jde" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6056" y="3035"/>
+            <point key="canvasLocation" x="6012" y="2931"/>
         </scene>
         <!--My Addresses View Controller-->
         <scene sceneID="tdX-Bd-1SB">
@@ -1071,7 +1071,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PiR-58-2lk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6767" y="3035"/>
+            <point key="canvasLocation" x="6710" y="2931"/>
         </scene>
         <!--MyInfos-->
         <scene sceneID="sGY-UW-8jb">
@@ -1201,6 +1201,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXe-tf-ueu">
                                 <rect key="frame" x="39" y="190" width="295" height="30"/>
                                 <state key="normal" image="TamamButton"/>
+                                <connections>
+                                    <action selector="changePasswordButton:" destination="wTD-86-OzR" eventType="touchUpInside" id="qU2-N4-wZA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
