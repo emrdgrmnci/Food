@@ -43,21 +43,26 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
             let statusCode = result.value?.statusCode
             switch result {
             case .success(let response):
+                switch statusCode {
+                case 200:
                 self!.isLoading(false)
                 do {
                     let data = response.data
                     let json = try JSON(data: data)
-                    let postOrderResponse = try JSONDecoder().decode(RegisterServiceResponse.self, from: response.data)
+                    let postOrderResponse = try JSONDecoder().decode(AddressPostResponse.self, from: response.data)
                     
                     if (postOrderResponse.Success) {
                         print(json.debugDescription)
-                        self?.performSegue(withIdentifier: "orderConfirmationToPastOrder", sender: nil)
+//                        self?.performSegue(withIdentifier: "orderConfirmationToPastOrder", sender: nil)
+                        self?.dismiss(animated: true, completion: nil)
                         self?.showAlert(withTitle: "Başarılı", withMessage: postOrderResponse.Message!, withAction: "pop")
                     } else {
                         self?.showAlert(withTitle: "Hata", withMessage: postOrderResponse.Message!, withAction: "pop")
                     }
                 } catch {
                     print("register error")
+                    } default:
+                    self!.isLoading(false)
                 }
             case .failure(let error):
                 self!.isLoading(false)
@@ -70,6 +75,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
                 }
             }
         }
+        
     }
     
     func getAddressFunc() {

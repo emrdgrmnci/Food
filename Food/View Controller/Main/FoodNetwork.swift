@@ -45,7 +45,7 @@ extension FoodNetwork: TargetType {
         case .food:
             return .requestPlain
         case .createOrder(let addressID,let productExplanation):
-            var productList = [OrderProductList]()
+            var productList = [OrderProductList?]()
             
             for cartObjects in fromSharedFood {
                 var temp = OrderProductList()
