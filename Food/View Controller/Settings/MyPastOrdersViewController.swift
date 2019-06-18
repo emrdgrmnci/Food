@@ -74,7 +74,7 @@ class MyPastOrdersViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return 90
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,6 +83,31 @@ class MyPastOrdersViewController: UIViewController, UITableViewDataSource, UITab
         cell.pastOrderNumber.text = pastOrderInfos.ActionNumber
         cell.pastOrderDate.text = pastOrderInfos.CreatedDateString
         cell.pastOrderPrice.text = pastOrderInfos.PriceCountString
+        
+        var statueString = ""
+        
+        switch pastOrderInfos.Statue {
+        case 0:
+            statueString = "Yeni İşlem"
+            cell.pastOrderStatus.textColor = .blue
+        case 1:
+            statueString = "Hazırlanıyor"
+            cell.pastOrderStatus.textColor = .orange
+        case 2:
+            statueString = "Yolda"
+            cell.pastOrderStatus.textColor = UIColor(red: 0/255, green: 206/255, blue: 247/255, alpha: 1.0) /* #00cef7 */
+        case 3:
+            statueString = "Teslim Edildi"
+            cell.pastOrderStatus.textColor = .green
+        case 4:
+            statueString = "İptal Edildi"
+            cell.pastOrderStatus.textColor = .red
+        default:
+            break
+        }
+        
+        cell.pastOrderStatus.text = statueString
+    
         return cell
     }
     

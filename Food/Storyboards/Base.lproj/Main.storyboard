@@ -166,10 +166,10 @@
             </objects>
             <point key="canvasLocation" x="6893.6000000000004" y="713.79310344827593"/>
         </scene>
-        <!--Sepetim-->
+        <!--MyCartViewController-->
         <scene sceneID="gV3-FV-hB4">
             <objects>
-                <viewController id="BT1-x8-Nl6" customClass="MyCartViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyCartViewController" title="MyCartViewController" id="BT1-x8-Nl6" customClass="MyCartViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R0H-WZ-0eb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -277,9 +277,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="New-Vy-WNT"/>
                     </view>
-                    <connections>
-                        <segue destination="vwC-YI-pUp" kind="showDetail" identifier="orderConfirmationToPastOrder" id="3Q5-ga-9fe"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qpc-7t-hUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -956,7 +953,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rW1-43-tXH">
-                                                    <rect key="frame" x="15" y="48" width="42" height="21"/>
+                                                    <rect key="frame" x="15" y="40" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkJ-cN-rxn">
+                                                    <rect key="frame" x="15" y="64" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -966,15 +969,18 @@
                                                 <constraint firstItem="0T8-dZ-xpd" firstAttribute="top" secondItem="o4K-FU-agU" secondAttribute="top" constant="29" id="7ID-4B-Fab"/>
                                                 <constraint firstItem="HBe-rO-4be" firstAttribute="top" secondItem="o4K-FU-agU" secondAttribute="top" constant="11" id="TW9-Uy-CS5"/>
                                                 <constraint firstAttribute="trailing" secondItem="0T8-dZ-xpd" secondAttribute="trailing" constant="40" id="XQf-ev-mNQ"/>
-                                                <constraint firstItem="rW1-43-tXH" firstAttribute="top" secondItem="o4K-FU-agU" secondAttribute="top" constant="48" id="Z6x-ey-cxK"/>
+                                                <constraint firstItem="SkJ-cN-rxn" firstAttribute="top" secondItem="rW1-43-tXH" secondAttribute="bottom" constant="3" id="Xhn-IX-QSG"/>
+                                                <constraint firstItem="rW1-43-tXH" firstAttribute="top" secondItem="o4K-FU-agU" secondAttribute="top" constant="40" id="Z6x-ey-cxK"/>
                                                 <constraint firstItem="rW1-43-tXH" firstAttribute="leading" secondItem="o4K-FU-agU" secondAttribute="leading" constant="15" id="ZMn-G7-qMn"/>
                                                 <constraint firstItem="HBe-rO-4be" firstAttribute="leading" secondItem="o4K-FU-agU" secondAttribute="leading" constant="15" id="a2l-PO-z2L"/>
+                                                <constraint firstItem="SkJ-cN-rxn" firstAttribute="leading" secondItem="o4K-FU-agU" secondAttribute="leading" constant="15" id="awf-Zy-I4h"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="pastOrderDate" destination="rW1-43-tXH" id="W9h-7r-0z0"/>
                                             <outlet property="pastOrderNumber" destination="HBe-rO-4be" id="SUo-a0-uWx"/>
                                             <outlet property="pastOrderPrice" destination="0T8-dZ-xpd" id="wbd-9Y-tPu"/>
+                                            <outlet property="pastOrderStatus" destination="SkJ-cN-rxn" id="UvR-BI-EUn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

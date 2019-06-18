@@ -13,6 +13,7 @@ struct PastOrders: Codable {
     var ActionNumber: String!
     var PriceCountString: String!
     var CreatedDateString: String!
+    var Statue: Int!
     var id: Int
 }
 

@@ -8,6 +8,7 @@
 
 import Foundation
 import Moya
+import SwiftyJSON
 
 var fromSharedFood = SingletonCart.sharedFood.food
 
@@ -15,7 +16,7 @@ var userDefaultID = UserDefaults.standard.object(forKey: "userID") as? Int ?? 0
 
 public enum FoodNetwork {
     case food
-    case createOrder(Int, String)
+    case createOrder(Int, String, String)
 }
 
 extension FoodNetwork: TargetType {
@@ -44,31 +45,21 @@ extension FoodNetwork: TargetType {
         switch self {
         case .food:
             return .requestPlain
-        case .createOrder(let addressID,let productExplanation):
-            var productList = [OrderProductList?]()
-            
-            for cartObjects in fromSharedFood {
-                var temp = OrderProductList()
-                temp.productID = cartObjects.id
-                temp.quantity = cartObjects.foodQuantity
-                productList.append(temp)
-            }
+        case .createOrder(let addressID,let productExplanation, let productListJSON):
             
             return .requestParameters(parameters: ["addressID" : addressID,
                                                    "userID": userDefaultID,
-                                                   "productList": productList,
+                                                   "productList": productListJSON,
                                                    "productExplanation": productExplanation],
                                       encoding: JSONEncoding.default)
         }
     }
     
     public var headers: [String : String]? {
-        switch self {
-        case .food:
-            return ["Content-Type": "application/json"]
-        case .createOrder:
-            return ["Content-Type": "application/json"]
-        }
+        return [
+            "Content-Type": "application/json",
+            //            "Authorization": "\(UserDefaults.standard.object(forKey: "token")!)"
+        ]
     }
 }
 

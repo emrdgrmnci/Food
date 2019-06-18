@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct OrderProductList {
+struct OrderProductList: Codable {
     var productID: Int?
     var quantity: Decimal?
 }

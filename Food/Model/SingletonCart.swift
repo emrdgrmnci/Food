@@ -14,6 +14,11 @@ class SingletonCart {
     var food: [Food] = []
     
     private init() {}
+    
+    static func dispose() -> Void
+    {
+        SingletonCart.sharedFood.food = [Food]()
+    }
 }
 
 

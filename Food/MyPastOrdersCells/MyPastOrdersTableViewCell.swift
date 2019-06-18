@@ -14,7 +14,8 @@ class MyPastOrdersTableViewCell: UITableViewCell {
     @IBOutlet weak var pastOrderNumber: UILabel!
     @IBOutlet weak var pastOrderDate: UILabel!
     @IBOutlet weak var pastOrderPrice: UILabel!
-    
+    @IBOutlet weak var pastOrderStatus: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

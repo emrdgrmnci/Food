@@ -30,6 +30,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         resetTotalPrice()
         if fromSharedFood.count == 0 {
@@ -45,8 +46,7 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        self.myCartTableView.reloadData()
+        fromSharedFood = SingletonCart.sharedFood.food
         
         if fromSharedFood.count == 0 {
             
@@ -55,9 +55,10 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         }
         else {
             myCartTableView.restore()
-            self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = "\(fromSharedFood.count)"
-            
         }
+        self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = "\(fromSharedFood.count)"
+        resetTotalPrice()
+        self.myCartTableView.reloadData()
     }
     
     func resetTotalPrice() {

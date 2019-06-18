@@ -26,18 +26,31 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
     let orderProvider = MoyaProvider<FoodNetwork>()
     
     let fromSharedFood = SingletonCart.sharedFood.food
+    var tempProductList = [OrderProductList]()
     
     //TODO: Approve all orders
     @IBAction func approveButton(_ sender: Any) {
-        
     }
     
     func postOrder() {
         
         self.isLoading(true)
         
+        for singletonFromSharedFood in fromSharedFood {
+            var orderedProductList = OrderProductList()
+            orderedProductList.productID = singletonFromSharedFood.id
+            orderedProductList.quantity = singletonFromSharedFood.foodQuantity
+            
+            tempProductList.append(orderedProductList)
+        }
+        
+//        let jsonData =  (try? JSONSerialization.data(withJSONObject: tempProductList, options: .prettyPrinted)) // first of all convert json to the data
+        let encodeOrderProductList = try? JSONEncoder().encode(tempProductList)
+        let jsonString = String(data: encodeOrderProductList!, encoding: .utf8)!
+        print(jsonString)
+        
         let explanationTextViewText = explanationTextView.text
-        orderProvider.request(.createOrder(pickerViewRows, explanationTextViewText!)) {
+        orderProvider.request(.createOrder(pickerViewRows, explanationTextViewText!, jsonString)) {
             [weak self] result in
             guard self != nil else { return }
             let statusCode = result.value?.statusCode
@@ -53,9 +66,10 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
                     
                     if (postOrderResponse.Success) {
                         print(json.debugDescription)
-//                        self?.performSegue(withIdentifier: "orderConfirmationToPastOrder", sender: nil)
-                        self?.dismiss(animated: true, completion: nil)
+                        SingletonCart.dispose()
+                        print(SingletonCart.sharedFood.food)
                         self?.showAlert(withTitle: "Başarılı", withMessage: postOrderResponse.Message!, withAction: "pop")
+                        self?.navigationController?.popToRootViewController(animated: true)
                     } else {
                         self?.showAlert(withTitle: "Hata", withMessage: postOrderResponse.Message!, withAction: "pop")
                     }
@@ -153,7 +167,8 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         paymentTf.layer.borderWidth = 1
         paymentTf.layer.borderColor = UIColor.lightGray.cgColor
         paymentTf.font = UIFont.systemFont(ofSize: 18)
-        paymentTf.placeholder = "Ödeme Tipi"
+        paymentTf.text = "Kapıda Ödeme"
+        paymentTf.isEnabled = false
         return paymentTf
         
     }()
@@ -240,10 +255,10 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         paymentText.widthAnchor.constraint(equalToConstant: 300).isActive = true
         paymentText.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        let paymentPicker = UIPickerView()
-        paymentPicker.delegate = self
-        paymentText.inputView = paymentPicker
-        paymentMethod = ["Kapıda Ödeme"]
+//        let paymentPicker = UIPickerView()
+//        paymentPicker.delegate = self
+//        paymentText. = "Kapıda Ödeme"
+//        paymentMethod = ["Kapıda Ödeme"]
         
         scrollView.addSubview(explanationTextView)
         
