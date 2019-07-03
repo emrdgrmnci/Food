@@ -69,21 +69,21 @@ class MainViewController: UIViewController {
             guard self != nil else {return}
             switch result {
             case .success(let response):
-//                DispatchQueue.main.async {
-                    do {
-                        print(try response.mapJSON())
-                        
-                        let userResponse = try JSONDecoder().decode(UserInfoServiceResponse.self, from: response.data)
-                        //                        detail = userResponse
-                        
-                        debugPrint(userResponse)
-                        //                        debugPrint("Mehmet \(userResponse.ResultList![0].N )" )
-                        //                        debugPrint("Mehmet \(userResponse.ResultList![0].S )" )
-                        self!.navigationItem.title = ("Hoşgeldin \(userResponse.ResultObj?.N ?? "TezzFood")")
-                    } catch {
-                        print("Error info: \(error)")
-                    }
-//                }
+                //                DispatchQueue.main.async {
+                do {
+                    print(try response.mapJSON())
+                    
+                    let userResponse = try JSONDecoder().decode(UserInfoServiceResponse.self, from: response.data)
+                    //                        detail = userResponse
+                    
+                    debugPrint(userResponse)
+                    //                        debugPrint("Mehmet \(userResponse.ResultList![0].N )" )
+                    //                        debugPrint("Mehmet \(userResponse.ResultList![0].S )" )
+                    self!.navigationItem.title = ("Hoşgeldin \(userResponse.ResultObj?.N ?? "TezzFood")")
+                } catch {
+                    print("Error info: \(error)")
+                }
+            //                }
             case .failure(let error):
                 self!.isLoading(false)
                 print(error.response!)
@@ -182,14 +182,14 @@ class MainViewController: UIViewController {
     //    MARK: Segue from MainVC to DetailVC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectedFoodToDetail" {
-//            if let indexPath = self.mainTableView.indexPathForSelectedRow {
-                let controller = segue.destination as! DetailViewController
-//                let foods = foodData
-                controller.food = foodCategoryData[foodSection].ProductList[foodRow]
-            }
+            //            if let indexPath = self.mainTableView.indexPathForSelectedRow {
+            let controller = segue.destination as! DetailViewController
+            //                let foods = foodData
+            controller.food = foodCategoryData[foodSection].ProductList[foodRow]
         }
-        
-//    }
+    }
+    
+    //    }
 }
 //var seledted : Food
 
@@ -210,7 +210,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         foodRow = indexPath.row
         
         performSegue(withIdentifier: "selectedFoodToDetail", sender: self)
-
+        
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -228,7 +228,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-       // return foodData.count
+        // return foodData.count
         return foodCategoryData[section].ProductList.count
     }
     
