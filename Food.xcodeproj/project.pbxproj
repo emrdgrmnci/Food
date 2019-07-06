@@ -26,8 +26,6 @@
 		473E50F622899B9000E7BBC8 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E50F522899B9000E7BBC8 /* Webservice.swift */; };
 		473E50F92289A95B00E7BBC8 /* ArticleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E50F82289A95B00E7BBC8 /* ArticleList.swift */; };
 		474A1B5D2284765000710A3E /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474A1B5C2284765000710A3E /* LaunchScreenViewController.swift */; };
-		474AEBBC22AEA6EC0047B2D3 /* MyCartData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474AEBBB22AEA6EC0047B2D3 /* MyCartData+CoreDataClass.swift */; };
-		474AEBBD22AEA6EC0047B2D3 /* MyCartData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474AEBBA22AEA6EC0047B2D3 /* MyCartData+CoreDataProperties.swift */; };
 		474F3AE52222D64E00B3D388 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474F3AE42222D64E00B3D388 /* DetailViewController.swift */; };
 		474F3AE72222D7F600B3D388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 474F3AE62222D7F500B3D388 /* Assets.xcassets */; };
 		47505FD3228B53ED00876FBF /* MyInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47505FD2228B53ED00876FBF /* MyInfosViewController.swift */; };
@@ -90,8 +88,6 @@
 		473E50F522899B9000E7BBC8 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		473E50F82289A95B00E7BBC8 /* ArticleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleList.swift; sourceTree = "<group>"; };
 		474A1B5C2284765000710A3E /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchScreenViewController.swift; path = "Food/View Controller/Splash/LaunchScreenViewController.swift"; sourceTree = SOURCE_ROOT; };
-		474AEBBA22AEA6EC0047B2D3 /* MyCartData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyCartData+CoreDataProperties.swift"; path = "/Users/aliemredegirmenci/Developer/Food/MyCartData+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		474AEBBB22AEA6EC0047B2D3 /* MyCartData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyCartData+CoreDataClass.swift"; path = "/Users/aliemredegirmenci/Developer/Food/MyCartData+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		474F3AE42222D64E00B3D388 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		474F3AE62222D7F500B3D388 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47505FD2228B53ED00876FBF /* MyInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfosViewController.swift; sourceTree = "<group>"; };
@@ -377,8 +373,6 @@
 			children = (
 				47FED481221B19A40050ADD2 /* Food */,
 				8735EBCA1FF703FE427A9CDA /* Frameworks */,
-				474AEBBB22AEA6EC0047B2D3 /* MyCartData+CoreDataClass.swift */,
-				474AEBBA22AEA6EC0047B2D3 /* MyCartData+CoreDataProperties.swift */,
 				475CB75522B7E64D000B9137 /* MyFavoritesCell */,
 				B09CFD468CF6CC36F3CD702E /* Pods */,
 				47FED480221B19A40050ADD2 /* Products */,
@@ -397,16 +391,16 @@
 		47FED481221B19A40050ADD2 /* Food */ = {
 			isa = PBXGroup;
 			children = (
-				4784A82222943C6F004576EC /* Extensions */,
-				473E50F422899B4000E7BBC8 /* Services */,
 				477D4EF522915318009DAD90 /* App */,
-				477D4EF622915352009DAD90 /* Support Files */,
+				4784A82222943C6F004576EC /* Extensions */,
 				47FED491221B19A50050ADD2 /* Info.plist */,
-				477D4EF4229152DC009DAD90 /* MyPastOrdersCells */,
 				47700C1D221EC4E4009C7682 /* MainFoodCells */,
 				47A262D4226F9FC20079C434 /* Model */,
 				47781A39222ABFF100ECE28A /* MyCartCells */,
+				477D4EF4229152DC009DAD90 /* MyPastOrdersCells */,
+				473E50F422899B4000E7BBC8 /* Services */,
 				47EC7EE52228587A0045783B /* Storyboards */,
+				477D4EF622915352009DAD90 /* Support Files */,
 				47A262D3226F9F8C0079C434 /* View Controller */,
 			);
 			path = Food;
@@ -589,7 +583,6 @@
 				47700C23221F115D009C7682 /* ImageNames.swift in Sources */,
 				47A262D6226FA07A0079C434 /* SingletonCart.swift in Sources */,
 				47700C1C221EC4D7009C7682 /* MainFoodCollectionViewCell.swift in Sources */,
-				474AEBBD22AEA6EC0047B2D3 /* MyCartData+CoreDataProperties.swift in Sources */,
 				470F496B22B57B4D008D9B2E /* GetPostFavoriteListNetwork.swift in Sources */,
 				47700C1A221EC4A2009C7682 /* MainFoodTableViewCell.swift in Sources */,
 				472C31F8223814C400A3E863 /* Food.swift in Sources */,
@@ -604,7 +597,6 @@
 				47CD51B022AAA7FA00DBA334 /* GetPostAddressNetwork.swift in Sources */,
 				47505FD3228B53ED00876FBF /* MyInfosViewController.swift in Sources */,
 				472F68BB22205953006F0FF7 /* MainFoodTitleTableViewCell.swift in Sources */,
-				474AEBBC22AEA6EC0047B2D3 /* MyCartData+CoreDataClass.swift in Sources */,
 				4784A828229444E9004576EC /* ViewExtensions.swift in Sources */,
 				47DE44F822B7C506001679AF /* OrderProductList.swift in Sources */,
 				472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */,

@@ -206,8 +206,8 @@ class DetailViewController: UIViewController, TagListViewDelegate {
                         let data = response.data
                         _ = try JSON(data: data)
                         
-                        let isFavoriteResponse = try! JSONDecoder().decode(IsFavoriteServiceResponse.self, from: response.data)
-                        self!.isFirstClick = isFavoriteResponse.ResultObj!
+                        let isFavoriteResponse = try? JSONDecoder().decode(IsFavoriteServiceResponse.self, from: response.data)
+                        self!.isFirstClick = (isFavoriteResponse?.ResultObj!)!
                         print(self!.isFirstClick)
                         
                         if self!.isFirstClick == true {
