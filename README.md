@@ -1,6 +1,6 @@
 # Food
 
-<h5>This native iOS project will be my graduate project as soon!</h5>
+<h5>This native iOS project is my graduate project as soon!</h5>
 <h5>It will like Food Order application for custom restaurants.</h5>
 
 
