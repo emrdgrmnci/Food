@@ -19,10 +19,23 @@ class MyInfosViewController: UIViewController {
     
     @IBOutlet weak var myNameTextField: UITextField!
     @IBOutlet weak var myLastNameTextField: UITextField!
-    
-    //    static let provider = MoyaProvider<ContentDetailNetwork>()
+
     let provider = MoyaProvider<GetInfoNetwork>()
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        getInfoFunc()
+        self.myNameTextField.isEnabled = false
+        self.myLastNameTextField.isEnabled = false
+        self.navigationItem.title = "Bilgilerim"
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        myNameTextField.resignFirstResponder()
+        myLastNameTextField.resignFirstResponder()
+    }
     func getInfoFunc() {
         provider.request(.getInfo) { [weak self] result in
             guard self != nil else {return}
@@ -31,13 +44,8 @@ class MyInfosViewController: UIViewController {
                 DispatchQueue.main.async {
                     do {
                         print(try response.mapJSON())
-                        
                         let userResponse = try JSONDecoder().decode(UserInfoServiceResponse.self, from: response.data)
-                        //                        detail = userResponse
-                        
                         debugPrint(userResponse)
-//                        debugPrint("Mehmet \(userResponse.ResultList![0].N )" )
-//                        debugPrint("Mehmet \(userResponse.ResultList![0].S )" )
                         self!.myNameTextField.text = userResponse.ResultObj?.N
                         self!.myLastNameTextField.text = userResponse.ResultObj?.S
                     } catch {
@@ -55,7 +63,6 @@ class MyInfosViewController: UIViewController {
         let viewController = storyboard?.instantiateViewController(withIdentifier: "ChangePassword")
         self.navigationController?.pushViewController(viewController!, animated: true)
     }
-    
     @IBAction func showWebPage(_ sender: Any) {
         if let url = URL(string: "http://mehmetguner.pryazilim.com") {
             let config = SFSafariViewController.Configuration()
@@ -70,22 +77,6 @@ class MyInfosViewController: UIViewController {
     
     let settingList = ["Şifre Değiştir", "Web Sayfası"]
     let identities = ["ChangePassword"]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        getInfoFunc()
-        self.myNameTextField.isEnabled = false
-        self.myLastNameTextField.isEnabled = false
-        self.navigationItem.title = "Bilgilerim"
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        myNameTextField.resignFirstResponder()
-        myLastNameTextField.resignFirstResponder()
-    }
 }
 
 

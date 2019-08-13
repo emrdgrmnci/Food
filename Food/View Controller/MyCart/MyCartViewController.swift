@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MyCartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MyCartViewController: UIViewController {
     
     var fromDetailFoodNames = ""
     var fromDetailFoodPrices = ""
@@ -70,9 +70,11 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         
         totalPriceLabel.text = "Toplam: \(tempTotalPrice) ₺"
     }
-    
+}
+
+extension MyCartViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+
         if fromSharedFood.count == 0 {
             tableView.setEmptyView(title: "Sepetinizde ürün bulunmamaktadır", message: "Seçtiğiniz yemekler burada listelenir.")
             approveCart.isEnabled = false
@@ -80,10 +82,10 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         else {
             tableView.restore()
         }
-        
+
         return fromSharedFood.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let foodName = fromSharedFood[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
@@ -92,24 +94,24 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
         cell.myCartFoodPriceLabel.text = "\(foodName.Price * (foodName.foodQuantity ?? 0.0)) ₺"
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             SingletonCart.sharedFood.food.remove(at: indexPath.row)
             fromSharedFood = SingletonCart.sharedFood.food
             resetTotalPrice()
-//            fromSharedFood.removeAll()
+            //            fromSharedFood.removeAll()
             tableView.deleteRows(at: [indexPath], with: .fade)
             //            tableView.beginUpdates()
             tableView.reloadData()
-            
+
             if fromSharedFood.count == 0 {
                 myCartTableView.setEmptyView(title: "Sepetinizde ürün bulunmamaktadır", message: "Seçtiğiniz yemekler burada listelenir.")
-                
+
                 myCartTableView.reloadData()
                 self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = nil
                 approveCart.isEnabled = false
@@ -120,9 +122,9 @@ class MyCartViewController: UIViewController, UITableViewDataSource, UITableView
                 myCartTableView.restore()
             }
             //            tableView.endUpdates()
-            
+
         }
-        
+
     }
 }
 

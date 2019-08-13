@@ -10,10 +10,8 @@ import UIKit
 import Moya
 import SwiftyJSON
 
-class MyPastOrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    
-    
+class MyPastOrdersViewController: UIViewController{
+
     @IBOutlet weak var myPastOrdersTableView: UITableView!
     
     var pastOrder = [PastOrders]()
@@ -21,12 +19,10 @@ class MyPastOrdersViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         getPastOrdersFunc()
         self.navigationItem.title = "Siparişlerim"
         myPastOrdersTableView.reloadData()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         if pastOrder.count == 0 {
             myPastOrdersTableView.setEmptyView(title: "Sipariş bulunmamaktadır", message: "Siparişleriniz burada listelenir.")
@@ -35,7 +31,6 @@ class MyPastOrdersViewController: UIViewController, UITableViewDataSource, UITab
             myPastOrdersTableView.restore()
         }
     }
-    
     func getPastOrdersFunc() {
         provider.request(.getPastOrdersList) { [weak self] result in
             guard self != nil else {return}
@@ -61,7 +56,8 @@ class MyPastOrdersViewController: UIViewController, UITableViewDataSource, UITab
             
         }
     }
-    
+}
+extension MyPastOrdersViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if pastOrder.count == 0 {
             tableView.setEmptyView(title: "Sipariş bulunmamaktadır", message: "Siparişleriniz burada listelenir.")
@@ -69,23 +65,23 @@ class MyPastOrdersViewController: UIViewController, UITableViewDataSource, UITab
         else {
             tableView.restore()
         }
-        
+
         return pastOrder.count
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let pastOrderInfos = pastOrder[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "myPastOrderCell", for: indexPath) as! MyPastOrdersTableViewCell
         cell.pastOrderNumber.text = pastOrderInfos.ActionNumber
         cell.pastOrderDate.text = pastOrderInfos.CreatedDateString
         cell.pastOrderPrice.text = pastOrderInfos.PriceCountString
-        
+
         var statueString = ""
-        
+
         switch pastOrderInfos.Statue {
         case 0:
             statueString = "Yeni İşlem"
@@ -105,14 +101,13 @@ class MyPastOrdersViewController: UIViewController, UITableViewDataSource, UITab
         default:
             break
         }
-        
+
         cell.pastOrderStatus.text = statueString
-    
+
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 }
-

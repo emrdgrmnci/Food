@@ -21,10 +21,11 @@ class MainViewController: UIViewController {
     var foodProvider = MoyaProvider<FoodNetwork>()
     var foodCategoryProvider = MoyaProvider<FoodCategoryNetwork>()
     let userInfoProvider = MoyaProvider<GetInfoNetwork>()
-    
     var sliderData = [String]()
     var foodData = [Food]()
     var foodCategoryData = [FoodCategory]()
+    var foodSection = 0
+    var foodRow = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,51 +40,34 @@ class MainViewController: UIViewController {
         getFoodCategoryFunc()
         
         let isSliderSuccess = getSliderFunc()
-        //
         if isSliderSuccess {
-            //
             mainCollectionView.delegate = self
             mainCollectionView.dataSource = self
             mainCollectionView.reloadData()
         }
-        
         mainTableView.delegate = self
-        
         mainTableView.dataSource = self
-        
         mainTableView.reloadData()
-        
-        
-        //        webServiceSetup()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = false
         
     }
-    
     func getInfoFunc() {
         userInfoProvider.request(.getInfo) { [weak self] result in
             guard self != nil else {return}
             switch result {
             case .success(let response):
-                //                DispatchQueue.main.async {
                 do {
                     print(try response.mapJSON())
-                    
                     let userResponse = try JSONDecoder().decode(UserInfoServiceResponse.self, from: response.data)
-                    //                        detail = userResponse
-                    
                     debugPrint(userResponse)
-                    //                        debugPrint("Mehmet \(userResponse.ResultList![0].N )" )
-                    //                        debugPrint("Mehmet \(userResponse.ResultList![0].S )" )
                     self!.navigationItem.title = ("Hoşgeldin \(userResponse.ResultObj?.N ?? "TezzFood")")
                 } catch {
                     print("Error info: \(error)")
                 }
-            //                }
             case .failure(let error):
                 self!.isLoading(false)
                 print(error.response!)
@@ -91,7 +75,6 @@ class MainViewController: UIViewController {
             
         }
     }
-    
     func getFoodFunc() {
         foodProvider.request(.food) { [weak self] result in
             guard self != nil else {return}
@@ -116,7 +99,6 @@ class MainViewController: UIViewController {
             
         }
     }
-    
     func getFoodCategoryFunc() {
         foodCategoryProvider.request(.foodCategory) { [weak self] result in
             guard self != nil else {return}
@@ -141,7 +123,6 @@ class MainViewController: UIViewController {
             
         }
     }
-    
     func getSliderFunc() -> Bool {
         var isResult = false
         sliderProvider.request(.slider) { [weak self] result in
@@ -171,40 +152,18 @@ class MainViewController: UIViewController {
                 self!.isLoading(false)
                 print(error.response!)
             }
-            
         }
         return isResult
     }
-    
-    var foodSection = 0
-    var foodRow = 0
-    
     //    MARK: Segue from MainVC to DetailVC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectedFoodToDetail" {
-            //            if let indexPath = self.mainTableView.indexPathForSelectedRow {
             let controller = segue.destination as! DetailViewController
-            //                let foods = foodData
             controller.food = foodCategoryData[foodSection].ProductList[foodRow]
         }
     }
-    
-    //    }
 }
-//var seledted : Food
-
-//func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//
-//    if (segue.identifier == "toDetail") {
-//        // initialize new view controller and cast it as your view controller
-//        var viewController = segue.destination as! DetailViewController
-//        // your new view controller should have property that will store passed value
-//        viewController.detailFoodName =
-//    }
-//}
-
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         foodSection = indexPath.section
         foodRow = indexPath.row
@@ -220,56 +179,36 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return foodCategoryData.count
     }
-    //
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        let selectedFood = foodData[indexPath.row]
-    //        performSegue(withIdentifier: "toDetail", sender: self)
-    //    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        // return foodData.count
         return foodCategoryData[section].ProductList.count
     }
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood") as! MainFoodTitleTableViewCell
-        
         let category = foodCategoryData[indexPath.section]
         let food = category.ProductList[indexPath.row]
-        
         cell.titleLabel.text = food.ProductTitle
         cell.priceLabel.text = food.PriceString
-        
         return cell
     }
 }
 
 
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return sliderData.count
     }
-    
     //MARK:- collection view cell size
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
         
         return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
     }
-    
     //MARK:- //collection view cell data
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainFoodCollectionViewCell", for: indexPath) as! MainFoodCollectionViewCell
         
         let url = URL(string: self.sliderData[indexPath.row])
         cell.mainFoodImage.kf.setImage(with: url)
-        //        let img = self.sliderData[indexPath.row]
-        //        cell.mainFoodImage.image = UIImage(named: img)
         cell.layoutIfNeeded()
         return cell
     }

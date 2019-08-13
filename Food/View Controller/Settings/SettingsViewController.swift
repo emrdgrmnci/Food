@@ -13,12 +13,10 @@ class SettingsViewController: UITableViewController {
     
     let settingList = ["Bilgilerim", "Önceki Siparişlerim", "Favorilerim", "Adreslerim", "Çıkış Yap"]
     let identities = ["MyInfos", "MyPastOrders", "MyFavorites", "MyAddresses", "Logout"]
-    
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return settingList.count
     }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OtherList")
         
@@ -28,9 +26,7 @@ class SettingsViewController: UITableViewController {
         
         return cell!
     }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if indexPath.row == 4 {
             let alert = UIAlertController.init(title: "Çıkış Yap", message: "Çıkış yapmak istediğinize emin misiniz?", preferredStyle: .alert)
             
@@ -44,10 +40,7 @@ class SettingsViewController: UITableViewController {
                 dictionary.keys.forEach { key in
                     defaults.removeObject(forKey: key)
                 }
-                
-               
                 UserDefaults.standard.synchronize()
-                //                self.dismiss(animated: true, completion: nil)
                 self.performSegue(withIdentifier: "settingsToIntro", sender: nil)
             }
             
@@ -61,13 +54,9 @@ class SettingsViewController: UITableViewController {
             self.show(viewController!, sender: nil)
         }
     }
-    
-    
-    
     @IBAction func showWebPage(_ sender: Any) {
         showWebPage()
     }
-    
     func showWebPage() {
         if let url = URL(string: "http://mehmetguner.pryazilim.com") {
             let config = SFSafariViewController.Configuration()
@@ -77,24 +66,8 @@ class SettingsViewController: UITableViewController {
             present(vc, animated: true)
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
     }
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

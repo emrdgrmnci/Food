@@ -7,24 +7,18 @@
 //
 
 import UIKit
-//import TinyConstraints
 import KMPlaceholderTextView
 import Moya
 import SwiftyJSON
-
-//TODO: Detaydaki yemek içeriklerini burayada getir
 
 class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var addressType: [String] = ["Seçiniz"]
     var paymentMethod: [String] = []
     var getAddressList: [AddressPost] = []
-    
     var activeTextField = UITextField()
-    
     let provider = MoyaProvider<GetPostAddressNetwork>()
     let orderProvider = MoyaProvider<FoodNetwork>()
-    
     let fromSharedFood = SingletonCart.sharedFood.food
     var tempProductList = [OrderProductList]()
     
@@ -33,9 +27,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     func postOrder() {
-        
         self.isLoading(true)
-        
         for singletonFromSharedFood in fromSharedFood {
             var orderedProductList = OrderProductList()
             orderedProductList.productID = singletonFromSharedFood.id
@@ -43,8 +35,6 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
             
             tempProductList.append(orderedProductList)
         }
-        
-//        let jsonData =  (try? JSONSerialization.data(withJSONObject: tempProductList, options: .prettyPrinted)) // first of all convert json to the data
         let encodeOrderProductList = try? JSONEncoder().encode(tempProductList)
         let jsonString = String(data: encodeOrderProductList!, encoding: .utf8)!
         print(jsonString)
@@ -58,25 +48,25 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
             case .success(let response):
                 switch statusCode {
                 case 200:
-                self!.isLoading(false)
-                do {
-                    let data = response.data
-                    let json = try JSON(data: data)
-                    let postOrderResponse = try JSONDecoder().decode(AddressPostResponse.self, from: response.data)
-                    
-                    if (postOrderResponse.Success) {
-                        print(json.debugDescription)
-                        SingletonCart.dispose()
-                        print(SingletonCart.sharedFood.food)
-                        self?.showAlert(withTitle: "Başarılı", withMessage: postOrderResponse.Message!, withAction: "pop")
-                        self?.navigationController?.popToRootViewController(animated: true)
-                    } else {
-                        self?.showAlert(withTitle: "Hata", withMessage: postOrderResponse.Message!, withAction: "pop")
-                    }
-                } catch {
-                    print("register error")
-                    } default:
                     self!.isLoading(false)
+                    do {
+                        let data = response.data
+                        let json = try JSON(data: data)
+                        let postOrderResponse = try JSONDecoder().decode(AddressPostResponse.self, from: response.data)
+
+                        if (postOrderResponse.Success) {
+                            print(json.debugDescription)
+                            SingletonCart.dispose()
+                            print(SingletonCart.sharedFood.food)
+                            self?.showAlert(withTitle: "Başarılı", withMessage: postOrderResponse.Message!, withAction: "pop")
+                            self?.navigationController?.popToRootViewController(animated: true)
+                        } else {
+                            self?.showAlert(withTitle: "Hata", withMessage: postOrderResponse.Message!, withAction: "pop")
+                        }
+                    } catch {
+                        print("register error")
+                    } default:
+                        self!.isLoading(false)
                 }
             case .failure(let error):
                 self!.isLoading(false)
@@ -91,7 +81,6 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         }
         
     }
-    
     func getAddressFunc() {
         provider.request(.getAddressList) { [weak self] result in
             guard self != nil else {return}
@@ -128,18 +117,6 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         view.backgroundColor = .white
         return view
     }()
-    
-    //MARK: Telefon numarasını MyInfosa Taşı
-    
-    //    lazy var phoneTextField: UITextField = {
-    //        let phoneTf = UITextField()
-    //        phoneTf.layer.cornerRadius = 8
-    //        phoneTf.layer.borderWidth = 1
-    //        phoneTf.layer.borderColor = UIColor.lightGray.cgColor
-    //        phoneTf.placeholder = "Cep Telefonu"
-    //        return phoneTf
-    //    }()
-    
     lazy var selectedAddressTextView: KMPlaceholderTextView = {
         let cityTf = KMPlaceholderTextView()
         cityTf.layer.cornerRadius = 8
@@ -148,7 +125,6 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         cityTf.placeholder = "Adres başlığı seçiniz!"
         return cityTf
     }()
-    
     lazy var addressText: UITextField = {
         let addressTv = UITextField()
         addressTv.layer.cornerRadius = 8
@@ -157,10 +133,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         addressTv.font = UIFont.systemFont(ofSize: 18)
         addressTv.placeholder = "Adres Başlığı"
         return addressTv
-        
     }()
-    
-    
     lazy var paymentText: UITextField = {
         let paymentTf = UITextField()
         paymentTf.layer.cornerRadius = 8
@@ -170,9 +143,7 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         paymentTf.text = "Kapıda Ödeme"
         paymentTf.isEnabled = false
         return paymentTf
-        
     }()
-    
     lazy var explanationTextView: KMPlaceholderTextView = {
         let explanationTv = KMPlaceholderTextView()
         explanationTv.layer.cornerRadius = 8
@@ -181,7 +152,6 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         explanationTv.font = UIFont.systemFont(ofSize: 18)
         explanationTv.placeholder = "Açıklama"
         return explanationTv
-        
     }()
     
     override func viewDidLoad() {
@@ -255,10 +225,10 @@ class OrderConfirmationViewController: UIViewController, UIPickerViewDelegate, U
         paymentText.widthAnchor.constraint(equalToConstant: 300).isActive = true
         paymentText.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-//        let paymentPicker = UIPickerView()
-//        paymentPicker.delegate = self
-//        paymentText. = "Kapıda Ödeme"
-//        paymentMethod = ["Kapıda Ödeme"]
+        //        let paymentPicker = UIPickerView()
+        //        paymentPicker.delegate = self
+        //        paymentText. = "Kapıda Ödeme"
+        //        paymentMethod = ["Kapıda Ödeme"]
         
         scrollView.addSubview(explanationTextView)
         

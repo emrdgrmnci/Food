@@ -11,7 +11,7 @@ import Moya
 import SwiftyJSON
 
 
-class RegisterViewController: UIViewController, UITextFieldDelegate {
+class RegisterViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var surnameTextField: UITextField!
@@ -90,40 +90,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         default: break
         }
     }
-        func textFieldDidEndEditing(_ textField: UITextField) {
-        if phoneTextField == textField && phoneTextField.text?.count == 13 {
-            
-        }
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var result = true
-        
-        if nameTextField == textField || surnameTextField == textField {
-            if string.count < 10 {
-                let disallowedCharacterSet = NSCharacterSet(charactersIn: " ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZXWabcçdefgğhıijklmnoöprsştuüvyzxw").inverted
-                let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
-                result = replacementStringIsLegal
-            }
-        }
-        else if phoneTextField == textField {
-            if string.count < 10 {
-                let disallowedCharacterSet = NSCharacterSet(charactersIn: "1234567890").inverted
-                let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
-                result = replacementStringIsLegal
-            } 
-        }
-            
-        else if emailTextField == textField || passwordTextField == textField || rePasswordTextField == textField {
-            if string.count < 10 {
-                let disallowedCharacterSet = NSCharacterSet(charactersIn: "@.*-=;!?[]{}|/&($+%^'ABCÇDEFGĞHIİJKLMNOÖPRQSŞTUÜVYZXWabcçdefgğhıijklmnoöprsqştuüvyzxw1234567890").inverted
-                let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
-                result = replacementStringIsLegal
-            }
-        }
-        return result
-    }
-    
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         nameTextField.resignFirstResponder()
         surnameTextField.resignFirstResponder()
@@ -140,14 +106,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         rePasswordTextField.delegate = self
         
     }
-    
-    
-    
     //MARK: TextField validations
-    
     func isValid() -> Bool{
-        
-        
+
         guard nameTextField.text?.isEmpty == false else {
             self.showAlertController("İsim alanı boş geçilemez.")
             return false
@@ -182,9 +143,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         return true
         
     }
-    
-    
-    
     //MARK:- For cancelBarButtonItem of RegisterView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
@@ -197,6 +155,42 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if phoneTextField == textField && phoneTextField.text?.count == 13 {
+
+        }
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var result = true
+
+        if nameTextField == textField || surnameTextField == textField {
+            if string.count < 10 {
+                let disallowedCharacterSet = NSCharacterSet(charactersIn: " ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZXWabcçdefgğhıijklmnoöprsştuüvyzxw").inverted
+                let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
+                result = replacementStringIsLegal
+            }
+        }
+        else if phoneTextField == textField {
+            if string.count < 10 {
+                let disallowedCharacterSet = NSCharacterSet(charactersIn: "1234567890").inverted
+                let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
+                result = replacementStringIsLegal
+            }
+        }
+
+        else if emailTextField == textField || passwordTextField == textField || rePasswordTextField == textField {
+            if string.count < 10 {
+                let disallowedCharacterSet = NSCharacterSet(charactersIn: "@.*-=;!?[]{}|/&($+%^'ABCÇDEFGĞHIİJKLMNOÖPRQSŞTUÜVYZXWabcçdefgğhıijklmnoöprsqştuüvyzxw1234567890").inverted
+                let replacementStringIsLegal = string.rangeOfCharacter(from: disallowedCharacterSet) == nil
+                result = replacementStringIsLegal
+            }
+        }
+        return result
+    }
 }
 
 

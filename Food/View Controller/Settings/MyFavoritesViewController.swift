@@ -10,7 +10,7 @@ import UIKit
 import Moya
 import SwiftyJSON
 
-class MyFavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MyFavoritesViewController: UIViewController{
     
     
     @IBOutlet weak var myFavoritesTableView: UITableView!
@@ -31,60 +31,6 @@ class MyFavoritesViewController: UIViewController, UITableViewDataSource, UITabl
         self.navigationItem.title = "Favorilerim"
         myFavoritesTableView.reloadData()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        if favoriteList.count == 0 {
-//            myFavoritesTableView.setEmptyView(title: "Favori ürün bulunmamaktadır", message: "Favori ürünler burada listelenir.")
-//        }
-//        else {
-//            myFavoritesTableView.restore()
-//        }
-//    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if favoriteList.count == 0 {
-            tableView.setEmptyView(title: "Favori ürün bulunmamaktadır", message: "Favori ürünler burada listelenir.")
-        }
-        else {
-            tableView.restore()
-        }
-        
-        return favoriteList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let foodName = favoriteList[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyFavorites", for: indexPath) as! MyFavoritesTableViewCell
-        cell.myFavoritesTitle.text = foodName.ProductTitle
-        cell.myFavoritesPrice.text = foodName.PriceString
-        
-        return cell
-        
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            postFavoritesFunc(favoriteID: favoriteList[indexPath.row].id)
-            favoriteList.remove(at: indexPath.row)
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            
-            
-            if favoriteList.count == 0 {
-                myFavoritesTableView.setEmptyView(title: "Favori ürün bulunmamaktadır", message: "Favori ürünler burada listelenir.")
-            }
-            else {
-                myFavoritesTableView.restore()
-            }
-            tableView.endUpdates()
-        }
-    }
-    
     func getFavoritesFunc() {
         favoriteProvider.request(.getFavoriteList) { [weak self] result in
             guard self != nil else {return}
@@ -142,7 +88,6 @@ class MyFavoritesViewController: UIViewController, UITableViewDataSource, UITabl
 }
 
 //MARK: If table view empty!
-
 extension UITableView {
     func setMyFavoritesEmptyView(title: String, message: String) {
         let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
@@ -175,3 +120,41 @@ extension UITableView {
     }
 }
 
+extension MyFavoritesViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if favoriteList.count == 0 {
+            tableView.setEmptyView(title: "Favori ürün bulunmamaktadır", message: "Favori ürünler burada listelenir.")
+        }
+        else {
+            tableView.restore()
+        }
+        return favoriteList.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let foodName = favoriteList[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyFavorites", for: indexPath) as! MyFavoritesTableViewCell
+        cell.myFavoritesTitle.text = foodName.ProductTitle
+        cell.myFavoritesPrice.text = foodName.PriceString
+        return cell
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            postFavoritesFunc(favoriteID: favoriteList[indexPath.row].id)
+            favoriteList.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+
+
+            if favoriteList.count == 0 {
+                myFavoritesTableView.setEmptyView(title: "Favori ürün bulunmamaktadır", message: "Favori ürünler burada listelenir.")
+            }
+            else {
+                myFavoritesTableView.restore()
+            }
+            tableView.endUpdates()
+        }
+    }
+}

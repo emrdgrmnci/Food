@@ -22,7 +22,6 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
     override func viewDidLayoutSubviews() {
         self.scrollView.contentSize = CGSize(width: 320, height: 700)
     }
-    
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +29,6 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
         view.backgroundColor = .white
         return view
     }()
-    
     lazy var addressTitleTextField: UITextField = {
         let addressTitleTf = UITextField()
         addressTitleTf.layer.cornerRadius = 8
@@ -39,7 +37,6 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
         addressTitleTf.placeholder = "Adres Başlığı"
         return addressTitleTf
     }()
-    
     lazy var selectedAddressTextView: KMPlaceholderTextView = {
         let selectedAddressTV = KMPlaceholderTextView()
         selectedAddressTV.layer.cornerRadius = 8
@@ -48,7 +45,6 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
         selectedAddressTV.placeholder = "Adres başlığı seçiniz!"
         return selectedAddressTV
     }()
-    
     lazy var addressTextView: KMPlaceholderTextView = {
         let addressTv = KMPlaceholderTextView()
         addressTv.layer.cornerRadius = 8
@@ -59,7 +55,6 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
         return addressTv
         
     }()
-    
     lazy var shortAddressTextView: KMPlaceholderTextView = {
         let shortAddressTv = KMPlaceholderTextView()
         shortAddressTv.layer.cornerRadius = 8
@@ -70,16 +65,8 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
         return shortAddressTv
         
     }()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        addressTitleTextField.isEnabled = false
-//        addressTextView.isUserInteractionEnabled = false
-//        shortAddressTextView.isUserInteractionEnabled = false
-        
-        
         self.view.addSubview(scrollView)
         setupScrollView()
         getAddressFunc()
@@ -139,7 +126,7 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
         shortAddressTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         shortAddressTextView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
-//        let addressPicker = UIPickerView()
+        //        let addressPicker = UIPickerView()
         addressPicker.delegate = self
         addressTitleTextField.inputView = addressPicker
         
@@ -194,9 +181,7 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
     }
-    
-    
-    //TODO: Approve Button for MyAddresses
+
     @objc func approveButtonAction(sender: UIButton!) {
         if pickerViewRows == 0 {
             postAddAddressFunc()
@@ -204,13 +189,6 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
             postUpdateAddressFunc()
         }
     }
-    
-
-//    @objc func editButtonAction(sender: UIButton!) {
-//
-//    }
-    
-    //TODO: Delete Button for MyAddresses
     @objc func deleteButtonAction(sender: UIButton!) {
         postDeleteAddressFunc()
     }
@@ -258,7 +236,6 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
             }
         }
     }
-
     func getAddressFunc() {
         provider.request(.getAddressList) { [weak self] result in
             guard self != nil else {return}
@@ -286,10 +263,8 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 self!.isLoading(false)
                 print(error.response!)
             }
-            
         }
     }
-    
     func postAddAddressFunc() {
         self.isLoading(true)
         let addressTitle = selectedAddressTextView.text
@@ -308,14 +283,14 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
                         //                        detail = userResponse
                         
                         if addAddressResponse.Success {
-                         self!.showAlert(withTitle: "Başarılı", withMessage: "Adres eklendi!", withAction: "pop")
+                            self!.showAlert(withTitle: "Başarılı", withMessage: "Adres eklendi!", withAction: "pop")
                             self!.addressTitleTextField.text = "Seçiniz"
                             self!.selectedAddressTextView.text = ""
                             self!.addressTextView.text = ""
                             self!.shortAddressTextView.text = ""
-                        self!.getAddressFunc()
+                            self!.getAddressFunc()
                         }else{
-                        self!.showAlert(withTitle: "Hata", withMessage: addAddressResponse.Message!, withAction: "pop")
+                            self!.showAlert(withTitle: "Hata", withMessage: addAddressResponse.Message!, withAction: "pop")
                         }
                         
                     } catch {
@@ -326,16 +301,13 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 self!.isLoading(false)
                 print(error.response!)
             }
-            
         }
     }
-    
     func postUpdateAddressFunc() {
         self.isLoading(true)
         let addressTitle = selectedAddressTextView.text
         let address = addressTextView.text
         let addressExplanation = shortAddressTextView.text
-        
         provider.request(.updateAddressList((self.pickerViewRows),addressTitle!, address!, addressExplanation!)) { [weak self] result in
             guard self != nil else {return}
             switch result {
@@ -367,13 +339,10 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 self!.isLoading(false)
                 print(error.response!)
             }
-            
         }
     }
-    
     func postDeleteAddressFunc() {
         self.isLoading(true)
-        
         provider.request(.deleteAddressList(self.pickerViewRows)) { [weak self] result in
             guard self != nil else {return}
             switch result {
@@ -405,9 +374,7 @@ class MyAddressesViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 self!.isLoading(false)
                 print(error.response!)
             }
-            
         }
     }
-    
 }
 
