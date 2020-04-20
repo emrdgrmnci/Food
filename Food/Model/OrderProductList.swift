@@ -10,5 +10,5 @@ import Foundation
 
 struct OrderProductList: Codable {
     var productID: Int?
-    var quantity: Decimal?
+    var quantity: Double?
 }

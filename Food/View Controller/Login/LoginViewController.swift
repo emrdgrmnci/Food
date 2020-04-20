@@ -7,8 +7,10 @@
 //
 
 import UIKit
-import Moya
+//import Moya
+import Firebase
 import SwiftyJSON
+import SwiftMessages
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -17,78 +19,72 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     
     var window: UIWindow?
-    let loginProvider = MoyaProvider<LoginNetwork>()
+    //    let loginProvider = MoyaProvider<LoginNetwork>()
     let loginUserDefaults = UserDefaults.standard
     
     override func viewWillAppear(_ animated: Bool) {
-    }
-    @IBAction func loginButton(_ sender: Any) {
-        
-        switch isValidInfo() {
-        case true:
-            self.isLoading(true)
-            let email = emailTextField.text
-            let password = passwordTextField.text
-            loginProvider.request(.login(email!, password!)) {
-                [weak self] result in
-                guard self != nil else { return }
-                let statusCode = result.value?.statusCode
-                switch result {
-                case .success(let response):
-                    switch statusCode {
-                    case 200:
-                        self!.isLoading(false)
-                        do {
-                            let data = response.data
-                            let json = try JSON(data: data)
-                            let userResponse = try JSONDecoder().decode(RegisterServiceResponse.self, from: response.data)
-                            if (userResponse.Success) {
-                                self?.loginUserDefaults.set(userResponse.ResultObj?.I, forKey: "userID")
-                                print(json.debugDescription)
-                                UserDefaults.standard.synchronize()
-                                self?.performSegue(withIdentifier: "loginToMain", sender: nil)
-                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                let viewController = storyboard.instantiateViewController(withIdentifier: "FoodOrder")
-                                self!.window?.rootViewController = viewController
-                            } else {
-                                self?.showAlert(withTitle: "Hata", withMessage: userResponse.Message!, withAction: "pop")
-                            }
-                        } catch {
-                            print("register error")
-                        } default :
-                            self!.isLoading(false)
-                        break //Error handler
-                    }
-                case .failure(let error):
-                    self!.isLoading(false)
-                    self!.showError(error.response!)
-                    self?.showAlert(withTitle: "Hata", withMessage: "Bir hata oluştu!", withAction: "pop")
-                    if let code = error.response?.statusCode {
-                        if code == 401 {
-                            self?.showAlert(withTitle: "Hata", withMessage: "Bir hata oluştu!", withAction: "pop")
-                        }
-                    }
-                }
-            }
-        case false:
-            self.showAlert(withTitle: "Hata", withMessage: "Bir hata oluştu!", withAction: "pop")
-            self.isLoading(false)
-        }
         
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        super.viewDidLoad()
+        let storedEmail = UserDefaults.standard.object(forKey: "email")
+        let storedPassword = UserDefaults.standard.object(forKey: "password")
+
+        if let email = storedEmail as? String {
+            emailTextField.text = email
+        }
+        if let password = storedPassword as? String {
+            passwordTextField.text = password
+        }
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
+
         self.navigationItem.backBarButtonItem?.title = ""
         self.navigationController?.navigationBar.tintColor = .white
-        
+
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
-        
     }
+
+
+    func signInUser(email: String, password: String) {
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        //Signing in the user
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if error == nil {
+                print("User signed in")
+                self.performSegue(withIdentifier: "loginToMain", sender: self)
+                self.showStatusLine("Logged in successfully!")
+            } else {
+                print(error ?? "error")
+                print(error?.localizedDescription ?? "error")
+                let alert = UIAlertController(title: error!.localizedDescription, message: "", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                DispatchQueue.main.async(execute: {
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
+        }
+    }
+
+    func showStatusLine(_ message: String) {
+        let view: MessageView = try! SwiftMessages.viewFromNib(named: "StatusLine")
+        SwiftMessages.show(view: view)
+        view.bodyLabel?.text = message
+    }
+
+    @IBAction func loginButton(_ sender: Any) {
+        // MARK: - UserDefaults
+        UserDefaults.standard.set(emailTextField.text, forKey: "email")
+        UserDefaults.standard.set(passwordTextField.text, forKey: "password")
+        signInUser(email: emailTextField!.text!, password: passwordTextField!.text!)
+        self.isLoading(true)
+    }
+    //MARK:- dismissKeyboard for email password fields
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()

@@ -7,196 +7,95 @@
 //
 
 import UIKit
-import Moya
-import Kingfisher
-import SwiftyJSON
 
 class MainViewController: UIViewController {
-    
-    //    @IBOutlet weak var searchBar: UISearchBar!
+
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
-    
-    var sliderProvider = MoyaProvider<SliderNetwork>()
-    var foodProvider = MoyaProvider<FoodNetwork>()
-    var foodCategoryProvider = MoyaProvider<FoodCategoryNetwork>()
-    let userInfoProvider = MoyaProvider<GetInfoNetwork>()
+
     var sliderData = [String]()
     var foodData = [Food]()
-    var foodCategoryData = [FoodCategory]()
     var foodSection = 0
     var foodRow = 0
-    
+    var root: Root?
+
+    //    var categoryElements = [CategoryElement]()
+    //    let realm = try! Realm()
+    //    lazy var results = realm.objects(Category.self)
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        do {
+
+            let data = try Data(contentsOf: Bundle.main.url(forResource: "default", withExtension: "json")!)
+            root = try? JSONDecoder().decode(Root.self, from: data)
+            print(root)
+
+            mainTableView.reloadData()
+
+        } catch { print(error) }
+
         print("User ID: \(UserDefaults.standard.object(forKey: "userID") as? Int ?? 0)")
         
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
-        getInfoFunc()
-        getFoodFunc()
-        getFoodCategoryFunc()
-        
-        let isSliderSuccess = getSliderFunc()
-        if isSliderSuccess {
-            mainCollectionView.delegate = self
-            mainCollectionView.dataSource = self
-            mainCollectionView.reloadData()
-        }
+
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        mainTableView.reloadData()
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = false
         
     }
-    func getInfoFunc() {
-        userInfoProvider.request(.getInfo) { [weak self] result in
-            guard self != nil else {return}
-            switch result {
-            case .success(let response):
-                do {
-                    print(try response.mapJSON())
-                    let userResponse = try JSONDecoder().decode(UserInfoServiceResponse.self, from: response.data)
-                    debugPrint(userResponse)
-                    self!.navigationItem.title = ("Hoşgeldin \(userResponse.ResultObj?.N ?? "TezzFood")")
-                } catch {
-                    print("Error info: \(error)")
-                }
-            case .failure(let error):
-                self!.isLoading(false)
-                print(error.response!)
-            }
-            
-        }
-    }
-    func getFoodFunc() {
-        foodProvider.request(.food) { [weak self] result in
-            guard self != nil else {return}
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    do {
-                        
-                        let data = response.data
-                        _ = try JSON(data: data)
-                        
-                        let foodResponse = try! JSONDecoder().decode(FoodServiceResponse.self, from: response.data)
-                        self!.foodData = foodResponse.ResultList!
-                        self!.mainTableView.reloadData()
-                    } catch {
-                        print("Error info: \(error)")
-                    }
-                }
-            case .failure(let error):
-                print(error.response!)
-            }
-            
-        }
-    }
-    func getFoodCategoryFunc() {
-        foodCategoryProvider.request(.foodCategory) { [weak self] result in
-            guard self != nil else {return}
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    do {
-                        
-                        let data = response.data
-                        _ = try JSON(data: data)
-                        
-                        let foodCategoryResponse = try! JSONDecoder().decode(FoodCategoryServiceResponse.self, from: response.data)
-                        self!.foodCategoryData = foodCategoryResponse.ResultList!
-                        self!.mainTableView.reloadData()
-                    } catch {
-                        print("Error info: \(error)")
-                    }
-                }
-            case .failure(let error):
-                print(error.response!)
-            }
-            
-        }
-    }
-    func getSliderFunc() -> Bool {
-        var isResult = false
-        sliderProvider.request(.slider) { [weak self] result in
-            guard self != nil else {return}
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    do {
-                        
-                        let data = response.data
-                        _ = try JSON(data: data)
-                        let sliderResponse = try JSONDecoder().decode(SliderServiceResponse.self, from: response.data)
-                        
-                        for resultList in sliderResponse.ResultList! {
-                            self!.sliderData.append("http://mehmetguner.pryazilim.com/UploadFile/Slider/\(resultList.PhotoPath)")
-                            //                            self!.sliderData.append(resultList.PhotoPath)//TODO: Mehmete publish yap deyince bunu üst satırla değiştir
-                            print(resultList.PhotoPath)
-                        }
-                        self!.mainCollectionView.reloadData()
-                        
-                        isResult = sliderResponse.Success
-                    } catch {
-                        print("Error info: \(error)")
-                    }
-                }
-            case .failure(let error):
-                self!.isLoading(false)
-                print(error.response!)
-            }
-        }
-        return isResult
-    }
-    //    MARK: Segue from MainVC to DetailVC
+
+    //        //MARK: Segue from MainVC to DetailVC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectedFoodToDetail" {
             let controller = segue.destination as! DetailViewController
-            controller.food = foodCategoryData[foodSection].ProductList[foodRow]
+            controller.food = root?.category[foodSection].foods[foodRow]
+//            controller.food = categories[foodSection].food[foodRow]
+//            controller.food = foodCategoryData[foodSection].ProductList[foodRow]
         }
     }
+
 }
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         foodSection = indexPath.section
         foodRow = indexPath.row
-        
         performSegue(withIdentifier: "selectedFoodToDetail", sender: self)
-        
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return foodCategoryData[section].SubCategoryTitle
+        return root?.category[section].name
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        return foodCategoryData.count
+        return (root?.category.count)!
     }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return foodCategoryData[section].ProductList.count
+        return (root?.category[section].foods.count)!
     }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood") as! MainFoodTitleTableViewCell
-        let category = foodCategoryData[indexPath.section]
-        let food = category.ProductList[indexPath.row]
-        cell.titleLabel.text = food.ProductTitle
-        cell.priceLabel.text = food.PriceString
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellForFood", for: indexPath) as! MainFoodTitleTableViewCell
+        let categoryNames = root?.category[indexPath.section]
+        let foodNames = categoryNames?.foods[indexPath.row]
+        cell.titleLabel.text = foodNames?.productTitle
+        cell.priceLabel.text = foodNames?.priceString
         return cell
     }
 }
 
-
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return sliderData.count
+        return 3
     }
     //MARK:- collection view cell size
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
@@ -206,13 +105,8 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     //MARK:- //collection view cell data
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainFoodCollectionViewCell", for: indexPath) as! MainFoodCollectionViewCell
-        
-        let url = URL(string: self.sliderData[indexPath.row])
-        cell.mainFoodImage.kf.setImage(with: url)
-        cell.layoutIfNeeded()
+        var imgages : UIImage = UIImage(named:"salata")!
+        cell.mainFoodImage.image = imgages
         return cell
     }
-    
 }
-
-

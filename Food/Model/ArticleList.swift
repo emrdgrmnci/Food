@@ -17,5 +17,3 @@ struct Article: Decodable {
     let description: String?
 
 }
-
-

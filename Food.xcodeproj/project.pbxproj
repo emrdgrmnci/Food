@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4709EEFF22A93686006D5421 /* FoodCategoryNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4709EEFE22A93686006D5421 /* FoodCategoryNetwork.swift */; };
 		4709EF0122A9371A006D5421 /* FoodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4709EF0022A9371A006D5421 /* FoodCategory.swift */; };
+		470AACAE23B54D700046004C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 470AACAD23B54D700046004C /* GoogleService-Info.plist */; };
 		470C1559229C50AC0043ECDA /* RegisterNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470C1558229C50AC0043ECDA /* RegisterNetwork.swift */; };
 		470F496922B57AB7008D9B2E /* FavoriteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F496822B57AB7008D9B2E /* FavoriteList.swift */; };
 		470F496B22B57B4D008D9B2E /* GetPostFavoriteListNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F496A22B57B4D008D9B2E /* GetPostFavoriteListNetwork.swift */; };
@@ -50,6 +51,9 @@
 		47CBD0A3223949960032ADEC /* MyCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A0223949950032ADEC /* MyCartViewController.swift */; };
 		47CBD0A4223949960032ADEC /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A1223949960032ADEC /* OrderConfirmationViewController.swift */; };
 		47CBD0A5223949960032ADEC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBD0A2223949960032ADEC /* MainViewController.swift */; };
+		47CC050E23B5EE2500827C8B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC050D23B5EE2500827C8B /* Utilities.swift */; };
+		47CC051023B60A2100827C8B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC050F23B60A2000827C8B /* Constants.swift */; };
+		47CC051223B634E200827C8B /* default.json in Resources */ = {isa = PBXBuildFile; fileRef = 47CC051123B634E100827C8B /* default.json */; };
 		47CD51B022AAA7FA00DBA334 /* GetPostAddressNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CD51AF22AAA7F900DBA334 /* GetPostAddressNetwork.swift */; };
 		47DE44F422B788A2001679AF /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DE44F322B788A2001679AF /* ChangePassword.swift */; };
 		47DE44F622B788F1001679AF /* ChangePasswordNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DE44F522B788F1001679AF /* ChangePasswordNetwork.swift */; };
@@ -71,6 +75,7 @@
 /* Begin PBXFileReference section */
 		4709EEFE22A93686006D5421 /* FoodCategoryNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryNetwork.swift; sourceTree = "<group>"; };
 		4709EF0022A9371A006D5421 /* FoodCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategory.swift; sourceTree = "<group>"; };
+		470AACAD23B54D700046004C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		470C1558229C50AC0043ECDA /* RegisterNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNetwork.swift; sourceTree = "<group>"; };
 		470F496822B57AB7008D9B2E /* FavoriteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteList.swift; sourceTree = "<group>"; };
 		470F496A22B57B4D008D9B2E /* GetPostFavoriteListNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostFavoriteListNetwork.swift; sourceTree = "<group>"; };
@@ -112,6 +117,9 @@
 		47CBD0A0223949950032ADEC /* MyCartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCartViewController.swift; sourceTree = "<group>"; };
 		47CBD0A1223949960032ADEC /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		47CBD0A2223949960032ADEC /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		47CC050D23B5EE2500827C8B /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		47CC050F23B60A2000827C8B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		47CC051123B634E100827C8B /* default.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = default.json; sourceTree = "<group>"; };
 		47CD51AF22AAA7F900DBA334 /* GetPostAddressNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostAddressNetwork.swift; sourceTree = "<group>"; };
 		47DE44F322B788A2001679AF /* ChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
 		47DE44F522B788F1001679AF /* ChangePasswordNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordNetwork.swift; sourceTree = "<group>"; };
@@ -196,20 +204,19 @@
 			path = MyPastOrdersCells;
 			sourceTree = "<group>";
 		};
-		477D4EF522915318009DAD90 /* App */ = {
+		477D4EF522915318009DAD90 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				47FED482221B19A40050ADD2 /* AppDelegate.swift */,
+				47FED486221B19A40050ADD2 /* Main.storyboard */,
 			);
-			path = App;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		477D4EF622915352009DAD90 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				474F3AE62222D7F500B3D388 /* Assets.xcassets */,
-				477D4EF7229153DF009DAD90 /* Fonts */,
-				473E50F722899DCA00E7BBC8 /* AnimationsJSON */,
+				478E553223094F9300A54595 /* Resources */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -320,6 +327,26 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		478E553123094F5800A54595 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				473E50F722899DCA00E7BBC8 /* AnimationsJSON */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		478E553223094F9300A54595 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				472B1F52228823EA00CC59A2 /* LaunchScreen.storyboard */,
+				47FED491221B19A50050ADD2 /* Info.plist */,
+				470AACAD23B54D700046004C /* GoogleService-Info.plist */,
+				474F3AE62222D7F500B3D388 /* Assets.xcassets */,
+				477D4EF7229153DF009DAD90 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		47A262D3226F9F8C0079C434 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,31 +366,38 @@
 		47A262D4226F9FC20079C434 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				47FC79CE229993F8005682E7 /* GUID.swift */,
-				47349F8522B50236007EEB73 /* PastOrders.swift */,
-				476AC91A229D9B25006817D3 /* User.swift */,
-				47DE44F322B788A2001679AF /* ChangePassword.swift */,
 				476AC91C229D9D9D006817D3 /* AddressPost.swift */,
-				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
-				470F496822B57AB7008D9B2E /* FavoriteList.swift */,
-				4725662F22A54DC4005F64FC /* Slider.swift */,
-				472C31F7223814C400A3E863 /* Food.swift */,
-				47A262D5226FA0790079C434 /* SingletonCart.swift */,
-				472C31F92238152B00A3E863 /* FoodPrice.swift */,
-				47700C22221F115D009C7682 /* ImageNames.swift */,
 				473E50F82289A95B00E7BBC8 /* ArticleList.swift */,
+				47DE44F322B788A2001679AF /* ChangePassword.swift */,
+				470F496822B57AB7008D9B2E /* FavoriteList.swift */,
+				472C31F7223814C400A3E863 /* Food.swift */,
+				47FED489221B19A40050ADD2 /* Food.xcdatamodeld */,
 				4709EF0022A9371A006D5421 /* FoodCategory.swift */,
-				47EBD71D22AAC2E700858613 /* UserInfo.swift */,
+				472C31F92238152B00A3E863 /* FoodPrice.swift */,
+				47FC79CE229993F8005682E7 /* GUID.swift */,
+				47700C22221F115D009C7682 /* ImageNames.swift */,
 				47DE44F722B7C506001679AF /* OrderProductList.swift */,
+				47349F8522B50236007EEB73 /* PastOrders.swift */,
+				47A262D5226FA0790079C434 /* SingletonCart.swift */,
+				4725662F22A54DC4005F64FC /* Slider.swift */,
+				476AC91A229D9B25006817D3 /* User.swift */,
+				47EBD71D22AAC2E700858613 /* UserInfo.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		47CC050C23B5EDC100827C8B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				47CC050D23B5EE2500827C8B /* Utilities.swift */,
+				47CC050F23B60A2000827C8B /* Constants.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		47EC7EE52228587A0045783B /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				47FED486221B19A40050ADD2 /* Main.storyboard */,
-				472B1F52228823EA00CC59A2 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -391,9 +425,11 @@
 		47FED481221B19A40050ADD2 /* Food */ = {
 			isa = PBXGroup;
 			children = (
-				477D4EF522915318009DAD90 /* App */,
+				47CC051123B634E100827C8B /* default.json */,
+				47CC050C23B5EDC100827C8B /* Helpers */,
+				478E553123094F5800A54595 /* Animations */,
+				477D4EF522915318009DAD90 /* Application */,
 				4784A82222943C6F004576EC /* Extensions */,
-				47FED491221B19A50050ADD2 /* Info.plist */,
 				47700C1D221EC4E4009C7682 /* MainFoodCells */,
 				47A262D4226F9FC20079C434 /* Model */,
 				47781A39222ABFF100ECE28A /* MyCartCells */,
@@ -486,9 +522,11 @@
 			files = (
 				47EBE4B6226F0F86000E1EB8 /* SF Pro in Resources */,
 				474F3AE72222D7F600B3D388 /* Assets.xcassets in Resources */,
+				47CC051223B634E200827C8B /* default.json in Resources */,
 				472B1F53228823EA00CC59A2 /* LaunchScreen.storyboard in Resources */,
 				47FED488221B19A40050ADD2 /* Main.storyboard in Resources */,
 				4784A82A22944630004576EC /* Animations.bundle in Resources */,
+				470AACAE23B54D700046004C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,37 +556,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Food/Pods-Food-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftHash/SwiftHash.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
-				"${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Food/Pods-Food-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHash.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TinyConstraints.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Food/Pods-Food-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Food/Pods-Food-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Food/Pods-Food-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -600,8 +617,10 @@
 				4784A828229444E9004576EC /* ViewExtensions.swift in Sources */,
 				47DE44F822B7C506001679AF /* OrderProductList.swift in Sources */,
 				472C31FA2238152B00A3E863 /* FoodPrice.swift in Sources */,
+				47CC050E23B5EE2500827C8B /* Utilities.swift in Sources */,
 				47349F8422B500DB007EEB73 /* PastOrdersNetwork.swift in Sources */,
 				476AC91F229DB31A006817D3 /* WebAPIResponse.swift in Sources */,
+				47CC051023B60A2100827C8B /* Constants.swift in Sources */,
 				47CBD0A3223949960032ADEC /* MyCartViewController.swift in Sources */,
 				4725663222A55E97005F64FC /* FoodNetwork.swift in Sources */,
 				47FEF19D22A0583900593101 /* LoginNetwork.swift in Sources */,
@@ -752,13 +771,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DRW76Y3AQV;
-				INFOPLIST_FILE = Food/Info.plist;
+				DEVELOPMENT_TEAM = NMCVZ8F7S5;
+				INFOPLIST_FILE = "$(SRCROOT)/Food/Support Files/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Food;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FoodRealm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -771,13 +791,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DRW76Y3AQV;
-				INFOPLIST_FILE = Food/Info.plist;
+				DEVELOPMENT_TEAM = NMCVZ8F7S5;
+				INFOPLIST_FILE = "$(SRCROOT)/Food/Support Files/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Food;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FoodRealm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

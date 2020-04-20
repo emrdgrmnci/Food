@@ -7,22 +7,21 @@
 //
 
 import UIKit
-import TagListView
-import Moya
+//import TagListView
 import Kingfisher
 import SwiftyJSON
 
-class DetailViewController: UIViewController, TagListViewDelegate {
-    
+class DetailViewController: UIViewController {
+
     @IBOutlet weak var foodTitle: UILabel!
     @IBOutlet weak var foodSubTitle: UILabel!
     @IBOutlet weak var foodPrice: UILabel!
     @IBOutlet weak var foodQuantity: UILabel!
     @IBOutlet weak var detailFoodImage: UIImageView!
-    
-    @IBOutlet weak var tagListView: TagListView!
+
+//    @IBOutlet weak var tagListView: TagListView!
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
-    
+
     var window: UIWindow?
     var detailFoodName = ""
     var detailFoodPrice = 0.0
@@ -30,26 +29,28 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     var searchFoods: String!
     var priceFood: Double!
     var food: Food?
-    var favoriteData = [FavoriteList]()
+//    let realm = try! Realm()
+//    lazy var results = realm.objects(Category.self)
+//    var favoriteData = [FavoriteList]()
     var isFirstClick = false
-    var foodDetailProvider = MoyaProvider<FoodNetwork>()
-    var postFavoriteFood = MoyaProvider<GetPostFavoriteListNetwork>()
-    var getFavoriteFood = MoyaProvider<GetPostFavoriteListNetwork>()
-    var isFavoriteProvider = MoyaProvider<GetPostFavoriteListNetwork>()
+//    var foodDetailProvider = MoyaProvider<FoodNetwork>()
+//    var postFavoriteFood = MoyaProvider<GetPostFavoriteListNetwork>()
+//    var getFavoriteFood = MoyaProvider<GetPostFavoriteListNetwork>()
+//    var isFavoriteProvider = MoyaProvider<GetPostFavoriteListNetwork>()
     var tempQuantity = 1
-    
+
     var foodPriceAccumulate = FoodPriceCount(quantity: 1, foodPrice: 10) {
         willSet {
             self.foodPriceAccumulate.quantity = 1
-            self.foodPriceAccumulate.foodPrice = food!.Price
+//            self.foodPriceAccumulate.foodPrice = food!.Price
         }
         didSet {
-            
+
             let quantity = foodPriceAccumulate.quantity
-            let price = food!.Price * quantity
+            let price = food!.price * quantity
             foodQuantity.text = "\(String( describing: quantity))"
             foodPrice.text = "\(price) ₺"
-            
+
         }
     }
     @IBAction func addQuantity(_ sender: Any) {
@@ -66,9 +67,9 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     }
     //TODO:- Add to basket
     @IBAction func addBasket(_ sender: Any) {
-        food?.foodQuantity = Decimal(tempQuantity)
+//        food?.foodQuantity = Decimal(tempQuantity)
         SingletonCart.sharedFood.food.append(food!)
-        
+
         self.performSegue(withIdentifier: "toMyCart", sender: nil)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
@@ -77,24 +78,24 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        foodQuantity.text = "1"
-        
-        getFavoritedFunc()
-        isFavoritedFunc()
-        
-        foodTitle.text = food?.ProductTitle ?? ""
-        foodPrice.text = food?.PriceString
-        foodSubTitle.text = food?.Description
-        let url = URL(string: "http://mehmetguner.pryazilim.com/UploadFile/Product/\(self.food!.PhotoPath)")
-        detailFoodImage.kf.setImage(with: url)
 
-        tagListView.delegate = self
-        setupIngredientsTag()
-        
+        foodQuantity.text = "1"
+
+//        getFavoritedFunc()
+//        isFavoritedFunc()
+//        foodTitle.text = results[0].foods[0].productTitle
+        foodTitle.text = food?.productTitle ?? ""
+        foodPrice.text = food?.priceString
+        foodSubTitle.text = food?.foodDescription
+//        let url = URL(string: "http://mehmetguner.pryazilim.com/UploadFile/Product/\(self.food!.PhotoPath)")
+//        detailFoodImage.kf.setImage(with: url)
+
+//        tagListView.delegate = self
+//        setupIngredientsTag()
+
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationItem.title = "Sipariş Detayı"
-        
+
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "FoodOrder")
         self.window?.rootViewController = viewController
@@ -103,136 +104,136 @@ class DetailViewController: UIViewController, TagListViewDelegate {
     }
     @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
         self.navigationController?.popToRootViewController(animated: true)
-        
+
     }
-    
+
     @IBAction func favoriteButtonClicked(_ sender: UIButton) {
-        self.isLoading(true)
-        postFavoriteFood.request(.postCreateFavorite(food!.id)) {
-            [weak self] result in
-            guard self != nil else { return }
-            let statusCode = result.value?.statusCode
-            switch result {
-            case .success(let response):
-                switch statusCode {
-                case 200:
-                    self!.isLoading(false)
-                    do {
-                        let data = response.data
-                        let json = try JSON(data: data)
-                        let favoriteResponse = try JSONDecoder().decode(FavoriteListServiceResponse.self, from: response.data)
-
-                        if (favoriteResponse.Success) {
-                            //MARK: Favorite button state
-                            self!.favoriteButton.image = UIImage(named: "liked")
-                            print(json.debugDescription)
-                        } else {
-
-                            self?.showAlert(withTitle: "Hata", withMessage: favoriteResponse.Message!, withAction: "pop")
-
-                            //MARK: Favorite button state
-                            //                                        self!.favoriteButton.image = UIImage(named: "like")
-                            //                                        UserDefaults.standard.set(false, forKey: "favorited")
-                            //                                        self!.isFirstClick = false
-                        }
-                    } catch {
-                        print("favorite error")
-                    } default :
-                        self!.isLoading(false)
-                    break //Error handler
-                }
-            case .failure(let error):
-                self!.isLoading(false)
-                self!.showError(error.response!)
-                self?.showAlert(withTitle: "Hata", withMessage: "Bu ürün favoriye eklenemez!", withAction: "pop")
-                if let code = error.response?.statusCode {
-                    if code == 401 {
-                        self?.showAlert(withTitle: "Hata", withMessage: "Bu ürün favoriye eklenemez!", withAction: "pop")
-                    }
-                }
-            }
-        }
-        
+//        self.isLoading(true)
+//        postFavoriteFood.request(.postCreateFavorite(food!.id)) {
+//            [weak self] result in
+//            guard self != nil else { return }
+//            let statusCode = result.value?.statusCode
+//            switch result {
+//            case .success(let response):
+//                switch statusCode {
+//                case 200:
+//                    self!.isLoading(false)
+//                    do {
+//                        let data = response.data
+//                        let json = try JSON(data: data)
+//                        let favoriteResponse = try JSONDecoder().decode(FavoriteListServiceResponse.self, from: response.data)
+//
+//                        if (favoriteResponse.Success) {
+//                            //MARK: Favorite button state
+//                            self!.favoriteButton.image = UIImage(named: "liked")
+//                            print(json.debugDescription)
+//                        } else {
+//
+//                            self?.showAlert(withTitle: "Hata", withMessage: favoriteResponse.Message!, withAction: "pop")
+//
+//                            //MARK: Favorite button state
+//                            //                                        self!.favoriteButton.image = UIImage(named: "like")
+//                            //                                        UserDefaults.standard.set(false, forKey: "favorited")
+//                            //                                        self!.isFirstClick = false
+//                        }
+//                    } catch {
+//                        print("favorite error")
+//                    } default :
+//                        self!.isLoading(false)
+//                    break //Error handler
+//                }
+//            case .failure(let error):
+//                self!.isLoading(false)
+//                self!.showError(error.response!)
+//                self?.showAlert(withTitle: "Hata", withMessage: "Bu ürün favoriye eklenemez!", withAction: "pop")
+//                if let code = error.response?.statusCode {
+//                    if code == 401 {
+//                        self?.showAlert(withTitle: "Hata", withMessage: "Bu ürün favoriye eklenemez!", withAction: "pop")
+//                    }
+//                }
+//            }
+//        }
+//
     }
-    func getFavoritedFunc() {
-        getFavoriteFood.request(.getFavoriteList) { [weak self] result in
-            guard self != nil else {return}
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    do {
-                        
-                        let data = response.data
-                        _ = try JSON(data: data)
-                        
-                        let favoriteResponse = try! JSONDecoder().decode(FavoriteListServiceResponse.self, from: response.data)
-                        self!.favoriteData = favoriteResponse.ResultList!
-                    } catch {
-                        print("Error info: \(error)")
-                    }
-                }
-            case .failure(let error):
-                print(error.response!)
-            }
-            
-        }
-    }
+//    func getFavoritedFunc() {
+//        getFavoriteFood.request(.getFavoriteList) { [weak self] result in
+//            guard self != nil else {return}
+//            switch result {
+//            case .success(let response):
+//                DispatchQueue.main.async {
+//                    do {
+//
+//                        let data = response.data
+//                        _ = try JSON(data: data)
+//
+//                        let favoriteResponse = try! JSONDecoder().decode(FavoriteListServiceResponse.self, from: response.data)
+//                        self!.favoriteData = favoriteResponse.ResultList!
+//                    } catch {
+//                        print("Error info: \(error)")
+//                    }
+//                }
+//            case .failure(let error):
+//                print(error.response!)
+//            }
+//
+//        }
+//    }
     //IsFavoriteServiceResponse
     func isFavoritedFunc() {
-        isFavoriteProvider.request(.isFavorite(food!.id)) { [weak self] result in
-            guard self != nil else {return}
-            switch result {
-            case .success(let response):
-                do {
-
-                    let data = response.data
-                    _ = try JSON(data: data)
-
-                    let isFavoriteResponse = try? JSONDecoder().decode(IsFavoriteServiceResponse.self, from: response.data)
-                    self!.isFirstClick = (isFavoriteResponse?.ResultObj!)!
-                    print(self!.isFirstClick)
-
-                    if self!.isFirstClick == true {
-                        self!.favoriteButton.image = UIImage(named: "liked")
-                    }else{
-                        self!.favoriteButton.image = UIImage(named: "like")
-                    }
-
-                } catch {
-                    print("Error info: \(error)")
-                }
-            case .failure(let error):
-                print(error.response!)
-            }
-            
-        }
+//        isFavoriteProvider.request(.isFavorite(food!.id)) { [weak self] result in
+//            guard self != nil else {return}
+//            switch result {
+//            case .success(let response):
+//                do {
+//
+//                    let data = response.data
+//                    _ = try JSON(data: data)
+//
+//                    let isFavoriteResponse = try? JSONDecoder().decode(IsFavoriteServiceResponse.self, from: response.data)
+//                    self!.isFirstClick = (isFavoriteResponse?.ResultObj!)!
+//                    print(self!.isFirstClick)
+//
+//                    if self!.isFirstClick == true {
+//                        self!.favoriteButton.image = UIImage(named: "liked")
+//                    }else{
+//                        self!.favoriteButton.image = UIImage(named: "like")
+//                    }
+//
+//                } catch {
+//                    print("Error info: \(error)")
+//                }
+//            case .failure(let error):
+//                print(error.response!)
+//            }
+//
+//        }
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
-        
+
     }
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
     func setupIngredientsTag() {
-        
-        tagListView.textFont = UIFont.systemFont(ofSize: 14)
-        tagListView.alignment = .left // possible values are .Left, .Center, and .Right
-        
+
+//        tagListView.textFont = UIFont.systemFont(ofSize: 14)
+//        tagListView.alignment = .left // possible values are .Left, .Center, and .Right
+
         //        tagListView.addTag("TagListView")
-        
-        for tags in food!.DetailsList {
-            tagListView.addTags([tags])
-        }
-        
+
+//        for tags in food!.DetailsList {
+//            tagListView.addTags([tags])
+//        }
+
         //        tagListView.insertTag("This should be the second tag", at: 1)
-        
+
         //        tagListView.setTitle("New Title", at: 6) // to replace the title a tag
-        
+
         //        tagListView.removeTag("meow") // all tags with title “meow” will be removed
         //        tagListView.removeAllTags()
     }
-    
+
 }
 
 

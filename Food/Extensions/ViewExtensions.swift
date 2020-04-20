@@ -1,19 +1,19 @@
+////
+////  ViewExtensions.swift
+////  Food
+////
+////  Created by Ali Emre Değirmenci on 21.05.2019.
+////  Copyright © 2019 Ali Emre Değirmenci. All rights reserved.
+////
 //
-//  ViewExtensions.swift
-//  Food
-//
-//  Created by Ali Emre Değirmenci on 21.05.2019.
-//  Copyright © 2019 Ali Emre Değirmenci. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import Lottie
 import SwiftyJSON
-import Moya
+
 
 extension UIViewController {
-    
+
     func addBlurLayer() {
         let blurEffect = UIBlurEffect(style: .extraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -22,29 +22,30 @@ extension UIViewController {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         blurEffectView.alpha = 0
         self.view.addSubview(blurEffectView)
-        UIView.animate(withDuration: 0.5) {
+      UIView.animate(withDuration: 0.5) {
             blurEffectView.alpha = 0.7
         }
     }
-    
+
     func removeBlurLayer() {
         UIView.animate(withDuration: 0.5) {
             self.view.viewWithTag(1000)?.alpha = 0
         }
         self.view.viewWithTag(1000)?.removeFromSuperview()
     }
-    func showError(_ response: Response) {
-        do {
-            let json = try JSON(data: response.data)
-            let message = json["message"] .string
-            let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            present(alertController, animated: true, completion: nil)
-        } catch {
-            print(error)
-        }
-    }
     
+//    func showError(_ response: Response) {
+//        do {
+//            let json = try JSON(data: response.data)
+//            let message = json["message"] .string
+//            let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+//            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+//            present(alertController, animated: true, completion: nil)
+//        } catch {
+//            print(error)
+//        }
+//    }
+
     func showAlert(withTitle title: String, withMessage message: String, withAction act: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Tamam", style: UIAlertAction.Style.default, handler: { (action: UIAlertAction!) in
@@ -56,13 +57,13 @@ extension UIViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     func showAlertController(_ message: String) { // TODO: Update for error handling
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
-    
+
     func toLogin() {
         //        UserDefaults.standard.removeObject(forKey: "token")
         //        UserDefaults.standard.removeObject(forKey: "userID")
@@ -71,7 +72,7 @@ extension UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
         present(vc, animated: true, completion: nil)
     }
-    
+
     func isLoading(_ state: Bool) {
         switch state {
         case true:

@@ -1,0 +1,157 @@
+{
+  "Category": [
+    {
+      "name": "Kahvaltılar",
+      "foods": [
+        {
+          "id": 1,
+          "price": 10,
+          "priceString": "10.0₺",
+          "productTitle": "Köy Kahvaltısı",
+          "foodDescription": "Yumurta, Peynir, Zeytin, Domates",
+          "stock": 10,
+          "foodQuantity": 10
+        },
+        {
+          "id": 2,
+          "price": 13,
+          "priceString": "13.0₺",
+          "productTitle": "Sahanda Yumurta",
+          "foodDescription": "Yumurta, Peynir",
+          "stock": 10,
+          "foodQuantity": 10
+        },
+        {
+          "id": 3,
+          "price": 15,
+          "priceString": "15.0₺",
+          "productTitle": "Menemen",
+          "foodDescription": "Yumurta, Peynir, Biber",
+          "stock": 10,
+          "foodQuantity": 10
+        },
+        {
+          "id": 4,
+          "price": 17,
+          "priceString": "17.0₺",
+          "productTitle": "Serpme Kahvaltı",
+          "foodDescription": "Yumurta, Peynir, Bal, Reçel, Tereyağ",
+          "stock": 10,
+          "foodQuantity": 10
+        },
+        {
+          "id": 5,
+          "price": 16,
+          "priceString": "16.0₺",
+          "productTitle": "Haftaiçi Kahvaltısı",
+          "foodDescription": "Yumurta, Peynir, Çay, Tahin, Ceviz Reçeli",
+          "stock": 10,
+          "foodQuantity": 10
+        }
+      ]
+    },
+    {
+      "name": "İçecekler",
+      "foods": [
+        {
+          "id": 6,
+          "price": 5,
+          "priceString": "5.0₺",
+          "productTitle": "Ayran",
+          "foodDescription": "Ayran",
+          "stock": 10,
+          "foodQuantity": 10
+        },
+        {
+          "id": 7,
+          "price": 8,
+          "priceString": "8.0₺",
+          "productTitle": "Kola",
+          "foodDescription": "Kola",
+          "stock": 10,
+          "foodQuantity": 10
+        },
+        {
+          "id": 8,
+          "price": 10,
+          "priceString": "10.0₺",
+          "productTitle": "Boza",
+          "foodDescription": "Boza",
+          "stock": 10,
+          "foodQuantity": 10
+        },
+        {
+          "id": 9,
+          "price": 11,
+          "priceString": "11.0₺",
+          "productTitle": "Gazoz",
+          "foodDescription": "Gazoz",
+          "stock": 10,
+          "foodQuantity": 10
+        },
+        {
+          "id": 10,
+          "price": 3,
+          "priceString": "3.0₺",
+          "productTitle": "Su",
+          "foodDescription": "Su",
+          "stock": 10,
+          "foodQuantity": 10
+        }
+      ]
+    },
+    {
+      "name": "Tatlılar",
+      "foods": [
+        {
+          "id": 11,
+          "price": 15,
+          "priceString": "15.0₺",
+          "productTitle": "Kemalpaşa Tatlısı",
+          "foodDescription": "Kemalpaşa Tatlısı",
+          "stock": 10,
+          "foodQuantity": 10
+        },
+        {
+          "id": 12,
+          "price": 10,
+          "priceString": "10.0₺",
+          "productTitle": "Şambali",
+          "foodDescription": "Şambali",
+          "stock": 10,
+          "foodQuantity": 10
+        },
+        {
+          "id": 13,
+          "price": 12,
+          "priceString": "12.0₺",
+          "productTitle": "Supangle",
+          "foodDescription": "Supangle",
+          "stock": 10,
+          "foodQuantity": 10
+        },
+        {
+          "id": 14,
+          "price": 20,
+          "priceString": "20.0₺",
+          "productTitle": "Tiramisu",
+          "foodDescription": "Tiramisu",
+          "stock": 10,
+          "foodQuantity": 10
+        },
+        {
+          "id": 15,
+          "price": 13,
+          "priceString": "13.0₺",
+          "productTitle": "Baklava",
+          "foodDescription": "Baklava",
+          "stock": 10,
+          "foodQuantity": 10
+        }
+      ]
+    }
+  ]
+}
+
+
+

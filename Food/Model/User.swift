@@ -5,17 +5,17 @@
 //  Created by Ali Emre Değirmenci on 28.05.2019.
 //  Copyright © 2019 Ali Emre Değirmenci. All rights reserved.
 //
-
 import Foundation
 
-struct User: Codable {
-    var N: String! //Name
-    var S: String! //Surname
-    var E: String! //Email
-    var P: String! //Phone
-    var PS: String? //Pasword
-    var RPS: String? //RePassword
-    var I: Int? //id
+
+struct User {
+    let name: String? //Name
+    let surname: String? //Surname
+    let email: String? //Email
+    let phone: String? //Phone
+    let password: String? //Pasword
+    let rePassword: String? //RePassword
+    let id: Int? //id
 }
 
 /*
@@ -30,6 +30,6 @@ struct User: Codable {
  public string GC { get; set; } //Google Captcha
  public int? I { get; set; } //id
  }
-*/
+ */
 
 

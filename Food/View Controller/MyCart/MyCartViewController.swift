@@ -30,7 +30,7 @@ class MyCartViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
+        self.modalPresentationStyle = .fullScreen
         super.viewDidLoad()
         resetTotalPrice()
         if fromSharedFood.count == 0 {
@@ -63,10 +63,10 @@ class MyCartViewController: UIViewController {
     
     func resetTotalPrice() {
         var tempTotalPrice = 0 as Decimal
-        
-        for sharedFoodTotalPrice in fromSharedFood {
-            tempTotalPrice += (sharedFoodTotalPrice.Price * sharedFoodTotalPrice.foodQuantity!)
-        }
+//        
+//        for sharedFoodTotalPrice in fromSharedFood {
+//            tempTotalPrice += (sharedFoodTotalPrice.Price * sharedFoodTotalPrice.foodQuantity!)
+//        }
         
         totalPriceLabel.text = "Toplam: \(tempTotalPrice) ₺"
     }
@@ -89,9 +89,9 @@ extension MyCartViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let foodName = fromSharedFood[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCartCell", for: indexPath) as! MyCartTableViewCell
-        cell.myCartFoodNameLabel.text = "\(foodName.ProductTitle) - \(foodName.foodQuantity ?? 0) adet"
+//        cell.myCartFoodNameLabel.text = "\(foodName.ProductTitle) - \(foodName.foodQuantity ?? 0) adet"
         self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = "\(fromSharedFood.count)"
-        cell.myCartFoodPriceLabel.text = "\(foodName.Price * (foodName.foodQuantity ?? 0.0)) ₺"
+//        cell.myCartFoodPriceLabel.text = "\(foodName.Price * (foodName.foodQuantity ?? 0.0)) ₺"
         return cell
     }
 

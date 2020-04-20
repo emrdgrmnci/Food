@@ -27,13 +27,13 @@ public struct AddressPostResponse: Decodable {//AddressResponse
     let Statue: Int?
 }
 
-public struct RegisterServiceResponse: Codable {//UserRegisterResponse
-    let ResultObj: User?
-    let ResultList: [User]?
-    let Message: String?
-    let Success: Bool!
-    let Statue: Int?
-}
+//public struct RegisterServiceResponse: Codable {//UserRegisterResponse
+//    let ResultObj: User?
+//    let ResultList: [User]?
+//    let Message: String?
+//    let Success: Bool!
+//    let Statue: Int?
+//}
 
 public struct AddRemoveResponse: Codable {//Tüm AddRemove işlemleri
 //    let ResultObj: NULL olacak
@@ -51,21 +51,21 @@ public struct SliderServiceResponse: Decodable {//SliderServiceResponse
     let Statue: Int?
 }
 
-public struct FoodServiceResponse: Decodable {//FoodServiceResponse
-    let ResultObj: Food?
-    let ResultList: [Food]?
-    let Message: String?
-    let Success: Bool!
-    let Statue: Int?
-}
+//public struct FoodServiceResponse: Decodable {//FoodServiceResponse
+//    let ResultObj: Food?
+//    let ResultList: [Food]?
+//    let Message: String?
+//    let Success: Bool!
+//    let Statue: Int?
+//}
 
-public struct FoodCategoryServiceResponse: Decodable {//FoodServiceResponse
-    let ResultObj: FoodCategory?
-    let ResultList: [FoodCategory]?
-    let Message: String?
-    let Success: Bool!
-    let Statue: Int?
-}
+//public struct FoodCategoryServiceResponse: Decodable {//FoodServiceResponse
+//    let ResultObj: FoodCategory?
+//    let ResultList: [FoodCategory]?
+//    let Message: String?
+//    let Success: Bool!
+//    let Statue: Int?
+//}
 
 public struct UserInfoServiceResponse: Codable {//UserRegisterResponse
     let ResultObj: UserInfo?

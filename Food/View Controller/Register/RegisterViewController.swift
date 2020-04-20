@@ -7,8 +7,11 @@
 //
 
 import UIKit
-import Moya
+//import Moya
+import Firebase
+import FirebaseAuth
 import SwiftyJSON
+import SwiftMessages
 
 
 class RegisterViewController: UIViewController {
@@ -20,7 +23,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var rePasswordTextField: UITextField!
     
-    let registerProvider = MoyaProvider<RegisterNetwork>()
+    //    let registerProvider = MoyaProvider<RegisterNetwork>()
     
     
     override func viewDidLoad() {
@@ -38,58 +41,89 @@ class RegisterViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
     }
+
+    func validateFields() -> String? {
+
+        //Check that all fields are filled in
+        if nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            surnameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            phoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            rePasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return "Please fill in all fields."
+        }
+
+        //Check if the password secure
+        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if Utilities.isPasswordValid(cleanedPassword) == false {
+            return "Please make sure your password is at least 8 characters, contains a special character and a number."
+        }
+        return nil
+    }
+
     //TODO: Loading koy!
     @IBAction func registerButtonTapped(_ sender: Any) {
-        switch isValid() {
-        case true:
-            self.isLoading(true)
-            let name = nameTextField.text
-            let surname = surnameTextField.text
-            let email = emailTextField.text
-            let phone = phoneTextField.text
-            let password = passwordTextField.text
-            let rePassword = rePasswordTextField.text
-            registerProvider.request(.register(name!, surname!, email!, phone!, password!, rePassword!)) {
-                [weak self] result in
-                guard self != nil else { return }
-                let statusCode = result.value?.statusCode
-                switch result {
-                case .success(let response):
-                    switch statusCode {
-                    case 200:
-                        self!.isLoading(false)
-                        do {
-                            let data = response.data
-                            let json = try JSON(data: data)
-                            let userResponse = try JSONDecoder().decode(RegisterServiceResponse.self, from: response.data)
-                            
-                            if (userResponse.Success) {
-                                
-                                print(json.debugDescription)
-                                self?.performSegue(withIdentifier: "register", sender: nil)
-                            } else {
-                                self?.showAlert(withTitle: "Hata", withMessage: userResponse.Message!, withAction: "pop")
-                            }
-                        } catch {
-                            print("register error")
-                        } default :
-                            self!.isLoading(false)
-                        break //Error handler
-                    }
-                case .failure(let error):
-                    self!.isLoading(false)
-                    self!.showError(error.response!)
-                    self?.showAlert(withTitle: "Hata", withMessage: "KAYITLISIN!", withAction: "pop")
-                    if let code = error.response?.statusCode {
-                        if code == 401 {
-                            self?.showAlert(withTitle: "Hata", withMessage: "KAYITLISIN!", withAction: "pop")
+        //Validate the fields
+        let error = validateFields()
+
+        if error != nil {
+
+            //there's smth wrong with the fields, show error message
+
+        } else {
+
+            //Create cleaned versions of the data
+            let firstName = nameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let lastName = surnameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let phone = phoneTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let rePassword = rePasswordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            //Create the user
+            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+
+                //Check for errors
+                if error != nil {
+
+                    //There was an error creting the user
+                    self.showStatusLine("Error creating user")
+                } else {
+                    //User was created successfully, now store the first name and last name
+                    let db = Firestore.firestore()
+
+                    db.collection("users").addDocument(data: ["firstname": firstName, "lastname": lastName, "uid": result!.user.uid, "email": email, "phone": phone, "password": password, "repassword": rePassword]) {(error) in
+
+                        if error != nil {
+
+                            //Show error message
+                            self.showStatusLine("Error saving user data")
                         }
                     }
+                    //Transition to the home screen
+                    self.transitionToLoginView()
                 }
             }
-        default: break
+            self.isLoading(true)
+            self.showStatusLine("You have signed up successfully!")
         }
     }
+
+    func transitionToLoginView() {
+        let loginViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.loginViewController) as? LoginViewController
+
+        view.window?.rootViewController = loginViewController
+        view.window?.makeKeyAndVisible()
+    }
+
+    func showStatusLine(_ message: String) {
+        let view: MessageView = try! SwiftMessages.viewFromNib(named: "StatusLine")
+        SwiftMessages.show(view: view)
+        view.bodyLabel?.textColor = .green
+        view.bodyLabel?.text = message
+    }
+    
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         nameTextField.resignFirstResponder()
         surnameTextField.resignFirstResponder()

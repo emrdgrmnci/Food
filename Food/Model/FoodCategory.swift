@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct FoodCategory: Decodable {
-    var SubCategoryId: Int
-    var SubCategoryTitle: String
-    var ProductList: [Food]
-}
+//struct FoodCategory: Decodable {
+//    var SubCategoryId: Int
+//    var SubCategoryTitle: String
+//    var ProductList: [Food]
+//}
