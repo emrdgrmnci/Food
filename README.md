@@ -1,4 +1,4 @@
-# FOOD DELIVERY APP [![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)]() [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)]()
+# FOOD DELIVERY APP [![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)]() [![Platform](https://img.shields.io/badge/platform-iOS13.2-lightgrey.svg)]()
 
 #### WARNING!
 ---
