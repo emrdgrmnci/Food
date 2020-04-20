@@ -2,10 +2,10 @@
 
 #### WARNING!
 ---
-Back-end services of this project were in my friend's company server. I try to move back-end system to Firebase and Realm databases. Finally I made a local json file and fetched datas from there!!!
+Back-end services of this project were in my friend's company server. I tried to move back-end system to Firebase and Realm databases. Finally I made a local json file and fetched datas from there!!!
 ---
 
-<h5>This native iOS project is my graduate project</h5>
+<h3>This native iOS project is my graduate project</h3>
 
 <p float="left">
   <img src="ScreenImages/LaunchScreen.png" width="150" height= "300"/>&nbsp; 
