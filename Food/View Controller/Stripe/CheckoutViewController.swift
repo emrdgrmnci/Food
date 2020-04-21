@@ -104,7 +104,15 @@ class CheckoutViewController: UIViewController {
 //    }
 
     @objc func pay() {
-        cardTextField.hasText ? self.displayAlert(title: "Ödeme Başarılı", message: "Ödemeniz başarıyla alınmıştır.") : self.displayAlert(title: "Ödeme Başarısız", message: "Ödemeniz tamamlanamadı")
+        if cardTextField.cardNumber != "" &&
+            cardTextField.cvc != "" &&
+            cardTextField.expirationMonth >= 0 &&
+            cardTextField.expirationYear >= 0 &&
+            cardTextField.postalCode != "" {
+         self.displayAlert(title: "Ödeme Başarılı", message: "Ödemeniz başarıyla alınmıştır.")
+        } else {
+            self.displayAlert(title: "Ödeme Başarısız", message: "Ödemeniz tamamlanamadı")
+        }
 
 //        guard let paymentIntentClientSecret = paymentIntentClientSecret else {
 //            return;
