@@ -33,15 +33,14 @@ class DetailViewController: UIViewController {
     var foodPriceAccumulate = FoodPriceCount(quantity: 1, foodPrice: 10) {
         willSet {
             self.foodPriceAccumulate.quantity = 1
-//            self.foodPriceAccumulate.foodPrice = food!.Price
+            self.foodPriceAccumulate.foodPrice = food!.price
         }
         didSet {
-
             let quantity = foodPriceAccumulate.quantity
             let price = food!.price * quantity
             foodQuantity.text = "\(String( describing: quantity))"
             foodPrice.text = "\(price) ₺"
-
+            SingletonCart.sharedFood.food.append(food!)
         }
     }
     @IBAction func addQuantity(_ sender: Any) {
@@ -57,8 +56,8 @@ class DetailViewController: UIViewController {
         }
     }
     //TODO:- Add to basket
-    @IBAction func addBasket(_ sender: Any) {
-//        food?.foodQuantity = Decimal(tempQuantity)
+    @IBAction func addToBasket(_ sender: Any) {
+        food?.foodQuantity = Double(tempQuantity)
         SingletonCart.sharedFood.food.append(food!)
 
         self.performSegue(withIdentifier: "toMyCart", sender: nil)
@@ -81,6 +80,15 @@ class DetailViewController: UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "FoodOrder")
         self.window?.rootViewController = viewController
     }
+    override func viewWillAppear(_ animated: Bool) {
+         self.navigationController?.navigationBar.isHidden = false
+
+     }
+
+     override func viewWillDisappear(_ animated: Bool) {
+         self.navigationController?.navigationBar.isHidden = true
+     }
+
     @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
         self.navigationController?.popToRootViewController(animated: true)
 
@@ -186,13 +194,6 @@ class DetailViewController: UIViewController {
 //            }
 //
 //        }
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
-
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
     }
 }
 

@@ -66,7 +66,7 @@ class MyCartViewController: UIViewController {
     func resetTotalPrice() {
         var tempTotalPrice = 0 as Decimal
         for sharedFoodTotalPrice in fromSharedFood {
-            tempTotalPrice += Decimal((sharedFoodTotalPrice.price * sharedFoodTotalPrice.foodQuantity))
+            tempTotalPrice += Decimal((sharedFoodTotalPrice.price * Double(sharedFoodTotalPrice.foodQuantity)))
         }
         
         totalPriceLabel.text = "Toplam: \(tempTotalPrice) ₺"
