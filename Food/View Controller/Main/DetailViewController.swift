@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import TagListView
 import Kingfisher
 import SwiftyJSON
 
@@ -18,8 +17,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var foodPrice: UILabel!
     @IBOutlet weak var foodQuantity: UILabel!
     @IBOutlet weak var detailFoodImage: UIImageView!
-
-//    @IBOutlet weak var tagListView: TagListView!
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
 
     var window: UIWindow?
@@ -78,7 +75,7 @@ class DetailViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.tintColor = .red
         foodQuantity.text = "1"
 
 //        getFavoritedFunc()
@@ -89,9 +86,6 @@ class DetailViewController: UIViewController {
         foodSubTitle.text = food?.foodDescription
 //        let url = URL(string: "http://mehmetguner.pryazilim.com/UploadFile/Product/\(self.food!.PhotoPath)")
 //        detailFoodImage.kf.setImage(with: url)
-
-//        tagListView.delegate = self
-//        setupIngredientsTag()
 
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationItem.title = "Sipariş Detayı"
@@ -215,25 +209,6 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
-    func setupIngredientsTag() {
-
-//        tagListView.textFont = UIFont.systemFont(ofSize: 14)
-//        tagListView.alignment = .left // possible values are .Left, .Center, and .Right
-
-        //        tagListView.addTag("TagListView")
-
-//        for tags in food!.DetailsList {
-//            tagListView.addTags([tags])
-//        }
-
-        //        tagListView.insertTag("This should be the second tag", at: 1)
-
-        //        tagListView.setTitle("New Title", at: 6) // to replace the title a tag
-
-        //        tagListView.removeTag("meow") // all tags with title “meow” will be removed
-        //        tagListView.removeAllTags()
-    }
-
 }
 
 

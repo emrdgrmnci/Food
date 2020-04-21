@@ -66,6 +66,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 DispatchQueue.main.async(execute: {
                     self.present(alert, animated: true, completion: nil)
+                    self.isLoading(false)
                 })
             }
         }

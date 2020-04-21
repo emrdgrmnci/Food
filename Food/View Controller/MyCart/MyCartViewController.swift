@@ -32,8 +32,9 @@ class MyCartViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        self.modalPresentationStyle = .fullScreen
         super.viewDidLoad()
+        self.modalPresentationStyle = .fullScreen
+        self.navigationController?.navigationBar.tintColor = .red
         resetTotalPrice()
         if fromSharedFood.count == 0 {
             self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = nil

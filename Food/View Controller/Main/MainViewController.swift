@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-
+            self.navigationController?.navigationBar.tintColor = .red
             let data = try Data(contentsOf: Bundle.main.url(forResource: "default", withExtension: "json")!)
             root = try? JSONDecoder().decode(Root.self, from: data)
             print(root)
