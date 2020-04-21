@@ -45,8 +45,8 @@ The resto will prepare your food, real-time tracking and once it’s ready, the 
 <li>Credit card or cash payment</li>
 <li>Email password login & Authentication</li>
 <li>Synchrone with web project</li>
-<li>Used <a href="https://github.com/onevcat/Kingfisher">Kingfisher</a> for downloading and caching images
-<li>Used <a href="https://github.com/Moya/Moya">Moya</a> for network call
+<li><strike>Used <a href="https://github.com/onevcat/Kingfisher">Kingfisher</a> for downloading and caching images</strike>
+<li><strike>Used <a href="https://github.com/Moya/Moya">Moya</a> for network call</strike>
 <li>Used <a href="https://github.com/airbnb/lottie-ios">Lottie</a> for UI animations
 <li>Used <a href="https://github.com/stripe/stripe-ios">Stripe</a> for payment  
 <li>Deployment target: iOS 11.2+</li>
