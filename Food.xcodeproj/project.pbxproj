@@ -37,6 +37,7 @@
 		4753F87C2238222A00DD7DC2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4753F87B2238222A00DD7DC2 /* ChangePasswordViewController.swift */; };
 		47560023228D6707006DA1ED /* MyPastOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47560022228D6707006DA1ED /* MyPastOrdersTableViewCell.swift */; };
 		47562393244EF4FB00EB0264 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47562392244EF4FB00EB0264 /* CheckoutViewController.swift */; };
+		47562395244F0D8000EB0264 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47562394244F0D8000EB0264 /* UITableView.swift */; };
 		476AC91B229D9B25006817D3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AC91A229D9B25006817D3 /* User.swift */; };
 		476AC91D229D9D9D006817D3 /* AddressPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AC91C229D9D9D006817D3 /* AddressPost.swift */; };
 		476AC91F229DB31A006817D3 /* WebAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AC91E229DB31A006817D3 /* WebAPIResponse.swift */; };
@@ -104,6 +105,7 @@
 		4753F87B2238222A00DD7DC2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		47560022228D6707006DA1ED /* MyPastOrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPastOrdersTableViewCell.swift; sourceTree = "<group>"; };
 		47562392244EF4FB00EB0264 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		47562394244F0D8000EB0264 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		476AC91A229D9B25006817D3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		476AC91C229D9D9D006817D3 /* AddressPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPost.swift; sourceTree = "<group>"; };
 		476AC91E229DB31A006817D3 /* WebAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIResponse.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 			children = (
 				4784A82322943C94004576EC /* Validations.swift */,
 				4784A827229444E9004576EC /* ViewExtensions.swift */,
+				47562394244F0D8000EB0264 /* UITableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 				470F496B22B57B4D008D9B2E /* GetPostFavoriteListNetwork.swift in Sources */,
 				47700C1A221EC4A2009C7682 /* MainFoodTableViewCell.swift in Sources */,
 				472C31F8223814C400A3E863 /* Food.swift in Sources */,
+				47562395244F0D8000EB0264 /* UITableView.swift in Sources */,
 				470F496922B57AB7008D9B2E /* FavoriteList.swift in Sources */,
 				4753F87C2238222A00DD7DC2 /* ChangePasswordViewController.swift in Sources */,
 				4712F42F221D64B4009088DA /* RegisterViewController.swift in Sources */,

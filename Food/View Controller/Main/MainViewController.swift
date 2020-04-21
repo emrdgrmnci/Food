@@ -19,18 +19,15 @@ class MainViewController: UIViewController {
     var foodRow = 0
     var root: Root?
 
-    //    var categoryElements = [CategoryElement]()
-    //    let realm = try! Realm()
-    //    lazy var results = realm.objects(Category.self)
-
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            self.navigationController?.navigationBar.tintColor = .red
+            self.navigationController?.navigationBar.barTintColor = .red
             let data = try Data(contentsOf: Bundle.main.url(forResource: "default", withExtension: "json")!)
             root = try? JSONDecoder().decode(Root.self, from: data)
-            print(root)
-
+            if let root = root {
+                print(root)
+            }
             mainTableView.reloadData()
 
         } catch { print(error) }
@@ -51,13 +48,11 @@ class MainViewController: UIViewController {
         
     }
 
-    //        //MARK: Segue from MainVC to DetailVC
+    //MARK: Segue from MainVC to DetailVC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectedFoodToDetail" {
             let controller = segue.destination as! DetailViewController
             controller.food = root?.category[foodSection].foods[foodRow]
-//            controller.food = categories[foodSection].food[foodRow]
-//            controller.food = foodCategoryData[foodSection].ProductList[foodRow]
         }
     }
 
@@ -105,7 +100,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     //MARK:- //collection view cell data
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainFoodCollectionViewCell", for: indexPath) as! MainFoodCollectionViewCell
-        var imgages : UIImage = UIImage(named:"salata")!
+        let imgages : UIImage = UIImage(named:"salata")!
         cell.mainFoodImage.image = imgages
         return cell
     }

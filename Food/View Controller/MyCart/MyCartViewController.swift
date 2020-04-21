@@ -34,7 +34,8 @@ class MyCartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.modalPresentationStyle = .fullScreen
-        self.navigationController?.navigationBar.tintColor = .red
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationBar.barTintColor = .red
         resetTotalPrice()
         if fromSharedFood.count == 0 {
             self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = nil
@@ -45,9 +46,7 @@ class MyCartViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         self.myCartTableView.reloadData()
     }
-    
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         fromSharedFood = SingletonCart.sharedFood.food
         
@@ -66,7 +65,6 @@ class MyCartViewController: UIViewController {
     
     func resetTotalPrice() {
         var tempTotalPrice = 0 as Decimal
-//        
         for sharedFoodTotalPrice in fromSharedFood {
             tempTotalPrice += Decimal((sharedFoodTotalPrice.price * sharedFoodTotalPrice.foodQuantity))
         }
@@ -121,44 +119,8 @@ extension MyCartViewController: UITableViewDataSource, UITableViewDelegate {
             }
             else {
                 self.tabBarController?.viewControllers![1].tabBarItem.badgeValue = "\(fromSharedFood.count)"
-                //                }
                 myCartTableView.restore()
             }
-            //            tableView.endUpdates()
-
         }
-
-    }
-}
-
-extension UITableView {
-    func setEmptyView(title: String, message: String) {
-        let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
-        let titleLabel = UILabel()
-        let messageLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textColor = UIColor.red
-        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
-        messageLabel.textColor = UIColor.black
-        messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
-        emptyView.addSubview(titleLabel)
-        emptyView.addSubview(messageLabel)
-        titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
-        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 20).isActive = true
-        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -20).isActive = true
-        titleLabel.text = title
-        messageLabel.text = message
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
-        // The only tricky part is here:
-        self.backgroundView = emptyView
-        self.separatorStyle = .none
-    }
-    func restore() {
-        self.backgroundView = nil
-        self.separatorStyle = .singleLine
     }
 }
