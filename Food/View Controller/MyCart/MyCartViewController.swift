@@ -26,7 +26,9 @@ class MyCartViewController: UIViewController {
     let cartCell = MyCartTableViewCell()
     //TODO: - Approve my  cart
     @IBAction func approveCart(_ sender: Any) {
-        
+        let viewController = storyboard?.instantiateViewController(withIdentifier: "CheckoutViewController")
+        guard viewController != nil else { return }
+        self.navigationController?.pushViewController(viewController!, animated: true)
     }
     
     override func viewDidLoad() {

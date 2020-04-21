@@ -36,6 +36,7 @@
 		4753F87A223821A200DD7DC2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4753F879223821A200DD7DC2 /* SettingsViewController.swift */; };
 		4753F87C2238222A00DD7DC2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4753F87B2238222A00DD7DC2 /* ChangePasswordViewController.swift */; };
 		47560023228D6707006DA1ED /* MyPastOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47560022228D6707006DA1ED /* MyPastOrdersTableViewCell.swift */; };
+		47562393244EF4FB00EB0264 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47562392244EF4FB00EB0264 /* CheckoutViewController.swift */; };
 		476AC91B229D9B25006817D3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AC91A229D9B25006817D3 /* User.swift */; };
 		476AC91D229D9D9D006817D3 /* AddressPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AC91C229D9D9D006817D3 /* AddressPost.swift */; };
 		476AC91F229DB31A006817D3 /* WebAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AC91E229DB31A006817D3 /* WebAPIResponse.swift */; };
@@ -102,6 +103,7 @@
 		4753F879223821A200DD7DC2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4753F87B2238222A00DD7DC2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		47560022228D6707006DA1ED /* MyPastOrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPastOrdersTableViewCell.swift; sourceTree = "<group>"; };
+		47562392244EF4FB00EB0264 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		476AC91A229D9B25006817D3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		476AC91C229D9D9D006817D3 /* AddressPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPost.swift; sourceTree = "<group>"; };
 		476AC91E229DB31A006817D3 /* WebAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIResponse.swift; sourceTree = "<group>"; };
@@ -168,6 +170,14 @@
 				4784A82922944630004576EC /* Animations.bundle */,
 			);
 			path = AnimationsJSON;
+			sourceTree = "<group>";
+		};
+		47562391244EF4E000EB0264 /* Stripe */ = {
+			isa = PBXGroup;
+			children = (
+				47562392244EF4FB00EB0264 /* CheckoutViewController.swift */,
+			);
+			path = Stripe;
 			sourceTree = "<group>";
 		};
 		475CB75522B7E64D000B9137 /* MyFavoritesCell */ = {
@@ -350,6 +360,7 @@
 		47A262D3226F9F8C0079C434 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				47562391244EF4E000EB0264 /* Stripe */,
 				477D4F0222915CCF009DAD90 /* NavigationTabbar */,
 				477D4F0122915CC0009DAD90 /* ChangePassword */,
 				477D4F0022915CB5009DAD90 /* Register */,
@@ -595,6 +606,7 @@
 				474F3AE52222D64E00B3D388 /* DetailViewController.swift in Sources */,
 				4784A82422943C94004576EC /* Validations.swift in Sources */,
 				47DE44F622B788F1001679AF /* ChangePasswordNetwork.swift in Sources */,
+				47562393244EF4FB00EB0264 /* CheckoutViewController.swift in Sources */,
 				47505FD7228B55FC00876FBF /* MyFavoritesViewController.swift in Sources */,
 				47B1B35C221DE4DA00B2E051 /* LoginViewController.swift in Sources */,
 				47700C23221F115D009C7682 /* ImageNames.swift in Sources */,
@@ -780,7 +792,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.FoodRealm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -800,7 +812,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.FoodRealm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

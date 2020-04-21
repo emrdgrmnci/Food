@@ -190,7 +190,6 @@
                                         </state>
                                         <connections>
                                             <action selector="approveCart:" destination="BT1-x8-Nl6" eventType="touchUpInside" id="uBG-mc-w3P"/>
-                                            <segue destination="V6h-8s-8Hf" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="h7W-vz-Ngj"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -264,17 +263,17 @@
             </objects>
             <point key="canvasLocation" x="7042" y="1442"/>
         </scene>
-        <!--Order Confirmation View Controller-->
+        <!--Payment-->
         <scene sceneID="usa-z0-C1D">
             <objects>
-                <viewController storyboardIdentifier="ApproveOrder" modalPresentationStyle="fullScreen" id="V6h-8s-8Hf" customClass="OrderConfirmationViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckoutViewController" modalPresentationStyle="fullScreen" id="V6h-8s-8Hf" customClass="CheckoutViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d0K-Na-Mxc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="New-Vy-WNT"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cGZ-8f-Eoo"/>
+                    <navigationItem key="navigationItem" title="Payment" id="cGZ-8f-Eoo"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qpc-7t-hUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -466,11 +465,11 @@
             <objects>
                 <viewController storyboardIdentifier="FirstViewController" modalPresentationStyle="fullScreen" id="cJk-Dz-vhG" customClass="IntroViewController" customModule="Food" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KhH-l0-i98">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="MainLogoScreen" translatesAutoresizingMaskIntoConstraints="NO" id="bnl-sw-V4M">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvH-zs-4dt">
                                 <rect key="frame" x="243" y="131" width="0.0" height="0.0"/>
@@ -480,7 +479,7 @@
                                 <color key="shadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ob-K6-9Fo">
-                                <rect key="frame" x="32" y="309" width="312" height="45"/>
+                                <rect key="frame" x="32" y="326" width="312" height="45"/>
                                 <state key="normal" image="Group 3580">
                                     <color key="titleColor" red="0.83257240060000004" green="0.19629079099999999" blue="0.066703736779999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -489,7 +488,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wk8-qQ-3ul">
-                                <rect key="frame" x="32" y="449" width="310" height="45"/>
+                                <rect key="frame" x="32" y="466" width="310" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Ciz-8j-Nk6"/>
                                 </constraints>
@@ -499,7 +498,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N34-bV-iEh">
-                                <rect key="frame" x="32" y="379" width="312" height="45"/>
+                                <rect key="frame" x="32" y="396" width="312" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="M7k-lH-siX"/>
                                 </constraints>
@@ -509,7 +508,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Şifreni mi unuttun?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ct-DN-Gew">
-                                <rect key="frame" x="136.5" y="427" width="101" height="14"/>
+                                <rect key="frame" x="143.5" y="444" width="87.5" height="14"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Thin" family="SF Pro Display" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -592,7 +591,7 @@
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIB-zB-ydc">
-                                                <rect key="frame" x="151" y="507" width="73" height="36"/>
+                                                <rect key="frame" x="154" y="507" width="67" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="QfH-bP-sFY"/>
                                                 </constraints>
@@ -711,7 +710,7 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFV-3C-bdG">
-                                                <rect key="frame" x="145" y="350" width="64" height="32"/>
+                                                <rect key="frame" x="145" y="350" width="60" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="KlI-uV-OmR"/>
                                                 </constraints>
@@ -1225,7 +1224,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Kah-JZ-ZYL"/>
+        <segue reference="Woe-Ci-inK"/>
         <segue reference="Cvc-R5-nyC"/>
         <segue reference="GgA-us-hSQ"/>
         <segue reference="aUU-zf-sFV"/>
