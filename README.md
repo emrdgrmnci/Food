@@ -2,7 +2,7 @@
 
 #### WARNING!
 ---
-Back-end services of this project were in my friend's company server. I tried to move back-end system to Firebase and Realm databases. When I move to Realm database datas not appear first launch. So Imade a local json file and fetched data from there!!!
+Back-end services of this project were in my friend's company server. I tried to move back-end system to Firebase and Realm databases. When I move to Realm database datas don't appear at first launch. So, I made a local json file and fetched data from there!!!
 ---
 
 <h5>This native iOS project is my graduate project</h5>
