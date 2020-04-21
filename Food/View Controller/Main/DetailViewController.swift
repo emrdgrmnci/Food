@@ -26,14 +26,8 @@ class DetailViewController: UIViewController {
     var searchFoods: String!
     var priceFood: Double!
     var food: Food?
-//    let realm = try! Realm()
-//    lazy var results = realm.objects(Category.self)
 //    var favoriteData = [FavoriteList]()
     var isFirstClick = false
-//    var foodDetailProvider = MoyaProvider<FoodNetwork>()
-//    var postFavoriteFood = MoyaProvider<GetPostFavoriteListNetwork>()
-//    var getFavoriteFood = MoyaProvider<GetPostFavoriteListNetwork>()
-//    var isFavoriteProvider = MoyaProvider<GetPostFavoriteListNetwork>()
     var tempQuantity = 1
 
     var foodPriceAccumulate = FoodPriceCount(quantity: 1, foodPrice: 10) {
@@ -71,21 +65,14 @@ class DetailViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
         self.isLoading(true)
-        //        self.dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = .red
+        self.navigationController?.navigationBar.barTintColor = .red
         foodQuantity.text = "1"
-
-//        getFavoritedFunc()
-//        isFavoritedFunc()
-//        foodTitle.text = results[0].foods[0].productTitle
         foodTitle.text = food?.productTitle ?? ""
         foodPrice.text = food?.priceString
         foodSubTitle.text = food?.foodDescription
-//        let url = URL(string: "http://mehmetguner.pryazilim.com/UploadFile/Product/\(self.food!.PhotoPath)")
-//        detailFoodImage.kf.setImage(with: url)
 
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationItem.title = "Sipariş Detayı"
@@ -93,8 +80,6 @@ class DetailViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "FoodOrder")
         self.window?.rootViewController = viewController
-        //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        //        self.view.addGestureRecognizer(tapGesture)
     }
     @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
         self.navigationController?.popToRootViewController(animated: true)
