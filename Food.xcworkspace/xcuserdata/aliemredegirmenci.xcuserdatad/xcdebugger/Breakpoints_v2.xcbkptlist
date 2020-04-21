@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "3A71272A-542B-461D-BEA8-34AB7EDEB9C1"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8B969798-67D1-4EF0-A220-27D70AABE898"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Food/View Controller/Main/DetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "addBasket(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4D0C957-4B70-4AA1-B62E-C220BC6903DF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Food/View Controller/MyCart/MyCartViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "MyCartViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "A4D0C957-4B70-4AA1-B62E-C220BC6903DF - f0aca745bb8ff6c3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Food.MyCartViewController.cartCell.getter : Food.MyCartTableViewCell"
+                  moduleName = "Food"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aliemredegirmenci/Developer/Food-LocalJSONParsing/Food/View%20Controller/MyCart/MyCartViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "A4D0C957-4B70-4AA1-B62E-C220BC6903DF - c1d5d77211fcffb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Food.MyCartViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Food.MyCartViewController"
+                  moduleName = "Food"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aliemredegirmenci/Developer/Food-LocalJSONParsing/Food/View%20Controller/MyCart/MyCartViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "1488">
+               </Location>
+               <Location
+                  uuid = "A4D0C957-4B70-4AA1-B62E-C220BC6903DF - f8ae1536b597f848"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Food.MyCartViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Food.MyCartViewController&gt;"
+                  moduleName = "Food"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aliemredegirmenci/Developer/Food-LocalJSONParsing/Food/View%20Controller/MyCart/MyCartViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "1423">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

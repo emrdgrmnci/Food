@@ -30,6 +30,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.backBarButtonItem?.title = ""
+        self.navigationController?.navigationBar.tintColor = .white
         
         self.nameTextField.delegate = self
         self.surnameTextField.delegate = self

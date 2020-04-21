@@ -34,6 +34,7 @@ class CheckoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationController?.navigationBar.prefersLargeTitles = false
         let stackView = UIStackView(arrangedSubviews: [cardTextField, payButton])
         stackView.axis = .vertical
         stackView.spacing = 20
@@ -42,7 +43,7 @@ class CheckoutViewController: UIViewController {
         NSLayoutConstraint.activate([
             stackView.leftAnchor.constraint(equalToSystemSpacingAfter: view.leftAnchor, multiplier: 2),
             view.rightAnchor.constraint(equalToSystemSpacingAfter: stackView.rightAnchor, multiplier: 2),
-            stackView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 2),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 250)
         ])
         startCheckout()
     }

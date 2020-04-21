@@ -29,7 +29,7 @@ struct Food: Codable {
     let id: Int
     let price: Double
     let priceString, productTitle, foodDescription: String
-    let stock, foodQuantity: Int
+    let stock, foodQuantity: Double
 }
 
 //struct Category: Decodable {

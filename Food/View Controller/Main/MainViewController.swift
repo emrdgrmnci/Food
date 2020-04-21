@@ -38,7 +38,7 @@ class MainViewController: UIViewController {
         print("User ID: \(UserDefaults.standard.object(forKey: "userID") as? Int ?? 0)")
         
         self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGray3]
 
         mainTableView.delegate = self
         mainTableView.dataSource = self
