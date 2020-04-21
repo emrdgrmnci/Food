@@ -48,6 +48,7 @@ The resto will prepare your food, real-time tracking and once it’s ready, the 
 <li>Used <a href="https://github.com/onevcat/Kingfisher">Kingfisher</a> for downloading and caching images
 <li>Used <a href="https://github.com/Moya/Moya">Moya</a> for network call
 <li>Used <a href="https://github.com/airbnb/lottie-ios">Lottie</a> for UI animations
+<li>Used <a href="https://github.com/stripe/stripe-ios">Stripe</a> for payment  
 <li>Deployment target: iOS 11.2+</li>
 <li>Supported devices: iPhone 5s, SE, 6, 6 Plus, 6s, 6s Plus, 7, 7 Plus, 8, 8 Plus, iPhone X </li>
 </ul>
